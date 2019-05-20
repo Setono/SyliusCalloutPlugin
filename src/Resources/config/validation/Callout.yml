@@ -1,0 +1,33 @@
+Setono\SyliusCalloutsPlugin\Model\Callout:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+              fields: [code]
+              message: 'setono_sylius_callouts_plugin.callout.code.unique'
+              groups: ['setono']
+    properties:
+        priority:
+            - NotBlank:
+                message: 'setono_sylius_callouts_plugin.callout.priority.not_blank'
+                groups: ['setono']
+        position:
+            - NotBlank:
+                message: 'setono_sylius_callouts_plugin.callout.position.not_blank'
+                groups: ['setono']
+        code:
+            - NotBlank:
+                message: 'setono_sylius_callouts_plugin.callout.code.not_blank'
+                groups: ['setono']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'setono_sylius_callouts_plugin.callout.code.min_length'
+                maxMessage: 'setono_sylius_callouts_plugin.callout.code.max_length'
+                groups: ['setono']
+        html:
+            - Length:
+                min: 2
+                minMessage: 'setono_sylius_callouts_plugin.callout.html.min_length'
+                groups: ['setono']
+            - NotBlank:
+                message: 'setono_sylius_callouts_plugin.callout.html.not_blank'
+                groups: ['setono']

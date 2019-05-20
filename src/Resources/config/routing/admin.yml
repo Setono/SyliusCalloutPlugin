@@ -1,0 +1,2 @@
+setono_sylius_callouts_plugin_admin_callout:
+    resource: admin/callout.yml

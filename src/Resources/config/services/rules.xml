@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="setono_sylius_callouts_plugin.callout_rule_checker.has_taxon" class="Setono\SyliusCalloutsPlugin\Checker\Rule\HasTaxonCalloutRuleChecker">
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="setono_sylius_callouts_plugin.callout_rule_checker" type="has_taxon" label="setono_sylius_callouts_plugin.ui.has_taxon" form-type="Setono\SyliusCalloutsPlugin\Form\Type\Rule\HasTaxonConfigurationType" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.callout_rule_checker.has_product" class="Setono\SyliusCalloutsPlugin\Checker\Rule\HasProductCalloutRuleChecker">
+            <argument type="service" id="sylius.repository.product" />
+            <tag name="setono_sylius_callouts_plugin.callout_rule_checker" type="has_product" label="setono_sylius_callouts_plugin.ui.has_product" form-type="Setono\SyliusCalloutsPlugin\Form\Type\Rule\HasProductConfigurationType" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutsPlugin\Checker\Rule\IsOnSaleRuleChecker">
+            <argument type="service" id="setono_sylius_callouts_plugin.checker.product_promotion" />
+            <tag name="setono_sylius_callouts_plugin.callout_rule_checker" type="is_on_sale" label="setono_sylius_callouts_plugin.ui.is_on_sale" form-type="Setono\SyliusCalloutsPlugin\Form\Type\Rule\IsOnSaleConfigurationType" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.checker.product_promotion" class="Setono\SyliusCalloutsPlugin\Checker\ProductPromotionChecker">
+            <argument type="service" id="sylius.repository.promotion_rule" />
+            <argument type="service" id="sylius.repository.taxon" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.registry_callout_rule_checker" class="Sylius\Component\Registry\ServiceRegistry">
+            <argument type="string">Setono\SyliusCalloutsPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface</argument>
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.form_registry.callout_rule_checker" class="Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry" />
+
+        <service id="setono_sylius_callouts_plugin.callout_rules_eligibility_checker" class="Setono\SyliusCalloutsPlugin\Checker\Eligibility\CalloutRulesEligibilityChecker">
+            <argument type="service" id="setono_sylius_callouts_plugin.registry_callout_rule_checker" />
+        </service>
+    </services>
+</container>

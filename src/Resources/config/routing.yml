@@ -1,0 +1,3 @@
+setono_sylius_callouts_plugin_admin:
+    resource: routing/admin.yml
+    prefix: /admin

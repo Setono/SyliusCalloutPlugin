@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="services/**/*.xml" />
+    </imports>
+
+    <services>
+        <service id="setono_sylius_callouts_plugin.listener.menu.callout" class="Setono\SyliusCalloutsPlugin\Menu\CalloutsMenuBuilder">
+            <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="addCalloutsItem" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.active_callouts_provider" class="Setono\SyliusCalloutsPlugin\Provider\ActiveCalloutProvider">
+            <argument type="service" id="setono_sylius_callouts_plugin.repository.callout" />
+            <argument type="service" id="setono_sylius_callouts_plugin.callout_rules_eligibility_checker" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.product_callouts_assigner" class="Setono\SyliusCalloutsPlugin\Assigner\ProductCalloutsAssigner">
+            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="old_sound_rabbit_mq.callouts_producer" />
+
+            <tag name="kernel.event_listener" event="sylius.product.post_create" method="assign" />
+            <tag name="kernel.event_listener" event="sylius.product.post_update" method="assign" />
+            <tag name="kernel.event_listener" event="setono_sylius_callouts_plugin.callout.post_create" method="assign" />
+            <tag name="kernel.event_listener" event="setono_sylius_callouts_plugin.callout.post_update" method="assign" />
+        </service>
+
+        <service id="setono_sylius_callouts_plugin.consumer.product_callouts_assigner" class="Setono\SyliusCalloutsPlugin\Consumer\ProductCalloutsAssignerConsumer">
+            <argument type="service" id="setono_sylius_callouts_plugin.active_callouts_provider" />
+            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.manager.product" />
+        </service>
+    </services>
+</container>

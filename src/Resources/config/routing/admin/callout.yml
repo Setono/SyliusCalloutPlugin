@@ -1,0 +1,13 @@
+setono_sylius_callouts_plugin_admin_callout:
+    resource: |
+        section: admin
+        alias: setono_sylius_callouts_plugin.callout
+        templates: SetonoSyliusCalloutsPlugin:Crud
+        permission: true
+        redirect: update
+        grid: setono_sylius_callout_plugin_admin_callout
+        vars:
+            all:
+                templates:
+                    form: "@SetonoSyliusCalloutsPlugin/Callout/_form.html.twig"
+    type: sylius.resource

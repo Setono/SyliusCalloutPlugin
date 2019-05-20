@@ -1,0 +1,12 @@
+Setono\SyliusCalloutsPlugin\Model\CalloutTranslation:
+    properties:
+        name:
+            - NotBlank:
+                message: 'setono_sylius_callouts_plugin.callout.name.not_blank'
+                groups: ['setono']
+            - Length:
+                min: 2
+                max: 250
+                minMessage: 'setono_sylius_callouts_plugin.callout.name.min_length'
+                maxMessage: 'setono_sylius_callouts_plugin.callout.name.max_length'
+                groups: ['setono']

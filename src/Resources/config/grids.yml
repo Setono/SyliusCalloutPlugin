@@ -1,0 +1,30 @@
+sylius_grid:
+    grids:
+        setono_sylius_callout_plugin_admin_callout:
+            driver:
+                options:
+                    class: "%setono_sylius_callouts_plugin.model.callout.class%"
+            fields:
+                code:
+                    type: string
+                    label: setono_sylius_callouts_plugin.ui.code
+                name:
+                    type: string
+                    label: setono_sylius_callouts_plugin.ui.name
+                enabled:
+                    type: twig
+                    label: setono_sylius_callouts_plugin.ui.enabled
+                    options:
+                        template: SyliusUiBundle:Grid/Field:enabled.html.twig
+            filters:
+                name:
+                    type: string
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

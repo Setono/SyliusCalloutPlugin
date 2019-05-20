@@ -1,0 +1,21 @@
+setono_sylius_callouts_plugin:
+    ui:
+        code: Code
+        time_period_start: Time period start
+        time_period_end: Time period end
+        name: Name
+        enabled: Enabled
+        priority: Priority
+        position: Position
+        html: Html
+        rules: Rules
+        callouts: Callouts
+        edit_callout: Edit Product Callout
+        new_callout: New Product Callout
+        top_left_corner: Top left corner
+        top_right_corner: Top right corner
+        bottom_left_corner: Bottom left corner
+        bottom_right_corner: Bottom right corner
+        has_taxon: Has taxon
+        has_product: Has product
+        is_on_sale: Is on sale
