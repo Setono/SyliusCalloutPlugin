@@ -1,0 +1,23 @@
+imports:
+    - { resource: "@SetonoSyliusCalloutsPlugin/Resources/config/config.yml"}
+
+old_sound_rabbit_mq:
+    connections:
+        default:
+            url: '%env(resolve:RABBITMQ_URL)%'
+    producers:
+        callouts:
+            connection: default
+            exchange_options:
+                name: 'product'
+                type: direct
+    consumers:
+        callouts:
+            connection: default
+            exchange_options:
+                name: 'product'
+                type: direct
+            queue_options:
+                name: 'product'
+            callback: setono_sylius_callouts_plugin.consumer.product_callouts_assigner
+            enable_logger: true
