@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutsPlugin\Assigner;
 
-use OldSound\RabbitMqBundle\RabbitMq\ProducerInterface;
 use Pagerfanta\Pagerfanta;
+use Setono\SyliusCalloutsPlugin\Message\Command\AssignProductCallouts;
 use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 final class ProductCalloutsAssigner implements ProductCalloutsAssignerInterface
 {
@@ -17,13 +18,15 @@ final class ProductCalloutsAssigner implements ProductCalloutsAssignerInterface
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /** @var ProducerInterface */
-    private $producer;
+    /** @var MessageBusInterface */
+    private $messageBus;
 
-    public function __construct(ProductRepositoryInterface $productRepository, ProducerInterface $producer)
-    {
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        MessageBusInterface $messageBus
+    ) {
         $this->productRepository = $productRepository;
-        $this->producer = $producer;
+        $this->messageBus = $messageBus;
     }
 
     public function assign(): void
@@ -46,7 +49,7 @@ final class ProductCalloutsAssigner implements ProductCalloutsAssignerInterface
                 $productIds[] = $product->getId();
             }
 
-            $this->producer->publish(serialize(['products' => $productIds]));
+            $this->messageBus->dispatch(new AssignProductCallouts($productIds));
         }
     }
 }

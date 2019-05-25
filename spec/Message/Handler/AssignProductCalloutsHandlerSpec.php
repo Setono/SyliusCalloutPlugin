@@ -2,21 +2,20 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Consumer;
+namespace spec\Setono\SyliusCalloutsPlugin\Message\Handler;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
-use PhpAmqpLib\Message\AMQPMessage;
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Consumer\ProductCalloutsAssignerConsumer;
-use Setono\SyliusCalloutsPlugin\Consumer\ProductCalloutsAssignerConsumerInterface;
+use Setono\SyliusCalloutsPlugin\Message\Command\AssignProductCallouts;
+use Setono\SyliusCalloutsPlugin\Message\Handler\AssignProductCalloutsHandler;
 use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
 use Setono\SyliusCalloutsPlugin\Provider\CalloutProviderInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-final class ProductCalloutsAssignerConsumerSpec extends ObjectBehavior
+final class AssignProductCalloutsHandlerSpec extends ObjectBehavior
 {
     function let(
         CalloutProviderInterface $calloutProvider,
@@ -28,25 +27,20 @@ final class ProductCalloutsAssignerConsumerSpec extends ObjectBehavior
 
     function it_is_initializable(): void
     {
-        $this->shouldHaveType(ProductCalloutsAssignerConsumer::class);
-    }
-
-    function it_implements_assigner_consumer_interface(): void
-    {
-        $this->shouldHaveType(ProductCalloutsAssignerConsumerInterface::class);
+        $this->shouldHaveType(AssignProductCalloutsHandler::class);
     }
 
     function it_executes(
-        AMQPMessage $message,
         RepositoryInterface $productRepository,
         CalloutsAwareInterface $firstProduct,
         CalloutsAwareInterface $secondProduct,
         Collection $callouts,
         CalloutProviderInterface $calloutProvider,
         CalloutInterface $callout,
-        EntityManagerInterface $productManager
+        EntityManagerInterface $productManager,
+        AssignProductCallouts $assignProductCallouts
     ): void {
-        $message->getBody()->willReturn(serialize(['products' => [1, 2]]));
+        $assignProductCallouts->getProductIds()->willReturn([1, 2]);
         $productRepository->findBy(['id' => [1, 2]])->willReturn([$firstProduct, $secondProduct]);
 
         $calloutProvider->getCallouts($firstProduct)->willReturn([$callout]);
@@ -60,6 +54,6 @@ final class ProductCalloutsAssignerConsumerSpec extends ObjectBehavior
         $secondProduct->setCallouts(new ArrayCollection([$callout->getWrappedObject()]))->shouldBeCalled();
         $productManager->flush()->shouldBeCalled();
 
-        $this->execute($message);
+        $this->__invoke($assignProductCallouts);
     }
 }

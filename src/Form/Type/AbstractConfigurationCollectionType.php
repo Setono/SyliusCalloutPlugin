@@ -61,7 +61,6 @@ abstract class AbstractConfigurationCollectionType extends AbstractType
         ]);
     }
 
-
     public function getParent(): string
     {
         return CollectionType::class;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutsPlugin;
 
 use Setono\SyliusCalloutsPlugin\DependencyInjection\Compiler\RegisterCalloutRuleCheckerPass;
+use Setono\SyliusCalloutsPlugin\DependencyInjection\Compiler\RegisterCommandBusPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
@@ -19,6 +20,7 @@ final class SetonoSyliusCalloutsPlugin extends AbstractResourceBundle
         parent::build($container);
 
         $container->addCompilerPass(new RegisterCalloutRuleCheckerPass());
+        $container->addCompilerPass(new RegisterCommandBusPass());
     }
 
     public function getSupportedDrivers(): array
