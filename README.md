@@ -86,7 +86,7 @@ Currently available positions are:
 
 7. Configure Async assigns product callouts
 
-    This plug assigns product callouts when the administrator create/update the product or callout, with a large number of products this can result in slower page performance. To circumvent that you can use RabbitMQ with Symfony Messenger to assigns product callouts.
+    This plugin assigns product callouts when the administrator create/update the product or callout. With a large number of products this can result in slower page performance. To circumvent this problem you can use an async transport with Symfony Messenger to assigns product callouts.
     
     Follow the installation instructions here: [How to Use the Messenger](https://symfony.com/doc/current/messenger.html) and then [configure a transport](https://symfony.com/doc/current/messenger.html#transports).
     
