@@ -119,7 +119,7 @@ Currently available positions are:
             transport: amqp
     ```
     
-    After this, the Messenger will be automatically enabled in this plugin and subsequently, it will assign asynchronous product callouts.
+    After this, the Messenger will be automatically enabled in this plugin and subsequently, it will assign product callouts asynchronously.
 
 8. For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:callouts:assign` command 
 once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener
