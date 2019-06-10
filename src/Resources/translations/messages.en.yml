@@ -19,3 +19,4 @@ setono_sylius_callouts_plugin:
         has_taxon: Has taxon
         has_product: Has product
         is_on_sale: Is on sale
+        type: Type

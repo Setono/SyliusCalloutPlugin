@@ -1,6 +1,2 @@
 imports:
     - { resource: "@SetonoSyliusCalloutsPlugin/Resources/config/config.yml"}
-
-setono_sylius_callouts:
-    messenger:
-        transport: amqp

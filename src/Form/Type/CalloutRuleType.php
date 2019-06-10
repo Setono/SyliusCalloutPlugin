@@ -14,7 +14,7 @@ final class CalloutRuleType extends AbstractConfigurableCalloutRuleType
 
         $builder
             ->add('type', CalloutRuleChoiceType::class, [
-                'label' => false,
+                'label' => 'setono_sylius_callouts_plugin.ui.type',
                 'attr' => [
                     'data-form-collection' => 'update',
                 ],

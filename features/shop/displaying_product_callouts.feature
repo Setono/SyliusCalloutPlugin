@@ -7,11 +7,18 @@ Feature: Displaying Product Callouts
     Background:
         Given I am logged in as an administrator
         And the store operates on a single channel in "United States"
+        And the store classifies its products as "T-Shirts", "Funny" and "Sad"
+        And the store has a product "PHP T-Shirt"
+        And this product belongs to "T-Shirts"
+        And the store has a product "Java T-Shirt"
+        And this product belongs to "T-Shirts"
+        And the store has a product "C++ T-Shirt"
+        And this product belongs to "T-Shirts"
+        And the store has a product "Plastic Tomato"
+        And this product belongs to "Funny"
 
     @ui
-    Scenario: Adding a product callout
-        Given there are 4 products in the store
-        And there is a callout for each position in the store
-        And these callouts are associated with 4 recent products
-        When I go to the homepage
-        Then I should see 4 products with 4 callouts on each position
+    Scenario: Displaying a product callout
+        Given there is a product callout "Sale" with "Has taxon" rule configured with "T-Shirts" taxon and with "<p class='callout'>Sale</p>" html
+        When I browse products from taxon "T-Shirts"
+        Then I should see 3 products with product callout "Sale"

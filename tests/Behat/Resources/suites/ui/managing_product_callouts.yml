@@ -1,13 +1,15 @@
 default:
     suites:
-        admin_managing_product_callouts:
-            contexts_services:
-            - sylius.behat.context.hook.doctrine_orm
+        ui_admin_managing_product_callouts:
+            contexts:
+                - sylius.behat.context.hook.doctrine_orm
 
-            - sylius.behat.context.setup.channel
-            - sylius.behat.context.setup.admin_security
-            - sylius.behat.context.setup.shipping
+                - sylius.behat.context.setup.channel
+                - sylius.behat.context.setup.admin_security
+                - sylius.behat.context.setup.shipping
+                - sylius.behat.context.setup.taxonomy
+                - sylius.behat.context.setup.product
 
-            - setono_sylius_product_callouts_plugin.behat.context.ui.admin.product_callout
-        filters:
-            tags: "@managing_product_callouts && @ui"
+                - setono_sylius_product_callouts_plugin.behat.context.ui.admin.product_callout
+            filters:
+                tags: "@managing_product_callouts && @ui"
