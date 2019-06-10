@@ -46,7 +46,7 @@ final class ProductCalloutsAssignerSpec extends ObjectBehavior
         $firstProduct->getId()->willReturn(1);
         $secondProduct->getId()->willReturn(2);
         $paginator->getNbResults()->willReturn(300);
-        $envelope = new Envelope(new stdClass(), $stamp->getWrappedObject());
+        $envelope = new Envelope(new stdClass(), []);
 
         $paginator->setMaxPerPage(100)->shouldBeCalled();
         $paginator->setCurrentPage(1)->shouldBeCalled();
