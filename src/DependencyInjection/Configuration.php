@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutsPlugin\DependencyInjection;
 
-use Setono\SyliusCalloutsPlugin\Factory\CalloutRuleFactory;
 use Setono\SyliusCalloutsPlugin\Form\Type\CalloutType;
 use Setono\SyliusCalloutsPlugin\Model\Callout;
 use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
@@ -86,7 +85,7 @@ final class Configuration implements ConfigurationInterface
                                     ->children()
                                         ->scalarNode('model')->defaultValue(CalloutRule::class)->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(CalloutRuleInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(CalloutRuleFactory::class)->end()
+                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                     ->end()
                                 ->end()
                             ->end()

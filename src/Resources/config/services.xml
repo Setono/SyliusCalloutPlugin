@@ -24,5 +24,9 @@
             <tag name="kernel.event_listener" event="setono_sylius_callouts_plugin.callout.post_create" method="assign" />
             <tag name="kernel.event_listener" event="setono_sylius_callouts_plugin.callout.post_update" method="assign" />
         </service>
+
+        <service id="setono_sylius_callouts_plugin.custom_factory.callout_rule" class="Setono\SyliusCalloutsPlugin\Factory\CalloutRuleFactory" decorates="setono_sylius_callouts_plugin.factory.callout_rule" public="false">
+            <argument type="service" id="setono_sylius_callouts_plugin.custom_factory.callout_rule.inner" />
+        </service>
     </services>
 </container>
