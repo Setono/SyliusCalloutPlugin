@@ -43,7 +43,7 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
 
     public function fillHtml(string $html): void
     {
-        $this->getDocument()->fillField('Html', $html);
+        $this->getDocument()->fillField('HTML', $html);
     }
 
     public function addRule(string $ruleName): void
