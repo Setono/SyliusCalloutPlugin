@@ -16,14 +16,16 @@ based on specific rules. It provides a common set of configuration by default an
 $ composer require setono/sylius-callout-plugin
 ```
     
-1. Add plugin dependencies to your bundles.php file:
+1. Add plugin dependencies to your `config/bundles.php` file:
 ```php
-$bundles = [
-    ...
+<?php
+return [
+    // ...
     
-    OldSound\RabbitMqBundle\OldSoundRabbitMqBundle::class => ['all' => true],
-    Setono\SyliusCalloutPlugin\SetonoSyliusCalloutPlugin:class => ['all' => true],
-]);
+    Setono\SyliusCalloutPlugin\SetonoSyliusCalloutPlugin::class => ['all' => true],
+    
+    // ...
+];
 ```
 
 2. Import required config in your `app/config/config.yml` file:
@@ -41,13 +43,13 @@ imports:
 
 # config/routes/routes.yaml
 
-setono_product_callouts_plugin:
+setono_product_callout:
     resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yml"
 ```
 
 4. Install assets
 ```bash
-$ bin/console assets:install --symlink
+$ bin/console assets:install
 ```
 
 5. Customize your product model. Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
