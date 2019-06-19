@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Consumer;
+namespace Setono\SyliusCalloutsPlugin\Message\Handler;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
-use PhpAmqpLib\Message\AMQPMessage;
+use Setono\SyliusCalloutsPlugin\Message\Command\AssignProductCallouts;
 use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
 use Setono\SyliusCalloutsPlugin\Provider\CalloutProviderInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Webmozart\Assert\Assert;
 
-final class ProductCalloutsAssignerConsumer implements ProductCalloutsAssignerConsumerInterface
+final class AssignProductCalloutsHandler implements MessageHandlerInterface
 {
     /** @var CalloutProviderInterface */
     private $calloutProvider;
@@ -33,14 +34,9 @@ final class ProductCalloutsAssignerConsumer implements ProductCalloutsAssignerCo
         $this->productManager = $productManager;
     }
 
-    public function execute(AMQPMessage $message): void
+    public function __invoke(AssignProductCallouts $message)
     {
-        $body = unserialize($message->getBody());
-
-        Assert::isArray($body);
-        Assert::keyExists($body, 'products');
-
-        $products = $this->productRepository->findBy(['id' => $body['products']]);
+        $products = $this->productRepository->findBy(['id' => $message->getProductIds()]);
 
         /** @var CalloutsAwareInterface $product */
         foreach ($products as $product) {

@@ -34,13 +34,11 @@ final class Configuration implements ConfigurationInterface
         ;
 
         $this->addResourcesSection($rootNode);
+        $this->addMessengerSection($rootNode);
 
         return $treeBuilder;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addResourcesSection(ArrayNodeDefinition $node): void
     {
         $node
@@ -87,9 +85,35 @@ final class Configuration implements ConfigurationInterface
                                     ->children()
                                         ->scalarNode('model')->defaultValue(CalloutRule::class)->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(CalloutRuleInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                     ->end()
                                 ->end()
                             ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addMessengerSection(ArrayNodeDefinition $node): void
+    {
+        $node
+            ->children()
+                ->arrayNode('messenger')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('command_bus')
+                            ->cannotBeEmpty()
+                            ->defaultValue('message_bus')
+                            ->example('message_bus')
+                            ->info('The service id for the message bus you use for commands')
+                        ->end()
+                        ->scalarNode('transport')
+                            ->cannotBeEmpty()
+                            ->defaultNull()
+                            ->info('The transport to use if you would like assigns products callouts async (which is a very good choice on production)')
+                            ->example('amqp')
                         ->end()
                     ->end()
                 ->end()

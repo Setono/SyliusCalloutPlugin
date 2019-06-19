@@ -1,7 +1,18 @@
 services:
     setono_sylius_product_callouts_plugin.behat.context.ui.admin.product_callout:
-        class: Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Ui\Admin\CalloutContext
+        class: Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Ui\Admin\ProductCalloutContext
         public: true
         arguments:
             - "@setono_sylius_product_callouts_plugin.behat.page.admin.product_callout.create"
             - "@sylius.behat.notification_checker"
+        tags:
+            - { name: fob.context_service }
+
+    setono_sylius_product_callouts_plugin.behat.context.ui.shop.product:
+        class: Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Ui\Shop\ProductContext
+        public: true
+        arguments:
+            - "@setono_sylius_product_callouts_plugin.behat.page.shop.product.index"
+            - "@setono_sylius_callouts_plugin.repository.callout"
+        tags:
+            - { name: fob.context_service }

@@ -7,9 +7,9 @@ namespace Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Ui\Admin;
 use Behat\Behat\Context\Context;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
-use Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Admin\Callout\CreatePageInterface;
+use Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Admin\ProductCallout\CreatePageInterface;
 
-final class CalloutContext implements Context
+final class ProductCalloutContext implements Context
 {
     /** @var CreatePageInterface */
     private $createPage;
@@ -78,6 +78,34 @@ final class CalloutContext implements Context
     public function iNameItIn(string $name): void
     {
         $this->createPage->fillName($name);
+    }
+
+    /**
+     * @When I fill the html with :html
+     */
+    public function iFillTheHtmlWith(string $html): void
+    {
+        $this->createPage->fillHtml($html);
+    }
+
+    /**
+     * @When I add the "Has taxon" rule configured with :arg2 and :arg3
+     */
+    public function iAddTheRuleConfiguredWithAnd(...$taxons): void
+    {
+        $this->createPage->addRule('Has taxon');
+
+        $this->createPage->selectAutocompleteRuleOption('Taxons', $taxons, true);
+    }
+
+    /**
+     * @When I add the "Has product" rule configured with the :productName product
+     */
+    public function iAddTheRuleConfiguredWithTheProduct(string $productName): void
+    {
+        $this->createPage->addRule('Has product');
+
+        $this->createPage->selectAutocompleteRuleOption('Products', $productName);
     }
 
     /**

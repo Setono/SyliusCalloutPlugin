@@ -1,0 +1,12 @@
+services:
+    setono_sylius_product_callouts_plugin.behat.context.setup.product_callout:
+        class: Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Setup\ProductCalloutContext
+        public: true
+        arguments:
+            - "@setono_sylius_callouts_plugin.factory.callout_rule"
+            - "@setono_sylius_callouts_plugin.product_callouts_assigner"
+            - "@setono_sylius_callouts_plugin.factory.callout"
+            - "@doctrine.orm.default_entity_manager"
+            - "@sylius.behat.shared_storage"
+        tags:
+            - { name: fob.context_service }

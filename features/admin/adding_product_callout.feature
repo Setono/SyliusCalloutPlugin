@@ -7,8 +7,10 @@ Feature: Adding Product Callouts
     Background:
         Given I am logged in as an administrator
         And the store operates on a single channel in "United States"
+        And the store classifies its products as "T-Shirts" and "Mugs"
+        And the store has a product "PHP T-Shirt"
 
-    @ui
+    @ui @javascript
     Scenario: Adding a product callout
         When I go to the create product callout page
         And I fill the priority with 1
@@ -16,8 +18,7 @@ Feature: Adding Product Callouts
         And I specify its code as "new_collection"
         And I fill the html with "<span>NEW</span>"
         And I name it "New collection callout"
-        And I add 2 products as a product rule
-        And I add 2 taxons as a taxon rule
-        And I enable the on sale rule
+        And I add the "Has taxon" rule configured with "T-Shirts" and "Mugs"
+        And I add the "Has product" rule configured with the "PHP T-Shirt" product
         And I add it
         Then I should be notified that it has been successfully created

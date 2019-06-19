@@ -84,43 +84,42 @@ Currently available positions are:
 * `bottom_right_corner`
 * `bottom_left_corner`
 
-7. Configure a local connection to the RabbitMQ by
-- Adding a RabbitMQ URL in your `.env` file:
-```text
-# .env
+7. Configure Async assigns product callouts
 
-###> setono/sylius-callouts-plugin ###
-RABBITMQ_URL=amqp://guest:guest@localhost:5672
-###< setono/sylius-callouts-plugin ###
-``` 
-- Adding a [setono_sylius_callouts_plugin.yaml](tests/Application/config/packages/setono_sylius_callouts_plugin.yaml)
-configuration file to your `config/packages` directory.
-
-```yaml
-imports:
-    - { resource: "@SetonoSyliusCalloutsPlugin/Resources/config/config.yml"}
-
-old_sound_rabbit_mq:
-    connections:
-        default:
-            url: '%env(resolve:RABBITMQ_URL)%'
-    producers:
-        callouts:
-            connection: default
-            exchange_options:
-                name: 'product'
-                type: direct
-    consumers:
-        callouts:
-            connection: default
-            exchange_options:
-                name: 'product'
-                type: direct
-            queue_options:
-                name: 'product'
-            callback: setono_sylius_callouts_plugin.consumer.product_callouts_assigner
-            enable_logger: true
-```
+    This plugin assigns product callouts when the administrator create/update the product or callout. With a large number of products this can result in slower page performance. To circumvent this problem you can use an async transport with Symfony Messenger to assigns product callouts.
+    
+    Follow the installation instructions here: [How to Use the Messenger](https://symfony.com/doc/current/messenger.html) and then [configure a transport](https://symfony.com/doc/current/messenger.html#transports).
+    
+    Basically you should do:
+    ```bash
+    $ composer req symfony/messenger symfony/serializer-pack
+    ```
+    
+    Then configure the Messenger component:
+    ```yaml
+    # config/packages/messenger.yaml
+    framework:
+        messenger:
+            transports:
+                amqp: "%env(MESSENGER_TRANSPORT_DSN)%"
+    ```
+    
+    ```yaml
+    # .env
+    ###> symfony/messenger ###
+    MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages
+    ###< symfony/messenger ###
+    ```
+    
+    And finally configure the plugin to use your transport:
+    
+    ```yaml
+    setono_sylius_callouts:
+        messenger:
+            transport: amqp
+    ```
+    
+    After this, the Messenger will be automatically enabled in this plugin and subsequently, it will assign product callouts asynchronously.
 
 8. For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:callouts:assign` command 
 once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener

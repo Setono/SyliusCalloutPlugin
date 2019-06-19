@@ -17,7 +17,7 @@
 
         <service id="setono_sylius_callouts_plugin.product_callouts_assigner" class="Setono\SyliusCalloutsPlugin\Assigner\ProductCalloutsAssigner">
             <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="old_sound_rabbit_mq.callouts_producer" />
+            <argument type="service" id="setono_sylius_callouts.command_bus" />
 
             <tag name="kernel.event_listener" event="sylius.product.post_create" method="assign" />
             <tag name="kernel.event_listener" event="sylius.product.post_update" method="assign" />
@@ -25,10 +25,8 @@
             <tag name="kernel.event_listener" event="setono_sylius_callouts_plugin.callout.post_update" method="assign" />
         </service>
 
-        <service id="setono_sylius_callouts_plugin.consumer.product_callouts_assigner" class="Setono\SyliusCalloutsPlugin\Consumer\ProductCalloutsAssignerConsumer">
-            <argument type="service" id="setono_sylius_callouts_plugin.active_callouts_provider" />
-            <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="sylius.manager.product" />
+        <service id="setono_sylius_callouts_plugin.custom_factory.callout_rule" class="Setono\SyliusCalloutsPlugin\Factory\CalloutRuleFactory" decorates="setono_sylius_callouts_plugin.factory.callout_rule" public="false">
+            <argument type="service" id="setono_sylius_callouts_plugin.custom_factory.callout_rule.inner" />
         </service>
     </services>
 </container>

@@ -8,7 +8,7 @@
         "php": "^7.2",
 
         "sylius/sylius": "^1.4",
-        "php-amqplib/rabbitmq-bundle": "^1.14"
+        "symfony/messenger": "^4.2"
     },
     "require-dev": {
         "behat/behat": "^3.4",
@@ -26,6 +26,7 @@
         "phpstan/phpstan-shim": "^0.10",
         "phpstan/phpstan-symfony": "^0.10",
         "phpstan/phpstan-webmozart-assert": "^0.10",
+        "phpunit/phpunit": "^6.5",
         "sensiolabs/security-checker": "^5.0",
         "sylius-labs/coding-standard": "^2.0",
         "symfony/browser-kit": "^3.4|^4.1",
@@ -46,7 +47,7 @@
     "autoload": {
         "psr-4": {
             "Setono\\SyliusCalloutsPlugin\\": "src/",
-            "Tests\\Setono\\SyliusCalloutsPlugin\\": ["tests/Application", "tests/Application/src"]
+            "Tests\\Setono\\SyliusCalloutsPlugin\\": ["tests/", "tests/Application/src"]
         }
     },
     "autoload-dev": {
