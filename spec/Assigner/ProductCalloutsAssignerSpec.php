@@ -7,8 +7,8 @@ namespace spec\Setono\SyliusCalloutPlugin\Assigner;
 use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssigner;
-use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssignerInterface;
+use Setono\SyliusCalloutPlugin\Assigner\CalloutAssigner;
+use Setono\SyliusCalloutPlugin\Assigner\CalloutAssignerInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use stdClass;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
@@ -24,12 +24,12 @@ final class ProductCalloutsAssignerSpec extends ObjectBehavior
 
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(ProductCalloutsAssigner::class);
+        $this->shouldHaveType(CalloutAssigner::class);
     }
 
     public function it_implements_product_callout_assigner_interface(): void
     {
-        $this->shouldHaveType(ProductCalloutsAssignerInterface::class);
+        $this->shouldHaveType(CalloutAssignerInterface::class);
     }
 
     public function it_assigns_callouts_to_products(

@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Setono\SyliusCalloutPlugin\Model\Callout" table="setono_callout">
+    <mapped-superclass name="Setono\SyliusCalloutPlugin\Model\Callout" table="setono_sylius_callout__callout">
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
@@ -13,7 +13,7 @@
         <field name="timePeriodStart" type="datetime" nullable="true"/>
         <field name="timePeriodEnd" type="datetime" nullable="true"/>
         <field name="priority" type="integer"/>
-        <field name="position" type="string"/>
+        <field name="position" type="string" nullable="true"/>
         <field name="html" type="text" nullable="true" />
         <field name="enabled" type="boolean"/>
 

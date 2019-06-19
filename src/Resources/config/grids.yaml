@@ -19,6 +19,7 @@ sylius_grid:
             filters:
                 name:
                     type: string
+                    label: setono_sylius_callout.ui.name
             actions:
                 main:
                     create:

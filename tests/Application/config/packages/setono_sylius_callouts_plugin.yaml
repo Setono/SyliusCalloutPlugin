@@ -1,2 +1,2 @@
 imports:
-    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/config.yml"}
+    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/config.yaml"}

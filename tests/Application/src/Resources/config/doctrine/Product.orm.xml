@@ -8,7 +8,7 @@
 
     <entity name="Tests\Setono\SyliusCalloutPlugin\Entity\Product" table="sylius_product">
         <many-to-many field="callouts" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutInterface">
-            <join-table name="setono_product_callouts">
+            <join-table name="setono_sylius_callout__product_callouts">
                 <join-columns>
                     <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
                 </join-columns>

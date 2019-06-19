@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids.yaml" }

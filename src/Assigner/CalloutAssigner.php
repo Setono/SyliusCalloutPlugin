@@ -11,7 +11,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class ProductCalloutsAssigner implements ProductCalloutsAssignerInterface
+final class CalloutAssigner implements CalloutAssignerInterface
 {
     private const PRODUCTS_PER_ASSOCIATION = 100;
 

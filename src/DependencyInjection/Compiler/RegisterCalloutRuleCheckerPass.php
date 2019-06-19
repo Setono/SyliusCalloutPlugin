@@ -35,6 +35,6 @@ final class RegisterCalloutRuleCheckerPass implements CompilerPassInterface
             $formTypeRegistry->addMethodCall('add', [$attributes[0]['type'], 'default', $attributes[0]['form_type']]);
         }
 
-        $container->setParameter('setono.callout_rules', $calloutRuleCheckerTypeToLabelMap);
+        $container->setParameter('setono_sylius_callout.callout_rules', $calloutRuleCheckerTypeToLabelMap);
     }
 }

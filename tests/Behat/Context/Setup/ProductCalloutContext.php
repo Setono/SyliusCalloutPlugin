@@ -6,7 +6,7 @@ namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\Common\Persistence\ObjectManager;
-use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssignerInterface;
+use Setono\SyliusCalloutPlugin\Assigner\CalloutAssignerInterface;
 use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
@@ -19,7 +19,7 @@ final class ProductCalloutContext implements Context
     /** @var CalloutRuleFactoryInterface */
     private $calloutRuleFactory;
 
-    /** @var ProductCalloutsAssignerInterface */
+    /** @var CalloutAssignerInterface */
     private $productCalloutsAssigner;
 
     /** @var FactoryInterface */
@@ -33,7 +33,7 @@ final class ProductCalloutContext implements Context
 
     public function __construct(
         CalloutRuleFactoryInterface $calloutRuleFactory,
-        ProductCalloutsAssignerInterface $productCalloutsAssigner,
+        CalloutAssignerInterface $productCalloutsAssigner,
         FactoryInterface $calloutFactory,
         ObjectManager $objectManager,
         SharedStorageInterface $sharedStorage

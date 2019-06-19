@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Command;
 
-use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssignerInterface;
+use Setono\SyliusCalloutPlugin\Assigner\CalloutAssignerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class AssignProductCalloutsCommand extends Command
+final class AssignCalloutsCommand extends Command
 {
-    /** @var ProductCalloutsAssignerInterface */
+    /** @var CalloutAssignerInterface */
     private $productCalloutsAssigner;
 
-    protected static $defaultName = 'setono:sylius-callouts:assign';
+    protected static $defaultName = 'setono:sylius-callout:assign';
 
-    public function __construct(ProductCalloutsAssignerInterface $productCalloutsAssigner)
+    public function __construct(CalloutAssignerInterface $productCalloutsAssigner)
     {
         parent::__construct();
 

@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Setono\SyliusCalloutPlugin\Model\CalloutRule" table="setono_callout_rule">
+    <mapped-superclass name="Setono\SyliusCalloutPlugin\Model\CalloutRule" table="setono_sylius_callout__callout_rule">
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
