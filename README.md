@@ -191,12 +191,12 @@ $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
 $ (cd tests/Application && bin/console server:run -d public -e dev)
 ```
 
-[ico-version]: https://poser.pugx.org/setono/sylius-callouts-plugin/v/stable
-[ico-unstable-version]: https://poser.pugx.org/setono/sylius-callouts-plugin/v/unstable
-[ico-license]: https://poser.pugx.org/setono/sylius-callouts-plugin/license
-[ico-travis]: https://travis-ci.org/Setono/SyliusCalloutsPlugin.svg?branch=master
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusCalloutsPlugin.svg?style=flat-square
+[ico-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/stable
+[ico-unstable-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/unstable
+[ico-license]: https://poser.pugx.org/setono/sylius-callout-plugin/license
+[ico-travis]: https://travis-ci.org/Setono/SyliusCalloutPlugin.svg?branch=master
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusCalloutPlugin.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/setono/sylius-callouts-plugin
-[link-travis]: https://travis-ci.org/Setono/SyliusCalloutsPlugin
-[link-code-quality]: https://scrutinizer-ci.com/g/Setono/SyliusCalloutsPlugin
+[link-packagist]: https://packagist.org/packages/setono/sylius-callout-plugin
+[link-travis]: https://travis-ci.org/Setono/SyliusCalloutPlugin
+[link-code-quality]: https://scrutinizer-ci.com/g/Setono/SyliusCalloutPlugin
