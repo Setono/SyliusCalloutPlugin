@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Form\Type;
+namespace Setono\SyliusCalloutPlugin\Form\Type;
 
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\AbstractType;

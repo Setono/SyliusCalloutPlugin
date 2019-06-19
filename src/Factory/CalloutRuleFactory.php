@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Factory;
+namespace Setono\SyliusCalloutPlugin\Factory;
 
-use Setono\SyliusCalloutsPlugin\Checker\Rule\HasTaxonCalloutRuleChecker;
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Checker\Rule\HasTaxonCalloutRuleChecker;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 

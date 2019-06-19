@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Model;
+namespace Setono\SyliusCalloutPlugin\Model;
 
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use DateTimeInterface;
 
 class Callout implements CalloutInterface
 {

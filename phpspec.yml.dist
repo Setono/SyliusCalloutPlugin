@@ -1,4 +1,4 @@
 suites:
     main:
-        namespace: Setono\SyliusCalloutsPlugin
-        psr4_prefix: Setono\SyliusCalloutsPlugin
+        namespace: Setono\SyliusCalloutPlugin
+        psr4_prefix: Setono\SyliusCalloutPlugin

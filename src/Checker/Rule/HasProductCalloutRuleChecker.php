@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Checker\Rule;
+namespace Setono\SyliusCalloutPlugin\Checker\Rule;
 
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Promotion\Exception\UnsupportedTypeException;

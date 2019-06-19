@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutsPlugin\Entity;
+namespace Tests\Setono\SyliusCalloutPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareTrait;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
 final class Product extends BaseProduct implements ProductInterface

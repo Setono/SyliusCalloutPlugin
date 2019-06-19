@@ -6,10 +6,14 @@ imports:
 
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
 
-    - { resource: ../../src/Resources/config/resources.yml }
-
 parameters:
     sylius_core.public_dir: '%kernel.project_dir%/public'
+
+sylius_product:
+    resources:
+        product:
+            classes:
+                model: Tests\Setono\SyliusCalloutPlugin\Entity\Product
 
 sylius_shop:
     product_grid:

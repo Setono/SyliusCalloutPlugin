@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Checker\Eligibility;
+namespace Setono\SyliusCalloutPlugin\Checker\Eligibility;
 
-use Setono\SyliusCalloutsPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 
 final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerInterface

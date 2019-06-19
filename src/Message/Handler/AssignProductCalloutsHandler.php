@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Message\Handler;
+namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
-use Setono\SyliusCalloutsPlugin\Message\Command\AssignProductCallouts;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
-use Setono\SyliusCalloutsPlugin\Model\ProductInterface;
-use Setono\SyliusCalloutsPlugin\Provider\CalloutProviderInterface;
+use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
+use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
-use Webmozart\Assert\Assert;
 
 final class AssignProductCalloutsHandler implements MessageHandlerInterface
 {

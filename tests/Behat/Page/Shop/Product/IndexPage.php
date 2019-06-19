@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Shop\Product;
+namespace Tests\Setono\SyliusCalloutPlugin\Behat\Page\Shop\Product;
 
 use Sylius\Behat\Page\Shop\Product\IndexPage as BaseIndexPage;
 

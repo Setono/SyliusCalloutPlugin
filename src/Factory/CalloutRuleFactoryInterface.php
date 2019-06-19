@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Factory;
+namespace Setono\SyliusCalloutPlugin\Factory;
 
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
 interface CalloutRuleFactoryInterface extends FactoryInterface

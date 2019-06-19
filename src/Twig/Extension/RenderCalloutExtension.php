@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Twig\Extension;
+namespace Setono\SyliusCalloutPlugin\Twig\Extension;
 
-use Setono\SyliusCalloutsPlugin\Model\Callout;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Model\Callout;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Webmozart\Assert\Assert;
 
 final class RenderCalloutExtension extends \Twig_Extension

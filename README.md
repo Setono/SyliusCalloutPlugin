@@ -1,24 +1,10 @@
-<h1 align="center">
-    <a href="https://setono.io" target="_blank">
-        <img src="https://setono.io/build/images/logo.jpg" width="35%" />
-    </a>
-    <br />
-    <a href="https://packagist.org/packages/setono/callouts-plugin" title="License" target="_blank">
-        <img src="https://img.shields.io/packagist/l/setono/callouts-plugin.svg" />
-    </a>
-    <a href="https://packagist.org/packages/setono/callouts-plugin" title="Version" target="_blank">
-        <img src="https://img.shields.io/packagist/v/setono/callouts-plugin.svg" />
-    </a>
-    <a href="http://travis-ci.org/Setono/SyliusCalloutsPlugin" title="Build status" target="_blank">
-            <img src="https://img.shields.io/travis/Setono/SyliusCalloutsPlugin/master.svg" />
-        </a>
-    <a href="https://scrutinizer-ci.com/g/Setono/SyliusCalloutsPlugin/" title="Scrutinizer" target="_blank">
-        <img src="https://img.shields.io/scrutinizer/g/Setono/SyliusCalloutsPlugin.svg" />
-    </a>
-    <a href="https://packagist.org/packages/setono/callouts-plugin" title="Total Downloads" target="_blank">
-        <img src="https://poser.pugx.org/setono/callouts-plugin/downloads" />
-    </a>
-</h1>
+# Sylius Callout Plugin
+
+[![Latest Version][ico-version]][link-packagist]
+[![Latest Unstable Version][ico-unstable-version]][link-packagist]
+[![Software License][ico-license]](LICENSE)
+[![Build Status][ico-travis]][link-travis]
+[![Quality Score][ico-code-quality]][link-code-quality]
 
 ## Overview
 
@@ -27,7 +13,7 @@ based on specific rules. It provides a common set of configuration by default an
 
 ## Installation
 ```bash
-$ composer require setono/callouts-plugin
+$ composer require setono/sylius-callout-plugin
 ```
     
 1. Add plugin dependencies to your bundles.php file:
@@ -36,7 +22,7 @@ $bundles = [
     ...
     
     OldSound\RabbitMqBundle\OldSoundRabbitMqBundle::class => ['all' => true],
-    Setono\SyliusCalloutsPlugin\SetonoSyliusCalloutsPlugin:class => ['all' => true],
+    Setono\SyliusCalloutPlugin\SetonoSyliusCalloutPlugin:class => ['all' => true],
 ]);
 ```
 
@@ -47,7 +33,7 @@ $bundles = [
 imports:
     ...
     
-    - { resource: "@SetonoSyliusCalloutsPlugin/Resources/config/config.yml" }
+    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/config.yml" }
 ```
 
 3. Import routing **on top** of your `app/config/routing.yml` file:
@@ -56,7 +42,7 @@ imports:
 # config/routes/routes.yaml
 
 setono_product_callouts_plugin:
-    resource: "@SetonoSyliusCalloutsPlugin/Resources/config/routing.yml"
+    resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yml"
 ```
 
 4. Install assets
@@ -65,7 +51,7 @@ $ bin/console assets:install --symlink
 ```
 
 5. Customize your product model. Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
-- add a `Setono\SyliusCalloutsPlugin\Model\CalloutsAwareTrait` trait to your `App\Entity\Product` class (check our [this path](tests/Application/src) for a reference),
+- add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\Entity\Product` class (check our [this path](tests/Application/src) for a reference),
 - add callouts relation to your `Product.orm.xml` like [here](tests/Application/src/Resources/config/doctrine),
 - if you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
 did in an example [here](tests/Application/src/Resources/config/resources.yml).
@@ -76,7 +62,7 @@ check out our configuration [here](tests/Application/config/packages/doctrine.ya
 
 6. Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
 path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusShopBundle/Product/_box.html.twig) file for a reference.
-Note the `setono_render_callouts` Twig function that uses `Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface` as a first parameter
+Note the `setono_render_callouts` Twig function that uses `Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface` as a first parameter
 and `position` as a second one. 
 Currently available positions are:
 * `top_left_corner`
@@ -114,7 +100,7 @@ Currently available positions are:
     And finally configure the plugin to use your transport:
     
     ```yaml
-    setono_sylius_callouts:
+    setono_sylius_callout:
         messenger:
             transport: amqp
     ```
@@ -136,7 +122,7 @@ Adding a new rule form
 
 1. Configure a new form under `App\Form\Type\Rule` namespace like this [IsOnSaleConfigurationType](src/Form/Type/Rule/IsOnSaleConfigurationType.php),
 2. Add a rule checker under `App\Checker\Rule` namespace like this [IsOnSaleRuleChecker](src/Checker/Rule/IsOnSaleRuleChecker.php) and
-make sure it implements `Setono\SyliusCalloutsPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface` interface and has a `public const TYPE` 
+make sure it implements `Setono\SyliusCalloutPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface` interface and has a `public const TYPE` 
 set corresponding to the below service configuration 
 3. Register and tag new services:
 ```xml
@@ -144,12 +130,12 @@ set corresponding to the below service configuration
 <services>
     ...
     
-    <service id="setono_sylius_callouts_plugin.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutsPlugin\Checker\Rule\IsOnSaleRuleChecker">
-        <argument type="service" id="setono_sylius_callouts_plugin.checker.product_promotion" />
-        <tag name="setono_sylius_callouts_plugin.callout_rule_checker" type="is_on_sale" label="setono_sylius_callouts_plugin.ui.is_on_sale" form-type="Setono\SyliusCalloutsPlugin\Form\Type\Rule\IsOnSaleConfigurationType" />
+    <service id="setono_sylius_callout.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Checker\Rule\IsOnSaleRuleChecker">
+        <argument type="service" id="setono_sylius_callout.checker.product_promotion" />
+        <tag name="setono_sylius_callout.callout_rule_checker" type="is_on_sale" label="setono_sylius_callout.ui.is_on_sale" form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType" />
     </service>
     
-    <service id="setono.form.type.rule.is_on_sale" class="Setono\SyliusCalloutsPlugin\Form\Type\Rule\IsOnSaleConfigurationType">
+    <service id="setono.form.type.rule.is_on_sale" class="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType">
         <tag name="form.type" />
     </service>
 </services>
@@ -158,7 +144,7 @@ set corresponding to the below service configuration
 ### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html) and forms you can [extend](http://symfony.com/doc/current/form/create_form_type_extension.html)
 
 ```bash
-$ bin/console debug:container | grep setono_sylius_callouts_plugin
+$ bin/console debug:container | grep setono_sylius_callout
 ```
 
 ### Running plugin tests
@@ -205,6 +191,12 @@ $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
 $ (cd tests/Application && bin/console server:run -d public -e dev)
 ```
 
-## Contribution
+[ico-version]: https://poser.pugx.org/setono/sylius-callouts-plugin/v/stable
+[ico-unstable-version]: https://poser.pugx.org/setono/sylius-callouts-plugin/v/unstable
+[ico-license]: https://poser.pugx.org/setono/sylius-callouts-plugin/license
+[ico-travis]: https://travis-ci.org/Setono/SyliusCalloutsPlugin.svg?branch=master
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusCalloutsPlugin.svg?style=flat-square
 
-Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
+[link-packagist]: https://packagist.org/packages/setono/sylius-callouts-plugin
+[link-travis]: https://travis-ci.org/Setono/SyliusCalloutsPlugin
+[link-code-quality]: https://scrutinizer-ci.com/g/Setono/SyliusCalloutsPlugin

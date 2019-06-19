@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Checker\Rule;
+namespace Setono\SyliusCalloutPlugin\Checker\Rule;
 
-use Setono\SyliusCalloutsPlugin\Checker\ProductPromotionCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Exception\UnsupportedTypeException;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Checker\ProductPromotionCheckerInterface;
+use Setono\SyliusCalloutPlugin\Exception\UnsupportedTypeException;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Webmozart\Assert\Assert;
 

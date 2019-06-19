@@ -1,2 +1,2 @@
-setono_sylius_callouts_plugin:
-    resource: "@SetonoSyliusCalloutsPlugin/Resources/config/routing.yml"
+setono_sylius_callout:
+    resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yml"

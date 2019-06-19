@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Assigner;
+namespace Setono\SyliusCalloutPlugin\Assigner;
 
 interface ProductCalloutsAssignerInterface
 {

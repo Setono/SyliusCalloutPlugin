@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Exception;
+namespace spec\Setono\SyliusCalloutPlugin\Exception;
 
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Exception\UnsupportedTypeException;
+use Setono\SyliusCalloutPlugin\Exception\UnsupportedTypeException;
 use Sylius\Component\Resource\Exception\UnexpectedTypeException;
 
 final class UnsupportedTypeExceptionSpec extends ObjectBehavior

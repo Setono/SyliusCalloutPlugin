@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Provider;
+namespace Setono\SyliusCalloutPlugin\Provider;
 
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 
 interface CalloutProviderInterface
 {

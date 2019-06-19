@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Form\Type;
+namespace Setono\SyliusCalloutPlugin\Form\Type;
 
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\FormBuilderInterface;

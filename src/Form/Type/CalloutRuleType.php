@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Form\Type;
+namespace Setono\SyliusCalloutPlugin\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -14,7 +14,7 @@ final class CalloutRuleType extends AbstractConfigurableCalloutRuleType
 
         $builder
             ->add('type', CalloutRuleChoiceType::class, [
-                'label' => 'setono_sylius_callouts_plugin.ui.type',
+                'label' => 'setono_sylius_callout.ui.type',
                 'attr' => [
                     'data-form-collection' => 'update',
                 ],

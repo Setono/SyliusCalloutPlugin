@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Message\Command;
+namespace Setono\SyliusCalloutPlugin\Message\Command;
 
 class AssignProductCallouts
 {

@@ -1,6 +1,6 @@
 <?php
 
-use Tests\Setono\SyliusCalloutsPlugin\Application\Kernel;
+use Tests\Setono\SyliusCalloutPlugin\Application\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 

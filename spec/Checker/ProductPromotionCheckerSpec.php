@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Checker;
+namespace spec\Setono\SyliusCalloutPlugin\Checker;
 
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Checker\ProductPromotionChecker;
-use Setono\SyliusCalloutsPlugin\Checker\ProductPromotionCheckerInterface;
+use Setono\SyliusCalloutPlugin\Checker\ProductPromotionChecker;
+use Setono\SyliusCalloutPlugin\Checker\ProductPromotionCheckerInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Promotion\Model\PromotionRuleInterface;

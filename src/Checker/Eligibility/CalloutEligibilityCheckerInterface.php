@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Checker\Eligibility;
+namespace Setono\SyliusCalloutPlugin\Checker\Eligibility;
 
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 
 interface CalloutEligibilityCheckerInterface
 {

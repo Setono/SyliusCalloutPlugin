@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Assigner;
+namespace Setono\SyliusCalloutPlugin\Assigner;
 
 use Pagerfanta\Pagerfanta;
-use Setono\SyliusCalloutsPlugin\Message\Command\AssignProductCallouts;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -38,7 +38,7 @@ final class ProductCalloutsAssigner implements ProductCalloutsAssignerInterface
         for (
             $page = 1, $remainingResults = $paginator->getNbResults();
             0 < $remainingResults;
-            $page++, $remainingResults = $remainingResults - self::PRODUCTS_PER_ASSOCIATION
+            $page++, $remainingResults -= self::PRODUCTS_PER_ASSOCIATION
         ) {
             $paginator->setCurrentPage($page);
             /** @var ProductInterface|CalloutsAwareInterface $product */

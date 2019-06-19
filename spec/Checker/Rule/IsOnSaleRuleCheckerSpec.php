@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Checker\Rule;
+namespace spec\Setono\SyliusCalloutPlugin\Checker\Rule;
 
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Checker\ProductPromotionCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Checker\Rule\IsOnSaleRuleChecker;
-use Setono\SyliusCalloutsPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Checker\ProductPromotionCheckerInterface;
+use Setono\SyliusCalloutPlugin\Checker\Rule\IsOnSaleRuleChecker;
+use Setono\SyliusCalloutPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Webmozart\Assert\Assert;
 
 final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
@@ -33,7 +33,7 @@ final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
         Assert::eq('is_on_sale', IsOnSaleRuleChecker::TYPE);
     }
 
-    function it_throws_an_exception_if_configuration_is_not_set_properly(CalloutsAwareInterface $product): void
+    function it_throws_an_exception_if_configuration_is_not_set_properly(ProductInterface $product): void
     {
         $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [$product, ['is_on_sale' => true]]);
         $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [$product, ['isOnSale' => 1]]);
@@ -41,7 +41,7 @@ final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
 
     function it_checks_eligibility_for_sale_product(
         ProductPromotionCheckerInterface $productPromotionChecker,
-        CalloutsAwareInterface $product
+        ProductInterface $product
     ): void {
         $productPromotionChecker->isOnPromotion($product)->willReturn(true);
 
@@ -51,7 +51,7 @@ final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
 
     function it_checks_eligibility_for_non_sale_product(
         ProductPromotionCheckerInterface $productPromotionChecker,
-        CalloutsAwareInterface $product
+        ProductInterface $product
     ): void {
         $productPromotionChecker->isOnPromotion($product)->willReturn(false);
 

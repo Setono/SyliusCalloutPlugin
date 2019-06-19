@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Message\Handler;
+namespace spec\Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Message\Command\AssignProductCallouts;
-use Setono\SyliusCalloutsPlugin\Message\Handler\AssignProductCalloutsHandler;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
-use Setono\SyliusCalloutsPlugin\Provider\CalloutProviderInterface;
+use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
+use Setono\SyliusCalloutPlugin\Message\Handler\AssignProductCalloutsHandler;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class AssignProductCalloutsHandlerSpec extends ObjectBehavior

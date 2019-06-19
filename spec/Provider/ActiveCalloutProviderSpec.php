@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Provider;
+namespace spec\Setono\SyliusCalloutPlugin\Provider;
 
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
-use Setono\SyliusCalloutsPlugin\Provider\ActiveCalloutProvider;
-use Setono\SyliusCalloutsPlugin\Provider\CalloutProviderInterface;
-use Setono\SyliusCalloutsPlugin\Repository\CalloutRepositoryInterface;
+use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Provider\ActiveCalloutProvider;
+use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
+use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
 
 final class ActiveCalloutProviderSpec extends ObjectBehavior
 {

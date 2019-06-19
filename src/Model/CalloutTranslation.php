@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Model;
+namespace Setono\SyliusCalloutPlugin\Model;
 
 use Sylius\Component\Resource\Model\AbstractTranslation;
 

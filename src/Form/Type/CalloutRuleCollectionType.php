@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Form\Type;
+namespace Setono\SyliusCalloutPlugin\Form\Type;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

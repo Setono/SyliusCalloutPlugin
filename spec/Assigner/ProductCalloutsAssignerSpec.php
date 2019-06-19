@@ -2,44 +2,42 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Assigner;
+namespace spec\Setono\SyliusCalloutPlugin\Assigner;
 
 use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Setono\SyliusCalloutsPlugin\Assigner\ProductCalloutsAssigner;
-use Setono\SyliusCalloutsPlugin\Assigner\ProductCalloutsAssignerInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssigner;
+use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssignerInterface;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use stdClass;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\StampInterface;
 
 final class ProductCalloutsAssignerSpec extends ObjectBehavior
 {
-    function let(ProductRepositoryInterface $productRepository, MessageBusInterface $messageBus): void
+    public function let(ProductRepositoryInterface $productRepository, MessageBusInterface $messageBus): void
     {
         $this->beConstructedWith($productRepository, $messageBus);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ProductCalloutsAssigner::class);
     }
 
-    function it_implements_product_callout_assigner_interface(): void
+    public function it_implements_product_callout_assigner_interface(): void
     {
         $this->shouldHaveType(ProductCalloutsAssignerInterface::class);
     }
 
-    function it_assigns_callouts_to_products(
+    public function it_assigns_callouts_to_products(
         ProductRepositoryInterface $productRepository,
         Pagerfanta $paginator,
-        CalloutsAwareInterface $firstProduct,
-        CalloutsAwareInterface $secondProduct,
-        MessageBusInterface $messageBus,
-        StampInterface $stamp
+        ProductInterface $firstProduct,
+        ProductInterface $secondProduct,
+        MessageBusInterface $messageBus
     ): void {
         $productRepository->createPaginator(['enabled' => true])->willReturn($paginator);
         $paginator->getCurrentPageResults()->willReturn([$firstProduct, $secondProduct]);

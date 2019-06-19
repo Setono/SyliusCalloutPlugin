@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Checker;
+namespace Setono\SyliusCalloutPlugin\Checker;
 
 use Sylius\Component\Core\Model\ProductInterface;
 

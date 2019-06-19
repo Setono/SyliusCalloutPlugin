@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Model;
+namespace spec\Setono\SyliusCalloutPlugin\Model;
 
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Model\CalloutTranslation;
-use Setono\SyliusCalloutsPlugin\Model\CalloutTranslationInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutTranslation;
+use Setono\SyliusCalloutPlugin\Model\CalloutTranslationInterface;
 
 final class CalloutTranslationSpec extends ObjectBehavior
 {

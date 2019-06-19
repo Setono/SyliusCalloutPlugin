@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Twig\Extension;
+namespace spec\Setono\SyliusCalloutPlugin\Twig\Extension;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
-use Setono\SyliusCalloutsPlugin\Twig\Extension\RenderCalloutExtension;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Twig\Extension\RenderCalloutExtension;
 
 final class RenderCalloutExtensionSpec extends ObjectBehavior
 {

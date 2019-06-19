@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Ui\Shop;
+namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Repository\CalloutRepositoryInterface;
-use Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Shop\Product\IndexPageInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
+use Tests\Setono\SyliusCalloutPlugin\Behat\Page\Shop\Product\IndexPageInterface;
 use Webmozart\Assert\Assert;
 
 final class ProductContext implements Context

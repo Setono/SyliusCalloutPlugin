@@ -1,5 +1,5 @@
 services:
     setono_sylius_product_callouts_plugin.behat.page.shop.product.index:
-        class: Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Shop\Product\IndexPage
+        class: Tests\Setono\SyliusCalloutPlugin\Behat\Page\Shop\Product\IndexPage
         parent: sylius.behat.page.shop.product.index
         public: true

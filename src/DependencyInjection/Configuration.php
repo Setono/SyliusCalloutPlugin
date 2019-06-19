@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\DependencyInjection;
+namespace Setono\SyliusCalloutPlugin\DependencyInjection;
 
-use Setono\SyliusCalloutsPlugin\Form\Type\CalloutType;
-use Setono\SyliusCalloutsPlugin\Model\Callout;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutRule;
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutTranslation;
-use Setono\SyliusCalloutsPlugin\Model\CalloutTranslationInterface;
-use Setono\SyliusCalloutsPlugin\Repository\CalloutRepository;
+use Setono\SyliusCalloutPlugin\Form\Type\CalloutType;
+use Setono\SyliusCalloutPlugin\Model\Callout;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutRule;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutTranslation;
+use Setono\SyliusCalloutPlugin\Model\CalloutTranslationInterface;
+use Setono\SyliusCalloutPlugin\Repository\CalloutRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
@@ -23,8 +23,14 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('setono_sylius_callouts_plugin');
+        if (method_exists(TreeBuilder::class, 'getRootNode')) {
+            $treeBuilder = new TreeBuilder('setono_sylius_callout');
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $treeBuilder = new TreeBuilder();
+            $rootNode = $treeBuilder->root('setono_sylius_callout');
+        }
 
         $rootNode
             ->addDefaultsIfNotSet()

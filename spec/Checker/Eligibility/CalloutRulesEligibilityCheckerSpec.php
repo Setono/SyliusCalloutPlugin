@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Checker\Eligibility;
+namespace spec\Setono\SyliusCalloutPlugin\Checker\Eligibility;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Checker\Eligibility\CalloutRulesEligibilityChecker;
-use Setono\SyliusCalloutsPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
+use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutRulesEligibilityChecker;
+use Setono\SyliusCalloutPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 
 final class CalloutRulesEligibilityCheckerSpec extends ObjectBehavior

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Provider;
+namespace Setono\SyliusCalloutPlugin\Provider;
 
-use Setono\SyliusCalloutsPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
-use Setono\SyliusCalloutsPlugin\Repository\CalloutRepositoryInterface;
+use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
 
 final class ActiveCalloutProvider implements CalloutProviderInterface
 {

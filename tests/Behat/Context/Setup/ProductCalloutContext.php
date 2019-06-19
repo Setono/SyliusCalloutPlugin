@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Setup;
+namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\Common\Persistence\ObjectManager;
-use Setono\SyliusCalloutsPlugin\Assigner\ProductCalloutsAssignerInterface;
-use Setono\SyliusCalloutsPlugin\Factory\CalloutRuleFactoryInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssignerInterface;
+use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\TaxonInterface;

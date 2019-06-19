@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Checker\Rule;
+namespace Setono\SyliusCalloutPlugin\Checker\Rule;
 
-use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 
 interface ProductCalloutRuleCheckerInterface
 {

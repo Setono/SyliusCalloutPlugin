@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Form\Type\Translation;
+namespace Setono\SyliusCalloutPlugin\Form\Type\Translation;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,7 +14,7 @@ final class CalloutTranslationType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'setono_sylius_callouts_plugin.ui.name',
+                'label' => 'setono_sylius_callout.ui.name',
             ])
         ;
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\DependencyInjection\Compiler;
+namespace Setono\SyliusCalloutPlugin\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,16 +12,16 @@ final class RegisterCommandBusPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasParameter('setono_sylius_callouts.messenger.command_bus')) {
+        if (!$container->hasParameter('setono_sylius_callout.messenger.command_bus')) {
             return;
         }
 
-        $commandBusId = $container->getParameter('setono_sylius_callouts.messenger.command_bus');
+        $commandBusId = $container->getParameter('setono_sylius_callout.messenger.command_bus');
 
         if (!$container->has($commandBusId)) {
             throw new ServiceNotFoundException($commandBusId);
         }
 
-        $container->setAlias('setono_sylius_callouts.command_bus', $commandBusId);
+        $container->setAlias('setono_sylius_callout.command_bus', $commandBusId);
     }
 }

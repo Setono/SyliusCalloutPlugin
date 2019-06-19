@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Admin\ProductCallout;
+namespace Tests\Setono\SyliusCalloutPlugin\Behat\Page\Admin\ProductCallout;
 
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;

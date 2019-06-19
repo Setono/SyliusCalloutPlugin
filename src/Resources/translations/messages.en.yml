@@ -1,4 +1,4 @@
-setono_sylius_callouts_plugin:
+setono_sylius_callout:
     ui:
         code: Code
         time_period_start: Time period start

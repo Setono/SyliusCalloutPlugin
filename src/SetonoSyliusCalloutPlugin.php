@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin;
+namespace Setono\SyliusCalloutPlugin;
 
-use Setono\SyliusCalloutsPlugin\DependencyInjection\Compiler\RegisterCalloutRuleCheckerPass;
-use Setono\SyliusCalloutsPlugin\DependencyInjection\Compiler\RegisterCommandBusPass;
+use Setono\SyliusCalloutPlugin\DependencyInjection\Compiler\RegisterCalloutRuleCheckerPass;
+use Setono\SyliusCalloutPlugin\DependencyInjection\Compiler\RegisterCommandBusPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class SetonoSyliusCalloutsPlugin extends AbstractResourceBundle
+final class SetonoSyliusCalloutPlugin extends AbstractResourceBundle
 {
     use SyliusPluginTrait;
 
@@ -32,6 +32,6 @@ final class SetonoSyliusCalloutsPlugin extends AbstractResourceBundle
 
     protected function getModelNamespace(): string
     {
-        return 'Setono\SyliusCalloutsPlugin\Model';
+        return 'Setono\SyliusCalloutPlugin\Model';
     }
 }

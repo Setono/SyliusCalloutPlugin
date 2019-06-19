@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutsPlugin\Behat\Context\Ui\Admin;
+namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\NotificationType;
 use Sylius\Behat\Service\NotificationCheckerInterface;
-use Tests\Setono\SyliusCalloutsPlugin\Behat\Page\Admin\ProductCallout\CreatePageInterface;
+use Tests\Setono\SyliusCalloutPlugin\Behat\Page\Admin\ProductCallout\CreatePageInterface;
 
 final class ProductCalloutContext implements Context
 {

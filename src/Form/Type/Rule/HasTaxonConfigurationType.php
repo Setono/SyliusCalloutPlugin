@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Form\Type\Rule;
+namespace Setono\SyliusCalloutPlugin\Form\Type\Rule;
 
 use Sylius\Bundle\TaxonomyBundle\Form\Type\TaxonAutocompleteChoiceType;
 use Symfony\Component\Form\AbstractType;

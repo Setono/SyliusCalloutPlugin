@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Model;
+namespace spec\Setono\SyliusCalloutPlugin\Model;
 
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Model\Callout;
-use Setono\SyliusCalloutsPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutsPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\Callout;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 
 final class CalloutSpec extends ObjectBehavior
 {

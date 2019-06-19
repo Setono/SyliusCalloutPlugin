@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Exception;
+namespace Setono\SyliusCalloutPlugin\Exception;
 
 use Sylius\Component\Resource\Exception\UnexpectedTypeException;
 

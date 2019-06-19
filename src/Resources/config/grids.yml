@@ -1,19 +1,19 @@
 sylius_grid:
     grids:
-        setono_sylius_callout_plugin_admin_callout:
+        setono_sylius_callout_admin_callout:
             driver:
                 options:
-                    class: "%setono_sylius_callouts_plugin.model.callout.class%"
+                    class: "%setono_sylius_callout.model.callout.class%"
             fields:
                 code:
                     type: string
-                    label: setono_sylius_callouts_plugin.ui.code
+                    label: setono_sylius_callout.ui.code
                 name:
                     type: string
-                    label: setono_sylius_callouts_plugin.ui.name
+                    label: setono_sylius_callout.ui.name
                 enabled:
                     type: twig
-                    label: setono_sylius_callouts_plugin.ui.enabled
+                    label: setono_sylius_callout.ui.enabled
                     options:
                         template: SyliusUiBundle:Grid/Field:enabled.html.twig
             filters:

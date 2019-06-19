@@ -1,7 +1,7 @@
 {
-    "name": "setono/product-callouts-plugin",
+    "name": "setono/sylius-callout-plugin",
     "type": "sylius-plugin",
-    "description": "Sylius callouts plugin.",
+    "description": "Add callouts to your Sylius products",
     "keywords": [
         "sylius",
         "sylius-plugin"
@@ -54,12 +54,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Setono\\SyliusCalloutsPlugin\\": "src/"
+            "Setono\\SyliusCalloutPlugin\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Setono\\SyliusCalloutsPlugin\\": [
+            "Tests\\Setono\\SyliusCalloutPlugin\\": [
                 "tests/",
                 "tests/Application/src"
             ]
@@ -75,7 +75,7 @@
             "./vendor/bin/phpstan analyse -c phpstan.neon -l max src"
         ],
         "check-style": "vendor/bin/ecs check --ansi spec src",
-        "ensure-test-container-exists": "[[ -f tests/Application/var/cache/test/ApplicationTests_Setono_SyliusCalloutsPlugin_Application_KernelTestDebugContainer.xml ]] || (cd tests/Application && php -d memory_limit=-1 bin/console cache:clear --env=test)",
+        "ensure-test-container-exists": "[[ -f tests/Application/var/cache/test/ApplicationTests_Setono_SyliusCalloutPlugin_Application_KernelTestDebugContainer.xml ]] || (cd tests/Application && php -d memory_limit=-1 bin/console cache:clear --env=test)",
         "fix-style": "vendor/bin/ecs check --ansi spec src --fix",
         "phpspec": "vendor/bin/phpspec run --ansi",
         "phpunit": "vendor/bin/phpunit",

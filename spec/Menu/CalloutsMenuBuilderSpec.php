@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Setono\SyliusCalloutsPlugin\Menu;
+namespace spec\Setono\SyliusCalloutPlugin\Menu;
 
 use Knp\Menu\ItemInterface;
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutsPlugin\Menu\CalloutsMenuBuilder;
+use Setono\SyliusCalloutPlugin\Menu\CalloutsMenuBuilder;
 use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class CalloutsMenuBuilderSpec extends ObjectBehavior
@@ -26,10 +26,10 @@ final class CalloutsMenuBuilderSpec extends ObjectBehavior
         $mainMenu->getChild('catalog')->willReturn($catalogMenu);
 
         $catalogMenu
-            ->addChild('callouts', ['route' => 'setono_sylius_callouts_plugin_admin_callout_index'])
+            ->addChild('callouts', ['route' => 'setono_sylius_callout_admin_callout_index'])
             ->willReturn($calloutsMenu)
         ;
-        $calloutsMenu->setLabel('setono_sylius_callouts_plugin.ui.callouts')->willReturn($calloutsMenu);
+        $calloutsMenu->setLabel('setono_sylius_callout.ui.callouts')->willReturn($calloutsMenu);
         $calloutsMenu->setLabelAttribute('icon', 'bullhorn')->shouldBeCalled();
 
         $this->addCalloutsItem($event);

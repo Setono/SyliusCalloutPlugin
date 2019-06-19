@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutsPlugin\Command;
+namespace Setono\SyliusCalloutPlugin\Command;
 
-use Setono\SyliusCalloutsPlugin\Assigner\ProductCalloutsAssignerInterface;
+use Setono\SyliusCalloutPlugin\Assigner\ProductCalloutsAssignerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
