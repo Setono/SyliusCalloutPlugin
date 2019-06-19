@@ -4,21 +4,25 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutsPlugin\DependencyInjection\Compiler;
 
+use Safe\Exceptions\StringsException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
+use function Safe\sprintf;
 
 final class RegisterCalloutRuleCheckerPass implements CompilerPassInterface
 {
+    /**
+     * @throws StringsException
+     */
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->has('setono_sylius_callouts_plugin.registry_callout_rule_checker')
-        || !$container->has('setono_sylius_callouts_plugin.form_registry.callout_rule_checker')) {
+        if (!$container->hasDefinition('setono_sylius_callouts_plugin.registry_callout_rule_checker') || !$container->hasDefinition('setono_sylius_callouts_plugin.form_registry.callout_rule_checker')) {
             return;
         }
 
-        $calloutRuleCheckerRegsitry = $container->getDefinition('setono_sylius_callouts_plugin.registry_callout_rule_checker');
-        $calloutRuleCheckerFormTypeRegsitry = $container->getDefinition('setono_sylius_callouts_plugin.form_registry.callout_rule_checker');
+        $registry = $container->getDefinition('setono_sylius_callouts_plugin.registry_callout_rule_checker');
+        $formTypeRegistry = $container->getDefinition('setono_sylius_callouts_plugin.form_registry.callout_rule_checker');
 
         $calloutRuleCheckerTypeToLabelMap = [];
         foreach ($container->findTaggedServiceIds('setono_sylius_callouts_plugin.callout_rule_checker') as $id => $attributes) {
@@ -27,8 +31,8 @@ final class RegisterCalloutRuleCheckerPass implements CompilerPassInterface
             }
 
             $calloutRuleCheckerTypeToLabelMap[$attributes[0]['type']] = $attributes[0]['label'];
-            $calloutRuleCheckerRegsitry->addMethodCall('register', [$attributes[0]['type'], new Reference($id)]);
-            $calloutRuleCheckerFormTypeRegsitry->addMethodCall('add', [$attributes[0]['type'], 'default', $attributes[0]['form_type']]);
+            $registry->addMethodCall('register', [$attributes[0]['type'], new Reference($id)]);
+            $formTypeRegistry->addMethodCall('add', [$attributes[0]['type'], 'default', $attributes[0]['form_type']]);
         }
 
         $container->setParameter('setono.callout_rules', $calloutRuleCheckerTypeToLabelMap);

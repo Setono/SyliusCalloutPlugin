@@ -18,7 +18,7 @@ abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
     /** @var FormTypeRegistryInterface */
     private $formTypeRegistry;
 
-    public function __construct(string $dataClass, array $validationGroups = [], FormTypeRegistryInterface $formTypeRegistry)
+    public function __construct(string $dataClass, FormTypeRegistryInterface $formTypeRegistry, array $validationGroups = [])
     {
         parent::__construct($dataClass, $validationGroups);
 
@@ -75,13 +75,16 @@ abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
         ]);
     }
 
+    /**
+     * @param CalloutRuleInterface|null $data
+     */
     protected function getRegistryIdentifier(FormInterface $form, $data = null): ?string
     {
         if ($data instanceof CalloutRuleInterface && null !== $data->getType()) {
             return $data->getType();
         }
 
-        if (null !== $form->getConfig()->hasOption('configuration_type')) {
+        if ($form->getConfig()->hasOption('configuration_type')) {
             return $form->getConfig()->getOption('configuration_type');
         }
 

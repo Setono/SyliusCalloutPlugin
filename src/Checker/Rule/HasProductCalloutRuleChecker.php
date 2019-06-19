@@ -33,6 +33,6 @@ final class HasProductCalloutRuleChecker implements ProductCalloutRuleCheckerInt
         /** @var ProductInterface[] $product */
         $configuredProducts = $this->productRepository->findBy(['code' => $configuration['products']]);
 
-        return in_array($product, $configuredProducts);
+        return in_array($product, $configuredProducts, true);
     }
 }

@@ -14,6 +14,8 @@ final class AssignProductCalloutsCommand extends Command
     /** @var ProductCalloutsAssignerInterface */
     private $productCalloutsAssigner;
 
+    protected static $defaultName = 'setono:sylius-callouts:assign';
+
     public function __construct(ProductCalloutsAssignerInterface $productCalloutsAssigner)
     {
         parent::__construct();
@@ -24,13 +26,14 @@ final class AssignProductCalloutsCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setName('setono:callouts:assign')
-            ->setDescription('Assigns callouts to products.')
+            ->setDescription('Assigns callouts to products')
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->productCalloutsAssigner->assign();
+
+        return 0;
     }
 }

@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
-use Sylius\Component\Resource\Model\TranslationInterface;
+use DateTimeInterface;
 
 class Callout implements CalloutInterface
 {
@@ -29,19 +29,19 @@ class Callout implements CalloutInterface
     /** @var string */
     protected $code;
 
-    /** @var \DateTime */
+    /** @var DateTimeInterface|null */
     protected $timePeriodStart;
 
-    /** @var \DateTime */
+    /** @var DateTimeInterface|null */
     protected $timePeriodEnd;
 
     /** @var int */
-    protected $priority;
+    protected $priority = 0;
 
-    /** @var string */
+    /** @var string|null */
     protected $position;
 
-    /** @var string */
+    /** @var string|null */
     protected $html;
 
     /** @var Collection|CalloutRuleInterface[] */
@@ -57,37 +57,37 @@ class Callout implements CalloutInterface
         return $this->getCalloutTranslation()->getName();
     }
 
-    public function setName(?string $name): void
+    public function setName(string $name): void
     {
         $this->getCalloutTranslation()->setName($name);
     }
 
-    public function getTimePeriodStart(): ?\DateTime
+    public function getTimePeriodStart(): ?DateTimeInterface
     {
         return $this->timePeriodStart;
     }
 
-    public function setTimePeriodStart(?\DateTime $timePeriodStart): void
+    public function setTimePeriodStart(?DateTimeInterface $timePeriodStart): void
     {
         $this->timePeriodStart = $timePeriodStart;
     }
 
-    public function getTimePeriodEnd(): ?\DateTime
+    public function getTimePeriodEnd(): ?DateTimeInterface
     {
         return $this->timePeriodEnd;
     }
 
-    public function setTimePeriodEnd(?\DateTime $timePeriodEnd): void
+    public function setTimePeriodEnd(?DateTimeInterface $timePeriodEnd): void
     {
         $this->timePeriodEnd = $timePeriodEnd;
     }
 
-    public function getPriority(): ?int
+    public function getPriority(): int
     {
         return $this->priority;
     }
 
-    public function setPriority(?int $priority): void
+    public function setPriority(int $priority): void
     {
         $this->priority = $priority;
     }
@@ -117,7 +117,7 @@ class Callout implements CalloutInterface
         return $this->code;
     }
 
-    public function setCode(?string $code): void
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -161,16 +161,17 @@ class Callout implements CalloutInterface
         ];
     }
 
-    /**
-     * @return CalloutTranslationInterface|TranslationInterface
-     */
-    protected function getCalloutTranslation(): TranslationInterface
+    protected function getCalloutTranslation(): CalloutTranslationInterface
     {
-        return $this->getTranslation();
+        /** @var CalloutTranslationInterface $translation */
+        $translation = $this->getTranslation();
+
+        return $translation;
     }
 
     protected function createTranslation(): CalloutTranslation
     {
+        // todo is this the correct way to do this?
         return new CalloutTranslation();
     }
 }

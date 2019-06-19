@@ -9,10 +9,10 @@ class CalloutRule implements CalloutRuleInterface
     /** @var int */
     protected $id;
 
-    /** @var string */
+    /** @var string|null */
     protected $type;
 
-    /** @var CalloutInterface */
+    /** @var CalloutInterface|null */
     protected $callout;
 
     /** @var array */

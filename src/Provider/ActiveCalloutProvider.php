@@ -7,11 +7,10 @@ namespace Setono\SyliusCalloutsPlugin\Provider;
 use Setono\SyliusCalloutsPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
 use Setono\SyliusCalloutsPlugin\Model\CalloutsAwareInterface;
 use Setono\SyliusCalloutsPlugin\Repository\CalloutRepositoryInterface;
-use Sylius\Component\Promotion\Repository\PromotionRepositoryInterface;
 
 final class ActiveCalloutProvider implements CalloutProviderInterface
 {
-    /** @var PromotionRepositoryInterface */
+    /** @var CalloutRepositoryInterface */
     private $calloutRepository;
 
     /** @var CalloutEligibilityCheckerInterface */

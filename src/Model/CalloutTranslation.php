@@ -11,7 +11,7 @@ class CalloutTranslation extends AbstractTranslation implements CalloutTranslati
     /** @var int */
     protected $id;
 
-    /** @var ?string */
+    /** @var string */
     protected $name;
 
     public function getId(): ?int
@@ -24,7 +24,7 @@ class CalloutTranslation extends AbstractTranslation implements CalloutTranslati
         return $this->name;
     }
 
-    public function setName(?string $name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }

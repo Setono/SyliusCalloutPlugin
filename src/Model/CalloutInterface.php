@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutsPlugin\Model;
 
+use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
@@ -21,19 +22,19 @@ interface CalloutInterface extends
 
     public function getName(): ?string;
 
-    public function setName(?string $name): void;
+    public function setName(string $name): void;
 
-    public function getTimePeriodStart(): ?\DateTime;
+    public function getTimePeriodStart(): ?DateTimeInterface;
 
-    public function setTimePeriodStart(?\DateTime $timePeriodStart): void;
+    public function setTimePeriodStart(?DateTimeInterface $timePeriodStart): void;
 
-    public function getTimePeriodEnd(): ?\DateTime;
+    public function getTimePeriodEnd(): ?DateTimeInterface;
 
-    public function setTimePeriodEnd(?\DateTime $timePeriodEnd): void;
+    public function setTimePeriodEnd(?DateTimeInterface $timePeriodEnd): void;
 
-    public function getPriority(): ?int;
+    public function getPriority(): int;
 
-    public function setPriority(?int $priority): void;
+    public function setPriority(int $priority): void;
 
     public function getPosition(): ?string;
 
@@ -45,7 +46,7 @@ interface CalloutInterface extends
 
     public function getCode(): ?string;
 
-    public function setCode(?string $code): void;
+    public function setCode(string $code): void;
 
     public function getRules(): Collection;
 

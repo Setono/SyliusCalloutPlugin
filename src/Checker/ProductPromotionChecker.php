@@ -40,7 +40,7 @@ final class ProductPromotionChecker implements ProductPromotionCheckerInterface
         foreach ($rules as $rule) {
             Assert::keyExists($rule->getConfiguration(), 'products');
 
-            if (in_array($product->getCode(), $rule->getConfiguration()['products'])) {
+            if (in_array($product->getCode(), $rule->getConfiguration()['products'], true)) {
                 return true;
             }
         }

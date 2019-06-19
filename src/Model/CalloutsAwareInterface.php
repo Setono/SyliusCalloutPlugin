@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutsPlugin\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Core\Model\ProductInterface;
 
-interface CalloutsAwareInterface extends ProductInterface
+interface CalloutsAwareInterface
 {
     /**
      * @return Collection|CalloutInterface[]

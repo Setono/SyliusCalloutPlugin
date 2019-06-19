@@ -11,7 +11,7 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 class CalloutRuleFactory implements CalloutRuleFactoryInterface
 {
-    /** @var FactoryInterface  */
+    /** @var FactoryInterface */
     private $decoratedFactory;
 
     public function __construct(FactoryInterface $factory)
