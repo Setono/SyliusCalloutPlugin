@@ -6,9 +6,9 @@ namespace Setono\SyliusCalloutPlugin\Twig\Extension;
 
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Webmozart\Assert\Assert;
-use Twig\Extension\AbstractExtension;
 
 final class RenderCalloutExtension extends AbstractExtension
 {

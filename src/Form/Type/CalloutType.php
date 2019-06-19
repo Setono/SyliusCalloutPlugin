@@ -50,11 +50,11 @@ final class CalloutType extends AbstractResourceType
                     'setono_sylius_callout.ui.bottom_right_corner' => CalloutInterface::BOTTOM_RIGHT_CORNER_POSITION,
                 ],
                 'placeholder' => 'setono_sylius_callout.ui.select_position',
-                'required' => false
+                'required' => false,
             ])
             ->add('html', TextareaType::class, [
                 'label' => 'setono_sylius_callout.ui.html',
-                'required' => false
+                'required' => false,
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'setono_sylius_callout.ui.enabled',

@@ -15,7 +15,7 @@ use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class ProductCalloutsAssignerSpec extends ObjectBehavior
+final class CalloutAssignerSpec extends ObjectBehavior
 {
     public function let(ProductRepositoryInterface $productRepository, MessageBusInterface $messageBus): void
     {
