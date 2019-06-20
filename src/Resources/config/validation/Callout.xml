@@ -23,6 +23,15 @@
             </constraint>
         </property>
 
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">setono_sylius_callout.callout.name.not_blank</option>
+                <option name="groups">
+                    <value>setono_sylius_callout</value>
+                </option>
+            </constraint>
+        </property>
+
         <property name="priority">
             <constraint name="NotBlank">
                 <option name="message">setono_sylius_callout.callout.priority.not_blank</option>

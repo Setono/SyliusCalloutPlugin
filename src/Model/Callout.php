@@ -7,6 +7,8 @@ namespace Setono\SyliusCalloutPlugin\Model;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
@@ -17,17 +19,14 @@ class Callout implements CalloutInterface
         __construct as protected initializeTranslationsCollection;
     }
 
-    public function __construct()
-    {
-        $this->rules = new ArrayCollection();
-        $this->initializeTranslationsCollection();
-    }
-
     /** @var int */
     protected $id;
 
     /** @var string */
     protected $code;
+
+    /** @var string */
+    protected $name;
 
     /** @var DateTimeInterface|null */
     protected $timePeriodStart;
@@ -41,11 +40,18 @@ class Callout implements CalloutInterface
     /** @var string|null */
     protected $position;
 
-    /** @var string|null */
-    protected $html;
+    /** @var Collection|ChannelInterface[] */
+    protected $channels;
 
     /** @var Collection|CalloutRuleInterface[] */
     protected $rules;
+
+    public function __construct()
+    {
+        $this->channels = new ArrayCollection();
+        $this->rules = new ArrayCollection();
+        $this->initializeTranslationsCollection();
+    }
 
     public function getId(): ?int
     {
@@ -54,12 +60,12 @@ class Callout implements CalloutInterface
 
     public function getName(): ?string
     {
-        return $this->getCalloutTranslation()->getName();
+        return $this->name;
     }
 
     public function setName(string $name): void
     {
-        $this->getCalloutTranslation()->setName($name);
+        $this->name = $name;
     }
 
     public function getTimePeriodStart(): ?DateTimeInterface
@@ -102,14 +108,14 @@ class Callout implements CalloutInterface
         $this->position = $position;
     }
 
-    public function getHtml(): ?string
+    public function getText(): ?string
     {
-        return $this->html;
+        return $this->getCalloutTranslation()->getText();
     }
 
-    public function setHtml(?string $html): void
+    public function setText(?string $text): void
     {
-        $this->html = $html;
+        $this->getCalloutTranslation()->setText($text);
     }
 
     public function getCode(): ?string
@@ -120,6 +126,30 @@ class Callout implements CalloutInterface
     public function setCode(string $code): void
     {
         $this->code = $code;
+    }
+
+    public function getChannels(): Collection
+    {
+        return $this->channels;
+    }
+
+    public function addChannel(BaseChannelInterface $channel): void
+    {
+        if (!$this->hasChannel($channel)) {
+            $this->channels->add($channel);
+        }
+    }
+
+    public function removeChannel(BaseChannelInterface $channel): void
+    {
+        if ($this->hasChannel($channel)) {
+            $this->channels->removeElement($channel);
+        }
+    }
+
+    public function hasChannel(BaseChannelInterface $channel): bool
+    {
+        return $this->channels->contains($channel);
     }
 
     public function getRules(): Collection
@@ -171,7 +201,6 @@ class Callout implements CalloutInterface
 
     protected function createTranslation(): CalloutTranslation
     {
-        // todo is this the correct way to do this?
         return new CalloutTranslation();
     }
 }

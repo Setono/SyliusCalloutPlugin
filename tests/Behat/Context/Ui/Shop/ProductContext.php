@@ -34,6 +34,6 @@ final class ProductContext implements Context
         /** @var CalloutInterface $callout */
         $callout = $this->calloutRepository->findOneBy(['code' => md5($name)]);
 
-        Assert::same($count, $this->indexPage->countProductsWithCallouts(strip_tags($callout->getHtml())));
+        Assert::same($count, $this->indexPage->countProductsWithCallouts(strip_tags($callout->getText())));
     }
 }

@@ -25,9 +25,9 @@ final class CalloutTranslationSpec extends ObjectBehavior
         $this->getId()->shouldReturn(null);
     }
 
-    function its_name_is_mutable(): void
+    function its_text_is_mutable(): void
     {
-        $this->setName('product callout');
-        $this->getName()->shouldReturn('product callout');
+        $this->setText('product callout');
+        $this->getText()->shouldReturn('product callout');
     }
 }

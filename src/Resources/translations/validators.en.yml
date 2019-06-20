@@ -3,9 +3,11 @@ setono_sylius_callout:
         code:
             unique: There is an existing callout with this code.
             not_blank: Code cannot be blank.
+        name:
+            not_blank: Name cannot be blank.
         priority:
             not_blank: Priority cannot be blank.
             numeric: Priority must be an integer.
     callout_translation:
-        name:
-            not_blank: Name cannot be blank.
+        text:
+            not_blank: Text cannot be blank.

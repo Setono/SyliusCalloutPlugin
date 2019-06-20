@@ -9,7 +9,7 @@ use Sylius\Component\Resource\Model\TranslationInterface;
 
 interface CalloutTranslationInterface extends ResourceInterface, TranslationInterface
 {
-    public function getName(): ?string;
+    public function getText(): ?string;
 
-    public function setName(string $name): void;
+    public function setText(string $text): void;
 }

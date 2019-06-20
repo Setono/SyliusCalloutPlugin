@@ -66,7 +66,7 @@ final class ProductCalloutContext implements Context
             $callout->setFallbackLocale($locale->getCode());
 
             $callout->setName($name);
-            $callout->setHtml($html);
+            $callout->setText($html);
         }
 
         $callout->addRule($this->calloutRuleFactory->createHasTaxon([$taxon]));

@@ -5,9 +5,9 @@
         https://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="Setono\SyliusCalloutPlugin\Model\CalloutTranslation">
-        <property name="name">
+        <property name="text">
             <constraint name="NotBlank">
-                <option name="message">setono_sylius_callout.callout_translation.name.not_blank</option>
+                <option name="message">setono_sylius_callout.callout_translation.text.not_blank</option>
                 <option name="groups">
                     <value>setono_sylius_callout</value>
                 </option>

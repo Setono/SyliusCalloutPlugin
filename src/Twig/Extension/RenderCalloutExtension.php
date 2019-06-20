@@ -27,7 +27,7 @@ final class RenderCalloutExtension extends AbstractExtension
 
         foreach ($callouts as $callout) {
             if ($callout->getPosition() === $position) {
-                $result .= $callout->getHtml();
+                $result .= $callout->getText();
             }
         }
 

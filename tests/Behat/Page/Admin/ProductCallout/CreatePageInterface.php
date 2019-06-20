@@ -20,8 +20,6 @@ interface CreatePageInterface extends BaseCreatePageInterface
 
     public function fillName(string $name): void;
 
-    public function fillHtml(string $name): void;
-
     public function addRule(string $ruleName): void;
 
     public function selectAutocompleteRuleOption(string $option, $value, bool $multiple = false): void;

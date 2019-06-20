@@ -16,7 +16,7 @@ Feature: Adding Product Callouts
         And I fill the priority with 1
         And I specify its position as "Top left corner"
         And I specify its code as "new_collection"
-        And I fill the html with "<span>NEW</span>"
+        And I fill the text with "NEW"
         And I name it "New collection callout"
         And I add the "Has taxon" rule configured with "T-Shirts" and "Mugs"
         And I add the "Has product" rule configured with the "PHP T-Shirt" product

@@ -28,7 +28,6 @@ final class CalloutSpec extends ObjectBehavior
 
     function its_name_is_mutable(): void
     {
-        $this->setCurrentLocale('pl');
         $this->setName('product callout');
         $this->getName()->shouldReturn('product callout');
     }
@@ -55,12 +54,6 @@ final class CalloutSpec extends ObjectBehavior
     {
         $this->setPosition('top_left_corner');
         $this->getPosition()->shouldReturn('top_left_corner');
-    }
-
-    function its_html_is_mutable(): void
-    {
-        $this->setHtml('<span>Product callouts item</span>');
-        $this->getHtml()->shouldReturn('<span>Product callouts item</span>');
     }
 
     function its_code_is_mutable(): void

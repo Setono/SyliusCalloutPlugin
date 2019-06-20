@@ -34,9 +34,9 @@ final class RenderCalloutExtensionSpec extends ObjectBehavior
         CalloutsAwareInterface $product
     ): void {
         $firstCallout->getPosition()->willReturn('top_left_corner');
-        $firstCallout->getHtml()->willReturn('<h3>Hello</h3>');
+        $firstCallout->getText()->willReturn('<h3>Hello</h3>');
         $secondCallout->getPosition()->willReturn('top_left_corner');
-        $secondCallout->getHtml()->willReturn('<p>World!</p>');
+        $secondCallout->getText()->willReturn('<p>World!</p>');
 
         $product->getCallouts()->willReturn(new ArrayCollection([
             $firstCallout->getWrappedObject(),

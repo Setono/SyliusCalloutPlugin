@@ -7,24 +7,19 @@
             <div class="ui two column stackable grid">
                 <div class="column">
                     <div class="ui segment">
-                        <div class="two fields">
-                            {{ form_row(form.priority) }}
-                            {{ form_row(form.position) }}
-                        </div>
                         {{ form_row(form.code) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.priority) }}
                         {{ form_row(form.enabled) }}
+                        {{ form_row(form.channels) }}
                     </div>
                 </div>
                 <div class="column">
                     <div class="ui segment">
+                        {{ form_row(form.position) }}
                         {{ form_row(form.timePeriodStart) }}
                         {{ form_row(form.timePeriodEnd) }}
                     </div>
-                </div>
-            </div>
-            <div class="ui segment">
-                <div class="field">
-                    {{ form_row(form.html) }}
                 </div>
             </div>
         </div>

@@ -4,18 +4,18 @@ setono_sylius_callout:
         bottom_right_corner: Bottom right corner
         callouts: Callouts
         code: Code
-        edit_callout: Edit Product Callout
+        edit_callout: Edit callout
         enabled: Enabled
         has_product: Has product
         has_taxon: Has taxon
         is_on_sale: Is on sale
-        html: HTML
         name: Name
-        new_callout: New Product Callout
+        new_callout: New callout
         position: Position
         priority: Priority
         rules: Rules
         select_position: Select position...
+        text: Text
         time_period_start: Time period start
         time_period_end: Time period end
         top_left_corner: Top left corner

@@ -12,20 +12,20 @@ class CalloutTranslation extends AbstractTranslation implements CalloutTranslati
     protected $id;
 
     /** @var string */
-    protected $name;
+    protected $text;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getText(): ?string
     {
-        return $this->name;
+        return $this->text;
     }
 
-    public function setName(string $name): void
+    public function setText(string $text): void
     {
-        $this->name = $name;
+        $this->text = $text;
     }
 }

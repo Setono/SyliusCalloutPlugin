@@ -13,8 +13,8 @@ final class CalloutTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => 'setono_sylius_callout.ui.name',
+            ->add('text', TextType::class, [
+                'label' => 'setono_sylius_callout.ui.text',
             ])
         ;
     }

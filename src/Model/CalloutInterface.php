@@ -6,11 +6,13 @@ namespace Setono\SyliusCalloutPlugin\Model;
 
 use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
 interface CalloutInterface extends
+    ChannelsAwareInterface,
     ResourceInterface,
     ToggleableInterface,
     TranslatableInterface
@@ -40,14 +42,17 @@ interface CalloutInterface extends
 
     public function setPosition(?string $position): void;
 
-    public function getHtml(): ?string;
+    public function getText(): ?string;
 
-    public function setHtml(?string $html): void;
+    public function setText(?string $text): void;
 
     public function getCode(): ?string;
 
     public function setCode(string $code): void;
 
+    /**
+     * @return Collection|CalloutRuleInterface[]
+     */
     public function getRules(): Collection;
 
     public function hasRules(): bool;
