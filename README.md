@@ -6,9 +6,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![Quality Score][ico-code-quality]][link-code-quality]
 
-## Overview
-
-The product callouts plugin for [Sylius](https://sylius.com/) allows you to configure nice badges for different set of products
+The callout plugin for [Sylius](https://sylius.com/) allows you to configure nice badges for different set of products
 based on specific rules. It provides a common set of configuration by default and is very flexible when it comes to adding new ones.
 
 ## Installation
@@ -28,7 +26,7 @@ return [
 ];
 ```
 
-2. Import required config in your `app/config/config.yml` file:
+2. Import config:
 ```yaml
 # config/packages/_sylius.yaml
 
@@ -38,13 +36,13 @@ imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/config.yml" }
 ```
 
-3. Import routing **on top** of your `app/config/routing.yml` file:
-```yaml
+3. Import routing:
 
+```yaml
 # config/routes/routes.yaml
 
 setono_product_callout:
-    resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yml"
+    resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yaml"
 ```
 
 4. Install assets
@@ -196,9 +194,9 @@ $ (cd tests/Application && bin/console server:run -d public -e dev)
 [ico-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/stable
 [ico-unstable-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/unstable
 [ico-license]: https://poser.pugx.org/setono/sylius-callout-plugin/license
-[ico-travis]: https://travis-ci.org/Setono/SyliusCalloutPlugin.svg?branch=master
+[ico-travis]: https://travis-ci.com/Setono/SyliusCalloutPlugin.svg?branch=master
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusCalloutPlugin.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/setono/sylius-callout-plugin
-[link-travis]: https://travis-ci.org/Setono/SyliusCalloutPlugin
+[link-travis]: https://travis-ci.com/Setono/SyliusCalloutPlugin
 [link-code-quality]: https://scrutinizer-ci.com/g/Setono/SyliusCalloutPlugin

@@ -22,6 +22,7 @@ final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerI
 
     public function isEligible(CalloutsAwareInterface $product, CalloutInterface $callout): bool
     {
+        // todo this means that if a callout has no rules it won't be applied to any products. Is this the intention?
         if (!$callout->hasRules()) {
             return false;
         }

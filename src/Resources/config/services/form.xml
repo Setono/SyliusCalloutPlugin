@@ -13,10 +13,6 @@
         <parameter key="setono_sylius_callout.form.type.callout_rule.validation_groups" type="collection">
             <parameter>setono_sylius_callout</parameter>
         </parameter>
-
-        <parameter key="setono_sylius_callout.form.type.callout_translation.validation_groups" type="collection">
-            <parameter>setono_sylius_callout</parameter>
-        </parameter>
     </parameters>
 
     <services>

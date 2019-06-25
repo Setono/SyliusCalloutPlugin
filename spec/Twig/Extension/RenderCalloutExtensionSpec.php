@@ -8,13 +8,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
-use Setono\SyliusCalloutPlugin\Twig\Extension\RenderCalloutExtension;
+use Setono\SyliusCalloutPlugin\Twig\Extension\CalloutExtension;
 
 final class RenderCalloutExtensionSpec extends ObjectBehavior
 {
     function it_is_initializable(): void
     {
-        $this->shouldHaveType(RenderCalloutExtension::class);
+        $this->shouldHaveType(CalloutExtension::class);
     }
 
     function it_is_a_twig_extension(): void

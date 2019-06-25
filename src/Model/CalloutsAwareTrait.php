@@ -9,11 +9,18 @@ use Doctrine\Common\Collections\Collection;
 trait CalloutsAwareTrait
 {
     /** @var Collection|CalloutInterface[] */
-    private $callouts;
+    protected $callouts;
 
     public function getCallouts(): Collection
     {
         return $this->callouts;
+    }
+
+    public function getCalloutsByPosition(string $position): Collection
+    {
+        return $this->callouts->filter(static function (CalloutInterface $callout) use ($position): bool {
+            return $callout->getPosition() === $position;
+        });
     }
 
     public function addCallout(CalloutInterface $callout): void
@@ -35,8 +42,12 @@ trait CalloutsAwareTrait
         return $this->callouts->contains($callout);
     }
 
-    public function setCallouts(Collection $callouts): void
+    public function setCallouts(iterable $callouts): void
     {
-        $this->callouts = $callouts;
+        $this->callouts->clear();
+
+        foreach ($callouts as $callout) {
+            $this->addCallout($callout);
+        }
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="setono_sylius_callout.number_batcher" class="Setono\DoctrineORMBatcher\Batcher\NumberBatcher"/>
+
+        <service id="setono_sylius_callout.id_batcher.product" class="Setono\DoctrineORMBatcher\Batcher\BestChoiceIdBatcher">
+            <argument type="service" id="setono_sylius_callout.naive_id_batcher.product"/>
+            <argument type="service" id="setono_sylius_callout.real_id_batcher.product"/>
+        </service>
+
+        <service id="setono_sylius_callout.real_id_batcher.product" class="Setono\DoctrineORMBatcher\Batcher\RealIdBatcher">
+            <argument type="service" id="doctrine"/>
+            <argument>%sylius.model.product.class%</argument>
+        </service>
+
+        <service id="setono_sylius_callout.naive_id_batcher.product" class="Setono\DoctrineORMBatcher\Batcher\NaiveIdBatcher">
+            <argument type="service" id="doctrine"/>
+            <argument>%sylius.model.product.class%</argument>
+            <argument type="service" id="setono_sylius_callout.number_batcher"/>
+        </service>
+    </services>
+</container>

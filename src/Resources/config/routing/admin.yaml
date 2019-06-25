@@ -2,7 +2,7 @@ setono_sylius_callout_admin_callout:
     resource: |
         section: admin
         alias: setono_sylius_callout.callout
-        templates: SetonoSyliusCalloutPlugin:Crud
+        templates: SyliusAdminBundle:Crud
         permission: true
         redirect: update
         grid: setono_sylius_callout_admin_callout

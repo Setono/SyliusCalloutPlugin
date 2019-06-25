@@ -11,15 +11,10 @@
                 </div>
             </div>
         </div>
-        {{ setono_render_callouts(product, 'top_left_corner') }}
-
-        {{ setono_render_callouts(product, 'top_right_corner') }}
+        {% include "@SetonoSyliusCalloutPlugin/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}
 
         {% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product} %}
 
-        {{ setono_render_callouts(product, 'bottom_left_corner') }}
-
-        {{ setono_render_callouts(product, 'bottom_right_corner') }}
     </a>
     <div class="content">
         <a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}" class="header sylius-product-name">{{ product.name }}</a>
