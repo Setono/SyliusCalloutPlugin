@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace spec\Setono\SyliusCalloutPlugin\Assigner;
 
-use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use Setono\DoctrineORMBatcher\Batch\Batch;
+use Setono\DoctrineORMBatcher\Batcher\IdBatcherInterface;
 use Setono\SyliusCalloutPlugin\Assigner\CalloutAssigner;
 use Setono\SyliusCalloutPlugin\Assigner\CalloutAssignerInterface;
-use Setono\SyliusCalloutPlugin\Model\ProductInterface;
-use stdClass;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 final class CalloutAssignerSpec extends ObjectBehavior
 {
-    public function let(ProductRepositoryInterface $productRepository, MessageBusInterface $messageBus): void
+    public function let(IdBatcherInterface $batcher, MessageBusInterface $messageBus): void
     {
-        $this->beConstructedWith($productRepository, $messageBus);
+        $batcher->getBatches()->willReturn([new Batch(1, 100), new Batch(101, 200)]);
+        $this->beConstructedWith($batcher, $messageBus);
     }
 
     public function it_is_initializable(): void
@@ -32,25 +31,12 @@ final class CalloutAssignerSpec extends ObjectBehavior
         $this->shouldHaveType(CalloutAssignerInterface::class);
     }
 
-    public function it_assigns_callouts_to_products(
-        ProductRepositoryInterface $productRepository,
-        Pagerfanta $paginator,
-        ProductInterface $firstProduct,
-        ProductInterface $secondProduct,
-        MessageBusInterface $messageBus
-    ): void {
-        $productRepository->createPaginator(['enabled' => true])->willReturn($paginator);
-        $paginator->getCurrentPageResults()->willReturn([$firstProduct, $secondProduct]);
-        $firstProduct->getId()->willReturn(1);
-        $secondProduct->getId()->willReturn(2);
-        $paginator->getNbResults()->willReturn(300);
-        $envelope = new Envelope(new stdClass(), []);
-
-        $paginator->setMaxPerPage(100)->shouldBeCalled();
-        $paginator->setCurrentPage(1)->shouldBeCalled();
-        $paginator->setCurrentPage(2)->shouldBeCalled();
-        $paginator->setCurrentPage(3)->shouldBeCalled();
-        $messageBus->dispatch(Argument::any())->willReturn($envelope)->shouldBeCalled();
+    public function it_assigns_callouts_to_products(MessageBusInterface $messageBus): void
+    {
+        $messageBus
+            ->dispatch(Argument::any())
+            ->willReturn(new Envelope(new \stdClass()))
+            ->shouldBeCalledTimes(2);
 
         $this->assign();
     }

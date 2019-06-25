@@ -4,56 +4,49 @@ declare(strict_types=1);
 
 namespace spec\Setono\SyliusCalloutPlugin\Message\Handler;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
+use Setono\DoctrineORMBatcher\Batch\Batch;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
 use Setono\SyliusCalloutPlugin\Message\Handler\AssignProductCalloutsHandler;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
-use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Setono\SyliusCalloutPlugin\Repository\ProductRepositoryInterface;
 
 final class AssignProductCalloutsHandlerSpec extends ObjectBehavior
 {
-    function let(
+    public function let(
         CalloutProviderInterface $calloutProvider,
-        RepositoryInterface $productRepository,
-        EntityManagerInterface $productManager
+        EntityManagerInterface $productManager,
+        ProductRepositoryInterface $productRepository
     ): void {
-        $this->beConstructedWith($calloutProvider, $productRepository, $productManager);
+        $this->beConstructedWith($calloutProvider, $productManager, $productRepository);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(AssignProductCalloutsHandler::class);
     }
 
-    function it_executes(
-        RepositoryInterface $productRepository,
-        CalloutsAwareInterface $firstProduct,
-        CalloutsAwareInterface $secondProduct,
-        Collection $callouts,
+    public function it_executes(
         CalloutProviderInterface $calloutProvider,
-        CalloutInterface $callout,
         EntityManagerInterface $productManager,
-        AssignProductCallouts $assignProductCallouts
+        ProductRepositoryInterface $productRepository,
+        ProductInterface $product1,
+        ProductInterface $product2,
+        CalloutInterface $callout
     ): void {
-        $assignProductCallouts->getProductIds()->willReturn([1, 2]);
-        $productRepository->findBy(['id' => [1, 2]])->willReturn([$firstProduct, $secondProduct]);
+        $productRepository->getBatch(Argument::cetera())->willReturn([$product1, $product2]);
 
-        $calloutProvider->getCallouts($firstProduct)->willReturn([$callout]);
-        $calloutProvider->getCallouts($secondProduct)->willReturn([$callout]);
+        $calloutProvider->getCallouts(Argument::any())->willReturn([$callout]);
 
-        $firstProduct->getCallouts()->willReturn($callouts);
-        $secondProduct->getCallouts()->willReturn($callouts);
+        $product1->setCallouts([$callout])->shouldBeCalled();
+        $product2->setCallouts([$callout])->shouldBeCalled();
 
-        $callouts->clear()->shouldBeCalled();
-        $firstProduct->setCallouts(new ArrayCollection([$callout->getWrappedObject()]))->shouldBeCalled();
-        $secondProduct->setCallouts(new ArrayCollection([$callout->getWrappedObject()]))->shouldBeCalled();
         $productManager->flush()->shouldBeCalled();
 
-        $this->__invoke($assignProductCallouts);
+        $this->__invoke(new AssignProductCallouts(new Batch(0, 1)));
     }
 }
