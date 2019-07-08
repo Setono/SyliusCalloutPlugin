@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Command;
 
-use Setono\DoctrineORMBatcher\Batch\Batch;
+use Setono\DoctrineORMBatcher\Batch\RangeBatch;
 
 class AssignProductCallouts
 {
-    /** @var Batch */
+    /** @var RangeBatch */
     private $batch;
 
-    public function __construct(Batch $batch)
+    public function __construct(RangeBatch $batch)
     {
         $this->batch = $batch;
     }
 
-    public function getBatch(): Batch
+    public function getBatch(): RangeBatch
     {
         return $this->batch;
     }

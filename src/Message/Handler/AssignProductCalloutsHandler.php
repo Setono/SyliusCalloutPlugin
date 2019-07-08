@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\QueryBuilder;
-use function Safe\sprintf;
+use Doctrine\ORM\EntityRepository;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
-use Setono\SyliusCalloutPlugin\Repository\ProductRepositoryInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class AssignProductCalloutsHandler implements MessageHandlerInterface
@@ -36,10 +35,23 @@ final class AssignProductCalloutsHandler implements MessageHandlerInterface
 
     public function __invoke(AssignProductCallouts $message): void
     {
+        if (!$this->productRepository instanceof EntityRepository) {
+            return;
+        }
+
+        $qb = $this->productRepository->createQueryBuilder('o');
+        $qb->andWhere('o.enabled = 1')
+            ->andWhere('o.id >= :lowerBound')
+            ->andWhere('o.id <= :upperBound')
+        ;
+
+        $qb->setParameters([
+            'lowerBound' => $message->getBatch()->getLowerBound(),
+            'upperBound' => $message->getBatch()->getUpperBound(),
+        ]);
+
         /** @var ProductInterface[] $products */
-        $products = $this->productRepository->getBatch($message->getBatch(), static function (QueryBuilder $qb, string $alias) {
-            $qb->andWhere(sprintf('%s.enabled = 1', $alias));
-        });
+        $products = $qb->getQuery()->getResult();
 
         if (count($products) === 0) {
             return;

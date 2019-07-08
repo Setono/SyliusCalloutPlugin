@@ -14,7 +14,6 @@ sylius_product:
         product:
             classes:
                 model: Tests\Setono\SyliusCalloutPlugin\Entity\Product
-                repository: Tests\Setono\SyliusCalloutPlugin\Doctrine\ORM\ProductRepository
 
 sylius_shop:
     product_grid:
