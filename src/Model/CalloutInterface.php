@@ -18,8 +18,11 @@ interface CalloutInterface extends
     TranslatableInterface
 {
     public const TOP_LEFT_CORNER_POSITION = 'top_left_corner';
+
     public const TOP_RIGHT_CORNER_POSITION = 'top_right_corner';
+
     public const BOTTOM_RIGHT_CORNER_POSITION = 'bottom_right_corner';
+
     public const BOTTOM_LEFT_CORNER_POSITION = 'bottom_left_corner';
 
     public function getName(): ?string;
