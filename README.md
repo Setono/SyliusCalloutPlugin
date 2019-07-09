@@ -169,6 +169,12 @@ For the performance reasons, configure a cron job on your production server to e
 once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener
 triggered anytime you create/update a product or callout, but it is worth to have it covered if something goes wrong.
 
+Example cron configuration (`EDITOR=nano sudo crontab -e`) to run command once a day:
+
+```
+0 2 * * * www-data /var/www/html/bin/console setono:sylius-callout:assign --env=prod
+```
+
 ### Step 9: Install assets
 ```bash
 $ bin/console assets:install
