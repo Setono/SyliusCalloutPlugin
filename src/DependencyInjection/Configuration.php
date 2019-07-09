@@ -40,7 +40,6 @@ final class Configuration implements ConfigurationInterface
         ;
 
         $this->addResourcesSection($rootNode);
-        $this->addMessengerSection($rootNode);
 
         return $treeBuilder;
     }
@@ -95,31 +94,6 @@ final class Configuration implements ConfigurationInterface
                                     ->end()
                                 ->end()
                             ->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
-    }
-
-    private function addMessengerSection(ArrayNodeDefinition $node): void
-    {
-        $node
-            ->children()
-                ->arrayNode('messenger')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('command_bus')
-                            ->cannotBeEmpty()
-                            ->defaultValue('message_bus')
-                            ->example('message_bus')
-                            ->info('The service id for the message bus you use for commands')
-                        ->end()
-                        ->scalarNode('transport')
-                            ->cannotBeEmpty()
-                            ->defaultNull()
-                            ->info('The transport to use if you would like assigns products callouts async (which is a very good choice on production)')
-                            ->example('amqp')
                         ->end()
                     ->end()
                 ->end()

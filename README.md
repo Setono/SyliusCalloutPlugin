@@ -70,42 +70,20 @@ path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusS
 
 Note the line: `{% include "@SetonoSyliusCalloutPlugin/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}`.
 
-### Step 7: Configure Messenger (optional, but recommended)
+### Step 7: Using asynchronous transport (optional, but recommended)
 
-This plugin assigns product callouts when the administrator create/update the product or callout. With a large number of products this can result in slower page performance. To circumvent this problem you can use an async transport with Symfony Messenger to assign callouts.
+All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
+Therefore you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
 
-Follow the installation instructions here: [Messenger: Sync & Queued Message Handling](https://symfony.com/doc/current/messenger.html) and then [configure a transport](https://symfony.com/doc/current/messenger.html#transports-async-queued-messages).
-
-Basically you should do:
-```bash
-$ composer req symfony/messenger symfony/serializer-pack
-```
-
-Then configure the Messenger component:
 ```yaml
 # config/packages/messenger.yaml
 framework:
     messenger:
-        transports:
-            amqp: "%env(MESSENGER_TRANSPORT_DSN)%"
+        routing:
+            # Route all command messages to the async transport
+            # This presumes that you have already set up an 'async' transport
+            'Setono\SyliusCalloutPlugin\Message\Command\CommandInterface': async
 ```
-
-```yaml
-# .env
-###> symfony/messenger ###
-MESSENGER_TRANSPORT_DSN=amqp://guest:guest@localhost:5672/%2f/messages
-###< symfony/messenger ###
-```
-
-And finally configure the plugin to use your transport:
-
-```yaml
-setono_sylius_callout:
-    messenger:
-        transport: amqp # Note this is the same key as your transport above
-```
-
-After this, the Messenger will use your asynchronous queue when assigning callouts.
 
 ### Step 8: Configure cron job
 For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:sylius-callout:assign` command 

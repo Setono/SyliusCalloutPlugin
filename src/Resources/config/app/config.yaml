@@ -1,2 +1,7 @@
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids.yaml" }
+
+framework:
+    messenger:
+        buses:
+            setono_sylius_callout.command_bus: ~

@@ -6,7 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Message\Command;
 
 use Sylius\Component\Product\Model\ProductInterface;
 
-final class AssignEligibleCalloutsToProduct
+final class AssignEligibleCalloutsToProduct implements CommandInterface
 {
     /** @var mixed|ProductInterface */
     private $productId;
