@@ -143,13 +143,20 @@ Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\E
 If you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
 did in an example [here](tests/Application/config/packages/_sylius.yaml).
 
-### Step 6: Add callouts to your product templates 
+### Step 6: Update your database schema
+
+```bash
+$ php bin/console doctrine:migrations:diff
+$ php bin/console doctrine:migrations:migrate
+```
+ 
+### Step 7: Add callouts to your product templates 
 Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
 path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusShopBundle/Product/_box.html.twig) file for a reference.
 
 Note the line: `{% include "@SetonoSyliusCalloutPlugin/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}`.
 
-### Step 7: Using asynchronous transport (optional, but recommended)
+### Step 8: Using asynchronous transport (optional, but recommended)
 
 All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
 Therefore you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
