@@ -37,6 +37,6 @@ final class ProductContext implements Context
             'code' => StringInflector::nameToCode($name)
         ]);
 
-        Assert::same($count, $this->indexPage->countProductsWithCallouts(strip_tags($callout->getText())));
+        Assert::same($this->indexPage->countProductsWithCallouts(strip_tags($callout->getText())), $count);
     }
 }
