@@ -11,8 +11,8 @@ final class CalloutRepository extends EntityRepository implements CalloutReposit
     public function findActive(): array
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.timePeriodStart IS NULL OR o.timePeriodStart < :date')
-            ->andWhere('o.timePeriodEnd IS NULL OR o.timePeriodEnd > :date')
+            ->andWhere('o.startsAt IS NULL OR o.startsAt < :date')
+            ->andWhere('o.endsAt IS NULL OR o.endsAt > :date')
             ->andWhere('o.enabled = true')
             ->setParameter('date', new \DateTime())
             ->addOrderBy('o.priority', 'desc')

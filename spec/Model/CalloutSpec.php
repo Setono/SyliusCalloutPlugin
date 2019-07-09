@@ -32,16 +32,16 @@ final class CalloutSpec extends ObjectBehavior
         $this->getName()->shouldReturn('product callout');
     }
 
-    function its_time_period_start_is_mutable(\DateTime $timePeriodStart): void
+    function its_starts_at_is_mutable(\DateTime $startsAt): void
     {
-        $this->setTimePeriodStart($timePeriodStart);
-        $this->getTimePeriodStart()->shouldReturn($timePeriodStart);
+        $this->setStartsAt($startsAt);
+        $this->getStartsAt()->shouldReturn($startsAt);
     }
 
-    function its_time_period_end_is_mutable(\DateTime $timePeriodEnd): void
+    function its_ends_at_is_mutable(\DateTime $endsAt): void
     {
-        $this->setTimePeriodEnd($timePeriodEnd);
-        $this->getTimePeriodEnd()->shouldReturn($timePeriodEnd);
+        $this->setEndsAt($endsAt);
+        $this->getEndsAt()->shouldReturn($endsAt);
     }
 
     function its_priority_is_mutable(): void

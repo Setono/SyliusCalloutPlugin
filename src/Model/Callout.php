@@ -29,10 +29,10 @@ class Callout implements CalloutInterface
     protected $name;
 
     /** @var DateTimeInterface|null */
-    protected $timePeriodStart;
+    protected $startsAt;
 
     /** @var DateTimeInterface|null */
-    protected $timePeriodEnd;
+    protected $endsAt;
 
     /** @var int */
     protected $priority = 0;
@@ -68,24 +68,24 @@ class Callout implements CalloutInterface
         $this->name = $name;
     }
 
-    public function getTimePeriodStart(): ?DateTimeInterface
+    public function getStartsAt(): ?DateTimeInterface
     {
-        return $this->timePeriodStart;
+        return $this->startsAt;
     }
 
-    public function setTimePeriodStart(?DateTimeInterface $timePeriodStart): void
+    public function setStartsAt(?DateTimeInterface $startsAt): void
     {
-        $this->timePeriodStart = $timePeriodStart;
+        $this->startsAt = $startsAt;
     }
 
-    public function getTimePeriodEnd(): ?DateTimeInterface
+    public function getEndsAt(): ?DateTimeInterface
     {
-        return $this->timePeriodEnd;
+        return $this->endsAt;
     }
 
-    public function setTimePeriodEnd(?DateTimeInterface $timePeriodEnd): void
+    public function setEndsAt(?DateTimeInterface $endsAt): void
     {
-        $this->timePeriodEnd = $timePeriodEnd;
+        $this->endsAt = $endsAt;
     }
 
     public function getPriority(): int

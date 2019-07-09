@@ -16,8 +16,8 @@ setono_sylius_callout:
         rules: Rules
         select_position: Select position...
         text: Text
-        time_period_start: Time period start
-        time_period_end: Time period end
+        starts_at: Starts at
+        ends_at: Ends at
         top_left: Top left
         top_right: Top right
         type: Type

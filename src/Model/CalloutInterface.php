@@ -29,13 +29,13 @@ interface CalloutInterface extends
 
     public function setName(string $name): void;
 
-    public function getTimePeriodStart(): ?DateTimeInterface;
+    public function getStartsAt(): ?DateTimeInterface;
 
-    public function setTimePeriodStart(?DateTimeInterface $timePeriodStart): void;
+    public function setStartsAt(?DateTimeInterface $startsAt): void;
 
-    public function getTimePeriodEnd(): ?DateTimeInterface;
+    public function getEndsAt(): ?DateTimeInterface;
 
-    public function setTimePeriodEnd(?DateTimeInterface $timePeriodEnd): void;
+    public function setEndsAt(?DateTimeInterface $endsAt): void;
 
     public function getPriority(): int;
 

@@ -58,12 +58,12 @@ final class CalloutExtension extends AbstractExtension
                 return false;
             }
 
-            $start = $callout->getTimePeriodStart();
+            $start = $callout->getStartsAt();
             if ($start !== null && $now < $start) {
                 return false;
             }
 
-            $end = $callout->getTimePeriodEnd();
+            $end = $callout->getEndsAt();
             if ($end !== null && $now > $end) {
                 return false;
             }
