@@ -1,4 +1,4 @@
-@managing_product_callouts
+@managing_callouts
 Feature: Adding Product Callouts
     In order to display additional info for a product to customers
     As an Administrator

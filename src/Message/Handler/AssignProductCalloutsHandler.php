@@ -39,19 +39,11 @@ final class AssignProductCalloutsHandler implements MessageHandlerInterface
             return;
         }
 
-        $qb = $this->productRepository->createQueryBuilder('o');
-        $qb->andWhere('o.enabled = 1')
-            ->andWhere('o.id >= :lowerBound')
-            ->andWhere('o.id <= :upperBound')
-        ;
-
-        $qb->setParameters([
-            'lowerBound' => $message->getBatch()->getLowerBound(),
-            'upperBound' => $message->getBatch()->getUpperBound(),
-        ]);
+        $query = $this->productManager->createQuery($message->getBatch()->getDql());
+        $query->setParameters($message->getBatch()->getParameters());
 
         /** @var ProductInterface[] $products */
-        $products = $qb->getQuery()->getResult();
+        $products = $query->getResult();
 
         if (count($products) === 0) {
             return;

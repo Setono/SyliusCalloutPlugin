@@ -1,7 +1,0 @@
-services:
-    setono_sylius_product_callouts_plugin.behat.page.admin.product_callout.create:
-        class: Tests\Setono\SyliusCalloutPlugin\Behat\Page\Admin\ProductCallout\CreatePage
-        parent: sylius.behat.page.admin.crud.create
-        public: true
-        arguments:
-            - 'setono_sylius_callout_admin_callout_create'

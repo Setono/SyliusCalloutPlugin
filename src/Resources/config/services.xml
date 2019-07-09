@@ -2,7 +2,6 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
-        <import resource="services/batcher.xml"/>
         <import resource="services/command.xml"/>
         <import resource="services/event_listener.xml"/>
         <import resource="services/form.xml"/>
@@ -23,7 +22,7 @@
         </service>
 
         <service id="setono_sylius_callout.product_callouts_assigner" class="Setono\SyliusCalloutPlugin\Assigner\CalloutAssigner">
-            <argument type="service" id="setono_sylius_callout.id_batcher.product" />
+            <argument type="service" id="sylius.repository.product" />
             <argument type="service" id="setono_sylius_callout.command_bus" />
 
             <tag name="kernel.event_listener" event="setono_sylius_callout.callout.post_create" method="assign" />

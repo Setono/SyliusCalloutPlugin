@@ -1,4 +1,4 @@
-@displaying_product_callouts
+@displaying_callouts
 Feature: Displaying Product Callouts
     In order to focus on special products
     As a Visitor
