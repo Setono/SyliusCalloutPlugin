@@ -9,7 +9,7 @@ setono_sylius_callout_admin_callout:
         vars:
             all:
                 templates:
-                    form: "@SetonoSyliusCalloutPlugin/Callout/_form.html.twig"
+                    form: "@SetonoSyliusCalloutPlugin/Admin/Callout/_form.html.twig"
             index:
                 icon: 'bullhorn'
     type: sylius.resource
