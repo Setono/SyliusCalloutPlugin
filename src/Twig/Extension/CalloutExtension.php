@@ -68,16 +68,8 @@ final class CalloutExtension extends AbstractExtension
                 return false;
             }
 
-            $channelFound = false;
-            foreach ($callout->getChannels() as $channel) {
-                if ($channel->getCode() === $this->channelContext->getChannel()->getCode()) {
-                    $channelFound = true;
-
-                    break;
-                }
-            }
-
-            if (!$channelFound) {
+            $currentChannel = $this->channelContext->getChannel();
+            if (!$callout->getChannels()->contains($currentChannel)) {
                 return false;
             }
 
