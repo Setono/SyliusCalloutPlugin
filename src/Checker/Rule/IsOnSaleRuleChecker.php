@@ -28,9 +28,9 @@ final class IsOnSaleRuleChecker implements ProductCalloutRuleCheckerInterface
             throw new UnsupportedTypeException($product, ProductInterface::class);
         }
 
-        Assert::keyExists($configuration, 'isOnSale');
-        Assert::boolean($configuration['isOnSale']);
+        Assert::keyExists($configuration, 'promoted');
+        Assert::boolean($configuration['promoted']);
 
-        return $configuration['isOnSale'] === $this->productPromotionChecker->isOnPromotion($product);
+        return $configuration['promoted'] === $this->productPromotionChecker->isOnPromotion($product);
     }
 }

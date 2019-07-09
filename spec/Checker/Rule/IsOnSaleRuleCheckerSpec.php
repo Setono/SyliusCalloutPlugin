@@ -36,7 +36,8 @@ final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
     function it_throws_an_exception_if_configuration_is_not_set_properly(ProductInterface $product): void
     {
         $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [$product, ['is_on_sale' => true]]);
-        $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [$product, ['isOnSale' => 1]]);
+        $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [$product, ['isOnSale' => true]]);
+        $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [$product, ['promoted' => 1]]);
     }
 
     function it_checks_eligibility_for_sale_product(
@@ -45,8 +46,8 @@ final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
     ): void {
         $productPromotionChecker->isOnPromotion($product)->willReturn(true);
 
-        $this->isEligible($product, ['isOnSale' => true])->shouldReturn(true);
-        $this->isEligible($product, ['isOnSale' => false])->shouldReturn(false);
+        $this->isEligible($product, ['promoted' => true])->shouldReturn(true);
+        $this->isEligible($product, ['promoted' => false])->shouldReturn(false);
     }
 
     function it_checks_eligibility_for_non_sale_product(
@@ -55,7 +56,7 @@ final class IsOnSaleRuleCheckerSpec extends ObjectBehavior
     ): void {
         $productPromotionChecker->isOnPromotion($product)->willReturn(false);
 
-        $this->isEligible($product, ['isOnSale' => true])->shouldReturn(false);
-        $this->isEligible($product, ['isOnSale' => false])->shouldReturn(true);
+        $this->isEligible($product, ['promoted' => true])->shouldReturn(false);
+        $this->isEligible($product, ['promoted' => false])->shouldReturn(true);
     }
 }

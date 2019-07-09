@@ -9,6 +9,7 @@ setono_sylius_callout:
         has_product: Has product
         has_taxon: Has taxon
         is_on_sale: Is on sale
+        promoted: Promoted?
         name: Name
         new_callout: New callout
         position: Position

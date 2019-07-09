@@ -12,8 +12,8 @@ final class IsOnSaleConfigurationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('isOnSale', CheckboxType::class, [
-            'label' => 'setono_sylius_callout.ui.is_on_sale',
+        $builder->add('promoted', CheckboxType::class, [
+            'label' => 'setono_sylius_callout.ui.promoted',
         ]);
     }
 }
