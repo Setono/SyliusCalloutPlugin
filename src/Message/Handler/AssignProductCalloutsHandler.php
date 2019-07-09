@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
@@ -40,7 +41,7 @@ final class AssignProductCalloutsHandler implements MessageHandlerInterface
         }
 
         $query = $this->productManager->createQuery($message->getBatch()->getDql());
-        $query->setParameters($message->getBatch()->getParameters());
+        $query->setParameters(new ArrayCollection($message->getBatch()->getParameters()));
 
         /** @var ProductInterface[] $products */
         $products = $query->getResult();
