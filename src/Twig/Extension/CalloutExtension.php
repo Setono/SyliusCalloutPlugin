@@ -79,13 +79,30 @@ final class CalloutExtension extends AbstractExtension
 
     public function calloutClasses(CalloutInterface $callout): string
     {
-        $classes = ['setono-callout', 'setono-callout-code-' . $this->sanitizeClass((string) $callout->getCode())];
+        $classes = [
+            'red', // @todo Add color field to Callout
+            $this->getSemanticUiClassesFromPosition($callout->getPosition()),
+            'setono-callout',
+            'setono-callout-code-' . $this->sanitizeClass((string) $callout->getCode()),
+        ];
 
         if ($callout->getPosition() !== null) {
             $classes[] = 'setono-callout-position-' . $this->sanitizeClass($callout->getPosition());
         }
 
         return implode(' ', $classes);
+    }
+
+    private function getSemanticUiClassesFromPosition(string $position): string
+    {
+        static $semanticUiPositionClassMap = [
+            CalloutInterface::POSITION_TOP_LEFT => 'top left attached label',
+            CalloutInterface::POSITION_BOTTOM_LEFT => 'bottom left attached label',
+            CalloutInterface::POSITION_TOP_RIGHT => 'top right attached label',
+            CalloutInterface::POSITION_BOTTOM_RIGHT => 'bottom right attached label',
+        ];
+
+        return $semanticUiPositionClassMap[$position];
     }
 
     private function sanitizeClass(string $str): string
