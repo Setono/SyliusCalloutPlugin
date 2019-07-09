@@ -36,7 +36,7 @@ $bundles = [
 
 ### Step 3: Configure plugin
 ```yaml
-# config/packages/_sylius.yaml
+# config/packages/setono_product_callout.yaml
 
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/config.yaml" }
@@ -45,24 +45,103 @@ imports:
 ### Step 4: Import routing
 
 ```yaml
-# config/routes/routes.yaml
+# config/routes/setono_product_callout.yaml
 
 setono_product_callout:
     resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yaml"
 ```
 
 ### Step 5: Customize models and repositories
-5. Customize your product model. Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
-- add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\Entity\Product` class (check our [this path](tests/Application/src) for a reference),
-- add callouts relation to your `Product.orm.xml` like [here](tests/Application/src/Resources/config/doctrine),
-- if you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
-did in an example [here](tests/Application/src/Resources/config/resources.yml).
 
-Implement `ProductRepositoryInterface`.
+Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
 
-**Note:** We are using `.orm.xml` file format for entities configuration. You can use whatever format you wish. For more details
-read the official [Symfony Doctrine configuration reference](https://symfony.com/doc/current/reference/configuration/doctrine.html) or
-check out our configuration [here](tests/Application/config/packages/doctrine.yaml).
+#### Customize your Product model
+
+Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\Entity\Product` class.
+
+- If you use `annotations` mapping:
+
+    ```php
+    <?php 
+    // src/Entity/Product.php
+    
+    namespace App\Entity;
+
+    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutPluginCalloutsAwareTrait;
+    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutPluginCalloutsProductInterface;
+    use Sylius\Component\Core\Model\Product as BaseProduct;
+    use Doctrine\ORM\Mapping as ORM;
+    
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="sylius_product")
+     */
+    class Product extends BaseProduct implements SetonoSyliusCalloutPluginCalloutsProductInterface
+    {
+        use SetonoSyliusCalloutPluginCalloutsAwareTrait {
+            SetonoSyliusCalloutPluginCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+        }
+      
+        public function __construct()
+        {
+            $this->__calloutsTraitConstruct();
+            parent::__construct();
+        }
+    }
+    ```
+    
+- If you use `xml` mapping:
+
+    ```php
+    <?php
+    // src/Model/Product.php
+    
+    namespace App\Model;
+    
+    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutPluginCalloutsAwareTrait;
+    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutPluginCalloutsProductInterface;
+    use Sylius\Component\Core\Model\Product as BaseProduct;
+    
+    class Product extends BaseProduct implements SetonoSyliusCalloutPluginCalloutsProductInterface
+    {
+        use SetonoSyliusCalloutPluginCalloutsAwareTrait {
+            SetonoSyliusCalloutPluginCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+        }
+      
+        public function __construct()
+        {
+            $this->__calloutsTraitConstruct();
+            parent::__construct();
+        }
+    }
+    ```
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    
+    <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                          http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    
+        <entity name="App\Model\Product" table="sylius_product">
+            <many-to-many field="callouts" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutInterface">
+                <join-table name="setono_sylius_callout__product_callouts">
+                    <join-columns>
+                        <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                    </join-columns>
+                    <inverse-join-columns>
+                        <join-column name="callout_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                    </inverse-join-columns>
+                </join-table>
+            </many-to-many>
+        </entity>
+    
+    </doctrine-mapping>
+    ```
+
+If you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
+did in an example [here](tests/Application/config/packages/_sylius.yaml).
 
 ### Step 6: Add callouts to your product templates 
 Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
