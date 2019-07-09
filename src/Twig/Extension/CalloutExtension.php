@@ -7,12 +7,12 @@ namespace Setono\SyliusCalloutPlugin\Twig\Extension;
 use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Exception;
+use function Safe\preg_replace;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use function Safe\preg_replace;
 
 final class CalloutExtension extends AbstractExtension
 {
@@ -87,10 +87,10 @@ final class CalloutExtension extends AbstractExtension
 
     public function calloutClasses(CalloutInterface $callout): string
     {
-        $classes = ['setono-callout', 'setono-callout-code-'.$this->sanitizeClass((string) $callout->getCode())];
+        $classes = ['setono-callout', 'setono-callout-code-' . $this->sanitizeClass((string) $callout->getCode())];
 
-        if($callout->getPosition() !== null) {
-            $classes[] = 'setono-callout-position-'.$this->sanitizeClass($callout->getPosition());
+        if ($callout->getPosition() !== null) {
+            $classes[] = 'setono-callout-position-' . $this->sanitizeClass($callout->getPosition());
         }
 
         return implode(' ', $classes);
