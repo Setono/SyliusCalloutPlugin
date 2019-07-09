@@ -38,7 +38,6 @@
                  parent="sylius.behat.page.shop.product.index"
                  public="true"
         >
-            <argument>setono_sylius_callout_admin_callout_create</argument>
         </service>
 
     </services>

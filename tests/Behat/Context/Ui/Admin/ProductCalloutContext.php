@@ -105,7 +105,7 @@ final class ProductCalloutContext implements Context
     {
         $this->createPage->addRule('Has product');
 
-        $this->createPage->selectAutocompleteRuleOption('Products', $productName);
+        $this->createPage->selectAutocompleteRuleOption('Products filter', $productName);
     }
 
     /**
