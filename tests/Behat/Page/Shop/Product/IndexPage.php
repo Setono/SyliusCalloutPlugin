@@ -10,6 +10,6 @@ class IndexPage extends BaseIndexPage implements IndexPageInterface
 {
     public function countProductsWithCallouts(string $content): int
     {
-        return count($this->getDocument()->findAll('css', sprintf('.callout:contains("%s")', $content)));
+        return count($this->getDocument()->findAll('css', sprintf('.setono-callout:contains("%s")', $content)));
     }
 }
