@@ -10,6 +10,7 @@ use Setono\SyliusCalloutPlugin\Assigner\CalloutAssignerInterface;
 use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
+use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -56,7 +57,7 @@ final class ProductCalloutContext implements Context
         /** @var ChannelInterface $channel */
         $channel = $this->sharedStorage->get('channel');
 
-        $callout->setCode(md5($name));
+        $callout->setCode(StringInflector::nameToCode($name));
         $callout->setPosition(CalloutInterface::POSITION_TOP_LEFT);
         $callout->setPriority(0);
         $callout->setEnabled(true);
