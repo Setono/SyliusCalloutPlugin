@@ -17,13 +17,13 @@ interface CalloutInterface extends
     ToggleableInterface,
     TranslatableInterface
 {
-    public const TOP_LEFT_CORNER_POSITION = 'top_left_corner';
+    public const POSITION_TOP_LEFT = 'top_left';
 
-    public const TOP_RIGHT_CORNER_POSITION = 'top_right_corner';
+    public const POSITION_TOP_RIGHT = 'top_right';
 
-    public const BOTTOM_RIGHT_CORNER_POSITION = 'bottom_right_corner';
+    public const POSITION_BOTTOM_RIGHT = 'bottom_right';
 
-    public const BOTTOM_LEFT_CORNER_POSITION = 'bottom_left_corner';
+    public const POSITION_BOTTOM_LEFT = 'bottom_left';
 
     public function getName(): ?string;
 

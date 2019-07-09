@@ -47,10 +47,10 @@ final class CalloutType extends AbstractResourceType
             ->add('position', ChoiceType::class, [
                 'label' => 'setono_sylius_callout.ui.position',
                 'choices' => [
-                    'setono_sylius_callout.ui.top_left_corner' => CalloutInterface::TOP_LEFT_CORNER_POSITION,
-                    'setono_sylius_callout.ui.top_right_corner' => CalloutInterface::TOP_RIGHT_CORNER_POSITION,
-                    'setono_sylius_callout.ui.bottom_left_corner' => CalloutInterface::BOTTOM_LEFT_CORNER_POSITION,
-                    'setono_sylius_callout.ui.bottom_right_corner' => CalloutInterface::BOTTOM_RIGHT_CORNER_POSITION,
+                    'setono_sylius_callout.ui.top_left' => CalloutInterface::POSITION_TOP_LEFT,
+                    'setono_sylius_callout.ui.top_right' => CalloutInterface::POSITION_TOP_RIGHT,
+                    'setono_sylius_callout.ui.bottom_left' => CalloutInterface::POSITION_BOTTOM_LEFT,
+                    'setono_sylius_callout.ui.bottom_right' => CalloutInterface::POSITION_BOTTOM_RIGHT,
                 ],
                 'placeholder' => 'setono_sylius_callout.ui.select_position',
                 'required' => false,

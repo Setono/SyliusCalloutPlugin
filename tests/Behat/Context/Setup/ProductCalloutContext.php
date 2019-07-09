@@ -57,7 +57,7 @@ final class ProductCalloutContext implements Context
         $channel = $this->sharedStorage->get('channel');
 
         $callout->setCode(md5($name));
-        $callout->setPosition(CalloutInterface::TOP_LEFT_CORNER_POSITION);
+        $callout->setPosition(CalloutInterface::POSITION_TOP_LEFT);
         $callout->setPriority(0);
         $callout->setEnabled(true);
 

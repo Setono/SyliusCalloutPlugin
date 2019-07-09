@@ -11,6 +11,8 @@ use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
+use function Safe\preg_replace;
 
 final class CalloutExtension extends AbstractExtension
 {
@@ -26,6 +28,13 @@ final class CalloutExtension extends AbstractExtension
     {
         return [
             new TwigFilter('setono_callouts', [$this, 'filterCallouts']),
+        ];
+    }
+
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('setono_callout_classes', [$this, 'calloutClasses']),
         ];
     }
 
@@ -74,5 +83,21 @@ final class CalloutExtension extends AbstractExtension
 
             return true;
         });
+    }
+
+    public function calloutClasses(CalloutInterface $callout): string
+    {
+        $classes = ['setono-callout', 'setono-callout-code-'.$this->sanitizeClass((string) $callout->getCode())];
+
+        if($callout->getPosition() !== null) {
+            $classes[] = 'setono-callout-position-'.$this->sanitizeClass($callout->getPosition());
+        }
+
+        return implode(' ', $classes);
+    }
+
+    private function sanitizeClass(string $str): string
+    {
+        return strtolower(preg_replace('/[^0-9A-Za-z\-]+/', '-', $str));
     }
 }

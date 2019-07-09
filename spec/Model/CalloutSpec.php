@@ -52,8 +52,8 @@ final class CalloutSpec extends ObjectBehavior
 
     function its_position_is_mutable(): void
     {
-        $this->setPosition('top_left_corner');
-        $this->getPosition()->shouldReturn('top_left_corner');
+        $this->setPosition('top_left');
+        $this->getPosition()->shouldReturn('top_left');
     }
 
     function its_code_is_mutable(): void

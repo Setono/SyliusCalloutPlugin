@@ -1,2 +1,2 @@
 {# @var \Setono\SyliusCalloutPlugin\Model\CalloutInterface callout #}
-<div class="ui red top attached label" style="z-index: 999">{{ callout.text }}</div>
+<div class="ui red top attached label {{ setono_callout_classes(callout) }}" style="z-index: 999">{{ callout.text }}</div>

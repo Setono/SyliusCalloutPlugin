@@ -1,7 +1,7 @@
 setono_sylius_callout:
     ui:
-        bottom_left_corner: Bottom left corner
-        bottom_right_corner: Bottom right corner
+        bottom_left: Bottom left
+        bottom_right: Bottom right
         callouts: Callouts
         code: Code
         edit_callout: Edit callout
@@ -18,6 +18,6 @@ setono_sylius_callout:
         text: Text
         time_period_start: Time period start
         time_period_end: Time period end
-        top_left_corner: Top left corner
-        top_right_corner: Top right corner
+        top_left: Top left
+        top_right: Top right
         type: Type
