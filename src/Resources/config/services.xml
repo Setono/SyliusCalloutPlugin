@@ -2,35 +2,15 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
+        <import resource="services/assigner.xml"/>
         <import resource="services/command.xml"/>
         <import resource="services/event_listener.xml"/>
+        <import resource="services/factory.xml"/>
         <import resource="services/form.xml"/>
+        <import resource="services/menu.xml"/>
         <import resource="services/message.xml"/>
         <import resource="services/provider.xml"/>
         <import resource="services/rules.xml"/>
         <import resource="services/twig.xml"/>
     </imports>
-
-    <services>
-        <service id="setono_sylius_callout.listener.menu.callout" class="Setono\SyliusCalloutPlugin\Menu\CalloutsMenuBuilder">
-            <tag name="kernel.event_listener" event="sylius.menu.admin.main" method="addCalloutsItem" />
-        </service>
-
-        <service id="setono_sylius_callout.active_callouts_provider" class="Setono\SyliusCalloutPlugin\Provider\ActiveCalloutProvider">
-            <argument type="service" id="setono_sylius_callout.repository.callout" />
-            <argument type="service" id="setono_sylius_callout.callout_rules_eligibility_checker" />
-        </service>
-
-        <service id="setono_sylius_callout.product_callouts_assigner" class="Setono\SyliusCalloutPlugin\Assigner\CalloutAssigner">
-            <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="setono_sylius_callout.command_bus" />
-
-            <tag name="kernel.event_listener" event="setono_sylius_callout.callout.post_create" method="assign" />
-            <tag name="kernel.event_listener" event="setono_sylius_callout.callout.post_update" method="assign" />
-        </service>
-
-        <service id="setono_sylius_callout.custom_factory.callout_rule" class="Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactory" decorates="setono_sylius_callout.factory.callout_rule" public="false">
-            <argument type="service" id="setono_sylius_callout.custom_factory.callout_rule.inner" />
-        </service>
-    </services>
 </container>

@@ -8,14 +8,14 @@
         </service>
 
         <service id="Setono\SyliusCalloutPlugin\Message\Handler\AssignEligibleCalloutsToProductHandler">
-            <argument type="service" id="setono_sylius_callout.active_callouts_provider" />
+            <argument type="service" id="setono_sylius_callout.provider.active_callouts" />
             <argument type="service" id="sylius.repository.product" />
             <argument type="service" id="sylius.manager.product" />
             <tag name="messenger.message_handler"/>
         </service>
 
         <service id="Setono\SyliusCalloutPlugin\Message\Handler\AssignProductCalloutsHandler">
-            <argument type="service" id="setono_sylius_callout.active_callouts_provider" />
+            <argument type="service" id="setono_sylius_callout.provider.active_callouts" />
             <argument type="service" id="sylius.manager.product" />
             <argument type="service" id="sylius.repository.product" />
             <tag name="messenger.message_handler"/>

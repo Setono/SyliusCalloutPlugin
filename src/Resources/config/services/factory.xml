@@ -2,9 +2,8 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono_sylius_callout.provider.active_callouts" class="Setono\SyliusCalloutPlugin\Provider\ActiveCalloutProvider">
-            <argument type="service" id="setono_sylius_callout.repository.callout" />
-            <argument type="service" id="setono_sylius_callout.callout_rules_eligibility_checker" />
+        <service id="setono_sylius_callout.custom_factory.callout_rule" class="Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactory" decorates="setono_sylius_callout.factory.callout_rule" public="false">
+            <argument type="service" id="setono_sylius_callout.custom_factory.callout_rule.inner" />
         </service>
     </services>
 </container>

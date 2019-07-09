@@ -7,7 +7,7 @@
         <!-- Setup -->
         <service id="setono_sylius_callout.behat.context.setup.callout" class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup\ProductCalloutContext">
             <argument type="service" id="setono_sylius_callout.factory.callout_rule" />
-            <argument type="service" id="setono_sylius_callout.product_callouts_assigner" />
+            <argument type="service" id="setono_sylius_callout.assigner.callout" />
             <argument type="service" id="setono_sylius_callout.factory.callout" />
             <argument type="service" id="doctrine.orm.default_entity_manager" />
             <argument type="service" id="sylius.behat.shared_storage" />
