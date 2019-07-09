@@ -136,12 +136,12 @@ set corresponding to the below service configuration
 <services>
     ...
     
-    <service id="setono_sylius_callout.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Checker\Rule\IsOnSaleRuleChecker">
+    <service id="app.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Checker\Rule\IsOnSaleRuleChecker">
         <argument type="service" id="setono_sylius_callout.checker.product_promotion" />
         <tag name="setono_sylius_callout.callout_rule_checker" type="is_on_sale" label="setono_sylius_callout.ui.is_on_sale" form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType" />
     </service>
     
-    <service id="setono.form.type.rule.is_on_sale" class="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType">
+    <service id="app.form.type.rule.is_on_sale" class="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType">
         <tag name="form.type" />
     </service>
 </services>
