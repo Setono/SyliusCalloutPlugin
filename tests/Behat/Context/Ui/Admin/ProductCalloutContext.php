@@ -95,7 +95,7 @@ final class ProductCalloutContext implements Context
     {
         $this->createPage->addRule('Has taxon');
 
-        $this->createPage->selectAutocompleteRuleOption('Taxons', $taxons, true);
+        $this->createPage->selectAutocompleteRuleOption('taxons', $taxons, true);
     }
 
     /**
@@ -105,7 +105,7 @@ final class ProductCalloutContext implements Context
     {
         $this->createPage->addRule('Has product');
 
-        $this->createPage->selectAutocompleteRuleOption('Products filter', $productName);
+        $this->createPage->selectAutocompleteRuleOption('products', $productName);
     }
 
     /**
