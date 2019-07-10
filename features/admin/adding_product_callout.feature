@@ -14,7 +14,7 @@ Feature: Adding Product Callouts
     Scenario: Adding a product callout
         When I go to the create product callout page
         And I fill the priority with 1
-        And I specify its position as "Top left corner"
+        And I specify its position as "Top left"
         And I specify its code as "new_collection"
         And I fill the text with "NEW"
         And I name it "New collection callout"
