@@ -19,13 +19,13 @@ final class CalloutsMenuBuilderSpec extends ObjectBehavior
     function it_adds_product_callouts_item(
         MenuBuilderEvent $event,
         ItemInterface $mainMenu,
-        ItemInterface $catalogMenu,
+        ItemInterface $marketingMenu,
         ItemInterface $calloutsMenu
     ): void {
         $event->getMenu()->willReturn($mainMenu);
-        $mainMenu->getChild('catalog')->willReturn($catalogMenu);
+        $mainMenu->getChild('marketing')->willReturn($marketingMenu);
 
-        $catalogMenu
+        $marketingMenu
             ->addChild('callouts', ['route' => 'setono_sylius_callout_admin_callout_index'])
             ->willReturn($calloutsMenu)
         ;
