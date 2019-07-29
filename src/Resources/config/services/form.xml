@@ -55,8 +55,5 @@
             <tag name="form.type" />
         </service>
 
-        <service id="setono_sylius_callout.form.type.rule.is_on_sale" class="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType">
-            <tag name="form.type" />
-        </service>
     </services>
 </container>
