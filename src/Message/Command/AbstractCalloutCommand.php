@@ -6,13 +6,10 @@ namespace Setono\SyliusCalloutPlugin\Message\Command;
 
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 
-/**
- * Will assign the given callout to products where the callout is eligible
- */
-final class AssignCalloutToProducts implements CommandInterface
+abstract class AbstractCalloutCommand
 {
     /** @var mixed|CalloutInterface */
-    private $calloutId;
+    protected $calloutId;
 
     /**
      * @param mixed|CalloutInterface $callout

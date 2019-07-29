@@ -6,7 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Message\Command;
 
 use Setono\DoctrineORMBatcher\Batch\RangeBatch;
 
-final class AssignProductCallouts implements CommandInterface
+final class AssignEligibleCalloutsToProductsBatch implements CommandInterface
 {
     /** @var RangeBatch */
     private $batch;

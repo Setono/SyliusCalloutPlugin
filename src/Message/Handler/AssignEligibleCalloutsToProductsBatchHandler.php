@@ -7,16 +7,16 @@ namespace Setono\SyliusCalloutPlugin\Message\Handler;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Setono\DoctrineORMBatcher\Query\QueryRebuilder;
-use Setono\SyliusCalloutPlugin\Message\Command\AssignProductCallouts;
+use Setono\SyliusCalloutPlugin\Callout\Provider\EligibleCalloutsProviderInterface;
+use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProductsBatch;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
-use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class AssignProductCalloutsHandler implements MessageHandlerInterface
+final class AssignEligibleCalloutsToProductsBatchHandler implements MessageHandlerInterface
 {
-    /** @var CalloutProviderInterface */
-    private $calloutProvider;
+    /** @var EligibleCalloutsProviderInterface */
+    private $eligibleCalloutsProvider;
 
     /** @var EntityManagerInterface */
     private $productManager;
@@ -25,16 +25,16 @@ final class AssignProductCalloutsHandler implements MessageHandlerInterface
     private $productRepository;
 
     public function __construct(
-        CalloutProviderInterface $calloutProvider,
+        EligibleCalloutsProviderInterface $eligibleCalloutsProvider,
         EntityManagerInterface $productManager,
         ProductRepositoryInterface $productRepository
     ) {
-        $this->calloutProvider = $calloutProvider;
+        $this->eligibleCalloutsProvider = $eligibleCalloutsProvider;
         $this->productManager = $productManager;
         $this->productRepository = $productRepository;
     }
 
-    public function __invoke(AssignProductCallouts $message): void
+    public function __invoke(AssignEligibleCalloutsToProductsBatch $message): void
     {
         if (!$this->productRepository instanceof EntityRepository) {
             return;
@@ -51,9 +51,9 @@ final class AssignProductCalloutsHandler implements MessageHandlerInterface
         }
 
         foreach ($products as $product) {
-            $callouts = $this->calloutProvider->getCallouts($product);
-
-            $product->setCallouts($callouts);
+            $product->setCallouts(
+                $this->eligibleCalloutsProvider->getEligibleCallouts($product)
+            );
         }
 
         $this->productManager->flush();

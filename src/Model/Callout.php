@@ -182,7 +182,8 @@ class Callout implements CalloutInterface
 
     public function removeRule(CalloutRuleInterface $rule): void
     {
-        $rule->setCallout(null);
+        // We don't want this!
+        // $rule->setCallout(null);
         $this->rules->removeElement($rule);
     }
 
