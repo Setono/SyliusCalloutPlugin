@@ -26,7 +26,7 @@ final class AssignCalloutsCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Assigns callouts to products')
+            ->setDescription('Trigger callouts to all products assign process')
         ;
     }
 
