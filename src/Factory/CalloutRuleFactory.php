@@ -28,6 +28,13 @@ class CalloutRuleFactory implements CalloutRuleFactoryInterface
         }, $taxons)]);
     }
 
+    public function createHasProduct(array $products): CalloutRuleInterface
+    {
+        return $this->createCalloutRule(HasProductCalloutRuleChecker::TYPE, ['products' => array_map(function (ProductInterface $product) {
+            return $product->getCode();
+        }, $products)]);
+    }
+
     public function createNew(): CalloutRuleInterface
     {
         /** @var CalloutRuleInterface $rule */

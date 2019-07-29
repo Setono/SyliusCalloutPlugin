@@ -29,6 +29,7 @@ final class ProductContext implements Context
 
     /**
      * @Then I should see :count products with product callout :name
+     * @Then I should see :count product with product callout :name
      */
     public function iShouldSeeProductsWithProductCallout(int $count, string $name)
     {
