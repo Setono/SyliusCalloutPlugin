@@ -6,7 +6,7 @@ namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\Common\Persistence\ObjectManager;
-use Setono\SyliusCalloutPlugin\Assigner\CalloutAssignerInterface;
+use Setono\SyliusCalloutPlugin\Callout\Assigner\CalloutAssignerInterface;
 use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Behat\Service\SharedStorageInterface;

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Factory;
 
-use Setono\SyliusCalloutPlugin\Checker\Rule\HasTaxonCalloutRuleChecker;
+use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasProductCalloutRuleChecker;
+use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasTaxonCalloutRuleChecker;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;

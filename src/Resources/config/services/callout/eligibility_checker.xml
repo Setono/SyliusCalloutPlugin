@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="setono_sylius_callout.callout_eligibility_checker.rules"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\Eligibility\CalloutRulesEligibilityChecker">
+            <argument type="service" id="setono_sylius_callout.registry.callout_rule_checker" />
+            <tag name="setono_sylius_callout.callout_eligibility_checker" />
+        </service>
+
+        <service id="setono_sylius_callout.callout_eligibility_checker"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\Eligibility\CompositeCalloutEligibilityChecker">
+            <argument type="collection" />
+        </service>
+
+        <!-- Rendering eligibility checkers -->
+        <service id="setono_sylius_callout.rendering_callout_eligibility_checker.toggle"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\CalloutToggleEligibilityChecker">
+            <tag name="setono_sylius_callout.rendering_callout_eligibility_checker" />
+        </service>
+
+        <service id="setono_sylius_callout.rendering_callout_eligibility_checker.duration"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\CalloutDurationEligibilityChecker">
+            <tag name="setono_sylius_callout.rendering_callout_eligibility_checker" />
+        </service>
+
+        <service id="setono_sylius_callout.rendering_callout_eligibility_checker.channel"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\CalloutChannelEligibilityChecker">
+            <argument type="service" id="sylius.context.channel" />
+            <tag name="setono_sylius_callout.rendering_callout_eligibility_checker" />
+        </service>
+
+        <service id="setono_sylius_callout.rendering_callout_eligibility_checker"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\CompositeRenderingCalloutEligibilityChecker">
+            <argument type="collection" />
+        </service>
+
+    </services>
+</container>

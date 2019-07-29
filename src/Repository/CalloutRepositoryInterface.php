@@ -12,5 +12,5 @@ interface CalloutRepositoryInterface extends RepositoryInterface
     /**
      * @return CalloutInterface[]
      */
-    public function findActive(): array;
+    public function findOrdered(): array;
 }

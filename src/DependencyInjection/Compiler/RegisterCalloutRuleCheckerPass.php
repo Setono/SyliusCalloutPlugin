@@ -17,11 +17,11 @@ final class RegisterCalloutRuleCheckerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasDefinition('setono_sylius_callout.registry_callout_rule_checker') || !$container->hasDefinition('setono_sylius_callout.form_registry.callout_rule_checker')) {
+        if (!$container->hasDefinition('setono_sylius_callout.registry.callout_rule_checker') || !$container->hasDefinition('setono_sylius_callout.form_registry.callout_rule_checker')) {
             return;
         }
 
-        $registry = $container->getDefinition('setono_sylius_callout.registry_callout_rule_checker');
+        $registry = $container->getDefinition('setono_sylius_callout.registry.callout_rule_checker');
         $formTypeRegistry = $container->getDefinition('setono_sylius_callout.form_registry.callout_rule_checker');
 
         $calloutRuleCheckerTypeToLabelMap = [];
