@@ -13,3 +13,12 @@ setono_sylius_callout_admin_callout:
             index:
                 icon: 'bullhorn'
     type: sylius.resource
+
+setono_sylius_callout_admin_callout_assign:
+    path: /callout/assign
+    methods: [GET]
+    defaults:
+        _controller: setono_sylius_callout.controller.action.assign
+        _sylius:
+            section: admin
+            permission: true
