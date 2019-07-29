@@ -40,6 +40,13 @@ $bundles = [
 
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/config.yaml" }
+
+setono_sylius_callout:
+    manual_triggering: false
+    # Enable manual triggering if your store have too much products
+    # That way you can trigger callouts assign process manually when
+    # finish adding all rules
+    # manual_triggering: true
 ```
 
 ### Step 4: Import routing
