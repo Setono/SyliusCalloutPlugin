@@ -10,7 +10,6 @@ use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProduct;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
-use Webmozart\Assert\Assert;
 
 final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInterface
 {
@@ -37,8 +36,9 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
     {
         /** @var ProductInterface|null $product */
         $product = $this->productRepository->find($message->getProductId());
-
-        Assert::isInstanceOf($product, ProductInterface::class);
+        if (!$product instanceof ProductInterface) {
+            return;
+        }
 
         $product->setCallouts(
             $this->eligibleCalloutsProvider->getEligibleCallouts($product)

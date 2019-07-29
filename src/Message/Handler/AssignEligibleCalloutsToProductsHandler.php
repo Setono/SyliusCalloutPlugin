@@ -58,6 +58,7 @@ final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInt
         }
         $this->calloutManager->flush();
 
+        /** @scrutinizer ignore-call */
         $qb = $this->productRepository->createQueryBuilder('o');
 
         $batcherFactory = new BestIdRangeBatcherFactory();

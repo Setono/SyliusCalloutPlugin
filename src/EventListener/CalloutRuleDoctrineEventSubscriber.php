@@ -7,6 +7,7 @@ namespace Setono\SyliusCalloutPlugin\EventListener;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Events;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 
 final class CalloutRuleDoctrineEventSubscriber extends AbstractCalloutDoctrineEventSubscriber implements EventSubscriber
@@ -27,9 +28,12 @@ final class CalloutRuleDoctrineEventSubscriber extends AbstractCalloutDoctrineEv
         }
 
         if ($args->hasChangedField('configuration') || $args->hasChangedField('type')) {
-            $this->scheduleCalloutUpdate(
-                $entity->getCallout()
-            );
+            $callout = $entity->getCallout();
+            if (!$callout instanceof CalloutInterface) {
+                return;
+            }
+
+            $this->scheduleCalloutUpdate($callout);
         }
     }
 }

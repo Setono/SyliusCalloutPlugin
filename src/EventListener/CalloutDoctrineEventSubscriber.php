@@ -42,9 +42,12 @@ final class CalloutDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
                         break;
                     }
 
-                    $this->scheduleCalloutUpdate(
-                        $entity->getCallout()
-                    );
+                    $callout = $entity->getCallout();
+                    if (!$callout instanceof CalloutInterface) {
+                        break;
+                    }
+
+                    $this->scheduleCalloutUpdate($callout);
                 }
             }
         }
