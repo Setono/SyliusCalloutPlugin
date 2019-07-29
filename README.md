@@ -9,6 +9,8 @@
 The callout plugin for [Sylius](https://sylius.com/) allows you to configure nice badges for different set of products
 based on specific rules. It provides a common set of configuration by default and is very flexible when it comes to adding new ones.
 
+Supports Doctrine ORM driver only.
+
 ## Installation
 
 ### Step 1: Download the plugin
@@ -58,7 +60,7 @@ setono_product_callout:
     resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yaml"
 ```
 
-### Step 5: Customize models and repositories
+### Step 5: Customize models
 
 Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
 
@@ -203,9 +205,9 @@ From now on you should be able to add new callouts in the admin panel. Once you 
 Adding a new rule form
 ----------------------
 
-1. Configure a new form under `App\Form\Type\Rule` namespace like this [IsOnSaleConfigurationType](src/Form/Type/Rule/IsOnSaleConfigurationType.php),
-2. Add a rule checker under `App\Checker\Rule` namespace like this [IsOnSaleRuleChecker](src/Checker/Rule/IsOnSaleRuleChecker.php) and
-make sure it implements `Setono\SyliusCalloutPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface` interface and has a `public const TYPE` 
+1. Configure a new form under `App\Form\Type\Rule` namespace,
+2. Add a rule checker under `App\Checker\Rule` namespace and
+make sure it implements `Setono\SyliusCalloutPlugin\Callout\Checker\Rule\ProductCalloutRuleCheckerInterface` interface and has a `public const TYPE` 
 set corresponding to the below service configuration 
 3. Register and tag new services:
 ```xml
@@ -213,7 +215,7 @@ set corresponding to the below service configuration
 <services>
     ...
     
-    <service id="app.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Checker\Rule\IsOnSaleRuleChecker">
+    <service id="app.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Callout\Checker\Rule\IsOnSaleRuleChecker">
         <argument type="service" id="setono_sylius_callout.checker.product_promotion" />
         <tag name="setono_sylius_callout.callout_rule_checker" type="is_on_sale" label="setono_sylius_callout.ui.is_on_sale" form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType" />
     </service>

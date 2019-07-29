@@ -7,6 +7,7 @@ namespace Setono\SyliusCalloutPlugin\Factory;
 use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasProductCalloutRuleChecker;
 use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasTaxonCalloutRuleChecker;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 

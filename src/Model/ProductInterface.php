@@ -6,6 +6,8 @@ namespace Setono\SyliusCalloutPlugin\Model;
 
 use Sylius\Component\Core\Model\ProductInterface as BaseProductInterface;
 
-interface ProductInterface extends CalloutsAwareInterface, BaseProductInterface
+interface ProductInterface extends
+    BaseProductInterface,
+    CalloutsAwareInterface
 {
 }

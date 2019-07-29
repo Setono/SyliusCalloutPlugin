@@ -9,6 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Setono\SyliusCalloutPlugin\Callout\Assigner\CalloutAssignerInterface;
 use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
