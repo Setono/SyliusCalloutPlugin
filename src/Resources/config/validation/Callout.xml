@@ -50,5 +50,16 @@
                 </option>
             </constraint>
         </property>
+
+        <property name="rules">
+            <constraint name="Count">
+                <option name="min">1</option>
+                <option name="minMessage">setono_sylius_callout.callout.rules.min</option>
+                <option name="groups">
+                    <value>setono_sylius_callout</value>
+                </option>
+            </constraint>
+        </property>
+
     </class>
 </constraint-mapping>
