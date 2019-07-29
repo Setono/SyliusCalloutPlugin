@@ -10,5 +10,12 @@
             <argument type="service" id="setono_sylius_callout.rendering_callout_eligibility_checker" />
             <tag name="twig.extension" />
         </service>
+
+        <service id="setono_sylius_callout.twig.extension.callout_configuration"
+                 class="Setono\SyliusCalloutPlugin\Twig\Extension\CalloutConfigurationExtension">
+            <argument>%setono_sylius_callout.manual_triggering%</argument>
+            <tag name="twig.extension" />
+        </service>
+
     </services>
 </container>

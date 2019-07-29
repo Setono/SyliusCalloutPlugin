@@ -6,6 +6,8 @@ setono_sylius_callout:
         code: Code
         edit_callout: Edit callout
         enabled: Enabled
+        updated_at: Rules assigned at
+        rules_assigned_at: Rules assigned at
         has_product: Has product
         has_taxon: Has taxon
         is_on_sale: Is on sale
@@ -22,3 +24,7 @@ setono_sylius_callout:
         top_left: Top left
         top_right: Top right
         type: Type
+        action:
+            assign: Assign
+        manual_triggering_on: Manual triggering - you should press Assign button after all changes made
+        manual_triggering_off: Auto triggering triggers assign process after every change automatically 
