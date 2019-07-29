@@ -1,0 +1,79 @@
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                
+                locale:
+                    options:
+                        locales:
+                            - "uk_UA"
+
+                product:
+                    options:
+                        custom:
+                            product_setono_sticker_on_sale:
+                                name: "Setono Sticker on sale"
+                                code: "setono_sticker_on_sale"
+                                main_taxon: "stickers"
+                                taxons: 
+                                    - "stickers"
+                                channels:
+                                    - "US_WEB"
+
+                setono_sylius_callout:
+                    options:
+                        custom:
+                            callout_today_only:
+                                name: "Today only"
+                                code: "today-only"
+                                text: "Today only"
+                                translations:
+                                    uk_UA:
+                                        text: "Пропозиція дня"
+                                position: "bottom_right"
+                                priority: 2
+                                starts_at: "now"
+                                ends_at: "1 day"
+                                channels:
+                                    - "US_WEB"
+                                rules:
+                                    - type: "has_product"
+                                      configuration:
+                                          products: 
+                                              - "setono_sticker_on_sale"
+
+                            callout_this_week_only:
+                                name: "This week only"
+                                code: "this-week-only"
+                                text: "This week only"
+                                translations:
+                                    uk_UA:
+                                        text: "Пропозиція тижня"
+                                position: "bottom_right"
+                                priority: 3
+                                starts_at: "now"
+                                ends_at: "7 days"
+                                channels:
+                                    - "US_WEB"
+                                rules:
+                                    - type: "has_taxon"
+                                      configuration:
+                                          taxons:
+                                              - "books"
+
+                            callout_another_one_callout:
+                                name: "Another one callout"
+                                code: "another_one_callout"
+                                text: "Another one callout"
+                                translations:
+                                    uk_UA:
+                                        text: "Ще один бейдж"
+                                position: "bottom_right"
+                                priority: 1
+                                channels:
+                                    - "US_WEB"
+                                rules:
+                                    - type: "has_taxon"
+                                      configuration:
+                                          taxons:
+                                              - "books"
