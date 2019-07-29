@@ -9,12 +9,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
+use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
 class Callout implements CalloutInterface
 {
     use ToggleableTrait;
+    use TimestampableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -45,6 +47,9 @@ class Callout implements CalloutInterface
 
     /** @var Collection|CalloutRuleInterface[] */
     protected $rules;
+
+    /** @var DateTimeInterface|null */
+    protected $rulesAssignedAt;
 
     public function __construct()
     {
@@ -179,6 +184,16 @@ class Callout implements CalloutInterface
     {
         $rule->setCallout(null);
         $this->rules->removeElement($rule);
+    }
+
+    public function getRulesAssignedAt(): ?DateTimeInterface
+    {
+        return $this->rulesAssignedAt;
+    }
+
+    public function setRulesAssignedAt(?DateTimeInterface $rulesAssignedAt): void
+    {
+        $this->rulesAssignedAt = $rulesAssignedAt;
     }
 
     public static function getAllowedPositions(): array

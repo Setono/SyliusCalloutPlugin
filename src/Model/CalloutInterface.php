@@ -8,12 +8,14 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Sylius\Component\Resource\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 
 interface CalloutInterface extends
     ChannelsAwareInterface,
     ResourceInterface,
+    TimestampableInterface,
     ToggleableInterface,
     TranslatableInterface
 {
@@ -65,6 +67,10 @@ interface CalloutInterface extends
     public function addRule(CalloutRuleInterface $rule): void;
 
     public function removeRule(CalloutRuleInterface $rule): void;
+
+    public function getRulesAssignedAt(): ?DateTimeInterface;
+
+    public function setRulesAssignedAt(?DateTimeInterface $rulesAssignedAt): void;
 
     public static function getAllowedPositions(): array;
 }
