@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Twig\Extension;
 
 use Doctrine\Common\Collections\Collection;
-use Exception;
+use Setono\SyliusCalloutPlugin\Callout\CssClassBuilderInterface;
 use function Safe\preg_replace;
 use function Safe\sprintf;
 use Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\RenderingCalloutEligibilityCheckerInterface;
@@ -19,9 +19,15 @@ final class CalloutExtension extends AbstractExtension
     /** @var RenderingCalloutEligibilityCheckerInterface */
     private $renderingCalloutEligibilityChecker;
 
-    public function __construct(RenderingCalloutEligibilityCheckerInterface $renderingCalloutEligibilityChecker)
-    {
+    /** @var CssClassBuilderInterface */
+    private $cssClassBuilder;
+
+    public function __construct(
+        RenderingCalloutEligibilityCheckerInterface $renderingCalloutEligibilityChecker,
+        CssClassBuilderInterface $cssClassBuilder
+    ) {
         $this->renderingCalloutEligibilityChecker = $renderingCalloutEligibilityChecker;
+        $this->cssClassBuilder = $cssClassBuilder;
     }
 
     public function getFilters(): array
@@ -57,36 +63,22 @@ final class CalloutExtension extends AbstractExtension
     public function calloutClasses(CalloutInterface $callout): string
     {
         $classes = [
-            'red', // @todo Add color field to Callout
-            $this->getSemanticUiClassesFromPosition($callout->getPosition()),
+            $this->cssClassBuilder->buildClasses($callout),
             'setono-callout',
-            'setono-callout-code-' . $this->sanitizeClass((string) $callout->getCode()),
+            sprintf(
+                'setono-callout-code-%s',
+                $this->sanitizeClass((string) $callout->getCode())
+            ),
         ];
 
         if ($callout->getPosition() !== null) {
-            $classes[] = 'setono-callout-position-' . $this->sanitizeClass($callout->getPosition());
+            $classes[] = sprintf(
+                'setono-callout-position-%s',
+                $this->sanitizeClass($callout->getPosition())
+            );
         }
 
         return implode(' ', $classes);
-    }
-
-    private function getSemanticUiClassesFromPosition(string $position): string
-    {
-        static $semanticUiPositionClassMap = [
-            CalloutInterface::POSITION_TOP_LEFT => 'top left attached label',
-            CalloutInterface::POSITION_BOTTOM_LEFT => 'bottom left attached label',
-            CalloutInterface::POSITION_TOP_RIGHT => 'top right attached label',
-            CalloutInterface::POSITION_BOTTOM_RIGHT => 'bottom right attached label',
-        ];
-
-        if (!array_key_exists($position, $semanticUiPositionClassMap)) {
-            throw new Exception(sprintf(
-                'Unable to translate position "%s" to classes',
-                $position
-            ));
-        }
-
-        return $semanticUiPositionClassMap[$position];
     }
 
     private function sanitizeClass(string $str): string

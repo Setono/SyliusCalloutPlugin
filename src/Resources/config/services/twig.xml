@@ -8,6 +8,7 @@
         <service id="setono_sylius_callout.twig.extension.callout"
                  class="Setono\SyliusCalloutPlugin\Twig\Extension\CalloutExtension">
             <argument type="service" id="setono_sylius_callout.rendering_callout_eligibility_checker" />
+            <argument type="service" id="setono_sylius_callout.css_class_builder.semantic_ui" />
             <tag name="twig.extension" />
         </service>
 

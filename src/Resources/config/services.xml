@@ -6,6 +6,7 @@
     <imports>
 
         <import resource="services/callout/assigner.xml"/>
+        <import resource="services/callout/css_class_builder.xml"/>
         <import resource="services/callout/eligibility_checker.xml"/>
         <import resource="services/callout/provider.xml"/>
         <import resource="services/callout/rule.xml"/>
