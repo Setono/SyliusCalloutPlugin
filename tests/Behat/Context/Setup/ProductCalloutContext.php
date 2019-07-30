@@ -48,38 +48,54 @@ final class ProductCalloutContext implements Context
     }
 
     /**
-     * @Given /^there is a product callout "([^"]+)" with "Has taxon" rule configured with ("[^"]+" taxon) and with "([^"]+)" html$/
+     * @Given /^there is a callout "([^"]+)" with "Has taxon" rule configured with ("[^"]+" taxon) and with "([^"]+)" html$/
+     * @Given /^there is a callout "([^"]+)" with "Has taxon" rule configured with ("[^"]+" taxon) and with "([^"]+)" html in ("[^"]+" channel)$/
      */
-    public function thereIsAProductCalloutWithRuleConfiguredWithTaxon(string $name, TaxonInterface $taxon, string $html): void
+    public function thereIsAProductCalloutWithRuleConfiguredWithTaxon(string $name, TaxonInterface $taxon, string $html, ChannelInterface $channel = null): void
     {
-        $callout = $this->createCallout($name, $html);
+        $callout = $this->createCallout($name, $html, $channel);
         $callout->addRule($this->calloutRuleFactory->createHasTaxon([$taxon]));
 
         $this->objectManager->persist($callout);
         $this->objectManager->flush();
-        $this->objectManager->clear();
     }
 
     /**
-     * @Given /^there is a product callout "([^"]+)" with "Has product" rule configured with ("[^"]+" product) and with "([^"]+)" html$/
+     * @Given /^there is a callout "([^"]+)" with "Has product" rule configured with ("[^"]+" product) and with "([^"]+)" html$/
+     * @Given /^there is a callout "([^"]+)" with "Has product" rule configured with ("[^"]+" product) and with "([^"]+)" html in ("[^"]+" channel)$/
      */
-    public function thereIsAProductCalloutWithRuleConfiguredWithProduct(string $name, ProductInterface $product, string $html): void
+    public function thereIsAProductCalloutWithRuleConfiguredWithProduct(string $name, ProductInterface $product, string $html, ChannelInterface $channel = null): void
     {
-        $callout = $this->createCallout($name, $html);
+        $callout = $this->createCallout($name, $html, $channel);
         $callout->addRule($this->calloutRuleFactory->createHasProduct([$product]));
 
         $this->objectManager->persist($callout);
         $this->objectManager->flush();
-        $this->objectManager->clear();
     }
 
-    private function createCallout(string $name, string $html): CalloutInterface
+    /**
+     * @Given /^(the callout "([^"]+)") is disabled for ("[^"]+" channel)$/
+     * @Given /^(the callout "([^"]+)") is disabled for (this channel)$/
+     * @Given /^(this callout) is disabled for ("[^"]+" channel)$/
+     * @Given /^(this callout) is disabled for (this channel)$/
+     */
+    public function calloutDisabledForChannel(CalloutInterface $callout, ChannelInterface $channel): void
+    {
+        $callout->removeChannel($channel);
+
+        $this->objectManager->flush();
+    }
+
+    private function createCallout(string $name, string $html, ChannelInterface $channel = null): CalloutInterface
     {
         /** @var CalloutInterface $callout */
         $callout = $this->calloutFactory->createNew();
+        $this->sharedStorage->set('callout', $callout);
 
         /** @var ChannelInterface $channel */
-        $channel = $this->sharedStorage->get('channel');
+        if (null === $channel && $this->sharedStorage->has('channel')) {
+            $channel = $this->sharedStorage->get('channel');
+        }
 
         $callout->setCode(StringInflector::nameToCode($name));
         $callout->setPosition(CalloutInterface::POSITION_TOP_LEFT);

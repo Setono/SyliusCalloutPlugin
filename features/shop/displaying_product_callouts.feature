@@ -19,12 +19,19 @@ Feature: Displaying Product Callouts
 
     @ui
     Scenario: Displaying a product callout based on taxon
-        Given there is a product callout "Sale" with "Has taxon" rule configured with "T-Shirts" taxon and with "<p>Sale</p>" html
+        Given there is a callout "Sale" with "Has taxon" rule configured with "T-Shirts" taxon and with "<p>Sale</p>" html
         When I browse products from taxon "T-Shirts"
-        Then I should see 3 products with product callout "Sale"
+        Then I should see 3 products with callout "Sale"
 
     @ui
     Scenario: Displaying a product callout based on product
-      Given there is a product callout "Good to buy" with "Has product" rule configured with "PHP T-Shirt" product and with "<p>Good to buy</p>" html
-      When I browse products from taxon "T-Shirts"
-      Then I should see 1 product with product callout "Good to buy"
+        Given there is a callout "Good to buy" with "Has product" rule configured with "PHP T-Shirt" product and with "<p>Good to buy</p>" html
+        When I browse products from taxon "T-Shirts"
+        Then I should see 1 product with callout "Good to buy"
+
+    @ui
+    Scenario: Callouts not enabled for channel shouldn't be rendered
+        Given there is a callout "Disabled" with "Has taxon" rule configured with "T-Shirts" taxon and with "<p>Disabled</p>" html
+        And this callout is disabled for "United States" channel
+        When I browse products from taxon "T-Shirts"
+        Then I should see 0 products with callout "Disabled"
