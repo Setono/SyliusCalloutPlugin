@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        {% include "@SetonoSyliusCalloutPlugin/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}
+        {% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}
 
         {% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product} %}
 

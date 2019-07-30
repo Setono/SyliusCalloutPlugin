@@ -5,17 +5,16 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Setono\SyliusCalloutPlugin\Callout\Provider\EligibleCalloutsProviderInterface;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProduct;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
-use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
 use Sylius\Component\Product\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
-use Webmozart\Assert\Assert;
 
 final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInterface
 {
-    /** @var CalloutProviderInterface */
-    private $calloutProvider;
+    /** @var EligibleCalloutsProviderInterface */
+    private $eligibleCalloutsProvider;
 
     /** @var ProductRepositoryInterface */
     private $productRepository;
@@ -24,11 +23,11 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
     private $productManager;
 
     public function __construct(
-        CalloutProviderInterface $calloutProvider,
+        EligibleCalloutsProviderInterface $eligibleCalloutsProvider,
         ProductRepositoryInterface $productRepository,
         ObjectManager $productManager
     ) {
-        $this->calloutProvider = $calloutProvider;
+        $this->eligibleCalloutsProvider = $eligibleCalloutsProvider;
         $this->productRepository = $productRepository;
         $this->productManager = $productManager;
     }
@@ -37,13 +36,15 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
     {
         /** @var ProductInterface|null $product */
         $product = $this->productRepository->find($message->getProductId());
+        if (!$product instanceof ProductInterface) {
+            return;
+        }
 
-        Assert::isInstanceOf($product, ProductInterface::class);
+        $product->setCallouts(
+            $this->eligibleCalloutsProvider->getEligibleCallouts($product)
+        );
 
-        $callouts = $this->calloutProvider->getCallouts($product);
-
-        $product->setCallouts($callouts);
-
-        $this->productManager->flush();
+        // We don't want this here
+        // $this->productManager->flush();
     }
 }

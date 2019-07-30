@@ -1,0 +1,41 @@
+{% from "@SyliusAdmin/Macro/translationForm.html.twig" import translationForm %}
+
+<div class="ui two column stackable grid">
+    <div class="column">
+        <div class="ui segment">
+            {{ form_errors(form) }}
+            <div class="ui two column stackable grid">
+                <div class="column">
+                    <div class="ui segment">
+                        {{ form_row(form.code) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.priority) }}
+                        {{ form_row(form.enabled) }}
+                        {{ form_row(form.channels) }}
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui segment">
+                        {{ form_row(form.position) }}
+                        {{ form_row(form.startsAt) }}
+                        {{ form_row(form.endsAt) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui segment">
+            <div class="ui one column stackable grid">
+                <div class="column">
+                    <div class="field">
+                        {{ translationForm(form.translations, resource) }}
+                    </div>
+                    <div class="field" id="rules">
+                        {{ form_row(form.rules) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

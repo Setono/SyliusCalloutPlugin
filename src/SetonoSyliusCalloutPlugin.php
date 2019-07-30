@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin;
 
+use Setono\SyliusCalloutPlugin\DependencyInjection\Compiler\CompositeCalloutEligibilityCheckerPass;
 use Setono\SyliusCalloutPlugin\DependencyInjection\Compiler\RegisterCalloutRuleCheckerPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
@@ -18,6 +19,7 @@ final class SetonoSyliusCalloutPlugin extends AbstractResourceBundle
     {
         parent::build($container);
 
+        $container->addCompilerPass(new CompositeCalloutEligibilityCheckerPass());
         $container->addCompilerPass(new RegisterCalloutRuleCheckerPass());
     }
 

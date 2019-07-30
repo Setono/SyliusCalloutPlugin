@@ -16,6 +16,9 @@ parameters:
 
     ignoreErrors:
         - '/Parameter #1 $configuration of method Symfony\Component\DependencyInjection\Extension\Extension::processConfiguration() expects Symfony\Component\Config\Definition\ConfigurationInterface, Symfony\Component\Config\Definition\ConfigurationInterface|null given./'
+        - '/Call to static method .+allIsInstanceOf.+ will always evaluate to true./'
+        - '/Call to an undefined method.+RepositoryInterface.+createQueryBuilder()./'
+
         # Effectively this will disable strict rules regarding type hints
         # The reason for this is that it clashes with Easy Coding Standard which removes superflous phpdocs, i.e. @param mixed $param
         - '/.*no.*typehint specified.*/'

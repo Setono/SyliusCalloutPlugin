@@ -36,6 +36,10 @@ final class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                ->booleanNode('manual_triggering')
+                    ->info('Set it to true if you have thousands of products in your store and/or want to trigger callout assign manually.')
+                    ->defaultFalse()
+                ->end()
             ->end()
         ;
 

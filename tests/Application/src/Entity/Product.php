@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Setono\SyliusCalloutPlugin\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait;
-use Setono\SyliusCalloutPlugin\Model\ProductInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCalloutsAwareTrait;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
-final class Product extends BaseProduct implements ProductInterface
+final class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
 {
-    use CalloutsAwareTrait;
+    use SetonoSyliusCalloutCalloutsAwareTrait {
+        SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+    }
 
     public function __construct()
     {
+        $this->__calloutsTraitConstruct();
         parent::__construct();
-
-        $this->callouts = new ArrayCollection();
     }
 }

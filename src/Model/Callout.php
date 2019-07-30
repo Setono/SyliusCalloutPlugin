@@ -9,12 +9,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
+use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
 class Callout implements CalloutInterface
 {
     use ToggleableTrait;
+    use TimestampableTrait;
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
@@ -29,10 +31,10 @@ class Callout implements CalloutInterface
     protected $name;
 
     /** @var DateTimeInterface|null */
-    protected $timePeriodStart;
+    protected $startsAt;
 
     /** @var DateTimeInterface|null */
-    protected $timePeriodEnd;
+    protected $endsAt;
 
     /** @var int */
     protected $priority = 0;
@@ -45,6 +47,9 @@ class Callout implements CalloutInterface
 
     /** @var Collection|CalloutRuleInterface[] */
     protected $rules;
+
+    /** @var DateTimeInterface|null */
+    protected $rulesAssignedAt;
 
     public function __construct()
     {
@@ -68,24 +73,24 @@ class Callout implements CalloutInterface
         $this->name = $name;
     }
 
-    public function getTimePeriodStart(): ?DateTimeInterface
+    public function getStartsAt(): ?DateTimeInterface
     {
-        return $this->timePeriodStart;
+        return $this->startsAt;
     }
 
-    public function setTimePeriodStart(?DateTimeInterface $timePeriodStart): void
+    public function setStartsAt(?DateTimeInterface $startsAt): void
     {
-        $this->timePeriodStart = $timePeriodStart;
+        $this->startsAt = $startsAt;
     }
 
-    public function getTimePeriodEnd(): ?DateTimeInterface
+    public function getEndsAt(): ?DateTimeInterface
     {
-        return $this->timePeriodEnd;
+        return $this->endsAt;
     }
 
-    public function setTimePeriodEnd(?DateTimeInterface $timePeriodEnd): void
+    public function setEndsAt(?DateTimeInterface $endsAt): void
     {
-        $this->timePeriodEnd = $timePeriodEnd;
+        $this->endsAt = $endsAt;
     }
 
     public function getPriority(): int
@@ -177,8 +182,19 @@ class Callout implements CalloutInterface
 
     public function removeRule(CalloutRuleInterface $rule): void
     {
-        $rule->setCallout(null);
+        // We don't want this!
+        // $rule->setCallout(null);
         $this->rules->removeElement($rule);
+    }
+
+    public function getRulesAssignedAt(): ?DateTimeInterface
+    {
+        return $this->rulesAssignedAt;
+    }
+
+    public function setRulesAssignedAt(?DateTimeInterface $rulesAssignedAt): void
+    {
+        $this->rulesAssignedAt = $rulesAssignedAt;
     }
 
     public static function getAllowedPositions(): array

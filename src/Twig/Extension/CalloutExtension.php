@@ -4,24 +4,30 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Twig\Extension;
 
-use DateTime;
 use Doctrine\Common\Collections\Collection;
-use Exception;
 use function Safe\preg_replace;
+use function Safe\sprintf;
+use Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\RenderingCalloutEligibilityCheckerInterface;
+use Setono\SyliusCalloutPlugin\Callout\CssClassBuilderInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
-use Sylius\Component\Channel\Context\ChannelContextInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 final class CalloutExtension extends AbstractExtension
 {
-    /** @var ChannelContextInterface */
-    private $channelContext;
+    /** @var RenderingCalloutEligibilityCheckerInterface */
+    private $renderingCalloutEligibilityChecker;
 
-    public function __construct(ChannelContextInterface $channelContext)
-    {
-        $this->channelContext = $channelContext;
+    /** @var CssClassBuilderInterface */
+    private $cssClassBuilder;
+
+    public function __construct(
+        RenderingCalloutEligibilityCheckerInterface $renderingCalloutEligibilityChecker,
+        CssClassBuilderInterface $cssClassBuilder
+    ) {
+        $this->renderingCalloutEligibilityChecker = $renderingCalloutEligibilityChecker;
+        $this->cssClassBuilder = $cssClassBuilder;
     }
 
     public function getFilters(): array
@@ -42,8 +48,6 @@ final class CalloutExtension extends AbstractExtension
      * @param Collection|CalloutInterface[] $callouts
      *
      * @return Collection|CalloutInterface[]
-     *
-     * @throws Exception
      */
     public function filterCallouts(Collection $callouts): Collection
     {
@@ -51,46 +55,27 @@ final class CalloutExtension extends AbstractExtension
             return $callouts;
         }
 
-        $now = new DateTime();
-
-        return $callouts->filter(function (CalloutInterface $callout) use ($now) {
-            if (!$callout->isEnabled()) {
-                return false;
-            }
-
-            $start = $callout->getTimePeriodStart();
-            if ($start !== null && $now < $start) {
-                return false;
-            }
-
-            $end = $callout->getTimePeriodEnd();
-            if ($end !== null && $now > $end) {
-                return false;
-            }
-
-            $channelFound = false;
-            foreach ($callout->getChannels() as $channel) {
-                if ($channel->getCode() === $this->channelContext->getChannel()->getCode()) {
-                    $channelFound = true;
-
-                    break;
-                }
-            }
-
-            if (!$channelFound) {
-                return false;
-            }
-
-            return true;
+        return $callouts->filter(function (CalloutInterface $callout) {
+            return $this->renderingCalloutEligibilityChecker->isEligible($callout);
         });
     }
 
     public function calloutClasses(CalloutInterface $callout): string
     {
-        $classes = ['setono-callout', 'setono-callout-code-' . $this->sanitizeClass((string) $callout->getCode())];
+        $classes = [
+            $this->cssClassBuilder->buildClasses($callout),
+            'setono-callout',
+            sprintf(
+                'setono-callout-code-%s',
+                $this->sanitizeClass((string) $callout->getCode())
+            ),
+        ];
 
         if ($callout->getPosition() !== null) {
-            $classes[] = 'setono-callout-position-' . $this->sanitizeClass($callout->getPosition());
+            $classes[] = sprintf(
+                'setono-callout-position-%s',
+                $this->sanitizeClass($callout->getPosition())
+            );
         }
 
         return implode(' ', $classes);

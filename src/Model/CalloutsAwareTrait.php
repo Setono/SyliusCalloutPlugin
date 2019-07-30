@@ -4,12 +4,28 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 trait CalloutsAwareTrait
 {
-    /** @var Collection|CalloutInterface[] */
+    /**
+     * @var Collection|CalloutInterface[]
+     *
+     * @ORM\ManyToMany(targetEntity="\Setono\SyliusCalloutPlugin\Model\CalloutInterface")
+     * @ORM\JoinTable(
+     *     name="setono_sylius_callout__product_callouts",
+     *     joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="callout_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")}
+     * )
+     */
     protected $callouts;
+
+    public function __construct()
+    {
+        $this->callouts = new ArrayCollection();
+    }
 
     public function getCallouts(): Collection
     {

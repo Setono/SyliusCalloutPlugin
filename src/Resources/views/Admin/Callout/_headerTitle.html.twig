@@ -1,0 +1,4 @@
+{% import '@SyliusUi/Macro/headers.html.twig' as headers %}
+
+{% set subheader = setono_callout_configuration_manual_triggering() ? 'setono_sylius_callout.ui.manual_triggering_on' : 'setono_sylius_callout.ui.manual_triggering_off' %}
+{{ headers.default(header|trans, configuration.vars.icon|default('bullhorn'), subheader|trans) }}

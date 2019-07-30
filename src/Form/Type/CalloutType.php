@@ -29,14 +29,14 @@ final class CalloutType extends AbstractResourceType
             ->add('name', TextType::class, [
                 'label' => 'setono_sylius_callout.ui.name',
             ])
-            ->add('timePeriodStart', DateTimeType::class, [
-                'label' => 'setono_sylius_callout.ui.time_period_start',
+            ->add('startsAt', DateTimeType::class, [
+                'label' => 'setono_sylius_callout.ui.starts_at',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
                 'required' => false,
             ])
-            ->add('timePeriodEnd', DateTimeType::class, [
-                'label' => 'setono_sylius_callout.ui.time_period_end',
+            ->add('endsAt', DateTimeType::class, [
+                'label' => 'setono_sylius_callout.ui.ends_at',
                 'date_widget' => 'single_text',
                 'time_widget' => 'single_text',
                 'required' => false,

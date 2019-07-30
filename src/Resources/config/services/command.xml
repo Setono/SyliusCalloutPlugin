@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono_sylius_callout.command.assign_product_callouts" class="Setono\SyliusCalloutPlugin\Command\AssignCalloutsCommand">
-            <argument type="service" id="setono_sylius_callout.assigner.callout" />
+
+        <service id="setono_sylius_callout.command.assign_product_callouts"
+                 class="Setono\SyliusCalloutPlugin\Command\AssignCalloutsCommand">
+            <argument type="service" id="setono_sylius_callout.assigner.eligible_callouts_to_all_products" />
             <tag name="console.command" />
         </service>
+
     </services>
 </container>

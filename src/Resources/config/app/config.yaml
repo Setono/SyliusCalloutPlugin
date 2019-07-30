@@ -1,5 +1,5 @@
 imports:
-    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids.yaml" }
+    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/grids.yaml" }
 
 framework:
     messenger:

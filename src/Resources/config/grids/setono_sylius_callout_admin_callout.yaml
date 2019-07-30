@@ -1,0 +1,54 @@
+sylius_grid:
+    grids:
+        setono_sylius_callout_admin_callout:
+            driver:
+                options:
+                    class: "%setono_sylius_callout.model.callout.class%"
+            fields:
+                code:
+                    type: string
+                    label: setono_sylius_callout.ui.code
+                    sortable: ~
+                name:
+                    type: string
+                    label: setono_sylius_callout.ui.name
+                    sortable: ~
+                enabled:
+                    type: twig
+                    label: setono_sylius_callout.ui.enabled
+                    sortable: ~
+                    options:
+                        template: SyliusUiBundle:Grid/Field:enabled.html.twig
+                updatedAt:
+                    type: datetime
+                    label: setono_sylius_callout.ui.updated_at
+                    sortable: ~
+                    options:
+                        format: "Y-m-d H:i:s"
+                rulesAssignedAt:
+                    type: datetime
+                    label: setono_sylius_callout.ui.rules_assigned_at
+                    sortable: ~
+                    options:
+                        format: "Y-m-d H:i:s"
+            filters:
+                name:
+                    type: string
+                    label: setono_sylius_callout.ui.name
+            actions:
+                main:
+                    create:
+                        type: create
+                    assign:
+                        type: setono_callout_default
+                        label: setono_sylius_callout.ui.action.assign
+                        options:
+                            icon: sync
+                            color: red
+                            link:
+                                route: setono_sylius_callout_admin_callout_assign
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

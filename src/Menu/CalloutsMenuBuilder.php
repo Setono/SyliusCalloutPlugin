@@ -11,10 +11,10 @@ final class CalloutsMenuBuilder
 {
     public function addCalloutsItem(MenuBuilderEvent $event): void
     {
-        /** @var ItemInterface $catalogMenu */
-        $catalogMenu = $event->getMenu()->getChild('catalog');
+        /** @var ItemInterface $marketingMenu */
+        $marketingMenu = $event->getMenu()->getChild('marketing');
 
-        $catalogMenu
+        $marketingMenu
             ->addChild('callouts', ['route' => 'setono_sylius_callout_admin_callout_index'])
             ->setLabel('setono_sylius_callout.ui.callouts')
             ->setLabelAttribute('icon', 'bullhorn')

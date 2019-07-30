@@ -9,6 +9,18 @@
 The callout plugin for [Sylius](https://sylius.com/) allows you to configure nice badges for different set of products
 based on specific rules. It provides a common set of configuration by default and is very flexible when it comes to adding new ones.
 
+Supports Doctrine ORM driver only.
+
+## Screenshots
+
+Shop:
+
+![Screenshot showing callouts on product list](docs/images/shop-product-callouts.png)
+
+Admin:
+
+![Screenshot showing admin callouts list](docs/images/admin-callout-index.png)
+
 ## Installation
 
 ### Step 1: Download the plugin
@@ -36,41 +48,134 @@ $bundles = [
 
 ### Step 3: Configure plugin
 ```yaml
-# config/packages/_sylius.yaml
+# config/packages/setono_product_callout.yaml
 
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/config.yaml" }
+
+setono_sylius_callout:
+    manual_triggering: false
+    # Enable manual triggering if your store have too much products
+    # That way you can trigger callouts assign process manually when
+    # finish adding all rules
+    # manual_triggering: true
 ```
 
 ### Step 4: Import routing
 
 ```yaml
-# config/routes/routes.yaml
+# config/routes/setono_product_callout.yaml
 
 setono_product_callout:
     resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yaml"
 ```
 
-### Step 5: Customize models and repositories
-5. Customize your product model. Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
-- add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\Entity\Product` class (check our [this path](tests/Application/src) for a reference),
-- add callouts relation to your `Product.orm.xml` like [here](tests/Application/src/Resources/config/doctrine),
-- if you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
-did in an example [here](tests/Application/src/Resources/config/resources.yml).
+### Step 5: Customize models
 
-Implement `ProductRepositoryInterface`.
+Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
 
-**Note:** We are using `.orm.xml` file format for entities configuration. You can use whatever format you wish. For more details
-read the official [Symfony Doctrine configuration reference](https://symfony.com/doc/current/reference/configuration/doctrine.html) or
-check out our configuration [here](tests/Application/config/packages/doctrine.yaml).
+#### Customize your Product model
 
-### Step 6: Add callouts to your product templates 
+Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\Entity\Product` class.
+
+- If you use `annotations` mapping:
+
+    ```php
+    <?php 
+    // src/Entity/Product.php
+    
+    namespace App\Entity;
+
+    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCalloutsAwareTrait;
+    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
+    use Sylius\Component\Core\Model\Product as BaseProduct;
+    use Doctrine\ORM\Mapping as ORM;
+    
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="sylius_product")
+     */
+    class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
+    {
+        use SetonoSyliusCalloutCalloutsAwareTrait {
+            SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+        }
+      
+        public function __construct()
+        {
+            $this->__calloutsTraitConstruct();
+            parent::__construct();
+        }
+    }
+    ```
+    
+- If you use `xml` mapping:
+
+    ```php
+    <?php
+    // src/Model/Product.php
+    
+    namespace App\Model;
+    
+    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCalloutsAwareTrait;
+    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
+    use Sylius\Component\Core\Model\Product as BaseProduct;
+    
+    class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
+    {
+        use SetonoSyliusCalloutCalloutsAwareTrait {
+            SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+        }
+      
+        public function __construct()
+        {
+            $this->__calloutsTraitConstruct();
+            parent::__construct();
+        }
+    }
+    ```
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    
+    <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                          http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    
+        <entity name="App\Model\Product" table="sylius_product">
+            <many-to-many field="callouts" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutInterface">
+                <join-table name="setono_sylius_callout__product_callouts">
+                    <join-columns>
+                        <join-column name="product_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                    </join-columns>
+                    <inverse-join-columns>
+                        <join-column name="callout_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                    </inverse-join-columns>
+                </join-table>
+            </many-to-many>
+        </entity>
+    
+    </doctrine-mapping>
+    ```
+
+If you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
+did in an example [here](tests/Application/config/packages/_sylius.yaml).
+
+### Step 6: Update your database schema
+
+```bash
+$ php bin/console doctrine:migrations:diff
+$ php bin/console doctrine:migrations:migrate
+```
+ 
+### Step 7: Add callouts to your product templates 
 Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
 path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusShopBundle/Product/_box.html.twig) file for a reference.
 
-Note the line: `{% include "@SetonoSyliusCalloutPlugin/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}`.
+Note the line: `{% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}`.
 
-### Step 7: Using asynchronous transport (optional, but recommended)
+### Step 8: Using asynchronous transport (optional, but recommended)
 
 All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
 Therefore you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
@@ -90,6 +195,12 @@ For the performance reasons, configure a cron job on your production server to e
 once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener
 triggered anytime you create/update a product or callout, but it is worth to have it covered if something goes wrong.
 
+Example cron configuration (`EDITOR=nano sudo crontab -e`) to run command once a day:
+
+```
+0 2 * * * www-data /var/www/html/bin/console setono:sylius-callout:assign --env=prod
+```
+
 ### Step 9: Install assets
 ```bash
 $ bin/console assets:install
@@ -104,9 +215,9 @@ From now on you should be able to add new callouts in the admin panel. Once you 
 Adding a new rule form
 ----------------------
 
-1. Configure a new form under `App\Form\Type\Rule` namespace like this [IsOnSaleConfigurationType](src/Form/Type/Rule/IsOnSaleConfigurationType.php),
-2. Add a rule checker under `App\Checker\Rule` namespace like this [IsOnSaleRuleChecker](src/Checker/Rule/IsOnSaleRuleChecker.php) and
-make sure it implements `Setono\SyliusCalloutPlugin\Checker\Rule\ProductCalloutRuleCheckerInterface` interface and has a `public const TYPE` 
+1. Configure a new form under `App\Form\Type\Rule` namespace,
+2. Add a rule checker under `App\Checker\Rule` namespace and
+make sure it implements `Setono\SyliusCalloutPlugin\Callout\Checker\Rule\ProductCalloutRuleCheckerInterface` interface and has a `public const TYPE` 
 set corresponding to the below service configuration 
 3. Register and tag new services:
 ```xml
@@ -114,7 +225,7 @@ set corresponding to the below service configuration
 <services>
     ...
     
-    <service id="app.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Checker\Rule\IsOnSaleRuleChecker">
+    <service id="app.callout_rule_checker.is_on_sale" class="Setono\SyliusCalloutPlugin\Callout\Checker\Rule\IsOnSaleRuleChecker">
         <argument type="service" id="setono_sylius_callout.checker.product_promotion" />
         <tag name="setono_sylius_callout.callout_rule_checker" type="is_on_sale" label="setono_sylius_callout.ui.is_on_sale" form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsOnSaleConfigurationType" />
     </service>

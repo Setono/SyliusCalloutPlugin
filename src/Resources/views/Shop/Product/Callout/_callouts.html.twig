@@ -1,0 +1,4 @@
+{# @var \Setono\SyliusCalloutPlugin\Model\CalloutInterface[] callouts #}
+{% for callout in callouts %}
+    {% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callout.html.twig" with {'callout': callout} %}
+{% endfor %}
