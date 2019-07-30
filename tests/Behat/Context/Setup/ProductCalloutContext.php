@@ -58,8 +58,6 @@ final class ProductCalloutContext implements Context
         $this->objectManager->persist($callout);
         $this->objectManager->flush();
         $this->objectManager->clear();
-
-        $this->productCalloutsAssigner->assign();
     }
 
     /**
@@ -73,8 +71,6 @@ final class ProductCalloutContext implements Context
         $this->objectManager->persist($callout);
         $this->objectManager->flush();
         $this->objectManager->clear();
-
-        $this->productCalloutsAssigner->assign();
     }
 
     private function createCallout(string $name, string $html): CalloutInterface
