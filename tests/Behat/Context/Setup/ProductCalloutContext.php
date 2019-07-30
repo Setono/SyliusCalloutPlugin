@@ -88,6 +88,7 @@ final class ProductCalloutContext implements Context
         $callout->setCode(StringInflector::nameToCode($name));
         $callout->setPosition(CalloutInterface::POSITION_TOP_LEFT);
         $callout->setPriority(0);
+        $callout->addChannel($channel);
         $callout->setEnabled(true);
 
         foreach ($channel->getLocales() as $locale) {
