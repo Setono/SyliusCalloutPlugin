@@ -76,8 +76,8 @@ Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\E
     
     namespace App\Entity;
 
-    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutPluginCalloutsAwareTrait;
-    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutPluginCalloutsProductInterface;
+    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCalloutsAwareTrait;
+    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
     use Sylius\Component\Core\Model\Product as BaseProduct;
     use Doctrine\ORM\Mapping as ORM;
     
@@ -85,10 +85,10 @@ Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\E
      * @ORM\Entity
      * @ORM\Table(name="sylius_product")
      */
-    class Product extends BaseProduct implements SetonoSyliusCalloutPluginCalloutsProductInterface
+    class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
     {
-        use SetonoSyliusCalloutPluginCalloutsAwareTrait {
-            SetonoSyliusCalloutPluginCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+        use SetonoSyliusCalloutCalloutsAwareTrait {
+            SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
         }
       
         public function __construct()
@@ -107,14 +107,14 @@ Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\E
     
     namespace App\Model;
     
-    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutPluginCalloutsAwareTrait;
-    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutPluginCalloutsProductInterface;
+    use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCalloutsAwareTrait;
+    use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
     use Sylius\Component\Core\Model\Product as BaseProduct;
     
-    class Product extends BaseProduct implements SetonoSyliusCalloutPluginCalloutsProductInterface
+    class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
     {
-        use SetonoSyliusCalloutPluginCalloutsAwareTrait {
-            SetonoSyliusCalloutPluginCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+        use SetonoSyliusCalloutCalloutsAwareTrait {
+            SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
         }
       
         public function __construct()

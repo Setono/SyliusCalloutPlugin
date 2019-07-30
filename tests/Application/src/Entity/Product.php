@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Tests\Setono\SyliusCalloutPlugin\Entity;
 
-use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutPluginCalloutsAwareTrait;
-use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutPluginCalloutsProductInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCalloutsAwareTrait;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
-final class Product extends BaseProduct implements SetonoSyliusCalloutPluginCalloutsProductInterface
+final class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
 {
-    use SetonoSyliusCalloutPluginCalloutsAwareTrait {
-        SetonoSyliusCalloutPluginCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
+    use SetonoSyliusCalloutCalloutsAwareTrait {
+        SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;
     }
 
     public function __construct()
