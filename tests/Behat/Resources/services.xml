@@ -4,6 +4,12 @@
     <services>
         <defaults public="true" />
 
+        <!-- Transform -->
+        <service id="setono_sylius_callout.behat.context.transform.callout"
+                 class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Transform\CalloutContext">
+            <argument type="service" id="setono_sylius_callout.repository.callout" />
+        </service>
+
         <!-- Setup -->
         <service id="setono_sylius_callout.behat.context.setup.callout"
                  class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup\ProductCalloutContext">
