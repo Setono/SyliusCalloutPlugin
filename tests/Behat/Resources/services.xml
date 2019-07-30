@@ -5,7 +5,8 @@
         <defaults public="true" />
 
         <!-- Setup -->
-        <service id="setono_sylius_callout.behat.context.setup.callout" class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup\ProductCalloutContext">
+        <service id="setono_sylius_callout.behat.context.setup.callout"
+                 class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup\ProductCalloutContext">
             <argument type="service" id="setono_sylius_callout.factory.callout_rule" />
             <argument type="service" id="setono_sylius_callout.assigner.eligible_callouts_to_all_products" />
             <argument type="service" id="setono_sylius_callout.factory.callout" />
@@ -14,12 +15,14 @@
         </service>
 
         <!-- UI -->
-        <service id="setono_sylius_callout.behat.context.ui.admin.callout" class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Ui\Admin\ProductCalloutContext">
+        <service id="setono_sylius_callout.behat.context.ui.admin.callout"
+                 class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Ui\Admin\ProductCalloutContext">
             <argument type="service" id="setono_sylius_callout.behat.page.admin.callout.create" />
             <argument type="service" id="sylius.behat.notification_checker" />
         </service>
 
-        <service id="setono_sylius_callout.behat.context.ui.shop.product" class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Ui\Shop\ProductContext">
+        <service id="setono_sylius_callout.behat.context.ui.shop.product"
+                 class="Tests\Setono\SyliusCalloutPlugin\Behat\Context\Ui\Shop\ProductContext">
             <argument type="service" id="setono_sylius_callout.behat.page.shop.product.index" />
             <argument type="service" id="setono_sylius_callout.repository.callout" />
         </service>
@@ -28,16 +31,14 @@
         <service id="setono_sylius_callout.behat.page.admin.callout.create"
                  class="Tests\Setono\SyliusCalloutPlugin\Behat\Page\Admin\ProductCallout\CreatePage"
                  parent="sylius.behat.page.admin.crud.create"
-                public="true"
-        >
+                 public="true">
             <argument>setono_sylius_callout_admin_callout_create</argument>
         </service>
 
         <service id="setono_sylius_callout.behat.page.shop.product.index"
                  class="Tests\Setono\SyliusCalloutPlugin\Behat\Page\Shop\Product\IndexPage"
                  parent="sylius.behat.page.shop.product.index"
-                 public="true"
-        >
+                 public="true">
         </service>
 
     </services>
