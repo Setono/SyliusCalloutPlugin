@@ -11,6 +11,16 @@ based on specific rules. It provides a common set of configuration by default an
 
 Supports Doctrine ORM driver only.
 
+## Screenshots
+
+Shop:
+
+![Screenshot showing callouts on product list](docs/images/shop-product-callouts.png)
+
+Admin:
+
+![Screenshot showing admin callouts list](docs/images/admin-callout-index.png)
+
 ## Installation
 
 ### Step 1: Download the plugin
