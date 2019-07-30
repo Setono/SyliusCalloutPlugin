@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Callout;
 
 use Exception;
-use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use function Safe\sprintf;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 
 class SemanticUiCssClassBuilder implements CssClassBuilderInterface
 {

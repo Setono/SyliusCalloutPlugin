@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Twig\Extension;
 
 use Doctrine\Common\Collections\Collection;
-use Setono\SyliusCalloutPlugin\Callout\CssClassBuilderInterface;
 use function Safe\preg_replace;
 use function Safe\sprintf;
 use Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility\RenderingCalloutEligibilityCheckerInterface;
+use Setono\SyliusCalloutPlugin\Callout\CssClassBuilderInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
