@@ -13,13 +13,5 @@
                  method="onBlockEvent" />
         </service>
 
-<!--        <service id="setono_sylius_callout.block_event_listener.shop.layout.stylesheets"-->
-<!--                 class="Sylius\Bundle\UiBundle\Block\BlockEventListener">-->
-<!--            <argument>@SetonoSyliusCalloutPlugin/Shop/_stylesheets.html.twig</argument>-->
-<!--            <tag name="kernel.event_listener"-->
-<!--                 event="sonata.block.event.sylius.shop.layout.stylesheets"-->
-<!--                 method="onBlockEvent" />-->
-<!--        </service>-->
-
     </services>
 </container>
