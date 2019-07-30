@@ -182,7 +182,10 @@ class Callout implements CalloutInterface
 
     public function removeRule(CalloutRuleInterface $rule): void
     {
-        // We don't want this!
+        // @todo Better way
+        // We don't want this
+        // as we need to know callout id on rule remove
+        // at Doctrine Event Listener
         // $rule->setCallout(null);
         $this->rules->removeElement($rule);
     }

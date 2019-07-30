@@ -44,7 +44,7 @@ final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInt
     public function __invoke(AssignEligibleCalloutsToProducts $message): void
     {
         // We don't want assign process to actually start if another change
-        // was done on any callout as this lead to another assign triggering
+        // was done later on any callout as this lead to another assign triggering
         // in few seconds which means double work
         $triggeredAt = $message->getTriggeredAt();
         if ($this->calloutRepository->hasUpdatedSince($triggeredAt)) {

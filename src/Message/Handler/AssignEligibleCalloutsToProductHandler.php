@@ -45,6 +45,8 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
         );
 
         // We don't want this here
+        // as flushing here causing Doctrine Event Listener
+        // fall to deadlock
         // $this->productManager->flush();
     }
 }
