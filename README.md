@@ -190,7 +190,7 @@ framework:
             'Setono\SyliusCalloutPlugin\Message\Command\CommandInterface': async
 ```
 
-### Step 8: Configure cron job
+### Step 9: Configure cron job
 For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:sylius-callout:assign` command 
 once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener
 triggered anytime you create/update a product or callout, but it is worth to have it covered if something goes wrong.
@@ -201,7 +201,7 @@ Example cron configuration (`EDITOR=nano sudo crontab -e`) to run command once a
 0 2 * * * www-data /var/www/html/bin/console setono:sylius-callout:assign --env=prod
 ```
 
-### Step 9: Install assets
+### Step 10: Install assets
 ```bash
 $ bin/console assets:install
 ```
