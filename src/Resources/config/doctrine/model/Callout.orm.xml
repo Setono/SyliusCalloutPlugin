@@ -19,6 +19,9 @@
         <field name="enabled" type="boolean"/>
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
+            <options>
+                <option name="default">CURRENT_TIMESTAMP</option>
+            </options>
         </field>
         <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
             <!-- We update this date at doctrine event listeners only when -->
