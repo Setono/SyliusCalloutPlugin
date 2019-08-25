@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use Setono\DoctrineORMBatcher\Query\QueryRebuilder;
 use Setono\SyliusCalloutPlugin\Callout\Provider\EligibleCalloutsProviderInterface;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProductsBatch;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
-use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class AssignEligibleCalloutsToProductsBatchHandler implements MessageHandlerInterface
@@ -21,31 +20,26 @@ final class AssignEligibleCalloutsToProductsBatchHandler implements MessageHandl
     /** @var EntityManagerInterface */
     private $productManager;
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
+    /** @var ManagerRegistry */
+    private $managerRegistry;
 
     public function __construct(
         EligibleCalloutsProviderInterface $eligibleCalloutsProvider,
         EntityManagerInterface $productManager,
-        ProductRepositoryInterface $productRepository
+        ManagerRegistry $managerRegistry
     ) {
         $this->eligibleCalloutsProvider = $eligibleCalloutsProvider;
         $this->productManager = $productManager;
-        $this->productRepository = $productRepository;
+        $this->managerRegistry = $managerRegistry;
     }
 
     public function __invoke(AssignEligibleCalloutsToProductsBatch $message): void
     {
-        if (!$this->productRepository instanceof EntityRepository) {
-            return;
-        }
-
-        $queryRebuilder = new QueryRebuilder();
-        $query = $queryRebuilder->rebuild($this->productManager, $message->getBatch());
+        $queryRebuilder = new QueryRebuilder($this->managerRegistry);
+        $query = $queryRebuilder->rebuild($message->getBatch());
 
         /** @var ProductInterface[] $products */
         $products = $query->getResult();
-
         if (count($products) === 0) {
             return;
         }

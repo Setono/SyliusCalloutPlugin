@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\ORM\EntityManager;
-use Setono\DoctrineORMBatcher\Factory\BestIdRangeBatcherFactory;
+use Setono\DoctrineORMBatcher\Factory\BatcherFactory;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProducts;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProductsBatch;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
@@ -61,8 +61,8 @@ final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInt
         /** @scrutinizer ignore-call */
         $qb = $this->productRepository->createQueryBuilder('o');
 
-        $batcherFactory = new BestIdRangeBatcherFactory();
-        $batcher = $batcherFactory->create($qb);
+        $batcherFactory = new BatcherFactory();
+        $batcher = $batcherFactory->createBestIdRangeBatcher($qb);
 
         foreach ($batcher->getBatches() as $batch) {
             $this->messageBus->dispatch(new AssignEligibleCalloutsToProductsBatch($batch));
