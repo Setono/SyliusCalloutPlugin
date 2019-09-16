@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\ORM\EntityManager;
-use Setono\DoctrineORMBatcher\Factory\BatcherFactory;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
+use Setono\DoctrineORMBatcher\Factory\BatcherFactoryInterface;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProducts;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProductsBatch;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
@@ -29,18 +31,27 @@ final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInt
     /** @var MessageBusInterface */
     private $messageBus;
 
+    /** @var BatcherFactoryInterface */
+    private $batcherFactory;
+
     public function __construct(
         CalloutRepositoryInterface $calloutRepository,
         EntityManager $calloutManager,
         ProductRepositoryInterface $productRepository,
-        MessageBusInterface $messageBus
+        MessageBusInterface $messageBus,
+        BatcherFactoryInterface $batcherFactory
     ) {
         $this->calloutRepository = $calloutRepository;
         $this->calloutManager = $calloutManager;
         $this->productRepository = $productRepository;
         $this->messageBus = $messageBus;
+        $this->batcherFactory = $batcherFactory;
     }
 
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
     public function __invoke(AssignEligibleCalloutsToProducts $message): void
     {
         // We don't want assign process to actually start if another change
@@ -58,11 +69,9 @@ final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInt
         }
         $this->calloutManager->flush();
 
-        /** @scrutinizer ignore-call */
         $qb = $this->productRepository->createQueryBuilder('o');
 
-        $batcherFactory = new BatcherFactory();
-        $batcher = $batcherFactory->createBestIdRangeBatcher($qb);
+        $batcher = $this->batcherFactory->createIdRangeBatcher($qb);
 
         foreach ($batcher->getBatches() as $batch) {
             $this->messageBus->dispatch(new AssignEligibleCalloutsToProductsBatch($batch));
