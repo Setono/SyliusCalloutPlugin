@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<container xmlns="http://symfony.com/schema/dic/services"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
         <service id="Setono\SyliusCalloutPlugin\Message\Handler\AssignEligibleCalloutsToProductHandler">
-            <argument type="service" id="setono_sylius_callout.provider.eligible_callouts" />
-            <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="sylius.manager.product" />
+            <argument type="service" id="setono_sylius_callout.provider.eligible_callouts"/>
+            <argument type="service" id="sylius.repository.product"/>
+            <argument type="service" id="sylius.manager.product"/>
+
             <tag name="messenger.message_handler"/>
         </service>
 
         <service id="Setono\SyliusCalloutPlugin\Message\Handler\AssignEligibleCalloutsToProductsBatchHandler">
-            <argument type="service" id="setono_sylius_callout.provider.eligible_callouts" />
-            <argument type="service" id="sylius.manager.product" />
-            <argument type="service" id="doctrine" />
+            <argument type="service" id="setono_sylius_callout.provider.eligible_callouts"/>
+            <argument type="service" id="sylius.manager.product"/>
+            <argument type="service" id="doctrine"/>
+
             <tag name="messenger.message_handler"/>
         </service>
 
         <service id="Setono\SyliusCalloutPlugin\Message\Handler\AssignEligibleCalloutsToProductsHandler">
-            <argument type="service" id="setono_sylius_callout.repository.callout" />
-            <argument type="service" id="setono_sylius_callout.manager.callout" />
-            <argument type="service" id="sylius.repository.product" />
-            <argument type="service" id="setono_sylius_callout.command_bus" />
+            <argument type="service" id="setono_sylius_callout.repository.callout"/>
+            <argument type="service" id="setono_sylius_callout.manager.callout"/>
+            <argument type="service" id="sylius.repository.product"/>
+            <argument type="service" id="setono_sylius_callout.command_bus"/>
+            <argument type="service" id="setono_doctrine_orm_batcher.factory.batcher"/>
+
             <tag name="messenger.message_handler"/>
         </service>
 
