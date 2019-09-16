@@ -23,7 +23,11 @@ Admin:
 
 ## Installation
 
-### Step 1: Download the plugin
+### Step 1: Install dependencies
+
+This plugin depends upon the [Doctrine ORM Batcher bundle](https://github.com/Setono/DoctrineORMBatcherBundle). Install that bundle first.
+
+### Step 2: Download the plugin
 
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this plugin:
 
@@ -33,7 +37,7 @@ $ composer require setono/sylius-callout-plugin
 
 This command requires you to have Composer installed globally, as explained in the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
 
-### Step 2: Enable the plugin
+### Step 3: Enable the plugin
 
 Then, enable the plugin by adding it to the list of registered plugins/bundles
 in `config/bundles.php` file of your project *before* (!) `SyliusGridBundle`:
@@ -46,7 +50,7 @@ $bundles = [
 ];
 ```
 
-### Step 3: Configure plugin
+### Step 4: Configure plugin
 ```yaml
 # config/packages/setono_product_callout.yaml
 
@@ -61,7 +65,7 @@ setono_sylius_callout:
     # manual_triggering: true
 ```
 
-### Step 4: Import routing
+### Step 5: Import routing
 
 ```yaml
 # config/routes/setono_product_callout.yaml
@@ -70,7 +74,7 @@ setono_product_callout:
     resource: "@SetonoSyliusCalloutPlugin/Resources/config/routing.yaml"
 ```
 
-### Step 5: Customize models
+### Step 6: Customize models
 
 Read more about Sylius models customization [here](https://docs.sylius.com/en/latest/customization/model.html).
 
@@ -162,20 +166,20 @@ Add a `Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait` trait to your `App\E
 If you haven't done so already, configure the `sylius_product` resource to point to your `App\Entity\Product` like we 
 did in an example [here](tests/Application/config/packages/_sylius.yaml).
 
-### Step 6: Update your database schema
+### Step 7: Update your database schema
 
 ```bash
 $ php bin/console doctrine:migrations:diff
 $ php bin/console doctrine:migrations:migrate
 ```
  
-### Step 7: Add callouts to your product templates 
+### Step 8: Add callouts to your product templates 
 Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
 path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusShopBundle/Product/_box.html.twig) file for a reference.
 
 Note the line: `{% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}`.
 
-### Step 8: Using asynchronous transport (optional, but recommended)
+### Step 9: Using asynchronous transport (optional, but recommended)
 
 All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
 Therefore you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
@@ -190,7 +194,7 @@ framework:
             'Setono\SyliusCalloutPlugin\Message\Command\CommandInterface': async
 ```
 
-### Step 9: Configure cron job
+### Step 10: Configure cron job
 For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:sylius-callout:assign` command 
 once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener
 triggered anytime you create/update a product or callout, but it is worth to have it covered if something goes wrong.
@@ -201,7 +205,7 @@ Example cron configuration (`EDITOR=nano sudo crontab -e`) to run command once a
 0 2 * * * www-data /var/www/html/bin/console setono:sylius-callout:assign --env=prod
 ```
 
-### Step 10: Install assets
+### Step 11: Install assets
 ```bash
 $ bin/console assets:install
 ```
