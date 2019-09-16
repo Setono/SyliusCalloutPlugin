@@ -23,12 +23,6 @@
                  form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType" />
         </service>
 
-        <service id="setono_sylius_callout.checker.product_promotion"
-                 class="Setono\SyliusCalloutPlugin\Callout\Checker\ProductPromotionChecker">
-            <argument type="service" id="sylius.repository.promotion_rule" />
-            <argument type="service" id="sylius.repository.taxon" />
-        </service>
-
         <service id="setono_sylius_callout.registry.callout_rule_checker"
                  class="Sylius\Component\Registry\ServiceRegistry">
             <argument type="string">Setono\SyliusCalloutPlugin\Callout\Checker\Rule\ProductCalloutRuleCheckerInterface</argument>
