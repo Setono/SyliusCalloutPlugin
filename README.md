@@ -45,10 +45,13 @@ in `config/bundles.php` file of your project *before* (!) `SyliusGridBundle`:
 ```php
 <?php
 $bundles = [
+    Setono\DoctrineORMBatcherBundle\SetonoDoctrineORMBatcherBundle::class => ['all' => true],
     Setono\SyliusCalloutPlugin\SetonoSyliusCalloutPlugin::class => ['all' => true],
     Sylius\Bundle\GridBundle\SyliusGridBundle::class => ['all' => true],
 ];
 ```
+
+Don't forget to add `SetonoDoctrineORMBatcherBundle` as this plugin require bundle to be enabled.
 
 ### Step 4: Configure plugin
 ```yaml
@@ -239,6 +242,12 @@ set corresponding to the below service configuration
     </service>
 </services>
 ```
+
+## Troubleshooting
+
+- `The service "setono_sylius_callout.command_bus.middleware.handle_message" has a dependency on a non-existent service "setono_doctrine_orm_batcher.factory.batcher".`
+
+  You forgot to add `SetonoDoctrineORMBatcherBundle` to your app's `bundles.php`
 
 [ico-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/stable
 [ico-unstable-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/unstable
