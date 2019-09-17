@@ -2,12 +2,10 @@ sylius_fixtures:
     suites:
         default:
             fixtures:
-                
                 locale:
                     options:
                         locales:
                             - "uk_UA"
-
                 product:
                     options:
                         custom:
@@ -19,7 +17,6 @@ sylius_fixtures:
                                     - "caps"
                                 channels:
                                     - "FASHION_WEB"
-
                 setono_sylius_callout:
                     options:
                         custom:
@@ -40,8 +37,7 @@ sylius_fixtures:
                                     - type: "has_product"
                                       configuration:
                                           products: 
-                                              - "setono_sticker_on_sale"
-
+                                              - "setono_cap_on_sale"
                             callout_this_week_only:
                                 name: "This week only"
                                 code: "this-week-only"
@@ -59,8 +55,7 @@ sylius_fixtures:
                                     - type: "has_taxon"
                                       configuration:
                                           taxons:
-                                              - "books"
-
+                                              - "caps"
                             callout_another_one_callout:
                                 name: "Another one callout"
                                 code: "another_one_callout"
@@ -76,4 +71,4 @@ sylius_fixtures:
                                     - type: "has_taxon"
                                       configuration:
                                           taxons:
-                                              - "books"
+                                              - "caps"
