@@ -60,7 +60,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "DoctrineMigrations\\": "migrations/",
             "Tests\\Setono\\SyliusCalloutPlugin\\": [
                 "tests/",
                 "tests/Application/src"
