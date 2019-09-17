@@ -11,14 +11,14 @@ sylius_fixtures:
                 product:
                     options:
                         custom:
-                            product_setono_sticker_on_sale:
-                                name: "Setono Sticker on sale"
-                                code: "setono_sticker_on_sale"
-                                main_taxon: "stickers"
+                            product_setono_cap_on_sale:
+                                name: "Setono Cap on sale"
+                                code: "setono_cap_on_sale"
+                                main_taxon: "caps"
                                 taxons: 
-                                    - "stickers"
+                                    - "caps"
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
 
                 setono_sylius_callout:
                     options:
@@ -35,7 +35,7 @@ sylius_fixtures:
                                 starts_at: "now"
                                 ends_at: "1 day"
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
                                 rules:
                                     - type: "has_product"
                                       configuration:
@@ -54,7 +54,7 @@ sylius_fixtures:
                                 starts_at: "now"
                                 ends_at: "7 days"
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
                                 rules:
                                     - type: "has_taxon"
                                       configuration:
@@ -71,7 +71,7 @@ sylius_fixtures:
                                 position: "bottom_right"
                                 priority: 1
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
                                 rules:
                                     - type: "has_taxon"
                                       configuration:
