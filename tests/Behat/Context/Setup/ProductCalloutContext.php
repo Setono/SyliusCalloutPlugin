@@ -77,7 +77,7 @@ final class ProductCalloutContext implements Context
      * @Given /^there is a callout "([^"]+)" with "Is new" rule configured with (\d+) days? and with "([^"]+)" html$/
      * @Given /^there is a callout "([^"]+)" with "Is new" rule configured with (\d+) days? and with "([^"]+)" html in ("[^"]+" channel)$/
      */
-    public function thereIsAnIsNewProductCalloutWithRuleConfiguredWithProduct(string $name, string $days, string $html, ChannelInterface $channel = null): void
+    public function thereIsAnIsNewProductCalloutWithRuleConfiguredWithDays(string $name, string $days, string $html, ChannelInterface $channel = null): void
     {
         $callout = $this->createCallout($name, $html, $channel);
         $callout->addRule($this->calloutRuleFactory->createIsNewProduct((int)$days));
