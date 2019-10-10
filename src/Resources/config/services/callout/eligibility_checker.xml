@@ -8,6 +8,7 @@
         <service id="setono_sylius_callout.callout_eligibility_checker.rules"
                  class="Setono\SyliusCalloutPlugin\Callout\Checker\Eligibility\CalloutRulesEligibilityChecker">
             <argument type="service" id="setono_sylius_callout.registry.callout_rule_checker" />
+            <argument>%setono_sylius_callout.no_rules_eligible%</argument>
             <tag name="setono_sylius_callout.callout_eligibility_checker" />
         </service>
 

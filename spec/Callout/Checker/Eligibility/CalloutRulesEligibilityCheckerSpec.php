@@ -40,6 +40,17 @@ final class CalloutRulesEligibilityCheckerSpec extends ObjectBehavior
         $this->isEligible($product, $callout)->shouldReturn(false);
     }
 
+    function it_eligible_when_no_rules_specified_but_isNoRulesEligible_option_set_to_true(
+        ServiceRegistryInterface $ruleRegistry,
+        CalloutInterface $callout,
+        CalloutsAwareInterface $product
+    ): void {
+        $this->beConstructedWith($ruleRegistry, true);
+        $callout->hasRules()->willReturn(false);
+
+        $this->isEligible($product, $callout)->shouldReturn(true);
+    }
+
     function it_checks_eligibility(
         CalloutInterface $callout,
         CalloutRuleInterface $rule,

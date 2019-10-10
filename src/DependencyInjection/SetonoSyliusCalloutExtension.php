@@ -19,6 +19,7 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension
         $loader->load('services.xml');
 
         $container->setParameter('setono_sylius_callout.manual_triggering', $config['manual_triggering']);
+        $container->setParameter('setono_sylius_callout.no_rules_eligible', $config['no_rules_eligible']);
         $this->registerResources('setono_sylius_callout', $config['driver'], $config['resources'], $container);
     }
 }

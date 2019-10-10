@@ -66,6 +66,12 @@ setono_sylius_callout:
     # That way you can trigger callouts assign process manually when
     # finish adding all rules
     # manual_triggering: true
+    
+    no_rules_eligible: false
+    # Set this option to true if you want no rules to be
+    # treated as eligible (e.g. callout without rules will 
+    # be applied to all products)
+    # no_rules_eligible: true
 ```
 
 ### Step 5: Import routing
