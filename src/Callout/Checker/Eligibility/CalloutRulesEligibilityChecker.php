@@ -21,7 +21,7 @@ final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerI
     /** @var bool */
     private $isNoRulesEligible;
 
-    public function __construct(ServiceRegistryInterface $ruleRegistry, $isNoRulesEligible = false)
+    public function __construct(ServiceRegistryInterface $ruleRegistry, bool $isNoRulesEligible = false)
     {
         $this->ruleRegistry = $ruleRegistry;
         $this->isNoRulesEligible = $isNoRulesEligible;
