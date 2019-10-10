@@ -30,6 +30,14 @@ Feature: Displaying Product Callouts
         Then I should see 1 product with callout "Good to buy"
 
     @ui
+    Scenario: Displaying is new callout
+        Given there is a callout "New" with "Is new" rule configured with 1 day and with "<p>Just arrived</p>" html
+        And the store has a product "Old product" with code "OLD", created at "08-10-2019"
+        And this product belongs to "T-Shirts"
+        When I browse products from taxon "T-Shirts"
+        Then I should see 3 product with callout "New"
+
+    @ui
     Scenario: Callouts not enabled for channel shouldn't be rendered
         Given there is a callout "Disabled" with "Has taxon" rule configured with "T-Shirts" taxon and with "<p>Disabled</p>" html
         And this callout is disabled for "United States" channel

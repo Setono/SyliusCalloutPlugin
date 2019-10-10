@@ -12,4 +12,6 @@ interface CalloutRuleFactoryInterface extends FactoryInterface
     public function createHasTaxon(array $taxons): CalloutRuleInterface;
 
     public function createHasProduct(array $products): CalloutRuleInterface;
+
+    public function createIsNewProduct(int $days): CalloutRuleInterface;
 }
