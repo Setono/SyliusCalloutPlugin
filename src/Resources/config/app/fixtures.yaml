@@ -77,3 +77,37 @@ sylius_fixtures:
                                       configuration:
                                           taxons:
                                               - "books"
+
+                            callout_new_product:
+                                name: "New"
+                                code: "new"
+                                text: "New"
+                                translations:
+                                    uk_UA:
+                                        text: "Новинка"
+                                position: "top_left"
+                                channels:
+                                    - "FASHION_WEB"
+                                rules:
+                                    - type: "is_new"
+                                      configuration:
+                                          # As far as any product created from fixtures
+                                          # have createdAt between -1 week and now
+                                          # ~50% of loaded products should have badge 'New'
+                                          days: 3
+
+                            callout_new_setono_jeans:
+                                name: "New Setono jeans"
+                                code: "new_setono_jeans"
+                                text: "New Setono jeans"
+                                position: "top_right"
+                                channels:
+                                    - "FASHION_WEB"
+                                rules:
+                                    - type: "has_product"
+                                      configuration:
+                                          products: 
+                                              - "setono_jeans_on_sale"
+                                    - type: "is_new"
+                                      configuration:
+                                          days: 7
