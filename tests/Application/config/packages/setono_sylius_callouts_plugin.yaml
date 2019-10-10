@@ -1,3 +1,6 @@
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/config.yaml"}
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/fixtures.yaml"}
+
+setono_sylius_callout:
+    no_rules_eligible: true

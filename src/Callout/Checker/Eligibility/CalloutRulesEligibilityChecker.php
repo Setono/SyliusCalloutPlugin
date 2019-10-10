@@ -18,17 +18,19 @@ final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerI
     /** @var ServiceRegistryInterface */
     private $ruleRegistry;
 
-    public function __construct(ServiceRegistryInterface $ruleRegistry)
+    /** @var bool */
+    private $isNoRulesEligible;
+
+    public function __construct(ServiceRegistryInterface $ruleRegistry, bool $isNoRulesEligible = false)
     {
         $this->ruleRegistry = $ruleRegistry;
+        $this->isNoRulesEligible = $isNoRulesEligible;
     }
 
     public function isEligible(CalloutsAwareInterface $product, CalloutInterface $callout): bool
     {
-        // If a Callout has no rules - it won't be applied to any products
-        // As far as Callout should be applied to some group of products, not to all products
         if (!$callout->hasRules()) {
-            return false;
+            return $this->isNoRulesEligible;
         }
 
         // All rules should pass for Product to be eligible

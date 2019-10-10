@@ -43,3 +43,9 @@ Feature: Displaying Product Callouts
         And this callout is disabled for "United States" channel
         When I browse products from taxon "T-Shirts"
         Then I should see 0 products with callout "Disabled"
+
+    @ui
+    Scenario: Callouts without rules should be applied to all products
+        Given there is a callout "No rules" with "<p>No rules</p>" html
+        When I browse products from taxon "T-Shirts"
+        Then I should see 3 product with callout "No rules"

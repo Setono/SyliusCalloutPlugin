@@ -40,6 +40,10 @@ final class Configuration implements ConfigurationInterface
                     ->info('Set it to true if you have thousands of products in your store and/or want to trigger callout assign manually.')
                     ->defaultFalse()
                 ->end()
+                ->booleanNode('no_rules_eligible')
+                    ->info('Set it to true if you want no rules to be treated as eligible (callout will be applied to all products).')
+                    ->defaultFalse()
+                ->end()
             ->end()
         ;
 

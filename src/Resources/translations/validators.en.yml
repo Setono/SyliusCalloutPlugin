@@ -8,8 +8,6 @@ setono_sylius_callout:
         priority:
             not_blank: Priority cannot be blank.
             numeric: Priority must be an integer.
-        rules:
-            min: Specify at least one rule.
     callout_translation:
         text:
             not_blank: Text cannot be blank.

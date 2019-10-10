@@ -15,6 +15,7 @@
         <service id="setono_sylius_callout.doctrine_event_subscriber.callout"
                  class="Setono\SyliusCalloutPlugin\EventListener\CalloutDoctrineEventSubscriber"
                  parent="Setono\SyliusCalloutPlugin\EventListener\AbstractCalloutDoctrineEventSubscriber">
+            <argument>%setono_sylius_callout.no_rules_eligible%</argument>
             <tag name="doctrine.event_subscriber" />
         </service>
 
