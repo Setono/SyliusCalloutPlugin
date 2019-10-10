@@ -23,6 +23,14 @@
                  form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType" />
         </service>
 
+        <service id="setono_sylius_callout.callout_rule_checker.is_new"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\Rule\IsNewProductCalloutRuleChecker">
+            <tag name="setono_sylius_callout.callout_rule_checker"
+                 type="is_new"
+                 label="setono_sylius_callout.ui.is_new"
+                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsNewProductConfigurationType" />
+        </service>
+
         <service id="setono_sylius_callout.registry.callout_rule_checker"
                  class="Sylius\Component\Registry\ServiceRegistry">
             <argument type="string">Setono\SyliusCalloutPlugin\Callout\Checker\Rule\ProductCalloutRuleCheckerInterface</argument>

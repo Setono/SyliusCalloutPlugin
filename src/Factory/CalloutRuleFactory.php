@@ -6,6 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Factory;
 
 use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasProductCalloutRuleChecker;
 use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasTaxonCalloutRuleChecker;
+use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\IsNewProductCalloutRuleChecker;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
@@ -33,6 +34,11 @@ class CalloutRuleFactory implements CalloutRuleFactoryInterface
         return $this->createCalloutRule(HasProductCalloutRuleChecker::TYPE, ['products' => array_map(function (ProductInterface $product) {
             return $product->getCode();
         }, $products)]);
+    }
+
+    public function createIsNewProduct(int $days): CalloutRuleInterface
+    {
+        return $this->createCalloutRule(IsNewProductCalloutRuleChecker::TYPE, ['days' => $days]);
     }
 
     public function createNew(): CalloutRuleInterface

@@ -21,6 +21,7 @@ final class CalloutType extends AbstractResourceType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // @todo Fix labels at next plugin version
         $builder
             ->add('code', TextType::class, [
                 'label' => 'setono_sylius_callout.ui.code',

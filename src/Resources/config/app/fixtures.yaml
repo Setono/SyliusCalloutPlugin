@@ -17,6 +17,7 @@ sylius_fixtures:
                                     - "caps"
                                 channels:
                                     - "FASHION_WEB"
+
                 setono_sylius_callout:
                     options:
                         custom:
@@ -38,6 +39,7 @@ sylius_fixtures:
                                       configuration:
                                           products: 
                                               - "setono_cap_on_sale"
+
                             callout_this_week_only:
                                 name: "This week only"
                                 code: "this-week-only"
@@ -56,6 +58,7 @@ sylius_fixtures:
                                       configuration:
                                           taxons:
                                               - "caps"
+
                             callout_another_one_callout:
                                 name: "Another one callout"
                                 code: "another_one_callout"
@@ -71,4 +74,38 @@ sylius_fixtures:
                                     - type: "has_taxon"
                                       configuration:
                                           taxons:
-                                              - "caps"
+                                            - "caps"
+
+                            callout_new_product:
+                                name: "New"
+                                code: "new"
+                                text: "New"
+                                translations:
+                                    uk_UA:
+                                        text: "Новинка"
+                                position: "top_left"
+                                channels:
+                                    - "FASHION_WEB"
+                                rules:
+                                    - type: "is_new"
+                                      configuration:
+                                          # As far as any product created from fixtures
+                                          # have createdAt between -1 week and now
+                                          # ~50% of loaded products should have badge 'New'
+                                          days: 3
+
+                            callout_new_setono_caps:
+                                name: "New Setono caps"
+                                code: "new_setono_caps"
+                                text: "New Setono caps"
+                                position: "top_right"
+                                channels:
+                                    - "FASHION_WEB"
+                                rules:
+                                    - type: "has_product"
+                                      configuration:
+                                          products: 
+                                              - "setono_cap_on_sale"
+                                    - type: "is_new"
+                                      configuration:
+                                          days: 7

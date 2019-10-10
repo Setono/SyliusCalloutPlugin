@@ -23,7 +23,7 @@ final class HasProductConfigurationType extends AbstractType
     {
         $builder
             ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'sylius.form.promotion_filter.products',
+                'label' => 'setono_sylius_callout.form.callout_rule.has_product.products',
                 'multiple' => true,
             ]);
 

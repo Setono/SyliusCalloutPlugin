@@ -12,6 +12,7 @@ final class CalloutRuleType extends AbstractConfigurableCalloutRuleType
     {
         parent::buildForm($builder, $options);
 
+        // @todo Fix labels at next plugin version
         $builder
             ->add('type', CalloutRuleChoiceType::class, [
                 'label' => 'setono_sylius_callout.ui.type',
