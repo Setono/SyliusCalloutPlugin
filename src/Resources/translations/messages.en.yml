@@ -10,6 +10,7 @@ setono_sylius_callout:
         rules_assigned_at: Rules assigned at
         has_product: Has product
         has_taxon: Has taxon
+        is_new: Is new
         promoted: Promoted?
         name: Name
         new_callout: New callout
@@ -33,3 +34,5 @@ setono_sylius_callout:
                 products: Products
             has_taxon:
                 taxons: Taxons
+            is_new:
+                days: Days
