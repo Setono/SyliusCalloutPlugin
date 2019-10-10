@@ -90,7 +90,10 @@ class CalloutExampleFactory extends AbstractExampleFactory
         }
 
         $callout->setPosition($options['position']);
-        $callout->setPriority($options['priority']);
+
+        if (isset($options['priority'])) {
+            $callout->setPriority($options['priority']);
+        }
 
         if (isset($options['starts_at'])) {
             $callout->setStartsAt(new \DateTime($options['starts_at']));
