@@ -11,14 +11,14 @@ sylius_fixtures:
                 product:
                     options:
                         custom:
-                            product_setono_sticker_on_sale:
-                                name: "Setono Sticker on sale"
-                                code: "setono_sticker_on_sale"
-                                main_taxon: "stickers"
+                            product_setono_jeans_on_sale:
+                                name: "Setono Jeans on sale"
+                                code: "setono_jeans_on_sale"
+                                main_taxon: "mens_jeans"
                                 taxons: 
-                                    - "stickers"
+                                    - "mens_jeans"
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
 
                 setono_sylius_callout:
                     options:
@@ -35,12 +35,12 @@ sylius_fixtures:
                                 starts_at: "now"
                                 ends_at: "1 day"
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
                                 rules:
                                     - type: "has_product"
                                       configuration:
                                           products: 
-                                              - "setono_sticker_on_sale"
+                                              - "setono_jeans_on_sale"
 
                             callout_this_week_only:
                                 name: "This week only"
@@ -54,7 +54,7 @@ sylius_fixtures:
                                 starts_at: "now"
                                 ends_at: "7 days"
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
                                 rules:
                                     - type: "has_taxon"
                                       configuration:
@@ -71,7 +71,7 @@ sylius_fixtures:
                                 position: "bottom_right"
                                 priority: 1
                                 channels:
-                                    - "US_WEB"
+                                    - "FASHION_WEB"
                                 rules:
                                     - type: "has_taxon"
                                       configuration:
