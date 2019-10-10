@@ -87,6 +87,18 @@ final class ProductCalloutContext implements Context
     }
 
     /**
+     * @Given /^there is a callout "([^"]+)" with "([^"]+)" html$/
+     * @Given /^there is a callout "([^"]+)" with "([^"]+)" html in ("[^"]+" channel)$/
+     */
+    public function thereIsCalloutWithoutRules(string $name, string $html, ChannelInterface $channel = null): void
+    {
+        $callout = $this->createCallout($name, $html, $channel);
+
+        $this->objectManager->persist($callout);
+        $this->objectManager->flush();
+    }
+
+    /**
      * @Given /^(the callout "([^"]+)") is disabled for ("[^"]+" channel)$/
      * @Given /^(the callout "([^"]+)") is disabled for (this channel)$/
      * @Given /^(this callout) is disabled for ("[^"]+" channel)$/
