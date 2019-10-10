@@ -2,21 +2,19 @@ sylius_fixtures:
     suites:
         default:
             fixtures:
-                
                 locale:
                     options:
                         locales:
                             - "uk_UA"
-
                 product:
                     options:
                         custom:
-                            product_setono_jeans_on_sale:
-                                name: "Setono Jeans on sale"
-                                code: "setono_jeans_on_sale"
-                                main_taxon: "mens_jeans"
+                            product_setono_cap_on_sale:
+                                name: "Setono Cap on sale"
+                                code: "setono_cap_on_sale"
+                                main_taxon: "caps"
                                 taxons: 
-                                    - "mens_jeans"
+                                    - "caps"
                                 channels:
                                     - "FASHION_WEB"
 
@@ -40,7 +38,7 @@ sylius_fixtures:
                                     - type: "has_product"
                                       configuration:
                                           products: 
-                                              - "setono_jeans_on_sale"
+                                              - "setono_cap_on_sale"
 
                             callout_this_week_only:
                                 name: "This week only"
@@ -59,7 +57,7 @@ sylius_fixtures:
                                     - type: "has_taxon"
                                       configuration:
                                           taxons:
-                                              - "books"
+                                              - "caps"
 
                             callout_another_one_callout:
                                 name: "Another one callout"
@@ -76,7 +74,7 @@ sylius_fixtures:
                                     - type: "has_taxon"
                                       configuration:
                                           taxons:
-                                              - "books"
+                                            - "caps"
 
                             callout_new_product:
                                 name: "New"
@@ -96,10 +94,10 @@ sylius_fixtures:
                                           # ~50% of loaded products should have badge 'New'
                                           days: 3
 
-                            callout_new_setono_jeans:
-                                name: "New Setono jeans"
-                                code: "new_setono_jeans"
-                                text: "New Setono jeans"
+                            callout_new_setono_caps:
+                                name: "New Setono caps"
+                                code: "new_setono_caps"
+                                text: "New Setono caps"
                                 position: "top_right"
                                 channels:
                                     - "FASHION_WEB"
@@ -107,7 +105,7 @@ sylius_fixtures:
                                     - type: "has_product"
                                       configuration:
                                           products: 
-                                              - "setono_jeans_on_sale"
+                                              - "setono_cap_on_sale"
                                     - type: "is_new"
                                       configuration:
                                           days: 7
