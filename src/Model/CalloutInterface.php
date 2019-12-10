@@ -19,6 +19,14 @@ interface CalloutInterface extends
     ToggleableInterface,
     TranslatableInterface
 {
+    public const POSITION_TOP = 'top';
+
+    public const POSITION_RIGHT = 'right';
+
+    public const POSITION_BOTTOM = 'bottom';
+
+    public const POSITION_LEFT = 'left';
+
     public const POSITION_TOP_LEFT = 'top_left';
 
     public const POSITION_TOP_RIGHT = 'top_right';

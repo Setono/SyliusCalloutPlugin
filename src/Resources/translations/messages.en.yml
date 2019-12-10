@@ -29,6 +29,27 @@ setono_sylius_callout:
         manual_triggering_on: Manual triggering - you should press Assign button after all changes made
         manual_triggering_off: Auto triggering triggers assign process after every change automatically
     form:
+        callout:
+            channels: Channels
+            code: Code
+            enabled: Enabled
+            ends_at: Ends at
+            name: Name
+            position: Position
+            positions:
+                bottom: Bottom
+                bottom_left: Bottom left
+                bottom_right: Bottom right
+                left: Left
+                right: Right
+                top: Top
+                top_left: Top left
+                top_right: Top right
+            priority: Priority
+            rules: Rules
+            select_position: Select position
+            starts_at: Starts at
+            translations: Text
         callout_rule:
             has_product:
                 products: Products

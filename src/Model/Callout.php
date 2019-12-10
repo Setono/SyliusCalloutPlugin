@@ -203,10 +203,14 @@ class Callout implements CalloutInterface
     public static function getAllowedPositions(): array
     {
         return [
-            self::POSITION_TOP_LEFT,
-            self::POSITION_TOP_RIGHT,
-            self::POSITION_BOTTOM_RIGHT,
-            self::POSITION_BOTTOM_LEFT,
+            self::POSITION_TOP => self::POSITION_TOP,
+            self::POSITION_RIGHT => self::POSITION_RIGHT,
+            self::POSITION_BOTTOM => self::POSITION_BOTTOM,
+            self::POSITION_LEFT => self::POSITION_LEFT,
+            self::POSITION_TOP_LEFT => self::POSITION_TOP_LEFT,
+            self::POSITION_TOP_RIGHT => self::POSITION_TOP_RIGHT,
+            self::POSITION_BOTTOM_RIGHT => self::POSITION_BOTTOM_RIGHT,
+            self::POSITION_BOTTOM_LEFT => self::POSITION_BOTTOM_LEFT,
         ];
     }
 
