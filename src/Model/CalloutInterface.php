@@ -79,6 +79,4 @@ interface CalloutInterface extends
     public function getRulesAssignedAt(): ?DateTimeInterface;
 
     public function setRulesAssignedAt(?DateTimeInterface $rulesAssignedAt): void;
-
-    public static function getAllowedPositions(): array;
 }
