@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Fixture\Factory;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
+use Safe\DateTime;
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
@@ -55,14 +57,11 @@ class CalloutExampleFactory extends AbstractExampleFactory
         $this->channelRepository = $channelRepository;
         $this->localeRepository = $localeRepository;
 
-        $this->faker = \Faker\Factory::create();
+        $this->faker = Factory::create();
         $this->optionsResolver = new OptionsResolver();
         $this->configureOptions($this->optionsResolver);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(array $options = []): CalloutInterface
     {
         $options = $this->optionsResolver->resolve($options);
@@ -96,11 +95,11 @@ class CalloutExampleFactory extends AbstractExampleFactory
         }
 
         if (isset($options['starts_at'])) {
-            $callout->setStartsAt(new \DateTime($options['starts_at']));
+            $callout->setStartsAt(new DateTime($options['starts_at']));
         }
 
         if (isset($options['ends_at'])) {
-            $callout->setEndsAt(new \DateTime($options['ends_at']));
+            $callout->setEndsAt(new DateTime($options['ends_at']));
         }
 
         foreach ($options['channels'] as $channel) {

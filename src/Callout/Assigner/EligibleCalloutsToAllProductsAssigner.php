@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Callout\Assigner;
 
+use Safe\DateTime;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProducts;
 use Symfony\Component\Messenger\MessageBusInterface;
 
@@ -22,6 +23,6 @@ final class EligibleCalloutsToAllProductsAssigner implements CalloutAssignerInte
 
     public function assign(): void
     {
-        $this->messageBus->dispatch(new AssignEligibleCalloutsToProducts(new \DateTime()));
+        $this->messageBus->dispatch(new AssignEligibleCalloutsToProducts(new DateTime()));
     }
 }
