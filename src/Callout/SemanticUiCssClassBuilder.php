@@ -22,9 +22,9 @@ class SemanticUiCssClassBuilder implements CssClassBuilderInterface
     private static function getCssClasses(string $position): string
     {
         //add custom vertically class to display at right or left
-        if ($position === 'left' || $position === 'right'){
-            $class = "vertically ".$position;
-        }else{
+        if ($position === 'left' || $position === 'right') {
+            $class = 'vertically ' . $position;
+        } else {
             $class = str_replace('_', ' ', $position);
         }
 
