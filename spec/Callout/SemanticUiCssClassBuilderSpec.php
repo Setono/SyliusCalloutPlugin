@@ -23,6 +23,13 @@ class SemanticUiCssClassBuilderSpec extends ObjectBehavior
     {
         $callout->getPosition()->willReturn(CalloutInterface::POSITION_BOTTOM_LEFT);
 
-        $this->buildClasses($callout)->shouldReturn('attached label bottom left');
+        $this->buildClasses($callout)->shouldReturn('bottom left attached label');
+    }
+
+    public function it_returns_correct_vertically_class_attribute(CalloutInterface $callout): void
+    {
+        $callout->getPosition()->willReturn(CalloutInterface::POSITION_LEFT);
+
+        $this->buildClasses($callout)->shouldReturn('vertically left attached label');
     }
 }

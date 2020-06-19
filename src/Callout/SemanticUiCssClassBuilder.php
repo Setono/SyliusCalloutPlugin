@@ -21,8 +21,14 @@ class SemanticUiCssClassBuilder implements CssClassBuilderInterface
 
     private static function getCssClasses(string $position): string
     {
-        $class = 'attached label ';
-        $class .= str_replace('_', ' ', $position);
+        //add custom vertically class to display at right or left
+        if ($position === 'left' || $position === 'right'){
+            $class = "vertically ".$position;
+        }else{
+            $class = str_replace('_', ' ', $position);
+        }
+
+        $class .= ' attached label';
 
         return $class;
     }

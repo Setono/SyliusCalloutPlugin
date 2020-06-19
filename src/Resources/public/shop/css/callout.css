@@ -1,0 +1,16 @@
+.ui[class*="vertically left attached"].label{
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    height: 100%;
+    width: auto;
+    text-align: center;
+}
+.ui[class*="vertically right attached"].label{
+    right: 0;
+    left: auto;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    height: 100%;
+    width: auto;
+    text-align: center;
+}

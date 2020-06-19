@@ -1,0 +1,14 @@
+sylius_ui:
+    events:
+        sylius.shop.layout.stylesheets:
+            blocks:
+                callout_shop_stylesheet: "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_stylesheets.html.twig"
+        
+        setono_sylius_callout.admin.callout.create.javascripts:
+            blocks:
+                callout_admin_javascript: "@SetonoSyliusCalloutPlugin/Admin/_javascripts.html.twig"
+ 
+        setono_sylius_callout.admin.callout.update.javascripts:
+            blocks:
+                callout_admin_javascript: "@SetonoSyliusCalloutPlugin/Admin/_javascripts.html.twig"
+ 
