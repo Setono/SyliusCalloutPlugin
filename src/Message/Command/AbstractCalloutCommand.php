@@ -5,21 +5,28 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Message\Command;
 
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Webmozart\Assert\Assert;
 
 abstract class AbstractCalloutCommand
 {
-    /** @var mixed|CalloutInterface */
+    /** @var int */
     protected $calloutId;
 
     /**
-     * @param mixed|CalloutInterface $callout
+     * @param int|CalloutInterface $callout
      */
     public function __construct($callout)
     {
-        $this->calloutId = $callout instanceof CalloutInterface ? $callout->getId() : $callout;
+        if ($callout instanceof CalloutInterface) {
+            $callout = (int) $callout->getId();
+        }
+
+        Assert::integer($callout);
+
+        $this->calloutId = $callout;
     }
 
-    public function getCalloutId()
+    public function getCalloutId(): int
     {
         return $this->calloutId;
     }

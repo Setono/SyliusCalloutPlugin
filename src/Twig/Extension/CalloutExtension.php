@@ -55,7 +55,7 @@ final class CalloutExtension extends AbstractExtension
             return $callouts;
         }
 
-        return $callouts->filter(function (CalloutInterface $callout) {
+        return $callouts->filter(function (CalloutInterface $callout): bool {
             return $this->renderingCalloutEligibilityChecker->isEligible($callout);
         });
     }
@@ -83,6 +83,6 @@ final class CalloutExtension extends AbstractExtension
 
     private function sanitizeClass(string $str): string
     {
-        return strtolower(preg_replace('/[^0-9A-Za-z\-]+/', '-', $str));
+        return mb_strtolower(preg_replace('/[^0-9A-Za-z\-]+/', '-', $str));
     }
 }

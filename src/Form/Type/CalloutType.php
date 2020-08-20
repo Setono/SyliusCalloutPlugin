@@ -48,7 +48,7 @@ final class CalloutType extends AbstractResourceType
             ->add('position', ChoiceType::class, [
                 'label' => 'setono_sylius_callout.form.callout.position',
                 'choices' => Callout::getAllowedPositions(),
-                'choice_label' => static function (string $position) {
+                'choice_label' => static function (string $position): string {
                     return sprintf('setono_sylius_callout.form.callout.positions.%s', $position);
                 },
                 'placeholder' => 'setono_sylius_callout.form.callout.select_position',

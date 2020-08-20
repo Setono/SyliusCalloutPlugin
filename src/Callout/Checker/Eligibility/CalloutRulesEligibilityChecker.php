@@ -46,7 +46,7 @@ final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerI
     private function isEligibleToRule(CalloutsAwareInterface $product, CalloutRuleInterface $rule): bool
     {
         /** @var ProductCalloutRuleCheckerInterface $checker */
-        $checker = $this->ruleRegistry->get($rule->getType());
+        $checker = $this->ruleRegistry->get((string) $rule->getType());
 
         return $checker->isEligible($product, $rule->getConfiguration());
     }

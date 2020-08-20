@@ -35,6 +35,8 @@ interface CalloutInterface extends
 
     public const POSITION_BOTTOM_LEFT = 'bottom_left';
 
+    public function getId(): ?int;
+
     public function getName(): ?string;
 
     public function setName(string $name): void;
@@ -57,7 +59,7 @@ interface CalloutInterface extends
 
     public function getText(): ?string;
 
-    public function setText(?string $text): void;
+    public function setText(string $text): void;
 
     public function getCode(): ?string;
 

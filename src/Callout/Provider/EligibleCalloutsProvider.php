@@ -28,7 +28,7 @@ final class EligibleCalloutsProvider implements EligibleCalloutsProviderInterfac
     {
         return array_filter(
             $this->preQualifiedCalloutsProvider->getCallouts(),
-            function (CalloutInterface $callout) use ($product) {
+            function (CalloutInterface $callout) use ($product): bool {
                 return $this->calloutEligibilityChecker->isEligible($product, $callout);
             }
         );

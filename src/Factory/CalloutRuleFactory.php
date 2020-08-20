@@ -24,14 +24,14 @@ class CalloutRuleFactory implements CalloutRuleFactoryInterface
 
     public function createHasTaxon(array $taxons): CalloutRuleInterface
     {
-        return $this->createCalloutRule(HasTaxonCalloutRuleChecker::TYPE, ['taxons' => array_map(function (TaxonInterface $taxon) {
+        return $this->createCalloutRule(HasTaxonCalloutRuleChecker::TYPE, ['taxons' => array_map(static function (TaxonInterface $taxon): ?string {
             return $taxon->getCode();
         }, $taxons)]);
     }
 
     public function createHasProduct(array $products): CalloutRuleInterface
     {
-        return $this->createCalloutRule(HasProductCalloutRuleChecker::TYPE, ['products' => array_map(function (ProductInterface $product) {
+        return $this->createCalloutRule(HasProductCalloutRuleChecker::TYPE, ['products' => array_map(static function (ProductInterface $product): ?string {
             return $product->getCode();
         }, $products)]);
     }

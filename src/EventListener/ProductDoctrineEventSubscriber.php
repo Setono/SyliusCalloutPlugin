@@ -23,7 +23,7 @@ final class ProductDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
         ];
     }
 
-    public function preUpdate(PreUpdateEventArgs $args)
+    public function preUpdate(PreUpdateEventArgs $args): void
     {
         $entity = $args->getEntity();
         if (!$entity instanceof ProductInterface) {

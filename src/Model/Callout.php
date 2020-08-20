@@ -118,7 +118,7 @@ class Callout implements CalloutInterface
         return $this->getCalloutTranslation()->getText();
     }
 
-    public function setText(?string $text): void
+    public function setText(string $text): void
     {
         $this->getCalloutTranslation()->setText($text);
     }

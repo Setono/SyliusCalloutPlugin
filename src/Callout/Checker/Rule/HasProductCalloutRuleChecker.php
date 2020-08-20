@@ -30,7 +30,7 @@ final class HasProductCalloutRuleChecker implements ProductCalloutRuleCheckerInt
 
         Assert::keyExists($configuration, 'products');
 
-        /** @var ProductInterface[] $product */
+        /** @var ProductInterface[] $configuredProducts */
         $configuredProducts = $this->productRepository->findBy(['code' => $configuration['products']]);
 
         return in_array($product, $configuredProducts, true);

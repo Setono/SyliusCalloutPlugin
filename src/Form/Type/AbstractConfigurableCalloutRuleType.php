@@ -36,9 +36,9 @@ abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
                     return;
                 }
 
-                $this->addConfigurationFields($event->getForm(), $this->formTypeRegistry->get($type, 'default'));
+                $this->addConfigurationFields($event->getForm(), (string) $this->formTypeRegistry->get($type, 'default'));
             })
-            ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
+            ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event): void {
                 $type = $this->getRegistryIdentifier($event->getForm(), $event->getData());
                 if (null === $type) {
                     return;
@@ -53,7 +53,7 @@ abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
                     return;
                 }
 
-                $this->addConfigurationFields($event->getForm(), $this->formTypeRegistry->get($data['type'], 'default'));
+                $this->addConfigurationFields($event->getForm(), (string) $this->formTypeRegistry->get($data['type'], 'default'));
             })
         ;
     }

@@ -20,7 +20,7 @@ final class CompositeCalloutEligibilityCheckerPass implements CompilerPassInterf
         foreach ($serviceIds as $serviceId) {
             $container->getDefinition($serviceId)->setArguments([
                 array_map(
-                    function ($id) {
+                    static function ($id): Reference {
                         return new Reference($id);
                     },
                     // Tag have same name as service id
