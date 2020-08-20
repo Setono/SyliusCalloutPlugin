@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/8.0/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          colors="true"
          bootstrap="tests/Application/config/bootstrap.php">
     <testsuites>
@@ -9,11 +9,10 @@
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-
     <php>
-        <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true" />
-        <server name="ESCAPE_JSON" value="true" />
+        <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true"/>
+        <server name="ESCAPE_JSON" value="true"/>
         <env name="APP_ENV" value="test"/>
-        <env name="SHELL_VERBOSITY" value="-1" />
+        <env name="SHELL_VERBOSITY" value="-1"/>
     </php>
 </phpunit>
