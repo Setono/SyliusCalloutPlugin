@@ -90,7 +90,7 @@ jobs:
 
             -   name: Run webserver
                 run: |
-                    symfony server:start --port=8080 --dir=public --daemon
+                    (cd tests/Application && symfony server:start --port=8080 --dir=public --daemon)
                     sleep 15
 
             -   name: Run behat
