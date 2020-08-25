@@ -6,7 +6,7 @@ setono_sylius_callout:
         code: Code
         edit_callout: Edit callout
         enabled: Enabled
-        updated_at: Rules assigned at
+        updated_at: Updated at
         rules_assigned_at: Rules assigned at
         has_product: Has product
         has_taxon: Has taxon
