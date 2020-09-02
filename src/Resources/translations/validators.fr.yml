@@ -1,0 +1,13 @@
+setono_sylius_callout:
+    callout:
+        code:
+            unique: Il y a déjà un badge avec ce code.
+            not_blank: Le code ne peut être vide.
+        name:
+            not_blank: Le nom ne peut être vide.
+        priority:
+            not_blank: La priorité ne peut être vide.
+            numeric: La priorité doit être un chiffre entier.
+    callout_translation:
+        text:
+            not_blank: Le texte ne peut être vide.

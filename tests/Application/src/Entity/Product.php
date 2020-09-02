@@ -8,7 +8,7 @@ use Setono\SyliusCalloutPlugin\Model\CalloutsAwareTrait as SetonoSyliusCalloutCa
 use Setono\SyliusCalloutPlugin\Model\ProductInterface as SetonoSyliusCalloutProductInterface;
 use Sylius\Component\Core\Model\Product as BaseProduct;
 
-final class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
+class Product extends BaseProduct implements SetonoSyliusCalloutProductInterface
 {
     use SetonoSyliusCalloutCalloutsAwareTrait {
         SetonoSyliusCalloutCalloutsAwareTrait::__construct as private __calloutsTraitConstruct;

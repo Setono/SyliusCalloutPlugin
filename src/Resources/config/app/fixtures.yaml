@@ -109,3 +109,14 @@ sylius_fixtures:
                                     - type: "is_new"
                                       configuration:
                                           days: 7
+
+                            callout_on_sale:
+                                name: "On sale"
+                                code: "on_sale"
+                                text: "On sale !"
+                                position: "top"
+                                channels:
+                                    - "FASHION_WEB"
+                                rules:
+                                    - type: "has_promotion"
+                                      configuration: [] 
