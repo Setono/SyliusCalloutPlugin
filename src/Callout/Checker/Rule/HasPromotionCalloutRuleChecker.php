@@ -30,6 +30,7 @@ final class HasPromotionCalloutRuleChecker implements ProductCalloutRuleCheckerI
         if (!$product instanceof ProductInterface) {
             throw new UnsupportedTypeException($product, ProductInterface::class);
         }
+
         try {
             /** @var ChannelInterface $channel */
             $channel = $this->channelContext->getChannel();
