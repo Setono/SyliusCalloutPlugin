@@ -6,7 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Form\Type\Rule;
 
 use Symfony\Component\Form\AbstractType;
 
-final class HasPromotionConfigurationType extends AbstractType
+final class OnSaleConfigurationType extends AbstractType
 {
     public function getBlockPrefix(): string
     {

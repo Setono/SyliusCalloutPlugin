@@ -13,7 +13,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Promotion\Exception\UnsupportedTypeException;
 
-final class HasPromotionCalloutRuleChecker implements ProductCalloutRuleCheckerInterface
+final class OnSaleCalloutRuleChecker implements ProductCalloutRuleCheckerInterface
 {
     public const TYPE = 'on_sale';
 

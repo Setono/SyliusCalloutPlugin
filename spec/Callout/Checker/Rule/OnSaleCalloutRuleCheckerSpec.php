@@ -6,7 +6,7 @@ namespace spec\Setono\SyliusCalloutPlugin\Callout\Checker\Rule;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasPromotionCalloutRuleChecker;
+use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\OnSaleCalloutRuleChecker;
 use Setono\SyliusCalloutPlugin\Callout\Checker\Rule\ProductCalloutRuleCheckerInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
@@ -16,7 +16,7 @@ use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Webmozart\Assert\Assert;
 
-final class HasPromotionCalloutRuleCheckerSpec extends ObjectBehavior
+final class OnSaleCalloutRuleCheckerSpec extends ObjectBehavior
 {
     public function let(ChannelContextInterface $channelContext): void
     {
@@ -25,7 +25,7 @@ final class HasPromotionCalloutRuleCheckerSpec extends ObjectBehavior
 
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(HasPromotionCalloutRuleChecker::class);
+        $this->shouldHaveType(OnSaleCalloutRuleChecker::class);
     }
 
     public function it_implements_rule_checker_interface(): void
@@ -35,7 +35,7 @@ final class HasPromotionCalloutRuleCheckerSpec extends ObjectBehavior
 
     public function it_has_type(): void
     {
-        Assert::eq('on_sale', HasPromotionCalloutRuleChecker::TYPE);
+        Assert::eq('on_sale', OnSaleCalloutRuleChecker::TYPE);
     }
 
     public function it_is_not_eligible_if_channel_has_not_been_found(ChannelContextInterface $channelContext, ProductInterface $product): void
