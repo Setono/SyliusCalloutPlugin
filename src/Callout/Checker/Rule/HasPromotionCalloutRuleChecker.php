@@ -15,7 +15,7 @@ use Sylius\Component\Promotion\Exception\UnsupportedTypeException;
 
 final class HasPromotionCalloutRuleChecker implements ProductCalloutRuleCheckerInterface
 {
-    public const TYPE = 'has_promotion';
+    public const TYPE = 'on_sale';
 
     /** @var ChannelContextInterface */
     private $channelContext;

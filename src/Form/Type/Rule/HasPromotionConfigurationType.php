@@ -10,6 +10,6 @@ final class HasPromotionConfigurationType extends AbstractType
 {
     public function getBlockPrefix(): string
     {
-        return 'setono_callout_rule_has_promotion_configuration';
+        return 'setono_callout_rule_on_sale_configuration';
     }
 }

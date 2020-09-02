@@ -9,11 +9,11 @@ setono_sylius_callout:
         updated_at: Modifié le
         rules_assigned_at: Règles assignées le
         has_product: A le produit
-        has_promotion: Est en promotion
         has_taxon: A le taxon
         is_new: Est nouveau
         name: Nom
         new_callout: Nouveau badge
+        on_sale: Prix réduit
         position: Position
         priority: Priorité
         rules: Règles

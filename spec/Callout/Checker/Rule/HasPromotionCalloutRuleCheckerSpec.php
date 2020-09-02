@@ -35,7 +35,7 @@ final class HasPromotionCalloutRuleCheckerSpec extends ObjectBehavior
 
     public function it_has_type(): void
     {
-        Assert::eq('has_promotion', HasPromotionCalloutRuleChecker::TYPE);
+        Assert::eq('on_sale', HasPromotionCalloutRuleChecker::TYPE);
     }
 
     public function it_is_not_eligible_if_channel_has_not_been_found(ChannelContextInterface $channelContext, ProductInterface $product): void

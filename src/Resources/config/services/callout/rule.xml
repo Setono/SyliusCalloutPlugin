@@ -31,12 +31,12 @@
                  form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsNewProductConfigurationType" />
         </service>
 
-        <service id="setono_sylius_callout.callout_rule_checker.has_promotion"
+        <service id="setono_sylius_callout.callout_rule_checker.on_sale"
                  class="Setono\SyliusCalloutPlugin\Callout\Checker\Rule\HasPromotionCalloutRuleChecker">
             <argument type="service" id="sylius.context.channel" />
             <tag name="setono_sylius_callout.callout_rule_checker"
-                 type="has_promotion"
-                 label="setono_sylius_callout.ui.has_promotion"
+                 type="on_sale"
+                 label="setono_sylius_callout.ui.on_sale"
                  form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasPromotionConfigurationType" />
         </service>
 

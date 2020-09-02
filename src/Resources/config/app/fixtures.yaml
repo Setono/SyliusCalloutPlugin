@@ -118,5 +118,5 @@ sylius_fixtures:
                                 channels:
                                     - "FASHION_WEB"
                                 rules:
-                                    - type: "has_promotion"
+                                    - type: "on_sale"
                                       configuration: [] 
