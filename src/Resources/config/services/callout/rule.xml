@@ -31,6 +31,15 @@
                  form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsNewProductConfigurationType" />
         </service>
 
+        <service id="setono_sylius_callout.callout_rule_checker.on_sale"
+                 class="Setono\SyliusCalloutPlugin\Callout\Checker\Rule\OnSaleCalloutRuleChecker">
+            <argument type="service" id="sylius.context.channel" />
+            <tag name="setono_sylius_callout.callout_rule_checker"
+                 type="on_sale"
+                 label="setono_sylius_callout.ui.on_sale"
+                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\OnSaleConfigurationType" />
+        </service>
+
         <service id="setono_sylius_callout.registry.callout_rule_checker"
                  class="Sylius\Component\Registry\ServiceRegistry">
             <argument type="string">Setono\SyliusCalloutPlugin\Callout\Checker\Rule\ProductCalloutRuleCheckerInterface</argument>

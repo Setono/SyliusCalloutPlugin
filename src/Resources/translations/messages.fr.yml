@@ -1,0 +1,59 @@
+setono_sylius_callout:
+    ui:
+        bottom_left: Bas gauche
+        bottom_right: Bas droite
+        callouts: Badges
+        code: Code
+        edit_callout: Modifier le badge
+        enabled: Activé
+        updated_at: Modifié le
+        rules_assigned_at: Règles assignées le
+        has_product: A le produit
+        has_taxon: A le taxon
+        is_new: Est nouveau
+        name: Nom
+        new_callout: Nouveau badge
+        on_sale: Prix réduit
+        position: Position
+        priority: Priorité
+        rules: Règles
+        select_position: Choisir la position...
+        text: Texte
+        starts_at: Commence le
+        ends_at: Se termine le
+        top_left: Haut gauche
+        top_right: Haut droit
+        type: Type
+        action:
+            assign: Assigner
+        manual_triggering_on: Déclenchement manuel - vous devrez cliquer sur Assigner après chaque changement effectué
+        manual_triggering_off: Déclenchement automatique - assigne automatiquement les badges après chaque changement
+    form:
+        callout:
+            channels: Canaux
+            code: Code
+            enabled: Activé
+            ends_at: Se termine le
+            name: Nom
+            position: Position
+            positions:
+                bottom: Bas
+                bottom_left: Bas gauche
+                bottom_right: Bas droite
+                left: Gauche
+                right: Droite
+                top: Haut
+                top_left: Haut gauche
+                top_right: Haut droite
+            priority: Priorité
+            rules: Règles
+            select_position: Choisir la position
+            starts_at: Commence le
+            translations: Texte
+        callout_rule:
+            has_product:
+                products: Produits
+            has_taxon:
+                taxons: Taxons
+            is_new:
+                days: Jours
