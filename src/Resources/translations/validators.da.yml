@@ -1,0 +1,13 @@
+setono_sylius_callout:
+    callout:
+        code:
+            unique: Der eksisterer allerede et badge med denne kode.
+            not_blank: Kode kan ikke efterlades blank.
+        name:
+            not_blank: Navn kan ikke efterlades blank.
+        priority:
+            not_blank: Prioritet kan ikke efterlades blank.
+            numeric: Prioritet skal være heltal.
+    callout_translation:
+        text:
+            not_blank: Tekst kan ikke efterlades blank.
