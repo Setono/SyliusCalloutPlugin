@@ -242,21 +242,21 @@ jobs:
                 run: "google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' http://127.0.0.1 > /dev/null 2>&1 &"
 
             -   name: "Wait for Chrome to start"
-                run: "|
-                    until curl -s http://127.0.0.1:9222/json/version | grep \"Browser\" > /dev/null 2>&1
+                run: |
+                    until curl -s http://127.0.0.1:9222/json/version | grep "Browser" > /dev/null 2>&1
                     do
                         sleep 1
-                    done"
+                    done
 
             -   name: "Start webserver"
                 run: "symfony server:start --port=8080 --dir=public --daemon"
 
             -   name: "Wait for webserver to start"
-                run: "|
+                run: |
                     until symfony server:list | grep /public > /dev/null 2>&1
                     do
                         sleep 1
-                    done"
+                    done
 
             -   name: "Run behat"
                 run: "vendor/bin/behat --strict -vvv --no-interaction || vendor/bin/behat --strict -vvv --no-interaction --rerun"
