@@ -42,7 +42,7 @@ jobs:
                     tools: symfony
 
             -   name: Setup node
-                uses: actions/setup-node@v2.1.1
+                uses: actions/setup-node@v2.1.4
                 with:
                     node-version: '10.x'
 
