@@ -4,7 +4,7 @@
 [![Latest Unstable Version][ico-unstable-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
 [![Build Status][ico-github-actions]][link-github-actions]
-[![Quality Score][ico-code-quality]][link-code-quality]
+[![Code Coverage][ico-code-coverage]][link-code-coverage]
 
 The callout plugin for [Sylius](https://sylius.com/) allows you to configure nice badges for different set of products
 based on specific rules. It provides a common set of configuration by default and is very flexible when it comes to adding new ones.
@@ -259,8 +259,8 @@ set corresponding to the below service configuration
 [ico-unstable-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/unstable
 [ico-license]: https://poser.pugx.org/setono/sylius-callout-plugin/license
 [ico-github-actions]: https://github.com/Setono/SyliusCalloutPlugin/workflows/build/badge.svg
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/Setono/SyliusCalloutPlugin.svg
+[ico-code-coverage]: https://codecov.io/gh/Setono/SyliusCalloutPlugin/branch/master/graph/badge.svg
 
 [link-packagist]: https://packagist.org/packages/setono/sylius-callout-plugin
 [link-github-actions]: https://github.com/Setono/SyliusCalloutPlugin/actions
-[link-code-quality]: https://scrutinizer-ci.com/g/Setono/SyliusCalloutPlugin
+[link-code-coverage]: https://codecov.io/gh/Setono/SyliusCalloutPlugin
