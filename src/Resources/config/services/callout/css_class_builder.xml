@@ -9,5 +9,6 @@
                  class="Setono\SyliusCalloutPlugin\Callout\SemanticUiCssClassBuilder">
         </service>
 
+        <service id="setono_sylius_callout.css_class_builder" alias="setono_sylius_callout.css_class_builder.semantic_ui" />
     </services>
 </container>
