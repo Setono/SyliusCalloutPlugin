@@ -18,7 +18,7 @@ sylius_grid:
                     label: setono_sylius_callout.ui.enabled
                     sortable: ~
                     options:
-                        template: SyliusUiBundle:Grid/Field:enabled.html.twig
+                        template: '@SyliusUi/Grid/Field/enabled.html.twig'
                 updatedAt:
                     type: datetime
                     label: setono_sylius_callout.ui.updated_at
