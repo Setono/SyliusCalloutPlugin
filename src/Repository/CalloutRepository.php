@@ -7,7 +7,7 @@ namespace Setono\SyliusCalloutPlugin\Repository;
 use DateTimeInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
-final class CalloutRepository extends EntityRepository implements CalloutRepositoryInterface
+class CalloutRepository extends EntityRepository implements CalloutRepositoryInterface
 {
     public function findOrdered(): array
     {
