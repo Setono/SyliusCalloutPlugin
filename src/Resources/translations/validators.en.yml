@@ -1,8 +1,8 @@
 setono_sylius_callout:
     callout:
         code:
-            unique: There is an existing callout with this code.
             not_blank: Code cannot be blank.
+            unique: There is an existing callout with this code.
         name:
             not_blank: Name cannot be blank.
         priority:
