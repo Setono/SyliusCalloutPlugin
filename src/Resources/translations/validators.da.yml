@@ -1,8 +1,8 @@
 setono_sylius_callout:
     callout:
         code:
-            unique: Der eksisterer allerede et badge med denne kode.
             not_blank: Kode kan ikke efterlades blank.
+            unique: Der eksisterer allerede et badge med denne kode.
         name:
             not_blank: Navn kan ikke efterlades blank.
         priority:

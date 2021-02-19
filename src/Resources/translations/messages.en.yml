@@ -1,33 +1,4 @@
 setono_sylius_callout:
-    ui:
-        bottom_left: Bottom left
-        bottom_right: Bottom right
-        callouts: Callouts
-        code: Code
-        edit_callout: Edit callout
-        enabled: Enabled
-        updated_at: Updated at
-        rules_assigned_at: Rules assigned at
-        has_product: Has product
-        has_taxon: Has taxon
-        is_new: Is new
-        name: Name
-        new_callout: New callout
-        on_sale: On sale
-        position: Position
-        priority: Priority
-        rules: Rules
-        select_position: Select position...
-        text: Text
-        starts_at: Starts at
-        ends_at: Ends at
-        top_left: Top left
-        top_right: Top right
-        type: Type
-        action:
-            assign: Assign
-        manual_triggering_on: Manual triggering - you should press Assign button after all changes made
-        manual_triggering_off: Auto triggering triggers assign process after every change automatically
     form:
         callout:
             channels: Channels
@@ -57,3 +28,32 @@ setono_sylius_callout:
                 taxons: Taxons
             is_new:
                 days: Days
+    ui:
+        action:
+            assign: Assign
+        bottom_left: Bottom left
+        bottom_right: Bottom right
+        callouts: Callouts
+        code: Code
+        edit_callout: Edit callout
+        enabled: Enabled
+        ends_at: Ends at
+        has_product: Has product
+        has_taxon: Has taxon
+        is_new: Is new
+        manual_triggering_off: Auto triggering triggers assign process after every change automatically
+        manual_triggering_on: Manual triggering - you should press Assign button after all changes made
+        name: Name
+        new_callout: New callout
+        on_sale: On sale
+        position: Position
+        priority: Priority
+        rules: Rules
+        rules_assigned_at: Rules assigned at
+        select_position: Select position...
+        starts_at: Starts at
+        text: Text
+        top_left: Top left
+        top_right: Top right
+        type: Type
+        updated_at: Updated at

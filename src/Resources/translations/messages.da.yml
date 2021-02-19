@@ -1,33 +1,4 @@
 setono_sylius_callout:
-    ui:
-        bottom_left: Nederst til venstre
-        bottom_right: Nederst til højre
-        callouts: Badges
-        code: Kode
-        edit_callout: Rediger badges
-        enabled: Aktiveret
-        updated_at: Sidst opdateret
-        rules_assigned_at: Regler tilskrevet
-        has_product: Har produkt
-        has_taxon: Har taksonomisk gruppe
-        is_new: Er ny 
-        name: Navn
-        new_callout: Ny badge
-        on_sale: På udsalg
-        position: Position
-        priority: Prioritet
-        rules: Regler
-        select_position: Vælg position...
-        text: Tekst
-        starts_at: Starter
-        ends_at: Slutter
-        top_left: Øverst til venstre
-        top_right: Øverst til højre
-        type: Type
-        action:
-            assign: Tildel
-        manual_triggering_on: Manuel frigivelse - du skal trykke på Tildelsknappen efter alle ændringer er foretaget
-        manual_triggering_off: Automatisk frigivelse bliver tildelt en proces efter hver ændring automatisk.
     form:
         callout:
             channels: Kanaler
@@ -57,3 +28,32 @@ setono_sylius_callout:
                 taxons: Taksonomiske grupper
             is_new:
                 days: Dage
+    ui:
+        action:
+            assign: Tildel
+        bottom_left: Nederst til venstre
+        bottom_right: Nederst til højre
+        callouts: Badges
+        code: Kode
+        edit_callout: Rediger badges
+        enabled: Aktiveret
+        ends_at: Slutter
+        has_product: Har produkt
+        has_taxon: Har taksonomisk gruppe
+        is_new: Er ny
+        manual_triggering_off: Automatisk frigivelse bliver tildelt en proces efter hver ændring automatisk.
+        manual_triggering_on: Manuel frigivelse - du skal trykke på Tildelsknappen efter alle ændringer er foretaget
+        name: Navn
+        new_callout: Ny badge
+        on_sale: På udsalg
+        position: Position
+        priority: Prioritet
+        rules: Regler
+        rules_assigned_at: Regler tilskrevet
+        select_position: Vælg position...
+        starts_at: Starter
+        text: Tekst
+        top_left: Øverst til venstre
+        top_right: Øverst til højre
+        type: Type
+        updated_at: Sidst opdateret
