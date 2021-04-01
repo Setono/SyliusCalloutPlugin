@@ -11,5 +11,5 @@ interface CalloutTranslationInterface extends ResourceInterface, TranslationInte
 {
     public function getText(): ?string;
 
-    public function setText(string $text): void;
+    public function setText(?string $text): void;
 }
