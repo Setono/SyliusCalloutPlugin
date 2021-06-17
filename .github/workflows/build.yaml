@@ -96,7 +96,7 @@ jobs:
             -   name: Run behat
                 run: vendor/bin/behat --strict -vvv --no-interaction || vendor/bin/behat --strict -vvv --no-interaction --rerun
 
-            -   uses: actions/upload-artifact@v2.1.4
+            -   uses: actions/upload-artifact@v2.2.4
                 if: failure()
                 with:
                     name: logs
