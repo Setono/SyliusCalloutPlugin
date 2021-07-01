@@ -28,4 +28,32 @@ class CalloutRepository extends EntityRepository implements CalloutRepositoryInt
             ->getQuery()
             ->getSingleScalarResult() > 0;
     }
+
+    public function findEligible(?DateTimeInterface $date = null): array
+    {
+        if (null === $date) {
+            $date = new \DateTime();
+        }
+        $qb = $this->createQueryBuilder('callout');
+
+        return $this->createQueryBuilder('o')
+            ->addOrderBy('o.priority', 'desc')
+            ->andWhere(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->lte('o.startsAt', ':date'),
+                        $qb->expr()->isNull('o.startsAt'),
+                    ),
+                    $qb->expr()->orX(
+                        $qb->expr()->gte('o.endsAt', ':date'),
+                        $qb->expr()->isNull('o.endsAt'),
+                    )
+                )
+            )
+            ->andWhere('o.enabled = 1')
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

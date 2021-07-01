@@ -18,6 +18,6 @@ final class CalloutsProvider implements PreQualifiedCalloutsProviderInterface
 
     public function getCallouts(): array
     {
-        return $this->calloutRepository->findOrdered();
+        return $this->calloutRepository->findEligible();
     }
 }

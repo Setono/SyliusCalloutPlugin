@@ -16,4 +16,6 @@ interface CalloutRepositoryInterface extends RepositoryInterface
     public function findOrdered(): array;
 
     public function hasUpdatedSince(DateTimeInterface $updatedSince): bool;
+
+    public function findEligible(?DateTimeInterface $date = null): array;
 }

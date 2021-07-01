@@ -31,7 +31,7 @@ final class CalloutsProviderSpec extends ObjectBehavior
         CalloutRepositoryInterface $calloutRepository,
         CalloutInterface $callout
     ): void {
-        $calloutRepository->findOrdered()->willReturn([$callout]);
+        $calloutRepository->findEligible()->willReturn([$callout]);
         $this->getCallouts()->shouldReturn([$callout]);
     }
 }
