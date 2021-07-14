@@ -13,7 +13,7 @@
         "php": ">=7.4",
         "friendsofsymfony/oauth-server-bundle": ">2.0.0-alpha.0 ^2.0@dev",
         "setono/doctrine-orm-batcher-bundle": "^0.3.1",
-        "sylius/sylius": "^1.9",
+        "sylius/sylius": "~1.9.0",
         "symfony/messenger": "^4.4 || ^5.0",
         "thecodingmachine/safe": "^1.0"
     },
