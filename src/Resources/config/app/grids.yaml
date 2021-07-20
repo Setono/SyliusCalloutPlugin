@@ -5,3 +5,4 @@ sylius_grid:
     templates:
         action:
             setono_callout_default: "@SetonoSyliusCalloutPlugin/Admin/Grid/Action/setono_callout_default.html.twig"
+            callouts_product_list: "@SetonoSyliusCalloutPlugin/Admin/Grid/Action/calloutsProductList.html.twig"

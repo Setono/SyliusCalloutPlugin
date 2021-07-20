@@ -4,6 +4,8 @@ sylius_grid:
             driver:
                 options:
                     class: "%setono_sylius_callout.model.callout.class%"
+            sorting:
+                priority: asc
             fields:
                 code:
                     type: string
@@ -19,6 +21,12 @@ sylius_grid:
                     sortable: ~
                     options:
                         template: '@SyliusUi/Grid/Field/enabled.html.twig'
+                priority:
+                    type: twig
+                    label: setono_sylius_callout.ui.priority
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/position.html.twig"
                 updatedAt:
                     type: datetime
                     label: setono_sylius_callout.ui.updated_at
@@ -35,6 +43,19 @@ sylius_grid:
                 name:
                     type: string
                     label: setono_sylius_callout.ui.name
+                rule:
+                    type: entities
+                    label: setono_sylius_callout.ui.rule
+                    form_options:
+                        class: "%setono_sylius_callout.model.callout_rule.class%"
+                    options:
+                        field: "rules.id"
+                date:
+                    type: date
+                    label: sylius.ui.date
+                    options:
+                        field: endsAt
+                        inclusive_to: true
             actions:
                 main:
                     create:
@@ -50,5 +71,8 @@ sylius_grid:
                 item:
                     update:
                         type: update
+                    callouts_product_list:
+                        type: callouts_product_list
+                        label: setono_sylius_callout.ui.callouts_product_list
                     delete:
                         type: delete

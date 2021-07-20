@@ -18,6 +18,11 @@ class CalloutRule implements CalloutRuleInterface
     /** @var array */
     protected $configuration = [];
 
+    public function __toString()
+    {
+        return $this->getType();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

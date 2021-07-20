@@ -59,6 +59,9 @@ Don't forget to add `SetonoDoctrineORMBatcherBundle` as this plugin require bund
 
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/config.yaml" }
+    
+# If you want to see Callout column at admin products list - uncomment next line
+#    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids/sylius_admin_product.yaml" }
 
 setono_sylius_callout:
     manual_triggering: false

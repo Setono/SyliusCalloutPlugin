@@ -57,3 +57,6 @@ setono_sylius_callout:
         top_right: Haut droit
         type: Type
         updated_at: Modifié le
+        callout: Badge
+        rule: Régner
+        callouts_product_list: Liste de produits
