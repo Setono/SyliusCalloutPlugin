@@ -1,15 +1,17 @@
-sylius_admin_product:
-    fields:
-        callouts:
-            type: twig
-            label: sylius.ui.callout
-            options:
-                template: "@SetonoSyliusCalloutPlugin/Admin/Grid/Field/callouts.html.twig"
-    filters:
-        callout:
-            type: entities
-            label: sylius.ui.callout
-            form_options:
-                class: "%setono_sylius_callout.model.callout.class%"
-            options:
-                field: "callouts.id"
+sylius_grid:
+    grids:
+        sylius_admin_product:
+            fields:
+                callouts:
+                    type: twig
+                    label: sylius.ui.callout
+                    options:
+                        template: "@SetonoSyliusCalloutPlugin/Admin/Grid/Field/callouts.html.twig"
+            filters:
+                callout:
+                    type: entities
+                    label: sylius.ui.callout
+                    form_options:
+                        class: "%setono_sylius_callout.model.callout.class%"
+                    options:
+                        field: "callouts.id"
