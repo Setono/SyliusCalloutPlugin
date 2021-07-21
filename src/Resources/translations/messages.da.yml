@@ -58,5 +58,5 @@ setono_sylius_callout:
         type: Type
         updated_at: Sidst opdateret
         callout: Badge
-        rule: Reger
+        rule: Règle
         callouts_product_list: Produktliste

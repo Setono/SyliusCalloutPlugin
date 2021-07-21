@@ -58,7 +58,7 @@ class Callout implements CalloutInterface
         $this->initializeTranslationsCollection();
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getName();
     }
