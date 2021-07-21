@@ -1,5 +1,8 @@
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/app/grids.yaml" }
+    
+# If you want to see Callout column at admin products list - uncomment next line
+#    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids/sylius_admin_product.yaml" }
 
 framework:
     messenger:
