@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Setono\SyliusCalloutPlugin\Callout\Provider\EligibleCalloutsProviderInterface;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProduct;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
