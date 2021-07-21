@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
-use Doctrine\Persistence\ObjectManager;
 use Setono\SyliusCalloutPlugin\Callout\Provider\EligibleCalloutsProviderInterface;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProduct;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
@@ -19,17 +18,12 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
     /** @var ProductRepositoryInterface */
     private $productRepository;
 
-    /** @var ObjectManager */
-    private $productManager;
-
     public function __construct(
         EligibleCalloutsProviderInterface $eligibleCalloutsProvider,
-        ProductRepositoryInterface $productRepository,
-        ObjectManager $productManager
+        ProductRepositoryInterface $productRepository
     ) {
         $this->eligibleCalloutsProvider = $eligibleCalloutsProvider;
         $this->productRepository = $productRepository;
-        $this->productManager = $productManager;
     }
 
     public function __invoke(AssignEligibleCalloutsToProduct $message): void
