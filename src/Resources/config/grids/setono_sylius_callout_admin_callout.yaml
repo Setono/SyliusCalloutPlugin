@@ -71,8 +71,8 @@ sylius_grid:
                 item:
                     update:
                         type: update
-                    callouts_product_list:
-                        type: callouts_product_list
+                    setono_callout_product_list:
+                        type: setono_callout_product_list
                         label: setono_sylius_callout.ui.callouts_product_list
                     delete:
                         type: delete
