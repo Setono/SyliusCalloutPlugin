@@ -20,8 +20,8 @@
     "require-dev": {
         "phpspec/phpspec": "^6.2",
         "phpunit/phpunit": "^9.3",
-        "roave/security-advisories": "dev-master",
-        "setono/code-quality-pack": "^1.4",
+        "roave/security-advisories": "dev-latest",
+        "setono/code-quality-pack": "^2.1.2",
         "setono/sylius-behat-pack": "^0.1",
         "symfony/debug-bundle": "^5.1",
         "symfony/dotenv": "^5.1",
@@ -71,7 +71,7 @@
             "SYMFONY_ENV=test composer ensure-env-copied",
             "vendor/bin/behat --tags=\"~@javascript\" --no-interaction --format=progress"
         ],
-        "check-style": "vendor/bin/ecs check src tests/Application/src",
+        "check-style": "ecs check",
         "checks": [
             "composer validate --strict",
             "composer normalize --dry-run",
@@ -90,7 +90,7 @@
         "ensure-env-test-copied": "(cd tests/Application && ([[ -f .env.test.local ]] || cp .env.test .env.test.local))",
         "ensure-schema-updated": "composer ensure-env-copied && (cd tests/Application && bin/console doctrine:schema:update --force -e ${SYMFONY_ENV:-'dev'})",
         "ensure-vendors-installed": "[[ -f vendor/autoload.php ]] || php -d memory_limit=-1 /usr/local/bin/composer install",
-        "fix-style": "vendor/bin/ecs check src tests/Application/src --fix",
+        "fix-style": "ecs check --fix",
         "fixtures": [
             "@ensure-database-ready",
             "(cd tests/Application && bin/console sylius:fixtures:load --no-interaction -e ${SYMFONY_ENV:-'dev'})"

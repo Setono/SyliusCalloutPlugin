@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
-use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Setono\DoctrineORMBatcher\Query\QueryRebuilder;
 use Setono\SyliusCalloutPlugin\Callout\Provider\EligibleCalloutsProviderInterface;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProductsBatch;

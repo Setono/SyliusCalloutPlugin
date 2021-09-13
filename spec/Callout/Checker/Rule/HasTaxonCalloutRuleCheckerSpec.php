@@ -14,27 +14,27 @@ use Webmozart\Assert\Assert;
 
 final class HasTaxonCalloutRuleCheckerSpec extends ObjectBehavior
 {
-    function let(TaxonRepositoryInterface $taxonRepository): void
+    public function let(TaxonRepositoryInterface $taxonRepository): void
     {
         $this->beConstructedWith($taxonRepository);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(HasTaxonCalloutRuleChecker::class);
     }
 
-    function it_implements_rule_checker_interface(): void
+    public function it_implements_rule_checker_interface(): void
     {
         $this->shouldHaveType(ProductCalloutRuleCheckerInterface::class);
     }
 
-    function it_has_type(): void
+    public function it_has_type(): void
     {
         Assert::eq('has_taxon', HasTaxonCalloutRuleChecker::TYPE);
     }
 
-    function it_throws_an_exception_if_the_configuration_key_does_not_exist(ProductInterface $taxon): void
+    public function it_throws_an_exception_if_the_configuration_key_does_not_exist(ProductInterface $taxon): void
     {
         $this->shouldThrow(\InvalidArgumentException::class)->during('isEligible', [
             $taxon,
@@ -42,7 +42,7 @@ final class HasTaxonCalloutRuleCheckerSpec extends ObjectBehavior
         ]);
     }
 
-    function it_applies_to_configured_main_taxon(
+    public function it_applies_to_configured_main_taxon(
         TaxonRepositoryInterface $taxonRepository,
         TaxonInterface $taxon,
         ProductInterface $product
@@ -54,7 +54,7 @@ final class HasTaxonCalloutRuleCheckerSpec extends ObjectBehavior
         $this->isEligible($product, ['taxons' => ['mugs']])->shouldReturn(true);
     }
 
-    function it_applies_to_configured_taxons(
+    public function it_applies_to_configured_taxons(
         TaxonRepositoryInterface $taxonRepository,
         TaxonInterface $taxon,
         ProductInterface $product
@@ -66,7 +66,7 @@ final class HasTaxonCalloutRuleCheckerSpec extends ObjectBehavior
         $this->isEligible($product, ['taxons' => ['mugs']])->shouldReturn(true);
     }
 
-    function it_applies_to_not_configured_taxons(
+    public function it_applies_to_not_configured_taxons(
         TaxonRepositoryInterface $taxonRepository,
         TaxonInterface $taxon,
         ProductInterface $product

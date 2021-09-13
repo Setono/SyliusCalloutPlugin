@@ -16,22 +16,22 @@ use Sylius\Component\Registry\ServiceRegistryInterface;
 
 final class CalloutRulesEligibilityCheckerSpec extends ObjectBehavior
 {
-    function let(ServiceRegistryInterface $ruleRegistry): void
+    public function let(ServiceRegistryInterface $ruleRegistry): void
     {
         $this->beConstructedWith($ruleRegistry);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(CalloutRulesEligibilityChecker::class);
     }
 
-    function it_implements_callout_eligibility_checker_interface(): void
+    public function it_implements_callout_eligibility_checker_interface(): void
     {
         $this->shouldHaveType(CalloutEligibilityCheckerInterface::class);
     }
 
-    function it_eligible_only_when_rules_specified(
+    public function it_eligible_only_when_rules_specified(
         CalloutInterface $callout,
         CalloutsAwareInterface $product
     ): void {
@@ -40,7 +40,7 @@ final class CalloutRulesEligibilityCheckerSpec extends ObjectBehavior
         $this->isEligible($product, $callout)->shouldReturn(false);
     }
 
-    function it_eligible_when_no_rules_specified_but_isNoRulesEligible_option_set_to_true(
+    public function it_eligible_when_no_rules_specified_but_isNoRulesEligible_option_set_to_true(
         ServiceRegistryInterface $ruleRegistry,
         CalloutInterface $callout,
         CalloutsAwareInterface $product
@@ -51,7 +51,7 @@ final class CalloutRulesEligibilityCheckerSpec extends ObjectBehavior
         $this->isEligible($product, $callout)->shouldReturn(true);
     }
 
-    function it_checks_eligibility(
+    public function it_checks_eligibility(
         CalloutInterface $callout,
         CalloutRuleInterface $rule,
         ServiceRegistryInterface $ruleRegistry,

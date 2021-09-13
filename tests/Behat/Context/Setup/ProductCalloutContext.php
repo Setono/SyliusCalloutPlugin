@@ -80,7 +80,7 @@ final class ProductCalloutContext implements Context
     public function thereIsAnIsNewProductCalloutWithRuleConfiguredWithDays(string $name, string $days, string $html, ChannelInterface $channel = null): void
     {
         $callout = $this->createCallout($name, $html, $channel);
-        $callout->addRule($this->calloutRuleFactory->createIsNewProduct((int)$days));
+        $callout->addRule($this->calloutRuleFactory->createIsNewProduct((int) $days));
 
         $this->objectManager->persist($callout);
         $this->objectManager->flush();
@@ -117,7 +117,6 @@ final class ProductCalloutContext implements Context
         $callout = $this->calloutFactory->createNew();
         $this->sharedStorage->set('callout', $callout);
 
-        /** @var ChannelInterface $channel */
         if (null === $channel && $this->sharedStorage->has('channel')) {
             $channel = $this->sharedStorage->get('channel');
         }
