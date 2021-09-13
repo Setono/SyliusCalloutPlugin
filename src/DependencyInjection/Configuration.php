@@ -23,14 +23,8 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        if (method_exists(TreeBuilder::class, 'getRootNode')) {
-            $treeBuilder = new TreeBuilder('setono_sylius_callout');
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $treeBuilder = new TreeBuilder();
-            $rootNode = $treeBuilder->root('setono_sylius_callout');
-        }
+        $treeBuilder = new TreeBuilder('setono_sylius_callout');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->addDefaultsIfNotSet()
@@ -67,7 +61,6 @@ final class Configuration implements ConfigurationInterface
                                     ->addDefaultsIfNotSet()
                                     ->children()
                                         ->scalarNode('model')->defaultValue(Callout::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(CalloutInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                         ->scalarNode('repository')->defaultValue(CalloutRepository::class)->end()
@@ -82,7 +75,6 @@ final class Configuration implements ConfigurationInterface
                                             ->addDefaultsIfNotSet()
                                             ->children()
                                                 ->scalarNode('model')->defaultValue(CalloutTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(CalloutTranslationInterface::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -97,7 +89,6 @@ final class Configuration implements ConfigurationInterface
                                     ->addDefaultsIfNotSet()
                                     ->children()
                                         ->scalarNode('model')->defaultValue(CalloutRule::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(CalloutRuleInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                     ->end()
                                 ->end()
