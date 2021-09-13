@@ -139,6 +139,10 @@ jobs:
                     - "lowest"
                     - "highest"
 
+                sylius:
+                    - '~1.9.0'
+                    - '~1.10.0'
+
         steps:
             -   name: "Checkout"
                 uses: "actions/checkout@v2"
@@ -149,6 +153,10 @@ jobs:
                     php-version: "${{ matrix.php-version }}"
                     extensions: "${{ env.PHP_EXTENSIONS }}"
                     coverage: "none"
+
+            -   name: Restrict Sylius version
+                if: matrix.sylius != ''
+                run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
 
             -   name: "Install composer dependencies"
                 uses: "ramsey/composer-install@v1"
@@ -175,6 +183,10 @@ jobs:
                     - "lowest"
                     - "highest"
 
+                sylius:
+                    - '~1.9.0'
+                    - '~1.10.0'
+
         steps:
             -   name: "Start MySQL"
                 run: "sudo /etc/init.d/mysql start"
@@ -192,6 +204,10 @@ jobs:
                     
             -   name: "Setup node"
                 uses: "actions/setup-node@v2"
+
+            -   name: Restrict Sylius version
+                if: matrix.sylius != ''
+                run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
 
             -   name: "Install composer dependencies"
                 uses: "ramsey/composer-install@v1"
