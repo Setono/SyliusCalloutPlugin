@@ -6,11 +6,8 @@ namespace Setono\SyliusCalloutPlugin\DependencyInjection;
 
 use Setono\SyliusCalloutPlugin\Form\Type\CalloutType;
 use Setono\SyliusCalloutPlugin\Model\Callout;
-use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRule;
-use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutTranslation;
-use Setono\SyliusCalloutPlugin\Model\CalloutTranslationInterface;
 use Setono\SyliusCalloutPlugin\Repository\CalloutRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
