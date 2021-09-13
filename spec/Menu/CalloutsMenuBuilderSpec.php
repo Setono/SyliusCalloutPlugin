@@ -11,12 +11,12 @@ use Sylius\Bundle\UiBundle\Menu\Event\MenuBuilderEvent;
 
 final class CalloutsMenuBuilderSpec extends ObjectBehavior
 {
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(CalloutsMenuBuilder::class);
     }
 
-    function it_adds_product_callouts_item(
+    public function it_adds_product_callouts_item(
         MenuBuilderEvent $event,
         ItemInterface $mainMenu,
         ItemInterface $marketingMenu,

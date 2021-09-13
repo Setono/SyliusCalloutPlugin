@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Doctrine\Common\Persistence\ObjectManager;
-use Setono\SyliusCalloutPlugin\Callout\Assigner\CalloutAssignerInterface;
+use Doctrine\Persistence\ObjectManager;
 use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
@@ -21,9 +20,6 @@ final class ProductCalloutContext implements Context
     /** @var CalloutRuleFactoryInterface */
     private $calloutRuleFactory;
 
-    /** @var CalloutAssignerInterface */
-    private $productCalloutsAssigner;
-
     /** @var FactoryInterface */
     private $calloutFactory;
 
@@ -35,13 +31,11 @@ final class ProductCalloutContext implements Context
 
     public function __construct(
         CalloutRuleFactoryInterface $calloutRuleFactory,
-        CalloutAssignerInterface $productCalloutsAssigner,
         FactoryInterface $calloutFactory,
         ObjectManager $objectManager,
         SharedStorageInterface $sharedStorage
     ) {
         $this->calloutRuleFactory = $calloutRuleFactory;
-        $this->productCalloutsAssigner = $productCalloutsAssigner;
         $this->calloutFactory = $calloutFactory;
         $this->objectManager = $objectManager;
         $this->sharedStorage = $sharedStorage;
@@ -80,7 +74,7 @@ final class ProductCalloutContext implements Context
     public function thereIsAnIsNewProductCalloutWithRuleConfiguredWithDays(string $name, string $days, string $html, ChannelInterface $channel = null): void
     {
         $callout = $this->createCallout($name, $html, $channel);
-        $callout->addRule($this->calloutRuleFactory->createIsNewProduct((int)$days));
+        $callout->addRule($this->calloutRuleFactory->createIsNewProduct((int) $days));
 
         $this->objectManager->persist($callout);
         $this->objectManager->flush();
@@ -117,7 +111,6 @@ final class ProductCalloutContext implements Context
         $callout = $this->calloutFactory->createNew();
         $this->sharedStorage->set('callout', $callout);
 
-        /** @var ChannelInterface $channel */
         if (null === $channel && $this->sharedStorage->has('channel')) {
             $channel = $this->sharedStorage->get('channel');
         }

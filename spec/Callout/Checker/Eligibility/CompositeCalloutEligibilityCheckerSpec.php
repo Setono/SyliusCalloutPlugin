@@ -12,22 +12,22 @@ use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 
 final class CompositeCalloutEligibilityCheckerSpec extends ObjectBehavior
 {
-    function let(): void
+    public function let(): void
     {
         $this->beConstructedWith([]);
     }
 
-    function it_is_initializable(): void
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(CompositeCalloutEligibilityChecker::class);
     }
 
-    function it_implements_callout_eligibility_checker_interface(): void
+    public function it_implements_callout_eligibility_checker_interface(): void
     {
         $this->shouldHaveType(CalloutEligibilityCheckerInterface::class);
     }
 
-    function it_checks_eligibility(
+    public function it_checks_eligibility(
         ProductInterface $product,
         CalloutInterface $callout,
         CalloutEligibilityCheckerInterface $eligibilityChecker
@@ -38,7 +38,7 @@ final class CompositeCalloutEligibilityCheckerSpec extends ObjectBehavior
         $this->isEligible($product, $callout)->shouldReturn(true);
     }
 
-    function it_not_eligible_when_at_least_one_checker_not_eligible(
+    public function it_not_eligible_when_at_least_one_checker_not_eligible(
         ProductInterface $product,
         CalloutInterface $callout,
         CalloutEligibilityCheckerInterface $eligibilityChecker1,
