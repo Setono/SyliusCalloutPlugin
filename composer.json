@@ -43,9 +43,12 @@
         "setono/code-quality-pack": "^2.1.2",
         "setono/sylius-behat-pack": "^0.1",
         "sylius/sylius": "~1.9.0",
+        "symfony/asset": "~5.2.0",
         "symfony/debug-bundle": "^5.1",
         "symfony/dotenv": "^5.1",
+        "symfony/framework-bundle": "~5.2.0",
         "symfony/intl": "^4.4 || ^5.0",
+        "symfony/twig-bundle": "~5.2.0",
         "symfony/web-profiler-bundle": "^5.0",
         "symfony/web-server-bundle": "^4.4 || ^5.0"
     },
