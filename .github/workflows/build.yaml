@@ -21,7 +21,6 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "7.3"
                     - "7.4"
 
                 dependencies:
@@ -102,7 +101,6 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "7.3"
                     - "7.4"
 
                 dependencies:
@@ -135,7 +133,6 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "7.3"
                     - "7.4"
 
                 dependencies:
@@ -172,7 +169,6 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - "7.3"
                     - "7.4"
 
                 dependencies:
