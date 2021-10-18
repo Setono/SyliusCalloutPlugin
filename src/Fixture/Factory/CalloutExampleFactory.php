@@ -128,7 +128,7 @@ class CalloutExampleFactory extends AbstractExampleFactory
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configureOptions(OptionsResolver $resolver): void
     {
