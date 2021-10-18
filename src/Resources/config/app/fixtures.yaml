@@ -21,6 +21,10 @@ sylius_fixtures:
                 setono_sylius_callout:
                     options:
                         custom:
+                            callout_without_rules:
+                                code: 'callout_without_rules'
+                                name: 'Callout without rules'
+
                             callout_today_only:
                                 name: "Today only"
                                 code: "today-only"
