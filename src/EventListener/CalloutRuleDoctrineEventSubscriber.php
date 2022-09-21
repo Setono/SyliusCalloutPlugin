@@ -22,7 +22,7 @@ final class CalloutRuleDoctrineEventSubscriber extends AbstractCalloutDoctrineEv
 
     public function preUpdate(PreUpdateEventArgs $args): void
     {
-        $entity = $args->getEntity();
+        $entity = $args->getObject();
         if (!$entity instanceof CalloutRuleInterface) {
             return;
         }

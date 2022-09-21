@@ -39,7 +39,7 @@ final class CalloutDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
 
     public function onFlush(OnFlushEventArgs $args): void
     {
-        $em = $args->getEntityManager();
+        $em = $args->getObjectManager();
         $uow = $em->getUnitOfWork();
 
         if ($this->isNoRulesEligible) {

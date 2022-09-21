@@ -25,7 +25,7 @@ final class ProductDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
 
     public function preUpdate(PreUpdateEventArgs $args): void
     {
-        $entity = $args->getEntity();
+        $entity = $args->getObject();
         if (!$entity instanceof ProductInterface) {
             return;
         }
@@ -39,7 +39,7 @@ final class ProductDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
 
     public function onFlush(OnFlushEventArgs $args): void
     {
-        $em = $args->getEntityManager();
+        $em = $args->getObjectManager();
         $uow = $em->getUnitOfWork();
 
         // We want to assign callouts to product on product creation
