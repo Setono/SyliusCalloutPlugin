@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Callout\Checker\Rule;
 
-use DateTimeInterface;
 use DateTime;
+use DateTimeInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Promotion\Exception\UnsupportedTypeException;

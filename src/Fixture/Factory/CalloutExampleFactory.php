@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Fixture\Factory;
 
+use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use DateTime;
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
@@ -128,7 +128,7 @@ class CalloutExampleFactory extends AbstractExampleFactory
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configureOptions(OptionsResolver $resolver): void
     {

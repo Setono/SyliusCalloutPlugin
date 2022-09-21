@@ -11,7 +11,7 @@ use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 class CalloutFixture extends AbstractResourceFixture
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getName(): string
     {
@@ -19,7 +19,7 @@ class CalloutFixture extends AbstractResourceFixture
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configureResourceNode(ArrayNodeDefinition $resourceNode): void
     {

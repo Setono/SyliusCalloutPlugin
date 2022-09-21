@@ -32,7 +32,7 @@ class CalloutRuleExampleFactory extends AbstractExampleFactory implements Exampl
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function create(array $options = []): CalloutRuleInterface
     {
@@ -47,7 +47,7 @@ class CalloutRuleExampleFactory extends AbstractExampleFactory implements Exampl
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configureOptions(OptionsResolver $resolver): void
     {
