@@ -15,8 +15,7 @@ final class HasTaxonCalloutRuleChecker implements ProductCalloutRuleCheckerInter
 {
     public const TYPE = 'has_taxon';
 
-    /** @var TaxonRepositoryInterface */
-    private $taxonRepository;
+    private TaxonRepositoryInterface $taxonRepository;
 
     public function __construct(TaxonRepositoryInterface $taxonRepository)
     {

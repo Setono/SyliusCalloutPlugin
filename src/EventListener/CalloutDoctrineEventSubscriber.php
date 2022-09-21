@@ -15,8 +15,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class CalloutDoctrineEventSubscriber extends AbstractCalloutDoctrineEventSubscriber implements EventSubscriber
 {
-    /** @var bool */
-    private $isNoRulesEligible;
+    private bool $isNoRulesEligible;
 
     public function __construct(
         EntityManager $calloutManager,
@@ -29,7 +28,7 @@ final class CalloutDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
         $this->isNoRulesEligible = $isNoRulesEligible;
     }
 
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             Events::onFlush,

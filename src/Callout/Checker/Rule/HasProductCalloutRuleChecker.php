@@ -14,8 +14,7 @@ final class HasProductCalloutRuleChecker implements ProductCalloutRuleCheckerInt
 {
     public const TYPE = 'has_product';
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
+    private ProductRepositoryInterface $productRepository;
 
     public function __construct(ProductRepositoryInterface $productRepository)
     {

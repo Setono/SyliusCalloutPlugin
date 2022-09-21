@@ -10,8 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class CalloutRuleChoiceType extends AbstractType
 {
-    /** @var array */
-    private $rules;
+    private array $rules;
 
     public function __construct(array $rules)
     {

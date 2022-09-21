@@ -12,14 +12,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CalloutRuleExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {
-    /** @var CalloutRuleFactoryInterface */
-    private $calloutRuleFactory;
+    private CalloutRuleFactoryInterface $calloutRuleFactory;
 
-    /** @var \Faker\Generator */
-    private $faker;
+    private \Faker\Generator $faker;
 
-    /** @var OptionsResolver */
-    private $optionsResolver;
+    private OptionsResolver $optionsResolver;
 
     public function __construct(CalloutRuleFactoryInterface $calloutRuleFactory)
     {

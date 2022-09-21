@@ -15,11 +15,9 @@ use Sylius\Component\Registry\ServiceRegistryInterface;
  */
 final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerInterface
 {
-    /** @var ServiceRegistryInterface */
-    private $ruleRegistry;
+    private ServiceRegistryInterface $ruleRegistry;
 
-    /** @var bool */
-    private $isNoRulesEligible;
+    private bool $isNoRulesEligible;
 
     public function __construct(ServiceRegistryInterface $ruleRegistry, bool $isNoRulesEligible = false)
     {

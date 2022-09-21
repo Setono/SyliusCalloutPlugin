@@ -9,8 +9,7 @@ use Twig\TwigFunction;
 
 final class CalloutConfigurationExtension extends AbstractExtension
 {
-    /** @var bool */
-    private $manualTriggeringEnabled;
+    private bool $manualTriggeringEnabled;
 
     public function __construct(bool $manualTriggeringEnabled)
     {

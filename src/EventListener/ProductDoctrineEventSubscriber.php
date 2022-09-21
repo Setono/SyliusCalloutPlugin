@@ -14,7 +14,7 @@ use Sylius\Component\Core\Model\ProductTaxonInterface;
 
 final class ProductDoctrineEventSubscriber extends AbstractCalloutDoctrineEventSubscriber implements EventSubscriber
 {
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             Events::preUpdate,

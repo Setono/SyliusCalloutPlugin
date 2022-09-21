@@ -12,7 +12,7 @@ use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 
 final class CalloutRuleDoctrineEventSubscriber extends AbstractCalloutDoctrineEventSubscriber implements EventSubscriber
 {
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             Events::preUpdate,

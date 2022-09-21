@@ -10,11 +10,9 @@ use Setono\SyliusCalloutPlugin\Model\CalloutsAwareInterface;
 
 final class EligibleCalloutsProvider implements EligibleCalloutsProviderInterface
 {
-    /** @var PreQualifiedCalloutsProviderInterface */
-    private $preQualifiedCalloutsProvider;
+    private PreQualifiedCalloutsProviderInterface $preQualifiedCalloutsProvider;
 
-    /** @var CalloutEligibilityCheckerInterface */
-    private $calloutEligibilityChecker;
+    private CalloutEligibilityCheckerInterface $calloutEligibilityChecker;
 
     public function __construct(
         PreQualifiedCalloutsProviderInterface $preQualifiedCalloutsProvider,

@@ -8,8 +8,7 @@ use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
 
 final class CalloutsProvider implements PreQualifiedCalloutsProviderInterface
 {
-    /** @var CalloutRepositoryInterface */
-    private $calloutRepository;
+    private CalloutRepositoryInterface $calloutRepository;
 
     public function __construct(CalloutRepositoryInterface $calloutRepository)
     {

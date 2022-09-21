@@ -15,17 +15,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class CalloutAssignAction
 {
-    /** @var CalloutAssignerInterface */
-    private $calloutAssigner;
+    private CalloutAssignerInterface $calloutAssigner;
 
-    /** @var SessionInterface */
-    private $session;
+    private SessionInterface $session;
 
-    /** @var TranslatorInterface */
-    private $translator;
+    private TranslatorInterface $translator;
 
-    /** @var RouterInterface */
-    private $router;
+    private RouterInterface $router;
 
     public function __construct(
         CalloutAssignerInterface $calloutAssigner,

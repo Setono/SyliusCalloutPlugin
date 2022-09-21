@@ -8,7 +8,6 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
-use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -23,35 +22,27 @@ class Callout implements CalloutInterface
         __construct as protected initializeTranslationsCollection;
     }
 
-    /** @var int */
-    protected $id;
+    protected ?int $id = null;
 
-    /** @var string */
-    protected $code;
+    protected ?string $code = null;
 
-    /** @var string */
-    protected $name;
+    protected ?string $name = null;
 
-    /** @var DateTimeInterface|null */
-    protected $startsAt;
+    protected ?DateTimeInterface $startsAt = null;
 
-    /** @var DateTimeInterface|null */
-    protected $endsAt;
+    protected ?DateTimeInterface $endsAt = null;
 
-    /** @var int */
-    protected $priority = 0;
+    protected int $priority = 0;
 
-    /** @var string|null */
-    protected $position;
+    protected ?string $position = null;
 
-    /** @var Collection|ChannelInterface[] */
-    protected $channels;
+    /** @var Collection<array-key, BaseChannelInterface> */
+    protected Collection $channels;
 
-    /** @var Collection|CalloutRuleInterface[] */
-    protected $rules;
+    /** @var Collection<array-key, CalloutRuleInterface> */
+    protected Collection $rules;
 
-    /** @var DateTimeInterface|null */
-    protected $rulesAssignedAt;
+    protected ?DateTimeInterface $rulesAssignedAt = null;
 
     public function __construct()
     {

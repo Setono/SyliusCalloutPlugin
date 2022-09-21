@@ -8,8 +8,7 @@ use DateTimeInterface;
 
 final class AssignEligibleCalloutsToProducts implements CommandInterface
 {
-    /** @var DateTimeInterface */
-    private $triggeredAt;
+    private DateTimeInterface $triggeredAt;
 
     public function __construct(DateTimeInterface $triggeredAt)
     {
