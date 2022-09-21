@@ -162,14 +162,8 @@ class CalloutExampleFactory extends AbstractExampleFactory
             ->setAllowedTypes('channels', ['array'])
             ->setNormalizer('channels', LazyOption::findBy($this->channelRepository, 'code'))
 
-            ->setDefined('rules')
-            ->setNormalizer('rules', function (Options $options, array $rules): array {
-                if ($rules === []) {
-                    return [[]];
-                }
-
-                return $rules;
-            })
+            ->setDefault('rules', [])
+            ->setAllowedTypes('rules', ['array'])
 
             ->setDefault('enabled', true)
             ->setAllowedTypes('enabled', ['boolean'])
