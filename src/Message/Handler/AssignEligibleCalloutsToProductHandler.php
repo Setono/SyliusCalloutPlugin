@@ -12,11 +12,9 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInterface
 {
-    /** @var EligibleCalloutsProviderInterface */
-    private $eligibleCalloutsProvider;
+    private EligibleCalloutsProviderInterface $eligibleCalloutsProvider;
 
-    /** @var ProductRepositoryInterface */
-    private $productRepository;
+    private ProductRepositoryInterface $productRepository;
 
     public function __construct(
         EligibleCalloutsProviderInterface $eligibleCalloutsProvider,

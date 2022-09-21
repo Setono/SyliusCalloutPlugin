@@ -8,11 +8,9 @@ use Sylius\Component\Resource\Model\AbstractTranslation;
 
 class CalloutTranslation extends AbstractTranslation implements CalloutTranslationInterface
 {
-    /** @var int */
-    protected $id;
+    protected ?int $id = null;
 
-    /** @var string */
-    protected $text;
+    protected ?string $text = null;
 
     public function getId(): ?int
     {

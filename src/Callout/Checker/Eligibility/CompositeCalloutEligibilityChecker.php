@@ -11,7 +11,7 @@ use Webmozart\Assert\Assert;
 final class CompositeCalloutEligibilityChecker implements CalloutEligibilityCheckerInterface
 {
     /** @var CalloutEligibilityCheckerInterface[] */
-    private $calloutEligibilityCheckers;
+    private array $calloutEligibilityCheckers;
 
     /**
      * @param CalloutEligibilityCheckerInterface[] $calloutEligibilityCheckers

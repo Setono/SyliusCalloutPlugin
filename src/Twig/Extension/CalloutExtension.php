@@ -14,11 +14,9 @@ use Twig\TwigFunction;
 
 final class CalloutExtension extends AbstractExtension
 {
-    /** @var RenderingCalloutEligibilityCheckerInterface */
-    private $renderingCalloutEligibilityChecker;
+    private RenderingCalloutEligibilityCheckerInterface $renderingCalloutEligibilityChecker;
 
-    /** @var CssClassBuilderInterface */
-    private $cssClassBuilder;
+    private CssClassBuilderInterface $cssClassBuilder;
 
     public function __construct(
         RenderingCalloutEligibilityCheckerInterface $renderingCalloutEligibilityChecker,

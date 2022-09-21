@@ -23,26 +23,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CalloutExampleFactory extends AbstractExampleFactory
 {
-    /** @var FactoryInterface */
-    protected $calloutFactory;
+    protected FactoryInterface $calloutFactory;
 
-    /** @var ObjectManager */
-    protected $calloutManager;
+    protected ObjectManager $calloutManager;
 
-    /** @var ExampleFactoryInterface */
-    protected $calloutRuleExampleFactory;
+    protected ExampleFactoryInterface $calloutRuleExampleFactory;
 
-    /** @var ChannelRepositoryInterface */
-    protected $channelRepository;
+    protected ChannelRepositoryInterface $channelRepository;
 
-    /** @var RepositoryInterface */
-    protected $localeRepository;
+    protected RepositoryInterface $localeRepository;
 
-    /** @var \Faker\Generator */
-    protected $faker;
+    protected \Faker\Generator $faker;
 
-    /** @var OptionsResolver */
-    protected $optionsResolver;
+    protected OptionsResolver $optionsResolver;
 
     public function __construct(
         FactoryInterface $calloutFactory,

@@ -15,8 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
 {
-    /** @var FormTypeRegistryInterface */
-    private $formTypeRegistry;
+    private FormTypeRegistryInterface $formTypeRegistry;
 
     public function __construct(string $dataClass, FormTypeRegistryInterface $formTypeRegistry, array $validationGroups = [])
     {

@@ -6,21 +6,17 @@ namespace Setono\SyliusCalloutPlugin\Model;
 
 class CalloutRule implements CalloutRuleInterface
 {
-    /** @var int */
-    protected $id;
+    protected ?int $id = null;
 
-    /** @var string|null */
-    protected $type;
+    protected ?string $type = null;
 
-    /** @var CalloutInterface|null */
-    protected $callout;
+    protected ?CalloutInterface $callout = null;
 
-    /** @var array */
-    protected $configuration = [];
+    protected array $configuration = [];
 
     public function __toString(): string
     {
-        return $this->getType();
+        return (string) $this->getType();
     }
 
     public function getId(): ?int

@@ -16,14 +16,11 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 abstract class AbstractCalloutDoctrineEventSubscriber
 {
-    /** @var EntityManager */
-    protected $calloutManager;
+    protected EntityManager $calloutManager;
 
-    /** @var MessageBusInterface */
-    protected $commandBus;
+    protected MessageBusInterface $commandBus;
 
-    /** @var bool */
-    protected $manualTriggering;
+    protected bool $manualTriggering;
 
     /** @var ArrayCollection|CalloutInterface[] */
     private $calloutsToUpdate;

@@ -19,20 +19,16 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInterface
 {
-    /** @var CalloutRepositoryInterface */
-    private $calloutRepository;
+    private CalloutRepositoryInterface $calloutRepository;
 
-    /** @var EntityManager */
-    private $calloutManager;
+    private EntityManager $calloutManager;
 
     /** @var EntityRepository|ProductRepositoryInterface */
     private $productRepository;
 
-    /** @var MessageBusInterface */
-    private $messageBus;
+    private MessageBusInterface $messageBus;
 
-    /** @var BatcherFactoryInterface */
-    private $batcherFactory;
+    private BatcherFactoryInterface $batcherFactory;
 
     public function __construct(
         CalloutRepositoryInterface $calloutRepository,

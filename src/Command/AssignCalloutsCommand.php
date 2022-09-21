@@ -11,8 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class AssignCalloutsCommand extends Command
 {
-    /** @var CalloutAssignerInterface */
-    private $productCalloutsAssigner;
+    private CalloutAssignerInterface $productCalloutsAssigner;
 
     protected static $defaultName = 'setono:sylius-callout:assign';
 

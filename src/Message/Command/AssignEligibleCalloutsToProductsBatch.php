@@ -8,8 +8,7 @@ use Setono\DoctrineORMBatcher\Batch\RangeBatchInterface;
 
 final class AssignEligibleCalloutsToProductsBatch implements CommandInterface
 {
-    /** @var RangeBatchInterface */
-    private $batch;
+    private RangeBatchInterface $batch;
 
     public function __construct(RangeBatchInterface $batch)
     {

@@ -14,14 +14,11 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 final class AssignEligibleCalloutsToProductsBatchHandler implements MessageHandlerInterface
 {
-    /** @var EligibleCalloutsProviderInterface */
-    private $eligibleCalloutsProvider;
+    private EligibleCalloutsProviderInterface $eligibleCalloutsProvider;
 
-    /** @var EntityManagerInterface */
-    private $productManager;
+    private EntityManagerInterface $productManager;
 
-    /** @var ManagerRegistry */
-    private $managerRegistry;
+    private ManagerRegistry $managerRegistry;
 
     public function __construct(
         EligibleCalloutsProviderInterface $eligibleCalloutsProvider,

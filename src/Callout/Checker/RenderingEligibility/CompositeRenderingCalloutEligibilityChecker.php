@@ -10,7 +10,7 @@ use Webmozart\Assert\Assert;
 final class CompositeRenderingCalloutEligibilityChecker implements RenderingCalloutEligibilityCheckerInterface
 {
     /** @var RenderingCalloutEligibilityCheckerInterface[] */
-    private $renderingCalloutEligibilityCheckers;
+    private array $renderingCalloutEligibilityCheckers;
 
     /**
      * @param RenderingCalloutEligibilityCheckerInterface[] $renderingCalloutEligibilityCheckers

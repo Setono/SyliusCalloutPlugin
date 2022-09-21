@@ -13,8 +13,7 @@ use Sylius\Component\Core\Model\ChannelInterface;
  */
 final class CalloutChannelEligibilityChecker implements RenderingCalloutEligibilityCheckerInterface
 {
-    /** @var ChannelContextInterface */
-    private $channelContext;
+    private ChannelContextInterface $channelContext;
 
     public function __construct(ChannelContextInterface $channelContext)
     {
