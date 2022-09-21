@@ -1,14 +1,14 @@
 {
     "name": "setono/sylius-callout-plugin",
-    "type": "sylius-plugin",
     "description": "Add callouts to your Sylius products",
+    "license": "MIT",
+    "type": "sylius-plugin",
     "keywords": [
         "sylius",
         "sylius-plugin",
         "setono",
         "callout"
     ],
-    "license": "MIT",
     "require": {
         "php": ">=7.4",
         "ext-mbstring": "*",
@@ -56,14 +56,7 @@
         "symfony/web-profiler-bundle": "^4.4 || ^5.4 || ^6.0",
         "symfony/webpack-encore-bundle": "^1.15"
     },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": false,
-            "ergebnis/composer-normalize": true,
-            "symfony/thanks": false
-        }
-    },
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Setono\\SyliusCalloutPlugin\\": "src/"
@@ -80,7 +73,14 @@
             "tests/Application/Kernel.php"
         ]
     },
-    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": false,
+            "ergebnis/composer-normalize": true,
+            "symfony/thanks": false
+        },
+        "sort-packages": true
+    },
     "scripts": {
         "all": [
             "@checks",
