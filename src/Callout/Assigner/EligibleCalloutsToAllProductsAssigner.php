@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Callout\Assigner;
 
-use Safe\DateTime;
+use DateTime;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProducts;
 use Symfony\Component\Messenger\MessageBusInterface;
 

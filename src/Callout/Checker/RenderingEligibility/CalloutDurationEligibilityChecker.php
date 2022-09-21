@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Callout\Checker\RenderingEligibility;
 
-use Safe\DateTime;
+use DateTime;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 
 /**

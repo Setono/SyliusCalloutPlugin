@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Form\Type;
 
-use function Safe\sprintf;
 use Setono\SyliusCalloutPlugin\Form\Type\Translation\CalloutTranslationType;
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;

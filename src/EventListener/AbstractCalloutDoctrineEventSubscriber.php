@@ -7,7 +7,7 @@ namespace Setono\SyliusCalloutPlugin\EventListener;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\PostFlushEventArgs;
-use Safe\DateTime;
+use DateTime;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProduct;
 use Setono\SyliusCalloutPlugin\Message\Command\AssignEligibleCalloutsToProducts;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;

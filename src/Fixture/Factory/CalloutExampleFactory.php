@@ -6,7 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Fixture\Factory;
 
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use Safe\DateTime;
+use DateTime;
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;

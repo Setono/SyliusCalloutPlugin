@@ -4,8 +4,6 @@ on:
         branches:
             - "master"
     pull_request: ~
-    schedule:
-        - cron: "5 8 * * 1"
 
 env:
     APP_ENV: "test"

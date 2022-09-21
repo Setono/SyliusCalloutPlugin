@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Form\Type;
 
-use function Safe\array_replace;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;

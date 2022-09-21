@@ -4,17 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\DependencyInjection\Compiler;
 
-use Safe\Exceptions\StringsException;
-use function Safe\sprintf;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 final class RegisterCalloutRuleCheckerPass implements CompilerPassInterface
 {
-    /**
-     * @throws StringsException
-     */
     public function process(ContainerBuilder $container): void
     {
         if (!$container->hasDefinition('setono_sylius_callout.registry.callout_rule_checker') || !$container->hasDefinition('setono_sylius_callout.form_registry.callout_rule_checker')) {
