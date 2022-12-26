@@ -14,7 +14,7 @@
         "ext-mbstring": "*",
         "doctrine/collections": "^1.7",
         "doctrine/event-manager": "^1.1",
-        "doctrine/orm": "^2.13",
+        "doctrine/orm": "^2.14",
         "doctrine/persistence": "^2.5",
         "setono/doctrine-orm-batcher": "^0.6",
         "setono/doctrine-orm-batcher-bundle": "^0.3.3",
