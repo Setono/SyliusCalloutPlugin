@@ -37,7 +37,7 @@
         "api-platform/core": "^2.7",
         "fakerphp/faker": "^1.20",
         "friendsofsymfony/oauth-server-bundle": ">2.0.0-alpha.0 ^2.0@dev",
-        "lexik/jwt-authentication-bundle": "^2.16",
+        "lexik/jwt-authentication-bundle": "^2.18",
         "matthiasnoback/symfony-config-test": "^4.3",
         "matthiasnoback/symfony-dependency-injection-test": "^4.3",
         "phpspec/phpspec": "^7.2",
