@@ -17,7 +17,7 @@
         "doctrine/orm": "^2.13",
         "doctrine/persistence": "^2.5",
         "setono/doctrine-orm-batcher": "^0.6",
-        "setono/doctrine-orm-batcher-bundle": "^0.3.3",
+        "setono/doctrine-orm-batcher-bundle": "dev-master",
         "sylius/resource-bundle": "^1.6",
         "symfony/config": "^4.4 || ^5.4 || ^6.0",
         "symfony/console": "^4.4 || ^5.4 || ^6.0",
