@@ -7,9 +7,11 @@ namespace Setono\SyliusCalloutPlugin\Controller\Action;
 use Setono\SyliusCalloutPlugin\Callout\Assigner\CalloutAssignerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -17,7 +19,8 @@ final class CalloutAssignAction
 {
     private CalloutAssignerInterface $calloutAssigner;
 
-    private SessionInterface $session;
+    /** @var RequestStack|SessionInterface */
+    private $requestStackOrSession;
 
     private TranslatorInterface $translator;
 
@@ -25,12 +28,15 @@ final class CalloutAssignAction
 
     public function __construct(
         CalloutAssignerInterface $calloutAssigner,
-        SessionInterface $session,
+        $requestStackOrSession,
         TranslatorInterface $translator,
         RouterInterface $router
     ) {
+        if ($requestStackOrSession instanceof SessionInterface) {
+            trigger_deprecation('setono/sylius-callout-plugin', '1.2', 'Passing a SessionInterface to "%s" is deprecated, pass a RequestStack instead.', __METHOD__);
+        }
         $this->calloutAssigner = $calloutAssigner;
-        $this->session = $session;
+        $this->requestStackOrSession = $requestStackOrSession;
         $this->translator = $translator;
         $this->router = $router;
     }
@@ -39,8 +45,18 @@ final class CalloutAssignAction
     {
         $this->calloutAssigner->assign();
 
-        /** @var FlashBagInterface $flashBag */
-        $flashBag = $this->session->getBag('flashes');
+        if ($this->requestStackOrSession instanceof SessionInterface) {
+            /** @var FlashBagInterface $flashBag */
+            $flashBag = $this->requestStackOrSession->getBag('flashes');
+        } elseif ($this->requestStackOrSession instanceof RequestStack) {
+            /** @var Session $session */
+            $session = $this->requestStackOrSession->getSession();
+            /** @var FlashBagInterface $flashBag */
+            $flashBag = $session->getBag('flashes');
+        } else {
+            throw new \LogicException(sprintf('The $requestStackOrSession argument must be an instance of "%s" or "%s", "%s" given.', RequestStack::class, SessionInterface::class, get_debug_type($this->requestStackOrSession)));
+        }
+
         $flashBag->add(
             'success',
             $this->translator->trans('setono_sylius_callout.callout.assign_started', [], 'flashes')

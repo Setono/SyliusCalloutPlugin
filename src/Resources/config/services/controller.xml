@@ -8,7 +8,7 @@
         <service id="setono_sylius_callout.controller.action.assign"
                  class="Setono\SyliusCalloutPlugin\Controller\Action\CalloutAssignAction">
             <argument type="service" id="setono_sylius_callout.assigner.eligible_callouts_to_all_products" />
-            <argument type="service" id="session" />
+            <argument type="service" id="request_stack" />
             <argument type="service" id="translator" />
             <argument type="service" id="router" />
             <tag name="controller.service_arguments" />
