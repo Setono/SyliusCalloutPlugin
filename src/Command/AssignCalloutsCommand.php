@@ -15,18 +15,13 @@ final class AssignCalloutsCommand extends Command
 
     protected static $defaultName = 'setono:sylius-callout:assign';
 
+    protected static $defaultDescription = 'Trigger callouts to all products assign process';
+
     public function __construct(CalloutAssignerInterface $productCalloutsAssigner)
     {
         parent::__construct();
 
         $this->productCalloutsAssigner = $productCalloutsAssigner;
-    }
-
-    protected function configure(): void
-    {
-        $this
-            ->setDescription('Trigger callouts to all products assign process')
-        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
