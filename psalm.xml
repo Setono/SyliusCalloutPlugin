@@ -3,19 +3,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-    errorBaseline="psalm-baseline.xml"
+    findUnusedBaselineEntry="true"
+    findUnusedPsalmSuppress="true"
+    findUnusedCode="false"
+    findUnusedVariablesAndParams="true"
     phpVersion="8.1"
     errorLevel="1"
 >
     <projectFiles>
         <directory name="src"/>
+        <directory name="tests"/>
         <ignoreFiles>
+            <directory name="tests/Application"/>
+            <directory name="tests/Behat"/>
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
     <plugins>
-        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
-            <containerXml>tests/Application/var/cache/test/Tests_Setono_SyliusCalloutPlugin_Application_KernelTestDebugContainer.xml</containerXml>
-        </pluginClass>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin"/>
     </plugins>
+    <forbiddenFunctions>
+        <function name="dd"/>
+        <function name="dump"/>
+        <function name="exit"/>
+        <function name="var_dump"/>
+        <function name="print_r"/>
+    </forbiddenFunctions>
 </psalm>
