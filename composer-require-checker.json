@@ -1,20 +1,21 @@
 {
-  "symbol-whitelist": [
-    "array",
-    "bool",
-    "callable",
-    "false",
-    "float",
-    "int",
-    "iterable",
-    "null",
-    "object",
-    "parent",
-    "self",
-    "static",
-    "string",
-    "true",
-    "void",
-    "Faker\\Factory"
-  ]
+    "symbol-whitelist": [
+        "array",
+        "bool",
+        "callable",
+        "false",
+        "float",
+        "int",
+        "iterable",
+        "null",
+        "object",
+        "parent",
+        "self",
+        "static",
+        "string",
+        "true",
+        "void",
+        "Faker\\Factory",
+        "Faker\\Generator"
+    ]
 }
