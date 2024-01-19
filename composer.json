@@ -16,8 +16,6 @@
         "doctrine/event-manager": "^1.2",
         "doctrine/orm": "^2.13",
         "doctrine/persistence": "^2.5 || ^3.2",
-        "setono/doctrine-orm-batcher": "^0.6.6",
-        "setono/doctrine-orm-batcher-bundle": "^0.3.4",
         "sylius/resource-bundle": "^1.6",
         "symfony/config": "^5.4 || ^6.4",
         "symfony/console": "^5.4 || ^6.4",
