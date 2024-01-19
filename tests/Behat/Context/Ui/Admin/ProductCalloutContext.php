@@ -18,7 +18,7 @@ final class ProductCalloutContext implements Context
 
     public function __construct(
         CreatePageInterface $createPage,
-        NotificationCheckerInterface $notificationChecker
+        NotificationCheckerInterface $notificationChecker,
     ) {
         $this->createPage = $createPage;
         $this->notificationChecker = $notificationChecker;

@@ -21,7 +21,7 @@ final class CalloutDoctrineEventSubscriber extends AbstractCalloutDoctrineEventS
         EntityManager $calloutManager,
         MessageBusInterface $commandBus,
         bool $manualTriggering = false,
-        bool $isNoRulesEligible = false
+        bool $isNoRulesEligible = false,
     ) {
         parent::__construct($calloutManager, $commandBus, $manualTriggering);
 

@@ -29,9 +29,4 @@ final class SetonoSyliusCalloutPlugin extends AbstractResourceBundle
             SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
     }
-
-    protected function getModelNamespace(): string
-    {
-        return 'Setono\SyliusCalloutPlugin\Model';
-    }
 }

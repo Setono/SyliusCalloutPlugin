@@ -31,7 +31,7 @@ abstract class AbstractCalloutDoctrineEventSubscriber
     public function __construct(
         EntityManager $calloutManager,
         MessageBusInterface $commandBus,
-        bool $manualTriggering = false
+        bool $manualTriggering = false,
     ) {
         $this->calloutManager = $calloutManager;
         $this->commandBus = $commandBus;

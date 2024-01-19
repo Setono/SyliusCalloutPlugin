@@ -20,7 +20,7 @@ final class CalloutExtension extends AbstractExtension
 
     public function __construct(
         RenderingCalloutEligibilityCheckerInterface $renderingCalloutEligibilityChecker,
-        CssClassBuilderInterface $cssClassBuilder
+        CssClassBuilderInterface $cssClassBuilder,
     ) {
         $this->renderingCalloutEligibilityChecker = $renderingCalloutEligibilityChecker;
         $this->cssClassBuilder = $cssClassBuilder;
@@ -63,14 +63,14 @@ final class CalloutExtension extends AbstractExtension
             'setono-callout',
             sprintf(
                 'setono-callout-code-%s',
-                $this->sanitizeClass((string) $callout->getCode())
+                $this->sanitizeClass((string) $callout->getCode()),
             ),
         ];
 
         if ($callout->getPosition() !== null) {
             $classes[] = sprintf(
                 'setono-callout-position-%s',
-                $this->sanitizeClass($callout->getPosition())
+                $this->sanitizeClass($callout->getPosition()),
             );
         }
 

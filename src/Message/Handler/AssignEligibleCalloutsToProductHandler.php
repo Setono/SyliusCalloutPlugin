@@ -18,7 +18,7 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
 
     public function __construct(
         EligibleCalloutsProviderInterface $eligibleCalloutsProvider,
-        ProductRepositoryInterface $productRepository
+        ProductRepositoryInterface $productRepository,
     ) {
         $this->eligibleCalloutsProvider = $eligibleCalloutsProvider;
         $this->productRepository = $productRepository;
@@ -33,7 +33,7 @@ final class AssignEligibleCalloutsToProductHandler implements MessageHandlerInte
         }
 
         $product->setCallouts(
-            $this->eligibleCalloutsProvider->getEligibleCallouts($product)
+            $this->eligibleCalloutsProvider->getEligibleCallouts($product),
         );
 
         // We don't want this here

@@ -16,7 +16,7 @@ final class EligibleCalloutsProvider implements EligibleCalloutsProviderInterfac
 
     public function __construct(
         PreQualifiedCalloutsProviderInterface $preQualifiedCalloutsProvider,
-        CalloutEligibilityCheckerInterface $calloutEligibilityChecker
+        CalloutEligibilityCheckerInterface $calloutEligibilityChecker,
     ) {
         $this->preQualifiedCalloutsProvider = $preQualifiedCalloutsProvider;
         $this->calloutEligibilityChecker = $calloutEligibilityChecker;
@@ -28,7 +28,7 @@ final class EligibleCalloutsProvider implements EligibleCalloutsProviderInterfac
             $this->preQualifiedCalloutsProvider->getCallouts(),
             function (CalloutInterface $callout) use ($product): bool {
                 return $this->calloutEligibilityChecker->isEligible($product, $callout);
-            }
+            },
         );
     }
 }

@@ -24,7 +24,7 @@ final class CompositeCalloutEligibilityCheckerPass implements CompilerPassInterf
                         return new Reference($id);
                     },
                     // Tag have same name as service id
-                    array_keys($container->findTaggedServiceIds($serviceId))
+                    array_keys($container->findTaggedServiceIds($serviceId)),
                 ),
             ]);
         }

@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -30,7 +30,7 @@ final class CalloutAssignAction
         CalloutAssignerInterface $calloutAssigner,
         $requestStackOrSession,
         TranslatorInterface $translator,
-        RouterInterface $router
+        RouterInterface $router,
     ) {
         if ($requestStackOrSession instanceof SessionInterface) {
             trigger_deprecation('setono/sylius-callout-plugin', '1.2', 'Passing a SessionInterface to "%s" is deprecated, pass a RequestStack instead.', __METHOD__);
@@ -59,11 +59,11 @@ final class CalloutAssignAction
 
         $flashBag->add(
             'success',
-            $this->translator->trans('setono_sylius_callout.callout.assign_started', [], 'flashes')
+            $this->translator->trans('setono_sylius_callout.callout.assign_started', [], 'flashes'),
         );
 
         return new RedirectResponse(
-            $this->router->generate('setono_sylius_callout_admin_callout_index')
+            $this->router->generate('setono_sylius_callout_admin_callout_index'),
         );
     }
 }

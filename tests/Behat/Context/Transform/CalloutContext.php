@@ -30,7 +30,7 @@ final class CalloutContext implements Context
         Assert::eq(
             count($callouts),
             1,
-            sprintf('%d callouts has been found with name "%s".', count($callouts), $calloutName)
+            sprintf('%d callouts has been found with name "%s".', count($callouts), $calloutName),
         );
 
         return $callouts[0];

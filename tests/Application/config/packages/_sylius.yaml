@@ -1,11 +1,7 @@
 imports:
     - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
-    - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
-
     - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
 
 parameters:
@@ -15,8 +11,11 @@ sylius_shop:
     product_grid:
         include_all_descendants: true
 
+sylius_api:
+    enabled: true
+
 sylius_product:
     resources:
         product:
             classes:
-                model: Tests\Setono\SyliusCalloutPlugin\Entity\Product
+                model: Tests\Setono\SyliusCalloutPlugin\Application\Model\Product

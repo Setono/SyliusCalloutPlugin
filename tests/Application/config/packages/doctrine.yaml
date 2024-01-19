@@ -19,6 +19,7 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/src/Resources/config/doctrine'
-                prefix: 'Tests\Setono\SyliusCalloutPlugin\Entity'
+                type: annotation
+                dir: '%kernel.project_dir%/Model'
+                prefix: 'Tests\Setono\SyliusCalloutPlugin\Application\Model'
+                alias: App

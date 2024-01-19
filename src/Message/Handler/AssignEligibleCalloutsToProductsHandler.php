@@ -35,7 +35,7 @@ final class AssignEligibleCalloutsToProductsHandler implements MessageHandlerInt
         EntityManager $calloutManager,
         ProductRepositoryInterface $productRepository,
         MessageBusInterface $messageBus,
-        BatcherFactoryInterface $batcherFactory
+        BatcherFactoryInterface $batcherFactory,
     ) {
         $this->calloutRepository = $calloutRepository;
         $this->calloutManager = $calloutManager;

@@ -33,7 +33,7 @@ final class ProductCalloutContext implements Context
         CalloutRuleFactoryInterface $calloutRuleFactory,
         FactoryInterface $calloutFactory,
         ObjectManager $objectManager,
-        SharedStorageInterface $sharedStorage
+        SharedStorageInterface $sharedStorage,
     ) {
         $this->calloutRuleFactory = $calloutRuleFactory;
         $this->calloutFactory = $calloutFactory;

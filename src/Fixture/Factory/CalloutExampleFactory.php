@@ -42,7 +42,7 @@ class CalloutExampleFactory extends AbstractExampleFactory
         ObjectManager $calloutManager,
         ExampleFactoryInterface $calloutRuleExampleFactory,
         ChannelRepositoryInterface $channelRepository,
-        RepositoryInterface $localeRepository
+        RepositoryInterface $localeRepository,
     ) {
         $this->calloutFactory = $calloutFactory;
         $this->calloutManager = $calloutManager;

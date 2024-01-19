@@ -21,7 +21,7 @@ final class ProductContext implements Context
 
     public function __construct(
         IndexPageInterface $indexPage,
-        CalloutRepositoryInterface $calloutRepository
+        CalloutRepositoryInterface $calloutRepository,
     ) {
         $this->indexPage = $indexPage;
         $this->calloutRepository = $calloutRepository;

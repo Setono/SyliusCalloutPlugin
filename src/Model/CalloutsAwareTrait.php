@@ -14,6 +14,7 @@ trait CalloutsAwareTrait
      * @var Collection|CalloutInterface[]
      *
      * @ORM\ManyToMany(targetEntity="\Setono\SyliusCalloutPlugin\Model\CalloutInterface")
+     *
      * @ORM\JoinTable(
      *     name="setono_sylius_callout__product_callouts",
      *     joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false, onDelete="CASCADE")},

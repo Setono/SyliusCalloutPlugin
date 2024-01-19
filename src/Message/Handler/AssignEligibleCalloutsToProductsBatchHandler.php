@@ -23,7 +23,7 @@ final class AssignEligibleCalloutsToProductsBatchHandler implements MessageHandl
     public function __construct(
         EligibleCalloutsProviderInterface $eligibleCalloutsProvider,
         EntityManagerInterface $productManager,
-        ManagerRegistry $managerRegistry
+        ManagerRegistry $managerRegistry,
     ) {
         $this->eligibleCalloutsProvider = $eligibleCalloutsProvider;
         $this->productManager = $productManager;
@@ -43,7 +43,7 @@ final class AssignEligibleCalloutsToProductsBatchHandler implements MessageHandl
 
         foreach ($products as $product) {
             $product->setCallouts(
-                $this->eligibleCalloutsProvider->getEligibleCallouts($product)
+                $this->eligibleCalloutsProvider->getEligibleCallouts($product),
             );
         }
 

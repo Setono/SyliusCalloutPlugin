@@ -34,8 +34,6 @@ final class Configuration implements ConfigurationInterface
                 ->booleanNode('no_rules_eligible')
                     ->info('Set it to true if you want no rules to be treated as eligible (callout will be applied to all products).')
                     ->defaultFalse()
-                ->end()
-            ->end()
         ;
 
         $this->addResourcesSection($rootNode);
@@ -87,13 +85,6 @@ final class Configuration implements ConfigurationInterface
                                     ->children()
                                         ->scalarNode('model')->defaultValue(CalloutRule::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                    ->end()
-                                ->end()
-                            ->end()
-                        ->end()
-                    ->end()
-                ->end()
-            ->end()
         ;
     }
 }

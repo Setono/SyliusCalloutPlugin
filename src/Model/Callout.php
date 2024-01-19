@@ -15,9 +15,7 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
 class Callout implements CalloutInterface
 {
     use ToggleableTrait;
-
     use TimestampableTrait;
-
     use TranslatableTrait {
         __construct as protected initializeTranslationsCollection;
     }
