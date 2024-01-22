@@ -11,7 +11,6 @@ use Setono\SyliusCalloutPlugin\Fixture\Factory\CalloutExampleFactory;
 use Setono\SyliusCalloutPlugin\Fixture\Factory\CalloutRuleExampleFactory;
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Setono\SyliusCalloutPlugin\Model\CalloutRule;
-use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Locale\Model\Locale;
@@ -20,7 +19,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 class CalloutExampleFactoryTest extends TestCase
 {
-    private ExampleFactoryInterface $calloutExampleFactory;
+    private CalloutExampleFactory $calloutExampleFactory;
 
     /** @test */
     public function create_callout_without_rules(): void
@@ -63,6 +62,7 @@ class CalloutExampleFactoryTest extends TestCase
             $calloutRuleExampleFactory,
             $channelRepository,
             $localeRepository,
+            ['top', 'bottom'],
         );
     }
 }

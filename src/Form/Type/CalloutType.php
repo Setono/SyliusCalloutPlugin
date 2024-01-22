@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Form\Type;
 
-use Setono\SyliusCalloutPlugin\Form\Type\Translation\CalloutTranslationType;
-use Setono\SyliusCalloutPlugin\Model\Callout;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -19,12 +18,28 @@ use Symfony\Component\Validator\Constraints\Valid;
 
 final class CalloutType extends AbstractResourceType
 {
+    /**
+     * @param class-string $dataClass
+     * @param list<string> $validationGroups
+     */
+    public function __construct(
+        private readonly array $elements,
+        private readonly array $positions,
+        string $dataClass,
+        array $validationGroups = [],
+    ) {
+        parent::__construct($dataClass, $validationGroups);
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        /** @var mixed $data */
+        $data = $builder->getData();
+
         $builder
             ->add('code', TextType::class, [
                 'label' => 'setono_sylius_callout.form.callout.code',
-                'disabled' => null !== $builder->getData()->getCode(),
+                'disabled' => $data instanceof CalloutInterface && null !== $data->getCode(),
             ])
             ->add('name', TextType::class, [
                 'label' => 'setono_sylius_callout.form.callout.name',
@@ -44,14 +59,21 @@ final class CalloutType extends AbstractResourceType
             ->add('priority', IntegerType::class, [
                 'label' => 'setono_sylius_callout.form.callout.priority',
             ])
+            ->add('elements', ChoiceType::class, [
+                'label' => 'setono_sylius_callout.form.callout.elements',
+                'multiple' => true,
+                'choices' => $this->elements,
+                'choice_label' => static function (string $element): string {
+                    return sprintf('setono_sylius_callout.form.callout.element_labels.%s', $element);
+                },
+            ])
             ->add('position', ChoiceType::class, [
                 'label' => 'setono_sylius_callout.form.callout.position',
-                'choices' => Callout::getAllowedPositions(),
+                'choices' => $this->positions,
                 'choice_label' => static function (string $position): string {
                     return sprintf('setono_sylius_callout.form.callout.positions.%s', $position);
                 },
                 'placeholder' => 'setono_sylius_callout.form.callout.select_position',
-                'required' => false,
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'setono_sylius_callout.form.callout.enabled',
@@ -72,7 +94,6 @@ final class CalloutType extends AbstractResourceType
                 'entry_type' => CalloutTranslationType::class,
                 'validation_groups' => $this->validationGroups,
                 'constraints' => [new Valid()], // todo move these constraints to a validation file
-            ])
-        ;
+            ]);
     }
 }

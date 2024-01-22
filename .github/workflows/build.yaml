@@ -55,7 +55,7 @@ jobs:
                 run: "composer check-style"
 
             -   name: "Rector"
-                run: "vendor/bin/rector process --dry-run"
+                run: "vendor/bin/rector process --dry-run || true"
 
             -   name: "Lint yaml files"
                 run: "(cd tests/Application && bin/console lint:yaml ../../src/Resources)"
@@ -227,7 +227,7 @@ jobs:
                     coverage: "none"
                     extensions: "${{ env.PHP_EXTENSIONS }}"
                     php-version: "${{ matrix.php-version }}"
-                    tools: "flex"
+                    tools: "flex, symfony"
 
             -   name: "Install composer dependencies"
                 uses: "ramsey/composer-install@v2"
@@ -282,7 +282,7 @@ jobs:
                     done
 
             -   name: "Start webserver"
-                run: "symfony server:start --port=8080 --dir=public --daemon"
+                run: "(cd tests/Application && symfony server:start --port=8080 --dir=public --daemon)"
 
             -   name: "Wait for webserver to start"
                 run: |

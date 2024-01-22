@@ -7,7 +7,7 @@ namespace Setono\SyliusCalloutPlugin\Fixture\Factory;
 use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
-use Setono\SyliusCalloutPlugin\Model\Callout;
+use Faker\Generator;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
@@ -15,6 +15,7 @@ use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -33,7 +34,7 @@ class CalloutExampleFactory extends AbstractExampleFactory
 
     protected RepositoryInterface $localeRepository;
 
-    protected \Faker\Generator $faker;
+    protected Generator $faker;
 
     protected OptionsResolver $optionsResolver;
 
@@ -43,6 +44,7 @@ class CalloutExampleFactory extends AbstractExampleFactory
         ExampleFactoryInterface $calloutRuleExampleFactory,
         ChannelRepositoryInterface $channelRepository,
         RepositoryInterface $localeRepository,
+        protected readonly array $positions,
     ) {
         $this->calloutFactory = $calloutFactory;
         $this->calloutManager = $calloutManager;
@@ -70,7 +72,12 @@ class CalloutExampleFactory extends AbstractExampleFactory
             $this->createTranslation($callout, $localeCode, $options);
         }
 
-        // create or replace with custom translations
+        /**
+         * Create or replace with custom translations
+         *
+         * @var string $localeCode
+         * @var array|string $translationOptions
+         */
         foreach ($options['translations'] as $localeCode => $translationOptions) {
             if (!is_array($translationOptions)) {
                 $translationOptions = [
@@ -95,10 +102,12 @@ class CalloutExampleFactory extends AbstractExampleFactory
             $callout->setEndsAt(new DateTime($options['ends_at']));
         }
 
+        /** @var ChannelInterface $channel */
         foreach ($options['channels'] as $channel) {
             $callout->addChannel($channel);
         }
 
+        /** @var array $rule */
         foreach ($options['rules'] as $rule) {
             /** @var CalloutRuleInterface $calloutRule */
             $calloutRule = $this->calloutRuleExampleFactory->create($rule);
@@ -120,9 +129,6 @@ class CalloutExampleFactory extends AbstractExampleFactory
         $callout->setText($options['text']);
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
@@ -140,8 +146,8 @@ class CalloutExampleFactory extends AbstractExampleFactory
             ->setAllowedTypes('translations', ['array'])
 
             ->setDefined('position')
-            ->setAllowedValues('position', Callout::getAllowedPositions() + [\Closure::class])
-            ->setDefault('position', $this->faker->randomElement(Callout::getAllowedPositions()))
+            ->setAllowedValues('position', $this->positions + [\Closure::class])
+            ->setDefault('position', $this->faker->randomElement($this->positions))
 
             ->setDefault('priority', 0)
 
@@ -163,12 +169,15 @@ class CalloutExampleFactory extends AbstractExampleFactory
         ;
     }
 
+    /**
+     * @return iterable<string>
+     */
     private function getLocales(): iterable
     {
         /** @var LocaleInterface[] $locales */
         $locales = $this->localeRepository->findAll();
         foreach ($locales as $locale) {
-            yield $locale->getCode();
+            yield (string) $locale->getCode();
         }
     }
 }

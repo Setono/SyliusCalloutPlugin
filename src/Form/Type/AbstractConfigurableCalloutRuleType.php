@@ -12,16 +12,20 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Webmozart\Assert\Assert;
 
 abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
 {
-    private FormTypeRegistryInterface $formTypeRegistry;
-
-    public function __construct(string $dataClass, FormTypeRegistryInterface $formTypeRegistry, array $validationGroups = [])
-    {
+    /**
+     * @param class-string $dataClass
+     * @param list<string> $validationGroups
+     */
+    public function __construct(
+        string $dataClass,
+        private readonly FormTypeRegistryInterface $formTypeRegistry,
+        array $validationGroups = [],
+    ) {
         parent::__construct($dataClass, $validationGroups);
-
-        $this->formTypeRegistry = $formTypeRegistry;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -46,11 +50,15 @@ abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
                 $event->getForm()->get('type')->setData($type);
             })
             ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event): void {
+                /** @var mixed $data */
                 $data = $event->getData();
+                Assert::isArray($data);
 
                 if (!isset($data['type'])) {
                     return;
                 }
+
+                Assert::string($data['type']);
 
                 $this->addConfigurationFields($event->getForm(), (string) $this->formTypeRegistry->get($data['type'], 'default'));
             })
@@ -74,19 +82,16 @@ abstract class AbstractConfigurableCalloutRuleType extends AbstractResourceType
         ]);
     }
 
-    /**
-     * @param CalloutRuleInterface|null $data
-     */
-    protected function getRegistryIdentifier(FormInterface $form, $data = null): ?string
+    protected function getRegistryIdentifier(FormInterface $form, mixed $data = null): ?string
     {
         if ($data instanceof CalloutRuleInterface && null !== $data->getType()) {
             return $data->getType();
         }
 
-        if ($form->getConfig()->hasOption('configuration_type')) {
-            return $form->getConfig()->getOption('configuration_type');
-        }
+        /** @var mixed $identifier */
+        $identifier = $form->getConfig()->getOption('configuration_type');
+        Assert::nullOrString($identifier);
 
-        return null;
+        return $identifier;
     }
 }

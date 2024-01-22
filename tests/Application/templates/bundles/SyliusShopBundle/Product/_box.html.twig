@@ -1,3 +1,4 @@
+{# @var product \Tests\Setono\SyliusCalloutPlugin\Application\Model\Product #}
 {% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
 
 {{ sonata_block_render_event('sylius.shop.product.index.before_box', {'product': product}) }}
@@ -11,7 +12,7 @@
                 </div>
             </div>
         </div>
-        {% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}
+        {% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with { 'callouts' : get_callouts(product, 'default') } %}
 
         {% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product} %}
 

@@ -7,33 +7,23 @@ namespace Setono\SyliusCalloutPlugin\Model;
 use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Channel\Model\ChannelsAwareInterface;
+use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\ToggleableInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
+use Sylius\Component\Resource\Model\VersionedInterface;
 
 interface CalloutInterface extends
+    VersionedInterface,
+    CodeAwareInterface,
     ChannelsAwareInterface,
     ResourceInterface,
     TimestampableInterface,
     ToggleableInterface,
     TranslatableInterface
 {
-    public const POSITION_TOP = 'top';
-
-    public const POSITION_RIGHT = 'right';
-
-    public const POSITION_BOTTOM = 'bottom';
-
-    public const POSITION_LEFT = 'left';
-
-    public const POSITION_TOP_LEFT = 'top_left';
-
-    public const POSITION_TOP_RIGHT = 'top_right';
-
-    public const POSITION_BOTTOM_RIGHT = 'bottom_right';
-
-    public const POSITION_BOTTOM_LEFT = 'bottom_left';
+    final public const DEFAULT_KEY = 'default';
 
     public function getId(): ?int;
 
@@ -53,6 +43,16 @@ interface CalloutInterface extends
 
     public function setPriority(int $priority): void;
 
+    /**
+     * @return list<string>
+     */
+    public function getElements(): array;
+
+    /**
+     * @param list<string> $elements
+     */
+    public function setElements(array $elements): void;
+
     public function getPosition(): ?string;
 
     public function setPosition(?string $position): void;
@@ -61,12 +61,8 @@ interface CalloutInterface extends
 
     public function setText(string $text): void;
 
-    public function getCode(): ?string;
-
-    public function setCode(string $code): void;
-
     /**
-     * @return Collection|CalloutRuleInterface[]
+     * @return Collection<array-key, CalloutRuleInterface>
      */
     public function getRules(): Collection;
 
@@ -77,8 +73,4 @@ interface CalloutInterface extends
     public function addRule(CalloutRuleInterface $rule): void;
 
     public function removeRule(CalloutRuleInterface $rule): void;
-
-    public function getRulesAssignedAt(): ?DateTimeInterface;
-
-    public function setRulesAssignedAt(?DateTimeInterface $rulesAssignedAt): void;
 }

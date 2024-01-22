@@ -10,7 +10,6 @@ use Setono\SyliusCalloutPlugin\Model\CalloutRule;
 use Setono\SyliusCalloutPlugin\Model\CalloutTranslation;
 use Setono\SyliusCalloutPlugin\Repository\CalloutRepository;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -23,17 +22,33 @@ final class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder('setono_sylius_callout');
         $rootNode = $treeBuilder->getRootNode();
 
+        /** @psalm-suppress UndefinedInterfaceMethod,PossiblyNullReference,MixedMethodCall */
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
-                ->booleanNode('manual_triggering')
-                    ->info('Set it to true if you have thousands of products in your store and/or want to trigger callout assign manually.')
-                    ->defaultFalse()
+                ->arrayNode('elements')
+                    ->defaultValue(['default'])
+                    ->scalarPrototype()->end()
                 ->end()
-                ->booleanNode('no_rules_eligible')
-                    ->info('Set it to true if you want no rules to be treated as eligible (callout will be applied to all products).')
-                    ->defaultFalse()
+                ->arrayNode('positions')
+                    ->defaultValue([
+                        'top',
+                        'right',
+                        'middle',
+                        'bottom',
+                        'left',
+
+                        'top_left',
+                        'top_center',
+                        'top_right',
+                        'middle_left',
+                        'middle_center',
+                        'middle_right',
+                        'bottom_left',
+                        'bottom_center',
+                        'bottom_right',
+                    ])
+                    ->scalarPrototype()
         ;
 
         $this->addResourcesSection($rootNode);
@@ -43,6 +58,7 @@ final class Configuration implements ConfigurationInterface
 
     private function addResourcesSection(ArrayNodeDefinition $node): void
     {
+        /** @psalm-suppress UndefinedInterfaceMethod,PossiblyNullReference,MixedMethodCall */
         $node
             ->children()
                 ->arrayNode('resources')

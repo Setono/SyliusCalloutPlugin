@@ -41,22 +41,18 @@ setono_sylius_callout:
         has_product: Har produkt
         has_taxon: Har taksonomisk gruppe
         is_new: Er ny
-        manual_triggering_off: Automatisk frigivelse bliver tildelt en proces efter hver ændring automatisk.
-        manual_triggering_on: Manuel frigivelse - du skal trykke på Tildelsknappen efter alle ændringer er foretaget
         name: Navn
         new_callout: Ny badge
         on_sale: På udsalg
         position: Position
         priority: Prioritet
         rules: Regler
-        rules_assigned_at: Regler tilskrevet
         select_position: Vælg position...
         starts_at: Starter
         text: Tekst
         top_left: Øverst til venstre
         top_right: Øverst til højre
         type: Type
-        updated_at: Sidst opdateret
         callout: Badge
         rule: Règle
         callouts_product_list: Produktliste

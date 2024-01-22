@@ -1,8 +1,0 @@
-imports:
-    - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids/setono_sylius_callout_admin_callout.yaml" }
-
-sylius_grid:
-    templates:
-        action:
-            setono_callout_default: "@SetonoSyliusCalloutPlugin/Admin/Grid/Action/setono_callout_default.html.twig"
-            setono_callout_product_list : "@SetonoSyliusCalloutPlugin/Admin/Grid/Action/calloutsProductList.html.twig"

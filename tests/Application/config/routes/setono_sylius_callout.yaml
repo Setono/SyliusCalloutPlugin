@@ -1,0 +1,2 @@
+setono_sylius_callout:
+    resource: "@SetonoSyliusCalloutPlugin/Resources/config/routes.yaml"

@@ -20,6 +20,11 @@ final class RegisterCalloutRuleCheckerPass implements CompilerPassInterface
         $formTypeRegistry = $container->getDefinition('setono_sylius_callout.form_registry.callout_rule_checker');
 
         $calloutRuleCheckerTypeToLabelMap = [];
+
+        /**
+         * @var string $id
+         * @var list<array<string, string>> $attributes
+         */
         foreach ($container->findTaggedServiceIds('setono_sylius_callout.callout_rule_checker') as $id => $attributes) {
             if (!isset($attributes[0]['type'], $attributes[0]['label'], $attributes[0]['form_type'])) {
                 throw new \InvalidArgumentException(sprintf('Tagged rule checker %s id needs to have `type`, `form_type`, and `label` attributes', $id));

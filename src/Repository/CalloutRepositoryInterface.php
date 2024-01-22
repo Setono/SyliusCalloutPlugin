@@ -4,16 +4,27 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Repository;
 
-use DateTimeInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
+/**
+ * @extends RepositoryInterface<CalloutInterface>
+ */
 interface CalloutRepositoryInterface extends RepositoryInterface
 {
+    public function findOneByCode(string $code): ?CalloutInterface;
+
     /**
+     * @param list<string> $codes If the codes array is empty, all enabled callouts will be returned else only the enabled callouts with the given codes
+     *
+     * @return list<CalloutInterface>
+     */
+    public function findEnabled(array $codes = []): array;
+
+    /**
+     * @param list<string> $codes
+     *
      * @return CalloutInterface[]
      */
-    public function findOrdered(): array;
-
-    public function hasUpdatedSince(DateTimeInterface $updatedSince): bool;
+    public function findByCodes(array $codes): array;
 }

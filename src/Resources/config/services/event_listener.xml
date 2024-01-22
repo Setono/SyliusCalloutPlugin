@@ -4,32 +4,12 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        <service id="setono_sylius_callout.event_listener.doctrine.handle_callout_rule_update"
+                 class="Setono\SyliusCalloutPlugin\EventListener\Doctrine\HandleCalloutRuleUpdateEventListener">
+            <argument type="service" id="setono_sylius_callout.command_bus"/>
 
-        <service id="Setono\SyliusCalloutPlugin\EventListener\AbstractCalloutDoctrineEventSubscriber"
-                 abstract="true">
-            <argument type="service" id="setono_sylius_callout.manager.callout" />
-            <argument type="service" id="setono_sylius_callout.command_bus" />
-            <argument>%setono_sylius_callout.manual_triggering%</argument>
+            <tag name="doctrine.event_listener" event="postPersist"/>
+            <tag name="doctrine.event_listener" event="postUpdate"/>
         </service>
-
-        <service id="setono_sylius_callout.doctrine_event_subscriber.callout"
-                 class="Setono\SyliusCalloutPlugin\EventListener\CalloutDoctrineEventSubscriber"
-                 parent="Setono\SyliusCalloutPlugin\EventListener\AbstractCalloutDoctrineEventSubscriber">
-            <argument>%setono_sylius_callout.no_rules_eligible%</argument>
-            <tag name="doctrine.event_subscriber" />
-        </service>
-
-        <service id="setono_sylius_callout.doctrine_event_subscriber.callout_rule"
-                 class="Setono\SyliusCalloutPlugin\EventListener\CalloutRuleDoctrineEventSubscriber"
-                 parent="Setono\SyliusCalloutPlugin\EventListener\AbstractCalloutDoctrineEventSubscriber">
-            <tag name="doctrine.event_subscriber" />
-        </service>
-
-        <service id="setono_sylius_callout.doctrine_event_subscriber.product"
-                 class="Setono\SyliusCalloutPlugin\EventListener\ProductDoctrineEventSubscriber"
-                 parent="Setono\SyliusCalloutPlugin\EventListener\AbstractCalloutDoctrineEventSubscriber">
-            <tag name="doctrine.event_subscriber" />
-        </service>
-
     </services>
 </container>
