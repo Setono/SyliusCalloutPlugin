@@ -47,8 +47,10 @@ final class CalloutRuntime implements RuntimeExtensionInterface
                 $elements = [CalloutInterface::DEFAULT_KEY];
             }
 
+            $position = $callout->getPosition() ?? CalloutInterface::DEFAULT_KEY;
+
             foreach ($elements as $elm) {
-                $callouts[$elm][$callout->getPosition() ?? CalloutInterface::DEFAULT_KEY] = $callout;
+                $callouts[$elm][$position] = $callout;
             }
         }
 
