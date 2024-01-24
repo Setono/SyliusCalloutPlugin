@@ -16,12 +16,6 @@
                 </div>
                 <div class="column">
                     <div class="ui segment">
-                        <div class="ui icon info message">
-                            <i class="info circle icon"></i>
-                            {{ 'setono_sylius_callout.form.callout.elements_info'|trans }}
-                        </div>
-                        {{ form_row(form.elements) }}
-                        {{ form_row(form.position) }}
                         {{ form_row(form.startsAt) }}
                         {{ form_row(form.endsAt) }}
                     </div>
@@ -29,12 +23,18 @@
             </div>
         </div>
         <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'setono_sylius_callout.form.callout.layout'|trans }}</h4>
+            {{ form_row(form.elements) }}
+            {{ form_row(form.position) }}
+        </div>
+        <div class="ui segment">
+            <h4 class="ui dividing header">{{ 'setono_sylius_callout.form.callout.rules'|trans }}</h4>
             <div class="ui icon info message">
                 <i class="info circle icon"></i>
                 {{ 'setono_sylius_callout.form.callout.rules_info'|trans }}
             </div>
             <div class="field" id="rules">
-                {{ form_row(form.rules) }}
+                {{ form_widget(form.rules) }}
             </div>
         </div>
     </div>

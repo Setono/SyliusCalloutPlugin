@@ -4,11 +4,11 @@ setono_sylius_callout:
             channels: Channels
             code: Code
             elements: Element
-            elements_info: If the callout should be associated with a certain element, select it here. Otherwise, select 'Default'
             element_labels:
                 default: Default
             enabled: Enabled
             ends_at: Ends at
+            layout: Layout
             name: Name
             position: Position
             positions:
