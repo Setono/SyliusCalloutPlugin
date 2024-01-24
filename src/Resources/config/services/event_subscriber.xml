@@ -4,6 +4,15 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        <service id="setono_sylius_callout.event_subscriber.handle_callout_update"
+                 class="Setono\SyliusCalloutPlugin\EventSubscriber\HandleCalloutUpdateSubscriber">
+            <argument type="service" id="setono_sylius_callout.command_bus"/>
+
+            <tag name="doctrine.event_listener" event="prePersist"/>
+            <tag name="doctrine.event_listener" event="preUpdate"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
         <service id="setono_sylius_callout.event_subscriber.handle_product_update"
                  class="Setono\SyliusCalloutPlugin\EventSubscriber\HandleProductUpdateSubscriber">
             <argument type="service" id="setono_sylius_callout.command_bus"/>

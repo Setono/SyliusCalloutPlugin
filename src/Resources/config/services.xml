@@ -9,7 +9,6 @@
         <import resource="services/command.xml"/>
         <import resource="services/controller.xml"/>
         <import resource="services/css_class_builder.xml"/>
-        <import resource="services/event_listener.xml"/>
         <import resource="services/event_subscriber.xml"/>
         <import resource="services/factory.xml"/>
         <import resource="services/fixture.xml"/>

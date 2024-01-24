@@ -15,12 +15,12 @@ final class AssignCallouts implements CommandInterface
     public array $callouts = [];
 
     /**
-     * @param list<CalloutInterface> $callouts If the callouts array is empty, all callouts will be assigned
+     * @param list<CalloutInterface|string> $callouts If the callouts array is empty, all callouts will be assigned
      */
     public function __construct(array $callouts = [])
     {
         foreach ($callouts as $callout) {
-            $this->callouts[] = (string) $callout->getCode();
+            $this->callouts[] = $callout instanceof CalloutInterface ? (string) $callout->getCode() : $callout;
         }
     }
 }
