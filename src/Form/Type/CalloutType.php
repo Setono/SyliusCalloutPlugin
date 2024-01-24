@@ -75,6 +75,14 @@ final class CalloutType extends AbstractResourceType
                 },
                 'placeholder' => 'setono_sylius_callout.form.callout.select_position',
             ])
+            ->add('color', TextType::class, [
+                'label' => 'setono_sylius_callout.form.callout.color',
+                'required' => false,
+            ])
+            ->add('backgroundColor', TextType::class, [
+                'label' => 'setono_sylius_callout.form.callout.background_color',
+                'required' => false,
+            ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'setono_sylius_callout.form.callout.enabled',
                 'required' => false,
