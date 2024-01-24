@@ -94,13 +94,6 @@ final class AssignCalloutsHandler
                 AssignCalloutsToProduct::class => $product->resetPreQualifiedCallouts(),
             };
 
-            // only when we test all callouts we need to reset the pre-qualified callouts
-            if ($message instanceof AssignCallout) {
-                $product->removePreQualifiedCallout($message->callout);
-            } else {
-                $product->resetPreQualifiedCallouts();
-            }
-
             foreach ($callouts as $callout) {
                 if ($this->eligibilityChecker->isEligible($product, $callout)) {
                     $product->addPreQualifiedCallout($callout);
