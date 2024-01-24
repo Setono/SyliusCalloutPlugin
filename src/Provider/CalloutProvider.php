@@ -12,7 +12,7 @@ final class CalloutProvider implements CalloutProviderInterface
     /**
      * A cache of callouts, indexed by code
      *
-     * @var array<string, CalloutInterface>
+     * @var array<string, CalloutInterface|null>
      */
     private array $callouts = [];
 
@@ -24,8 +24,9 @@ final class CalloutProvider implements CalloutProviderInterface
     {
         $missingCodes = [];
         foreach ($codes as $code) {
-            if (!isset($this->callouts[$code])) {
+            if (!array_key_exists($code, $this->callouts)) {
                 $missingCodes[] = $code;
+                $this->callouts[$code] = null;
             }
         }
 
@@ -42,6 +43,6 @@ final class CalloutProvider implements CalloutProviderInterface
             $callouts[] = $this->callouts[$code];
         }
 
-        return $callouts;
+        return array_values(array_filter($callouts));
     }
 }
