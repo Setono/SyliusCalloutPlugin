@@ -20,6 +20,7 @@ use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 use Webmozart\Assert\Assert;
 
+// todo this handler should be split into three handlers, one for each message
 final class AssignCalloutsHandler
 {
     use ORMManagerTrait;
@@ -86,6 +87,13 @@ final class AssignCalloutsHandler
         }
 
         foreach ($products as $product) {
+            // we only want to reset callouts if we are assigning all callouts
+            match ($message::class) {
+                AssignCallouts::class => [] === $message->callouts ? $product->resetPreQualifiedCallouts() : array_map(static fn (string $callout) => $product->removePreQualifiedCallout($callout), $message->callouts),
+                AssignCallout::class => $product->removePreQualifiedCallout($message->callout),
+                AssignCalloutsToProduct::class => $product->resetPreQualifiedCallouts(),
+            };
+
             // only when we test all callouts we need to reset the pre-qualified callouts
             if ($message instanceof AssignCallout) {
                 $product->removePreQualifiedCallout($message->callout);
