@@ -53,7 +53,7 @@
 
         <service id="setono_sylius_callout.registry.callout_rule_checker"
                  class="Sylius\Component\Registry\ServiceRegistry">
-            <argument type="string">CalloutRuleCheckerInterface</argument>
+            <argument type="string">Setono\SyliusCalloutPlugin\Checker\Rule\CalloutRuleCheckerInterface</argument>
             <argument type="string">callout rule checker</argument>
         </service>
 
