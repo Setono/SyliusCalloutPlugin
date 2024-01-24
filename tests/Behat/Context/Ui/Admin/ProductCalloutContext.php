@@ -11,17 +11,10 @@ use Tests\Setono\SyliusCalloutPlugin\Behat\Page\Admin\ProductCallout\CreatePageI
 
 final class ProductCalloutContext implements Context
 {
-    /** @var CreatePageInterface */
-    private $createPage;
-
-    private $notificationChecker;
-
     public function __construct(
-        CreatePageInterface $createPage,
-        NotificationCheckerInterface $notificationChecker,
+        private readonly CreatePageInterface $createPage,
+        private readonly NotificationCheckerInterface $notificationChecker,
     ) {
-        $this->createPage = $createPage;
-        $this->notificationChecker = $notificationChecker;
     }
 
     /**
@@ -81,21 +74,13 @@ final class ProductCalloutContext implements Context
     }
 
     /**
-     * @When I fill the html with :html
-     */
-    public function iFillTheHtmlWith(string $html): void
-    {
-        $this->createPage->fillHtml($html);
-    }
-
-    /**
      * @When I add the "Has taxon" rule configured with :arg2 and :arg3
      */
-    public function iAddTheRuleConfiguredWithAnd(...$taxons): void
+    public function iAddTheRuleConfiguredWithAnd(string ...$taxons): void
     {
         $this->createPage->addRule('Has taxon');
 
-        $this->createPage->selectAutocompleteRuleOption('taxons', $taxons, true);
+        $this->createPage->selectAutocompleteRuleOption('taxons', $taxons);
     }
 
     /**
@@ -111,7 +96,7 @@ final class ProductCalloutContext implements Context
     /**
      * @When I add it
      */
-    public function iAddIt()
+    public function iAddIt(): void
     {
         $this->createPage->create();
     }
@@ -119,7 +104,7 @@ final class ProductCalloutContext implements Context
     /**
      * @Then I should be notified that it has been successfully created
      */
-    public function iShouldBeNotifiedThatItHasBeenSuccessfullyCreated()
+    public function iShouldBeNotifiedThatItHasBeenSuccessfullyCreated(): void
     {
         $this->notificationChecker->checkNotification('has been successfully created.', NotificationType::success());
     }

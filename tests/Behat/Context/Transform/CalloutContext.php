@@ -5,17 +5,14 @@ declare(strict_types=1);
 namespace Tests\Setono\SyliusCalloutPlugin\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
 use Webmozart\Assert\Assert;
 
 final class CalloutContext implements Context
 {
-    /** @var CalloutRepositoryInterface */
-    private $calloutRepository;
-
-    public function __construct(CalloutRepositoryInterface $calloutRepository)
+    public function __construct(private readonly CalloutRepositoryInterface $calloutRepository)
     {
-        $this->calloutRepository = $calloutRepository;
     }
 
     /**
@@ -23,9 +20,11 @@ final class CalloutContext implements Context
      * @Transform /^"([^"]+)" callout/
      * @Transform :callout
      */
-    public function getCalloutByName($calloutName)
+    public function getCalloutByName(string $calloutName): CalloutInterface
     {
-        $callouts = $this->calloutRepository->findByName($calloutName);
+        $callouts = $this->calloutRepository->findBy([
+            'name' => $calloutName,
+        ]);
 
         Assert::eq(
             count($callouts),
@@ -34,13 +33,5 @@ final class CalloutContext implements Context
         );
 
         return $callouts[0];
-    }
-
-    /**
-     * @Transform all callouts
-     */
-    public function getAllChannels()
-    {
-        return $this->channelRepository->findAll();
     }
 }

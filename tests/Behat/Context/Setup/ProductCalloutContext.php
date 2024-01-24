@@ -14,31 +14,16 @@ use Sylius\Component\Core\Formatter\StringInflector;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Webmozart\Assert\Assert;
 
 final class ProductCalloutContext implements Context
 {
-    /** @var CalloutRuleFactoryInterface */
-    private $calloutRuleFactory;
-
-    /** @var FactoryInterface */
-    private $calloutFactory;
-
-    /** @var ObjectManager */
-    private $objectManager;
-
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
     public function __construct(
-        CalloutRuleFactoryInterface $calloutRuleFactory,
-        FactoryInterface $calloutFactory,
-        ObjectManager $objectManager,
-        SharedStorageInterface $sharedStorage,
+        private readonly CalloutRuleFactoryInterface $calloutRuleFactory,
+        private readonly FactoryInterface $calloutFactory,
+        private readonly ObjectManager $objectManager,
+        private readonly SharedStorageInterface $sharedStorage,
     ) {
-        $this->calloutRuleFactory = $calloutRuleFactory;
-        $this->calloutFactory = $calloutFactory;
-        $this->objectManager = $objectManager;
-        $this->sharedStorage = $sharedStorage;
     }
 
     /**
@@ -111,24 +96,37 @@ final class ProductCalloutContext implements Context
         $callout = $this->calloutFactory->createNew();
         $this->sharedStorage->set('callout', $callout);
 
-        if (null === $channel && $this->sharedStorage->has('channel')) {
-            $channel = $this->sharedStorage->get('channel');
+        $channel = $channel ?? $this->getChannel();
+
+        if (null !== $channel) {
+            $callout->addChannel($channel);
+
+            foreach ($channel->getLocales() as $locale) {
+                $callout->setCurrentLocale((string) $locale->getCode());
+                $callout->setFallbackLocale((string) $locale->getCode());
+
+                $callout->setName($name);
+                $callout->setText($html);
+            }
         }
 
         $callout->setCode(StringInflector::nameToCode($name));
-        $callout->setPosition(CalloutInterface::POSITION_TOP_LEFT);
+        $callout->setPosition('top_left');
         $callout->setPriority(0);
-        $callout->addChannel($channel);
         $callout->setEnabled(true);
 
-        foreach ($channel->getLocales() as $locale) {
-            $callout->setCurrentLocale($locale->getCode());
-            $callout->setFallbackLocale($locale->getCode());
+        return $callout;
+    }
 
-            $callout->setName($name);
-            $callout->setText($html);
+    private function getChannel(): ?ChannelInterface
+    {
+        if (!$this->sharedStorage->has('channel')) {
+            return null;
         }
 
-        return $callout;
+        $channel = $this->sharedStorage->get('channel');
+        Assert::isInstanceOf($channel, ChannelInterface::class);
+
+        return $channel;
     }
 }

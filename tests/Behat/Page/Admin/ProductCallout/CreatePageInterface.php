@@ -22,5 +22,8 @@ interface CreatePageInterface extends BaseCreatePageInterface
 
     public function addRule(string $ruleName): void;
 
-    public function selectAutocompleteRuleOption(string $option, $value, bool $multiple = false): void;
+    /**
+     * @param string[]|string $value
+     */
+    public function selectAutocompleteRuleOption(string $option, array|string $value): void;
 }

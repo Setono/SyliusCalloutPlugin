@@ -54,28 +54,28 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
         $this->selectRuleOption('Type', $ruleName);
     }
 
-    public function selectAutocompleteRuleOption(string $option, $value, bool $multiple = false): void
+    public function selectAutocompleteRuleOption(string $option, array|string $value): void
     {
         $option = strtolower(str_replace(' ', '_', $option));
 
         $ruleAutocomplete = $this
             ->getLastCollectionItem('rules')
             ->find('css', sprintf('input[type="hidden"][name*="[%s]"]', $option))
-            ->getParent()
+            ?->getParent()
         ;
 
-        if ($multiple && is_array($value)) {
+        Assert::notNull($ruleAutocomplete, sprintf('Could not find autocomplete for option "%s"', $option));
+
+        if (is_array($value)) {
             AutocompleteHelper::chooseValues($this->getSession(), $ruleAutocomplete, $value);
-
-            return;
+        } else {
+            AutocompleteHelper::chooseValue($this->getSession(), $ruleAutocomplete, $value);
         }
-
-        AutocompleteHelper::chooseValue($this->getSession(), $ruleAutocomplete, $value);
     }
 
     public function selectRuleOption(string $option, string $value, bool $multiple = false): void
     {
-        $this->getLastCollectionItem('rules')->find('named', ['select', $option])->selectOption($value, $multiple);
+        $this->getLastCollectionItem('rules')->find('named', ['select', $option])?->selectOption($value, $multiple);
     }
 
     protected function getDefinedElements(): array
@@ -85,13 +85,12 @@ final class CreatePage extends BaseCreatePage implements CreatePageInterface
         ];
     }
 
+    /**
+     * @return NodeElement[]
+     */
     private function getCollectionItems(string $collection): array
     {
-        $items = $this->getElement($collection)->findAll('css', 'div[data-form-collection="item"]');
-
-        Assert::isArray($items);
-
-        return $items;
+        return $this->getElement($collection)->findAll('css', 'div[data-form-collection="item"]');
     }
 
     private function getLastCollectionItem(string $collection): NodeElement
