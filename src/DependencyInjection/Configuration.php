@@ -27,10 +27,12 @@ final class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
             ->children()
                 ->arrayNode('elements')
+                    ->info('Define the elements relevant for your layout')
                     ->defaultValue(['default'])
                     ->scalarPrototype()->end()
                 ->end()
                 ->arrayNode('positions')
+                    ->info('Define the positions relevant for your layout')
                     ->defaultValue([
                         'top',
                         'right',
