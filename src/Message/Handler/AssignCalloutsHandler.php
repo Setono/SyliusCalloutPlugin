@@ -99,5 +99,7 @@ final class AssignCalloutsHandler
                 }
             }
         }
+
+        $manager->flush();
     }
 }
