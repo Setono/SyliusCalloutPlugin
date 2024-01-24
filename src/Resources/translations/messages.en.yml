@@ -1,8 +1,10 @@
 setono_sylius_callout:
     form:
         callout:
+            background_color: Background color
             channels: Channels
             code: Code
+            color: Color
             elements: Element
             element_labels:
                 default: Default

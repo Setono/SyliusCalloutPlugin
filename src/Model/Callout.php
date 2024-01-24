@@ -39,6 +39,10 @@ class Callout implements CalloutInterface
 
     protected ?string $position = self::DEFAULT_KEY;
 
+    protected ?string $color = null;
+
+    protected ?string $backgroundColor = null;
+
     /** @var Collection<array-key, BaseChannelInterface> */
     protected Collection $channels;
 
@@ -140,6 +144,26 @@ class Callout implements CalloutInterface
     public function setPosition(?string $position): void
     {
         $this->position = $position;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): void
+    {
+        $this->color = $color;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->backgroundColor;
+    }
+
+    public function setBackgroundColor(?string $backgroundColor): void
+    {
+        $this->backgroundColor = $backgroundColor;
     }
 
     public function getText(): ?string

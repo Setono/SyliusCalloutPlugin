@@ -57,6 +57,14 @@ interface CalloutInterface extends
 
     public function setPosition(?string $position): void;
 
+    public function getColor(): ?string;
+
+    public function setColor(?string $color): void;
+
+    public function getBackgroundColor(): ?string;
+
+    public function setBackgroundColor(?string $backgroundColor): void;
+
     public function getText(): ?string;
 
     public function setText(string $text): void;

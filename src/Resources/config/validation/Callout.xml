@@ -72,5 +72,49 @@
                 </option>
             </constraint>
         </property>
+
+        <property name="color">
+            <constraint name="CssColor">
+                <option name="formats">
+                    <value>hex_long</value>
+                    <value>hex_long_with_alpha</value>
+                    <value>hex_short</value>
+                    <value>hex_short_with_alpha</value>
+                    <value>basic_named_colors</value>
+                    <value>extended_named_colors</value>
+                    <value>system_colors</value>
+                    <value>keywords</value>
+                    <value>rgb</value>
+                    <value>rgba</value>
+                    <value>hsl</value>
+                    <value>hsla</value>
+                </option>
+                <option name="groups">
+                    <value>setono_sylius_callout</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="backgroundColor">
+            <constraint name="CssColor">
+                <option name="formats">
+                    <value>hex_long</value>
+                    <value>hex_long_with_alpha</value>
+                    <value>hex_short</value>
+                    <value>hex_short_with_alpha</value>
+                    <value>basic_named_colors</value>
+                    <value>extended_named_colors</value>
+                    <value>system_colors</value>
+                    <value>keywords</value>
+                    <value>rgb</value>
+                    <value>rgba</value>
+                    <value>hsl</value>
+                    <value>hsla</value>
+                </option>
+                <option name="groups">
+                    <value>setono_sylius_callout</value>
+                </option>
+            </constraint>
+        </property>
     </class>
 </constraint-mapping>

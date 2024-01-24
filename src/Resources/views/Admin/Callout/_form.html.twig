@@ -24,8 +24,21 @@
         </div>
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'setono_sylius_callout.form.callout.layout'|trans }}</h4>
-            {{ form_row(form.elements) }}
-            {{ form_row(form.position) }}
+
+            <div class="ui two column stackable grid">
+                <div class="column">
+                    <div class="ui segment">
+                        {{ form_row(form.elements) }}
+                        {{ form_row(form.position) }}
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui segment">
+                        {{ form_row(form.color) }}
+                        {{ form_row(form.backgroundColor) }}
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="ui segment">
             <h4 class="ui dividing header">{{ 'setono_sylius_callout.form.callout.rules'|trans }}</h4>

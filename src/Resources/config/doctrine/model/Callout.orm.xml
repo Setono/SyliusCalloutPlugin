@@ -17,6 +17,8 @@
         <field name="priority" type="integer"/>
         <field name="elements" type="json"/>
         <field name="position" type="string"/>
+        <field name="color" type="string" nullable="true"/>
+        <field name="backgroundColor" type="string" nullable="true"/>
         <field name="enabled" type="boolean"/>
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
