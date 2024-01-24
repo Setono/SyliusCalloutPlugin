@@ -1,0 +1,71 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Setono\SyliusCalloutPlugin\Twig;
+
+use Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutRenderingEligibilityCheckerInterface;
+use Setono\SyliusCalloutPlugin\CssClassBuilder\CssClassBuilderInterface;
+use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Setono\SyliusCalloutPlugin\Model\ProductInterface;
+use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
+use Setono\SyliusCalloutPlugin\Renderer\CalloutRendererInterface;
+use Twig\Extension\RuntimeExtensionInterface;
+
+final class CalloutRuntime implements RuntimeExtensionInterface
+{
+    public function __construct(
+        private readonly CalloutRenderingEligibilityCheckerInterface $calloutRenderingEligibilityChecker,
+        private readonly CssClassBuilderInterface $cssClassBuilder,
+        private readonly CalloutProviderInterface $calloutProvider,
+        private readonly CalloutRendererInterface $calloutRenderer,
+    ) {
+    }
+
+    /**
+     * Notice that this method will return _only_ one callout per element and position
+     *
+     * @return array<string, CalloutInterface|array<string, CalloutInterface>>
+     */
+    public function getCallouts(ProductInterface $product, string $element = null): array
+    {
+        /** @var array<string, array<string, CalloutInterface>> $callouts */
+        $callouts = [];
+
+        $preQualifiedCallouts = $this->calloutProvider->getByCodes($product->getPreQualifiedCallouts());
+
+        // the reason we sort ascending is that we want the last one to be the one with the highest priority when we add the callouts to the resulting array
+        usort($preQualifiedCallouts, static fn (CalloutInterface $a, CalloutInterface $b) => $a->getPriority() <=> $b->getPriority());
+
+        foreach ($preQualifiedCallouts as $callout) {
+            if (!$this->calloutRenderingEligibilityChecker->isEligible($callout)) {
+                continue;
+            }
+
+            $elements = $callout->getElements();
+            if ([] === $elements) {
+                $elements = [CalloutInterface::DEFAULT_KEY];
+            }
+
+            foreach ($elements as $elm) {
+                $callouts[$elm][$callout->getPosition() ?? CalloutInterface::DEFAULT_KEY] = $callout;
+            }
+        }
+
+        if (null !== $element) {
+            return $callouts[$element] ?? [];
+        }
+
+        return $callouts;
+    }
+
+    public function renderClassAttribute(CalloutInterface $callout): string
+    {
+        return $this->cssClassBuilder->build($callout);
+    }
+
+    public function renderCallout(CalloutInterface $callout): string
+    {
+        return (string) $this->calloutRenderer->render($callout);
+    }
+}

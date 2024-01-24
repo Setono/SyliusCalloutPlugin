@@ -3,22 +3,33 @@ setono_sylius_callout:
         callout:
             channels: Channels
             code: Code
+            elements: Element
+            elements_info: If the callout should be associated with a certain element, select it here. Otherwise, select 'Default'
+            element_labels:
+                default: Default
             enabled: Enabled
             ends_at: Ends at
             name: Name
             position: Position
             positions:
                 bottom: Bottom
+                bottom_center: Bottom center
                 bottom_left: Bottom left
                 bottom_right: Bottom right
                 left: Left
+                middle: Middle
+                middle_center: Middle center
+                middle_left: Middle left
+                middle_right: Middle right
                 right: Right
                 top: Top
+                top_center: Top center
                 top_left: Top left
                 top_right: Top right
             priority: Priority
             rules: Rules
-            select_position: Select position
+            rules_info: If you don't add any rules, the callout will be applied to all products
+            select_position: Select position...
             starts_at: Starts at
             translations: Text
         callout_rule:
@@ -41,22 +52,18 @@ setono_sylius_callout:
         has_product: Has product
         has_taxon: Has taxon
         is_new: Is new
-        manual_triggering_off: Auto triggering triggers assign process after every change automatically
-        manual_triggering_on: Manual triggering - you should press Assign button after all changes made
         name: Name
         new_callout: New callout
         on_sale: On sale
         position: Position
         priority: Priority
         rules: Rules
-        rules_assigned_at: Rules assigned at
         select_position: Select position...
         starts_at: Starts at
         text: Text
         top_left: Top left
         top_right: Top right
         type: Type
-        updated_at: Updated at
         callout: Callout
         rule: Rule
         callouts_product_list: Product list

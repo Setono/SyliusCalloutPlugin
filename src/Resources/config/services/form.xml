@@ -19,52 +19,52 @@
 
     </parameters>
     <services>
-
         <service id="setono_sylius_callout.form.type.callout"
                  class="Setono\SyliusCalloutPlugin\Form\Type\CalloutType">
+            <argument>%setono_sylius_callout.elements%</argument>
+            <argument>%setono_sylius_callout.positions%</argument>
             <argument>%setono_sylius_callout.model.callout.class%</argument>
             <argument>%setono_sylius_callout.form.type.callout.validation_groups%</argument>
-            <tag name="form.type" />
+            <tag name="form.type"/>
         </service>
 
         <service id="setono_sylius_callout.form.type.callout_rule"
                  class="Setono\SyliusCalloutPlugin\Form\Type\CalloutRuleType">
             <argument>%setono_sylius_callout.model.callout_rule.class%</argument>
-            <argument type="service" id="setono_sylius_callout.form_registry.callout_rule_checker" />
+            <argument type="service" id="setono_sylius_callout.form_registry.callout_rule_checker"/>
             <argument>%setono_sylius_callout.form.type.callout_rule.validation_groups%</argument>
-            <tag name="form.type" />
+            <tag name="form.type"/>
         </service>
 
         <service id="setono_sylius_callout.form.type.callout_rule_choice"
                  class="Setono\SyliusCalloutPlugin\Form\Type\CalloutRuleChoiceType">
             <argument>%setono_sylius_callout.callout_rules%</argument>
-            <tag name="form.type" />
+            <tag name="form.type"/>
         </service>
 
         <service id="setono_sylius_callout.form.type.callout_rule_collection"
                  class="Setono\SyliusCalloutPlugin\Form\Type\CalloutRuleCollectionType">
-            <argument type="service" id="setono_sylius_callout.registry.callout_rule_checker" />
-            <tag name="form.type" />
+            <argument type="service" id="setono_sylius_callout.registry.callout_rule_checker"/>
+            <tag name="form.type"/>
         </service>
 
         <service id="setono_sylius_callout.form.type.callout_translation"
-                 class="Setono\SyliusCalloutPlugin\Form\Type\Translation\CalloutTranslationType">
+                 class="Setono\SyliusCalloutPlugin\Form\Type\CalloutTranslationType">
             <argument>%setono_sylius_callout.model.callout_translation.class%</argument>
             <argument>%setono_sylius_callout.form.type.callout_translation.validation_groups%</argument>
-            <tag name="form.type" />
+            <tag name="form.type"/>
         </service>
 
         <service id="setono_sylius_callout.form.type.rule.has_taxon_configuration"
                  class="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasTaxonConfigurationType">
-            <argument type="service" id="sylius.form.type.data_transformer.taxons_to_codes" />
-            <tag name="form.type" />
+            <argument type="service" id="sylius.form.type.data_transformer.taxons_to_codes"/>
+            <tag name="form.type"/>
         </service>
 
         <service id="setono_sylius_callout.form.type.rule.has_taxon_product"
                  class="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType">
-            <argument type="service" id="sylius.form.type.data_transformer.products_to_codes" />
-            <tag name="form.type" />
+            <argument type="service" id="sylius.form.type.data_transformer.products_to_codes"/>
+            <tag name="form.type"/>
         </service>
-
     </services>
 </container>

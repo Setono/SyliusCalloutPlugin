@@ -4,7 +4,6 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-
         <service id="setono_sylius_callout.fixture.callout"
                  class="Setono\SyliusCalloutPlugin\Fixture\CalloutFixture">
             <argument type="service" id="setono_sylius_callout.manager.callout"/>
@@ -14,17 +13,17 @@
 
         <service id="setono_sylius_callout.fixture.example_factory.callout"
                  class="Setono\SyliusCalloutPlugin\Fixture\Factory\CalloutExampleFactory">
-            <argument type="service" id="setono_sylius_callout.factory.callout" />
-            <argument type="service" id="setono_sylius_callout.manager.callout" />
-            <argument type="service" id="setono_sylius_callout.fixture.example_factory.callout_rule" />
-            <argument type="service" id="sylius.repository.channel" />
-            <argument type="service" id="sylius.repository.locale" />
+            <argument type="service" id="setono_sylius_callout.factory.callout"/>
+            <argument type="service" id="setono_sylius_callout.manager.callout"/>
+            <argument type="service" id="setono_sylius_callout.fixture.example_factory.callout_rule"/>
+            <argument type="service" id="sylius.repository.channel"/>
+            <argument type="service" id="sylius.repository.locale"/>
+            <argument>%setono_sylius_callout.positions%</argument>
         </service>
 
         <service id="setono_sylius_callout.fixture.example_factory.callout_rule"
                  class="Setono\SyliusCalloutPlugin\Fixture\Factory\CalloutRuleExampleFactory">
-            <argument type="service" id="setono_sylius_callout.factory.callout_rule" />
+            <argument type="service" id="setono_sylius_callout.factory.callout_rule"/>
         </service>
-
     </services>
 </container>

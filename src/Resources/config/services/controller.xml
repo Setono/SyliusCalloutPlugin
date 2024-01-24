@@ -4,15 +4,13 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-
         <service id="setono_sylius_callout.controller.action.assign"
-                 class="Setono\SyliusCalloutPlugin\Controller\Action\CalloutAssignAction">
-            <argument type="service" id="setono_sylius_callout.assigner.eligible_callouts_to_all_products" />
-            <argument type="service" id="request_stack" />
-            <argument type="service" id="translator" />
-            <argument type="service" id="router" />
-            <tag name="controller.service_arguments" />
-        </service>
+                 class="Setono\SyliusCalloutPlugin\Controller\Action\AssignAction">
+            <argument type="service" id="setono_sylius_callout.command_bus"/>
+            <argument type="service" id="translator"/>
+            <argument type="service" id="router"/>
 
+            <tag name="controller.service_arguments"/>
+        </service>
     </services>
 </container>

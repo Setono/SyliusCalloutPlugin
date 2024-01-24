@@ -11,11 +11,14 @@
     ],
     "require": {
         "php": ">=8.1",
-        "ext-mbstring": "*",
         "doctrine/collections": "^1.8",
         "doctrine/event-manager": "^1.2",
         "doctrine/orm": "^2.13",
         "doctrine/persistence": "^2.5 || ^3.2",
+        "ocramius/doctrine-batch-utils": "^2.6",
+        "psr/event-dispatcher": "^1.0",
+        "setono/composite-compiler-pass": "^1.1",
+        "setono/doctrine-object-manager-trait": "^1.2",
         "sylius/channel": "^1.0",
         "sylius/channel-bundle": "^1.0",
         "sylius/core": "^1.0",
@@ -32,6 +35,7 @@
         "symfony/console": "^5.4 || ^6.4",
         "symfony/dependency-injection": "^5.4 || ^6.4",
         "symfony/deprecation-contracts": "^2.5",
+        "symfony/event-dispatcher": "^5.4 || ^6.4",
         "symfony/form": "^5.4 || ^6.4",
         "symfony/http-foundation": "^5.4 || ^6.4",
         "symfony/mailer": "^5.4 || ^6.4",
@@ -55,6 +59,7 @@
         "matthiasnoback/symfony-config-test": "^4.3",
         "matthiasnoback/symfony-dependency-injection-test": "^4.3 || ^5.0",
         "phpunit/phpunit": "^9.6",
+        "polishsymfonycommunity/symfony-mocker-container": "^1.0.7",
         "psalm/plugin-phpunit": "^0.18",
         "psalm/plugin-symfony": "^5.1",
         "setono/code-quality-pack": "^2.6",
@@ -96,10 +101,7 @@
             "@checks",
             "@tests"
         ],
-        "analyse": [
-            "@ensure-test-container-exists",
-            "psalm"
-        ],
+        "analyse": "psalm",
         "assets": [
             "@ensure-assets-installed",
             "@ensure-assets-compiled"
@@ -127,21 +129,18 @@
         "ensure-env-dev-copied": "(cd tests/Application && ([[ -f .env.dev.local ]] || cp .env  .env.dev.local))",
         "ensure-env-test-copied": "(cd tests/Application && ([[ -f .env.test.local ]] || cp .env.test .env.test.local))",
         "ensure-schema-updated": "composer ensure-env-copied && (cd tests/Application && bin/console doctrine:schema:update --force -e ${SYMFONY_ENV:-'dev'})",
-        "ensure-test-container-exists": "[[ -f tests/Application/var/cache/test/Tests_Setono_SyliusCalloutPlugin_Application_KernelTestDebugContainer.xml ]] || tests/Application/bin/console cache:warmup --env=test",
         "ensure-vendors-installed": "[[ -f vendor/autoload.php ]] || php -d memory_limit=-1 /usr/local/bin/composer install",
         "fix-style": "ecs check --fix",
         "fixtures": [
             "@ensure-database-ready",
             "(cd tests/Application && bin/console sylius:fixtures:load --no-interaction -e ${SYMFONY_ENV:-'dev'})"
         ],
-        "phpspec": "vendor/bin/phpspec run -vvv",
         "phpunit": "vendor/bin/phpunit",
         "run": [
             "@ensure-env-copied",
             "(cd tests/Application && bin/console server:run -d public -e ${SYMFONY_ENV:-'dev'})"
         ],
         "tests": [
-            "@phpspec",
             "@phpunit",
             "@behat"
         ],

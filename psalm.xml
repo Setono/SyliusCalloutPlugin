@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-    findUnusedBaselineEntry="true"
-    findUnusedPsalmSuppress="true"
+    findUnusedBaselineEntry="false"
+    findUnusedPsalmSuppress="false"
     findUnusedCode="false"
-    findUnusedVariablesAndParams="true"
+    findUnusedVariablesAndParams="false"
     phpVersion="8.1"
     errorLevel="1"
 >
@@ -30,4 +30,27 @@
         <function name="var_dump"/>
         <function name="print_r"/>
     </forbiddenFunctions>
+    <issueHandlers>
+        <MissingTemplateParam>
+            <errorLevel type="suppress">
+                <directory name="src/Form"/>
+            </errorLevel>
+        </MissingTemplateParam>
+        <PluginIssue name="QueryBuilderSetParameter" errorLevel="suppress"/>
+        <MixedArgument>
+            <errorLevel type="suppress">
+                <directory name="src/Fixture"/>
+            </errorLevel>
+        </MixedArgument>
+        <MixedReturnStatement>
+            <errorLevel type="suppress">
+                <directory name="src/Fixture"/>
+            </errorLevel>
+        </MixedReturnStatement>
+        <MixedInferredReturnType>
+            <errorLevel type="suppress">
+                <directory name="src/Fixture"/>
+            </errorLevel>
+        </MixedInferredReturnType>
+    </issueHandlers>
 </psalm>

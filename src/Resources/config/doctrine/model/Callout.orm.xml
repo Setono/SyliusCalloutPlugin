@@ -4,47 +4,43 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-
     <mapped-superclass name="Setono\SyliusCalloutPlugin\Model\Callout" table="setono_sylius_callout__callout">
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="code" unique="true" length="64"/>
-        <field name="name" type="string" />
+        <field name="version" type="integer" version="true"/>
+        <field name="code" unique="true"/>
+        <field name="name" type="string"/>
         <field name="startsAt" type="datetime" nullable="true"/>
         <field name="endsAt" type="datetime" nullable="true"/>
         <field name="priority" type="integer"/>
-        <field name="position" type="string" nullable="true"/>
+        <field name="elements" type="json"/>
+        <field name="position" type="string"/>
         <field name="enabled" type="boolean"/>
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
-            <options>
-                <option name="default">CURRENT_TIMESTAMP</option>
-            </options>
         </field>
         <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
-            <!-- We update this date at doctrine event listeners only when -->
-            <!-- rules changed (or any other fields which changes require assign triggering) -->
+            <gedmo:timestampable on="update"/>
         </field>
-        <field name="rulesAssignedAt" column="rules_assigned_at" type="datetime" nullable="true" />
 
         <many-to-many field="channels" target-entity="Sylius\Component\Channel\Model\ChannelInterface">
             <join-table name="setono_sylius_callout__callout_channels">
                 <join-columns>
-                    <join-column name="callout_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                    <join-column name="callout_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </join-columns>
                 <inverse-join-columns>
-                    <join-column name="channel_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+                    <join-column name="channel_id" referenced-column-name="id" nullable="false" on-delete="CASCADE"/>
                 </inverse-join-columns>
             </join-table>
         </many-to-many>
 
-        <one-to-many field="rules" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface" mapped-by="callout" orphan-removal="true">
+        <one-to-many field="rules" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface"
+                     mapped-by="callout" orphan-removal="true">
             <cascade>
-                <cascade-all />
+                <cascade-all/>
             </cascade>
         </one-to-many>
     </mapped-superclass>
-
 </doctrine-mapping>

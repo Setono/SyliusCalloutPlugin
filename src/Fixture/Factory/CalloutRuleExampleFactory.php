@@ -7,14 +7,11 @@ namespace Setono\SyliusCalloutPlugin\Fixture\Factory;
 use Setono\SyliusCalloutPlugin\Factory\CalloutRuleFactoryInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
-use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CalloutRuleExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
+class CalloutRuleExampleFactory extends AbstractExampleFactory
 {
     private CalloutRuleFactoryInterface $calloutRuleFactory;
-
-    private \Faker\Generator $faker;
 
     private OptionsResolver $optionsResolver;
 
@@ -22,15 +19,11 @@ class CalloutRuleExampleFactory extends AbstractExampleFactory implements Exampl
     {
         $this->calloutRuleFactory = $calloutRuleFactory;
 
-        $this->faker = \Faker\Factory::create();
         $this->optionsResolver = new OptionsResolver();
 
         $this->configureOptions($this->optionsResolver);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function create(array $options = []): CalloutRuleInterface
     {
         $options = $this->optionsResolver->resolve($options);

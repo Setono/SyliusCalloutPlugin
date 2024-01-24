@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Setono\SyliusCalloutPlugin\Application;
 
+use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -43,6 +44,15 @@ final class Kernel extends BaseKernel
         }
     }
 
+    protected function getContainerBaseClass(): string
+    {
+        if ($this->isTestEnvironment()) {
+            return MockerContainer::class;
+        }
+
+        return parent::getContainerBaseClass();
+    }
+
     private function loadRoutesConfiguration(RoutingConfigurator $routes, string $confDir): void
     {
         $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
@@ -69,5 +79,10 @@ final class Kernel extends BaseKernel
     private function getConfigurationDirectories(): iterable
     {
         yield $this->getProjectDir() . '/config';
+    }
+
+    private function isTestEnvironment(): bool
+    {
+        return 0 === strpos($this->getEnvironment(), 'test');
     }
 }

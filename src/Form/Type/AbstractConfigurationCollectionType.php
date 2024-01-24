@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,6 +22,9 @@ abstract class AbstractConfigurationCollectionType extends AbstractType
         $this->registry = $registry;
     }
 
+    /**
+     * @param array{prototype_name: string, entry_type: class-string<FormTypeInterface>, entry_options: array} $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $prototypes = [];
@@ -44,8 +48,11 @@ abstract class AbstractConfigurationCollectionType extends AbstractType
     {
         $view->vars['prototypes'] = [];
 
+        /**
+         * @var string $type
+         * @var FormInterface $prototype
+         */
         foreach ($form->getConfig()->getAttribute('prototypes') as $type => $prototype) {
-            /** @var FormInterface $prototype */
             $view->vars['prototypes'][$type] = $prototype->createView($view);
         }
     }

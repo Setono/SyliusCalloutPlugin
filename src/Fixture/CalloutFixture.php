@@ -10,9 +10,6 @@ use Symfony\Component\Config\Definition\Builder\NodeBuilder;
 
 class CalloutFixture extends AbstractResourceFixture
 {
-    /**
-     * @inheritdoc
-     */
     public function getName(): string
     {
         return 'setono_sylius_callout';

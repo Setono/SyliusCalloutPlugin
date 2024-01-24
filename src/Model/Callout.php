@@ -22,6 +22,8 @@ class Callout implements CalloutInterface
 
     protected ?int $id = null;
 
+    protected int $version = 1;
+
     protected ?string $code = null;
 
     protected ?string $name = null;
@@ -32,15 +34,16 @@ class Callout implements CalloutInterface
 
     protected int $priority = 0;
 
-    protected ?string $position = null;
+    /** @var list<string> */
+    protected array $elements = [self::DEFAULT_KEY];
+
+    protected ?string $position = self::DEFAULT_KEY;
 
     /** @var Collection<array-key, BaseChannelInterface> */
     protected Collection $channels;
 
     /** @var Collection<array-key, CalloutRuleInterface> */
     protected Collection $rules;
-
-    protected ?DateTimeInterface $rulesAssignedAt = null;
 
     public function __construct()
     {
@@ -51,12 +54,32 @@ class Callout implements CalloutInterface
 
     public function __toString(): string
     {
-        return $this->getName();
+        return (string) $this->getName();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getVersion(): ?int
+    {
+        return $this->version;
+    }
+
+    public function setVersion(?int $version): void
+    {
+        $this->version = (int) $version;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): void
+    {
+        $this->code = $code;
     }
 
     public function getName(): ?string
@@ -99,6 +122,16 @@ class Callout implements CalloutInterface
         $this->priority = $priority;
     }
 
+    public function getElements(): array
+    {
+        return $this->elements;
+    }
+
+    public function setElements(array $elements): void
+    {
+        $this->elements = $elements;
+    }
+
     public function getPosition(): ?string
     {
         return $this->position;
@@ -117,16 +150,6 @@ class Callout implements CalloutInterface
     public function setText(string $text): void
     {
         $this->getCalloutTranslation()->setText($text);
-    }
-
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(string $code): void
-    {
-        $this->code = $code;
     }
 
     public function getChannels(): Collection
@@ -178,36 +201,8 @@ class Callout implements CalloutInterface
 
     public function removeRule(CalloutRuleInterface $rule): void
     {
-        // @todo Better way
-        // We don't want this
-        // as we need to know callout id on rule remove
-        // at Doctrine Event Listener
-        // $rule->setCallout(null);
+        $rule->setCallout(null);
         $this->rules->removeElement($rule);
-    }
-
-    public function getRulesAssignedAt(): ?DateTimeInterface
-    {
-        return $this->rulesAssignedAt;
-    }
-
-    public function setRulesAssignedAt(?DateTimeInterface $rulesAssignedAt): void
-    {
-        $this->rulesAssignedAt = $rulesAssignedAt;
-    }
-
-    public static function getAllowedPositions(): array
-    {
-        return [
-            self::POSITION_TOP => self::POSITION_TOP,
-            self::POSITION_RIGHT => self::POSITION_RIGHT,
-            self::POSITION_BOTTOM => self::POSITION_BOTTOM,
-            self::POSITION_LEFT => self::POSITION_LEFT,
-            self::POSITION_TOP_LEFT => self::POSITION_TOP_LEFT,
-            self::POSITION_TOP_RIGHT => self::POSITION_TOP_RIGHT,
-            self::POSITION_BOTTOM_RIGHT => self::POSITION_BOTTOM_RIGHT,
-            self::POSITION_BOTTOM_LEFT => self::POSITION_BOTTOM_LEFT,
-        ];
     }
 
     protected function getCalloutTranslation(): CalloutTranslationInterface

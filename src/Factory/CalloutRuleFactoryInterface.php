@@ -7,6 +7,9 @@ namespace Setono\SyliusCalloutPlugin\Factory;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
+/**
+ * @extends FactoryInterface<CalloutRuleInterface>
+ */
 interface CalloutRuleFactoryInterface extends FactoryInterface
 {
     public function createHasTaxon(array $taxons): CalloutRuleInterface;

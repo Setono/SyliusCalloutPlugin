@@ -1,4 +1,7 @@
 sylius_grid:
+    templates:
+        action:
+            setono_callout_default: "@SetonoSyliusCalloutPlugin/Admin/Grid/Action/setono_callout_default.html.twig"
     grids:
         setono_sylius_callout_admin_callout:
             driver:
@@ -27,18 +30,6 @@ sylius_grid:
                     sortable: ~
                     options:
                         template: "@SyliusUi/Grid/Field/position.html.twig"
-                updatedAt:
-                    type: datetime
-                    label: setono_sylius_callout.ui.updated_at
-                    sortable: ~
-                    options:
-                        format: "Y-m-d H:i:s"
-                rulesAssignedAt:
-                    type: datetime
-                    label: setono_sylius_callout.ui.rules_assigned_at
-                    sortable: ~
-                    options:
-                        format: "Y-m-d H:i:s"
             filters:
                 name:
                     type: string
@@ -71,8 +62,5 @@ sylius_grid:
                 item:
                     update:
                         type: update
-                    setono_callout_product_list:
-                        type: setono_callout_product_list
-                        label: setono_sylius_callout.ui.callouts_product_list
                     delete:
                         type: delete

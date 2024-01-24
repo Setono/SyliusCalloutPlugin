@@ -3,7 +3,6 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-
     <mapped-superclass name="Setono\SyliusCalloutPlugin\Model\CalloutRule" table="setono_sylius_callout__callout_rule">
         <id name="id" type="integer">
             <generator strategy="AUTO"/>
@@ -12,9 +11,9 @@
         <field name="type" type="string"/>
         <field name="configuration" type="array"/>
 
-        <many-to-one field="callout" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutInterface" inversed-by="rules">
-            <join-column name="callout_id" referenced-column-name="id" nullable="true" />
+        <many-to-one field="callout" target-entity="Setono\SyliusCalloutPlugin\Model\CalloutInterface"
+                     inversed-by="rules">
+            <join-column name="callout_id" referenced-column-name="id" nullable="true"/>
         </many-to-one>
     </mapped-superclass>
-
 </doctrine-mapping>

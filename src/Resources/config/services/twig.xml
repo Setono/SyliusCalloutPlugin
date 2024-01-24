@@ -4,19 +4,19 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-
-        <service id="setono_sylius_callout.twig.extension.callout"
-                 class="Setono\SyliusCalloutPlugin\Twig\Extension\CalloutExtension">
-            <argument type="service" id="setono_sylius_callout.rendering_callout_eligibility_checker" />
-            <argument type="service" id="setono_sylius_callout.css_class_builder" />
-            <tag name="twig.extension" />
+        <service id="setono_sylius_callout.twig.callout_extension"
+                 class="Setono\SyliusCalloutPlugin\Twig\CalloutExtension">
+            <tag name="twig.extension"/>
         </service>
 
-        <service id="setono_sylius_callout.twig.extension.callout_configuration"
-                 class="Setono\SyliusCalloutPlugin\Twig\Extension\CalloutConfigurationExtension">
-            <argument>%setono_sylius_callout.manual_triggering%</argument>
-            <tag name="twig.extension" />
-        </service>
+        <service id="setono_sylius_callout.twig.callout_runtime"
+                 class="Setono\SyliusCalloutPlugin\Twig\CalloutRuntime">
+            <argument type="service" id="setono_sylius_callout.checker.rendering_eligibility.composite"/>
+            <argument type="service" id="setono_sylius_callout.css_class_builder.default"/>
+            <argument type="service" id="setono_sylius_callout.provider.callout"/>
+            <argument type="service" id="setono_sylius_callout.renderer.callout"/>
 
+            <tag name="twig.runtime"/>
+        </service>
     </services>
 </container>
