@@ -7,8 +7,8 @@
         <service id="setono_sylius_callout.message.handler.abstract_assign_callouts"
                  class="Setono\SyliusCalloutPlugin\Message\Handler\AbstractAssignCalloutsHandler" abstract="true">
             <argument type="service" id="setono_sylius_callout.repository.callout"/>
-            <argument type="service" id="event_dispatcher"/>
             <argument type="service" id="setono_sylius_callout.checker.eligibility.composite"/>
+            <argument type="service" id="setono_sylius_callout.batch_iterator.factory"/>
             <argument type="service" id="doctrine"/>
             <argument>%sylius.model.product.class%</argument>
         </service>
