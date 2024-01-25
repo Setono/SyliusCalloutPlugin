@@ -6,6 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Repository;
 
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Channel\Model\ChannelInterface;
 use Webmozart\Assert\Assert;
 
 class CalloutRepository extends EntityRepository implements CalloutRepositoryInterface
@@ -33,10 +34,21 @@ class CalloutRepository extends EntityRepository implements CalloutRepositoryInt
         return $result;
     }
 
-    public function findByCodes(array $codes): array
+    public function findByCodes(array $codes, ChannelInterface $channel, string $locale): array
     {
-        $objs = $this->findBy(['code' => $codes]);
-        Assert::allIsInstanceOf($objs, CalloutInterface::class);
+        $objs = $this->createQueryBuilder('o')
+            ->select('o, c, t')
+            ->join('o.channels', 'c', 'WITH', 'c = :channel')
+            ->join('o.translations', 't', 'WITH', 't.locale = :locale')
+            ->andWhere('o.code IN (:codes)')
+            ->setParameter('codes', $codes)
+            ->setParameter('channel', $channel)
+            ->setParameter('locale', $locale)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        self::assertResult($objs);
 
         return $objs;
     }

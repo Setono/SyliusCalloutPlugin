@@ -23,6 +23,7 @@
         "sylius/channel-bundle": "^1.0",
         "sylius/core": "^1.0",
         "sylius/core-bundle": "^1.0",
+        "sylius/locale": "^1.0",
         "sylius/product": "^1.0",
         "sylius/product-bundle": "^1.0",
         "sylius/promotion": "^1.0",

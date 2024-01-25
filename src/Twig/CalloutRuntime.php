@@ -8,7 +8,7 @@ use Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutRenderingElig
 use Setono\SyliusCalloutPlugin\CssClassBuilder\CssClassBuilderInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
-use Setono\SyliusCalloutPlugin\Provider\CalloutProviderInterface;
+use Setono\SyliusCalloutPlugin\Provider\RenderingCalloutProviderInterface;
 use Setono\SyliusCalloutPlugin\Renderer\CalloutRendererInterface;
 use Twig\Extension\RuntimeExtensionInterface;
 
@@ -17,7 +17,7 @@ final class CalloutRuntime implements RuntimeExtensionInterface
     public function __construct(
         private readonly CalloutRenderingEligibilityCheckerInterface $calloutRenderingEligibilityChecker,
         private readonly CssClassBuilderInterface $cssClassBuilder,
-        private readonly CalloutProviderInterface $calloutProvider,
+        private readonly RenderingCalloutProviderInterface $renderingCalloutProvider,
         private readonly CalloutRendererInterface $calloutRenderer,
     ) {
     }
@@ -32,7 +32,7 @@ final class CalloutRuntime implements RuntimeExtensionInterface
         /** @var array<string, array<string, CalloutInterface>> $callouts */
         $callouts = [];
 
-        $preQualifiedCallouts = $this->calloutProvider->getByCodes($product->getPreQualifiedCallouts());
+        $preQualifiedCallouts = $this->renderingCalloutProvider->getByCodes($product->getPreQualifiedCallouts());
 
         // the reason we sort ascending is that we want the last one to be the one with the highest priority when we add the callouts to the resulting array
         usort($preQualifiedCallouts, static fn (CalloutInterface $a, CalloutInterface $b) => $a->getPriority() <=> $b->getPriority());

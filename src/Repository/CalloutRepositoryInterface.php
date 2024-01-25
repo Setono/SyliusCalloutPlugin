@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Repository;
 
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 /**
@@ -26,5 +27,5 @@ interface CalloutRepositoryInterface extends RepositoryInterface
      *
      * @return CalloutInterface[]
      */
-    public function findByCodes(array $codes): array;
+    public function findByCodes(array $codes, ChannelInterface $channel, string $locale): array;
 }
