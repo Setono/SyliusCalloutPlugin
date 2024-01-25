@@ -4,9 +4,11 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono_sylius_callout.provider.callout"
-                 class="Setono\SyliusCalloutPlugin\Provider\CalloutProvider">
+        <service id="setono_sylius_callout.provider.rendering_callout"
+                 class="Setono\SyliusCalloutPlugin\Provider\RenderingCalloutProvider">
             <argument type="service" id="setono_sylius_callout.repository.callout"/>
+            <argument type="service" id="sylius.context.channel"/>
+            <argument type="service" id="sylius.context.locale"/>
         </service>
     </services>
 </container>
