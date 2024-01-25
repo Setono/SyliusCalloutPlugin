@@ -14,14 +14,6 @@ class SemanticUiCssClassBuilder implements CssClassBuilderInterface
         $position = $callout->getPosition();
         Assert::notNull($position);
 
-        return self::getCssClasses($position);
-    }
-
-    private static function getCssClasses(string $position): string
-    {
-        $class = 'attached label ';
-        $class .= str_replace('_', ' ', $position);
-
-        return $class;
+        return sprintf('ui %s attached label', str_replace('_', ' ', $position));
     }
 }
