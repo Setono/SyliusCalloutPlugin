@@ -31,10 +31,14 @@ trait ProductTrait
         }
     }
 
-    public function removePreQualifiedCallout(string $preQualifiedCallout): void
+    public function removePreQualifiedCallout(CalloutInterface|string $preQualifiedCallout): void
     {
         if (null === $this->preQualifiedCallouts) {
             return;
+        }
+
+        if ($preQualifiedCallout instanceof CalloutInterface) {
+            $preQualifiedCallout = (string) $preQualifiedCallout->getCode();
         }
 
         $key = array_search($preQualifiedCallout, $this->preQualifiedCallouts, true);

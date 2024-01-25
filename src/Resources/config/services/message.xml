@@ -4,13 +4,30 @@
            xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="Setono\SyliusCalloutPlugin\Message\Handler\AssignCalloutsHandler">
+        <service id="setono_sylius_callout.message.handler.abstract_assign_callouts"
+                 class="Setono\SyliusCalloutPlugin\Message\Handler\AbstractAssignCalloutsHandler" abstract="true">
             <argument type="service" id="setono_sylius_callout.repository.callout"/>
             <argument type="service" id="event_dispatcher"/>
             <argument type="service" id="setono_sylius_callout.checker.eligibility.composite"/>
             <argument type="service" id="doctrine"/>
             <argument>%sylius.model.product.class%</argument>
+        </service>
 
+        <service id="setono_sylius_callout.message.handler.assign_callout"
+                 class="Setono\SyliusCalloutPlugin\Message\Handler\AssignCalloutHandler"
+                 parent="setono_sylius_callout.message.handler.abstract_assign_callouts">
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="setono_sylius_callout.message.handler.assign_callouts"
+                 class="Setono\SyliusCalloutPlugin\Message\Handler\AssignCalloutsHandler"
+                 parent="setono_sylius_callout.message.handler.abstract_assign_callouts">
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="setono_sylius_callout.message.handler.assign_callouts_to_product"
+                 class="Setono\SyliusCalloutPlugin\Message\Handler\AssignCalloutsToProductHandler"
+                 parent="setono_sylius_callout.message.handler.abstract_assign_callouts">
             <tag name="messenger.message_handler"/>
         </service>
     </services>

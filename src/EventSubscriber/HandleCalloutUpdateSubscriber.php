@@ -18,7 +18,11 @@ use Symfony\Component\Messenger\MessageBusInterface;
  */
 final class HandleCalloutUpdateSubscriber implements EventSubscriberInterface
 {
-    /** @var array<string, bool> */
+    /**
+     * The keys are the callout codes and the values are true
+     *
+     * @var array<string, bool>
+     */
     private array $calloutsToAssign = [];
 
     public function __construct(private readonly MessageBusInterface $commandBus)
