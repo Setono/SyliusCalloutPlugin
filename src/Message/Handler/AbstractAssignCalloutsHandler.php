@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-use DoctrineBatchUtils\BatchProcessing\SimpleBatchIteratorAggregate;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use Setono\DoctrineObjectManagerTrait\ORM\ORMManagerTrait;
+use Setono\SyliusCalloutPlugin\BatchIterator\BatchIteratorFactoryInterface;
 use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
-use Setono\SyliusCalloutPlugin\Event\ProductQueryBuilderEvent;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
@@ -20,10 +19,10 @@ class AbstractAssignCalloutsHandler
 
     public function __construct(
         protected readonly CalloutRepositoryInterface $calloutRepository,
-        protected readonly EventDispatcherInterface $eventDispatcher,
         protected readonly CalloutEligibilityCheckerInterface $eligibilityChecker,
+        protected readonly BatchIteratorFactoryInterface $batchIteratorFactory,
         ManagerRegistry $managerRegistry,
-        /** @var class-string $productClass */
+        /** @var class-string<ProductInterface> $productClass */
         protected readonly string $productClass,
     ) {
         $this->managerRegistry = $managerRegistry;
@@ -38,19 +37,15 @@ class AbstractAssignCalloutsHandler
         $manager = $this->getManager($this->productClass);
 
         if ([] === $products) {
-            $qb = $manager
-                ->createQueryBuilder()
-                ->select('o')
-                ->from($this->productClass, 'o')
-                // todo the following two 'wheres' should be moved to event subscribers and be able to be disabled in the configuration of the plugin
-                ->andWhere('o.enabled = true')
-                ->andWhere('SIZE(o.channels) > 0')
+            $products = $this->batchIteratorFactory
+                ->create($this->productClass)
+                ->modify(function (QueryBuilder $qb): void {
+                    $qb
+                        ->andWhere('o.enabled = true')
+                        ->andWhere('SIZE(o.channels) > 0')
+                    ;
+                })
             ;
-
-            $this->eventDispatcher->dispatch(new ProductQueryBuilderEvent($qb));
-
-            /** @var iterable<ProductInterface> $products */
-            $products = SimpleBatchIteratorAggregate::fromQuery($qb->getQuery(), 100);
         }
 
         $resetCallouts = false;
