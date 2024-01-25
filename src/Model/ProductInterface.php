@@ -18,7 +18,7 @@ interface ProductInterface extends BaseProductInterface
 
     public function addPreQualifiedCallout(CalloutInterface|string $preQualifiedCallout): void;
 
-    public function removePreQualifiedCallout(string $preQualifiedCallout): void;
+    public function removePreQualifiedCallout(CalloutInterface|string $preQualifiedCallout): void;
 
     /**
      * Resets the pre-qualified callouts
