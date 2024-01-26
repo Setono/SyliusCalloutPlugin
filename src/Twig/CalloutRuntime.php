@@ -61,7 +61,7 @@ final class CalloutRuntime implements RuntimeExtensionInterface
         return $callouts;
     }
 
-    public function renderClassAttribute(CalloutInterface $callout): string
+    public function renderCalloutClassAttribute(CalloutInterface $callout): string
     {
         return $this->cssClassBuilder->build($callout);
     }

@@ -18,7 +18,7 @@ final class CalloutExtension extends AbstractExtension
         return [
             new TwigFunction('get_callouts', [CalloutRuntime::class, 'getCallouts']),
             new TwigFunction('get_callout_assignment_delay', $this->getDelay(...)),
-            new TwigFunction('render_class_attribute', [CalloutRuntime::class, 'renderClassAttribute']),
+            new TwigFunction('render_callout_class_attribute', [CalloutRuntime::class, 'renderCalloutClassAttribute']),
             new TwigFunction('render_callout', [CalloutRuntime::class, 'renderCallout'], ['is_safe' => ['html']]),
         ];
     }
