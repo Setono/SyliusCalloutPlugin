@@ -27,7 +27,7 @@ final class OnSaleCalloutRuleChecker implements CalloutRuleCheckerInterface
         try {
             /** @var ChannelInterface $channel */
             $channel = $this->channelContext->getChannel();
-        } catch (ChannelNotFoundException $exception) {
+        } catch (ChannelNotFoundException) {
             // If we can not get the channel, simply say that the product is not eligible
             return false;
         }
