@@ -10,7 +10,6 @@ setono_sylius_callout_admin_callout:
             all:
                 templates:
                     form: "@SetonoSyliusCalloutPlugin/Admin/Callout/_form.html.twig"
-                    header_title: "@SetonoSyliusCalloutPlugin/Admin/Callout/_headerTitle.html.twig"
             index:
                 icon: 'bullhorn'
     type: sylius.resource
