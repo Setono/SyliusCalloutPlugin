@@ -9,7 +9,7 @@ use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Webmozart\Assert\Assert;
 
-final class HasTaxonCalloutRuleChecker implements CalloutRuleCheckerInterface
+final class HasTaxonCalloutRuleChecker extends AbstractCalloutRuleChecker
 {
     public const TYPE = 'has_taxon';
 

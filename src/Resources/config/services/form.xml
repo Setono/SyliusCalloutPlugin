@@ -61,7 +61,7 @@
             <tag name="form.type"/>
         </service>
 
-        <service id="setono_sylius_callout.form.type.rule.has_taxon_product"
+        <service id="setono_sylius_callout.form.type.rule.has_product"
                  class="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType">
             <argument type="service" id="sylius.form.type.data_transformer.products_to_codes"/>
             <tag name="form.type"/>

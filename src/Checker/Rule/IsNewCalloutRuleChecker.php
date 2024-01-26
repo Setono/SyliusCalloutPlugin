@@ -9,7 +9,7 @@ use DateTimeInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Webmozart\Assert\Assert;
 
-final class IsNewCalloutRuleChecker implements CalloutRuleCheckerInterface
+final class IsNewCalloutRuleChecker extends AbstractCalloutRuleChecker
 {
     public const TYPE = 'is_new';
 

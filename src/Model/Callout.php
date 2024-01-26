@@ -210,8 +210,18 @@ class Callout implements CalloutInterface
         return !$this->rules->isEmpty();
     }
 
-    public function hasRule(CalloutRuleInterface $rule): bool
+    public function hasRule(CalloutRuleInterface|string $rule): bool
     {
+        if (is_string($rule)) {
+            foreach ($this->rules as $r) {
+                if ($r->getType() === $rule) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         return $this->rules->contains($rule);
     }
 

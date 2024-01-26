@@ -41,6 +41,8 @@ setono_sylius_callout:
                 taxons: Taxons
             is_new:
                 days: Days
+            on_sale:
+                single_variant_eligible: A product is considered on sale if it has a single variant (the default) that is on sale
     ui:
         action:
             assign: Assign

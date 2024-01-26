@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Twig;
 
+use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
 use Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutRenderingEligibilityCheckerInterface;
 use Setono\SyliusCalloutPlugin\CssClassBuilder\CssClassBuilderInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
@@ -16,6 +17,7 @@ final class CalloutRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
         private readonly CalloutRenderingEligibilityCheckerInterface $calloutRenderingEligibilityChecker,
+        private readonly CalloutEligibilityCheckerInterface $calloutEligibilityChecker,
         private readonly CssClassBuilderInterface $cssClassBuilder,
         private readonly RenderingCalloutProviderInterface $renderingCalloutProvider,
         private readonly CalloutRendererInterface $calloutRenderer,
@@ -39,6 +41,10 @@ final class CalloutRuntime implements RuntimeExtensionInterface
 
         foreach ($preQualifiedCallouts as $callout) {
             if (!$this->calloutRenderingEligibilityChecker->isEligible($callout)) {
+                continue;
+            }
+
+            if (!$this->calloutEligibilityChecker->isRuntimeEligible($product, $callout)) {
                 continue;
             }
 

@@ -8,7 +8,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Webmozart\Assert\Assert;
 
-final class HasProductCalloutRuleChecker implements CalloutRuleCheckerInterface
+final class HasProductCalloutRuleChecker extends AbstractCalloutRuleChecker
 {
     public const TYPE = 'has_product';
 

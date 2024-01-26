@@ -7,6 +7,7 @@ namespace Tests\Setono\SyliusCalloutPlugin\Twig;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
 use Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutRenderingEligibilityCheckerInterface;
 use Setono\SyliusCalloutPlugin\CssClassBuilder\CssClassBuilderInterface;
 use Setono\SyliusCalloutPlugin\Model\Callout;
@@ -54,6 +55,14 @@ final class CalloutRuntimeTest extends TestCase
         $calloutRenderingEligibilityChecker = $this->prophesize(CalloutRenderingEligibilityCheckerInterface::class);
         $calloutRenderingEligibilityChecker->isEligible(Argument::type(CalloutInterface::class))->willReturn(true);
 
+        $calloutEligibilityChecker = $this->prophesize(CalloutEligibilityCheckerInterface::class);
+        $calloutEligibilityChecker
+            ->isRuntimeEligible(
+                Argument::type(ProductInterface::class),
+                Argument::type(CalloutInterface::class),
+            )->willReturn(true)
+        ;
+
         $cssClassBuilder = $this->prophesize(CssClassBuilderInterface::class);
 
         $renderCalloutProvider = $this->prophesize(RenderingCalloutProviderInterface::class);
@@ -70,6 +79,7 @@ final class CalloutRuntimeTest extends TestCase
 
         return new CalloutRuntime(
             $calloutRenderingEligibilityChecker->reveal(),
+            $calloutEligibilityChecker->reveal(),
             $cssClassBuilder->reveal(),
             $renderCalloutProvider->reveal(),
             $calloutRenderer->reveal(),
