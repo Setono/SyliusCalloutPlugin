@@ -8,6 +8,9 @@ use Doctrine\Persistence\ManagerRegistry;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Setono\DoctrineObjectManagerTrait\ORM\ORMManagerTrait;
 
+/**
+ * @internal The batch iterator functionality is internal because we want to extract it to an external library and bundle
+ */
 final class BatchIteratorFactory implements BatchIteratorFactoryInterface
 {
     use ORMManagerTrait;
