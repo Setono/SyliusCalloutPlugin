@@ -6,7 +6,6 @@ namespace Setono\SyliusCalloutPlugin\Checker\Rule;
 
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\Component\Promotion\Exception\UnsupportedTypeException;
 use Webmozart\Assert\Assert;
 
 final class HasProductCalloutRuleChecker implements CalloutRuleCheckerInterface
@@ -22,10 +21,6 @@ final class HasProductCalloutRuleChecker implements CalloutRuleCheckerInterface
 
     public function isEligible(ProductInterface $product, array $configuration): bool
     {
-        if (!$product instanceof ProductInterface) {
-            throw new UnsupportedTypeException($product, ProductInterface::class);
-        }
-
         Assert::keyExists($configuration, 'products');
 
         /** @var ProductInterface[] $configuredProducts */
