@@ -63,3 +63,10 @@
         </div>
     </div>
 </div>
+
+{% if get_callout_assignment_delay() > 0 %}
+    <div class="ui icon info message" style="max-width: fit-content;">
+        <i class="info circle icon"></i>
+        {{ 'setono_sylius_callout.ui.delay_info'|trans( { '%seconds%': get_callout_assignment_delay() }) }}
+    </div>
+{% endif %}

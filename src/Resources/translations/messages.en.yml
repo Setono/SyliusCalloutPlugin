@@ -46,8 +46,11 @@ setono_sylius_callout:
             assign: Assign
         bottom_left: Bottom left
         bottom_right: Bottom right
+        callout: Callout
         callouts: Callouts
+        callouts_product_list: Product list
         code: Code
+        delay_info: "NOTICE: Callouts are configured to wait %seconds% seconds before the assignment process is started"
         edit_callout: Edit callout
         enabled: Enabled
         ends_at: Ends at
@@ -59,6 +62,7 @@ setono_sylius_callout:
         on_sale: On sale
         position: Position
         priority: Priority
+        rule: Rule
         rules: Rules
         select_position: Select position...
         starts_at: Starts at
@@ -66,6 +70,3 @@ setono_sylius_callout:
         top_left: Top left
         top_right: Top right
         type: Type
-        callout: Callout
-        rule: Rule
-        callouts_product_list: Product list

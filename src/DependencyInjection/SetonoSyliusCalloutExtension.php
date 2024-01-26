@@ -21,6 +21,7 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
          * @var array{
          *     elements: list<string>,
          *     positions: list<string>,
+         *     assignment: array{delay: int},
          *     resources: array
          * } $config
          */
@@ -31,6 +32,7 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
 
         $container->setParameter('setono_sylius_callout.elements', $config['elements']);
         $container->setParameter('setono_sylius_callout.positions', $config['positions']);
+        $container->setParameter('setono_sylius_callout.assignment.delay', $config['assignment']['delay']);
 
         $this->registerResources('setono_sylius_callout', SyliusResourceBundle::DRIVER_DOCTRINE_ORM, $config['resources'], $container);
     }

@@ -11,7 +11,11 @@ use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
  */
 final class AssignCallouts implements CommandInterface
 {
-    /** @var list<string> */
+    /**
+     * This is a list of arrays where the first element is the callout code and the second element is the version
+     *
+     * @var list<array{string, int|null}>
+     */
     public array $callouts = [];
 
     /**
@@ -20,7 +24,7 @@ final class AssignCallouts implements CommandInterface
     public function __construct(array $callouts = [])
     {
         foreach ($callouts as $callout) {
-            $this->callouts[] = $callout instanceof CalloutInterface ? (string) $callout->getCode() : $callout;
+            $this->callouts[] = $callout instanceof CalloutInterface ? [(string) $callout->getCode(), $callout->getVersion()] : [$callout, null];
         }
     }
 }

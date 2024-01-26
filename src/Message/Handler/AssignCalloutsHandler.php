@@ -11,8 +11,28 @@ final class AssignCalloutsHandler extends AbstractAssignCalloutsHandler
     public function __invoke(AssignCallouts $message): void
     {
         $callouts = [];
+
         if ([] !== $message->callouts) {
-            $callouts = $this->calloutRepository->findEnabled($message->callouts);
+            foreach ($message->callouts as $calloutShape) {
+                $callout = $this->calloutRepository->findOneByCode($calloutShape[0]);
+                if (null === $callout) {
+                    continue;
+                }
+
+                if (null !== $calloutShape[1] && $calloutShape[1] !== $callout->getVersion()) {
+                    continue;
+                }
+
+                if (!$callout->isEnabled()) {
+                    continue;
+                }
+
+                $callouts[] = $callout;
+            }
+
+            if ([] === $callouts) {
+                return;
+            }
         }
 
         $this->assign(callouts: $callouts);

@@ -6,6 +6,7 @@
     <services>
         <service id="setono_sylius_callout.twig.callout_extension"
                  class="Setono\SyliusCalloutPlugin\Twig\CalloutExtension">
+            <argument>%setono_sylius_callout.assignment.delay%</argument>
             <tag name="twig.extension"/>
         </service>
 

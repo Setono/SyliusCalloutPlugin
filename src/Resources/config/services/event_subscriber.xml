@@ -12,6 +12,7 @@
         <service id="setono_sylius_callout.event_subscriber.handle_callout_update"
                  class="Setono\SyliusCalloutPlugin\EventSubscriber\HandleCalloutUpdateSubscriber">
             <argument type="service" id="setono_sylius_callout.command_bus"/>
+            <argument>%setono_sylius_callout.assignment.delay%</argument>
 
             <tag name="doctrine.event_listener" event="prePersist"/>
             <tag name="doctrine.event_listener" event="preUpdate"/>
