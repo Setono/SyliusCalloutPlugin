@@ -169,12 +169,6 @@ set corresponding to the below service configuration
 </services>
 ```
 
-## Troubleshooting
-
-- `The service "setono_sylius_callout.command_bus.middleware.handle_message" has a dependency on a non-existent service "setono_doctrine_orm_batcher.factory.batcher".`
-
-  You forgot to add `SetonoDoctrineORMBatcherBundle` to your app's `bundles.php`
-
 [ico-version]: https://poser.pugx.org/setono/sylius-callout-plugin/v/stable
 [ico-license]: https://poser.pugx.org/setono/sylius-callout-plugin/license
 [ico-github-actions]: https://github.com/Setono/SyliusCalloutPlugin/workflows/build/badge.svg
