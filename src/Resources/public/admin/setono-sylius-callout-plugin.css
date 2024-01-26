@@ -1,0 +1,7 @@
+a[data-form-collection="delete"] {
+    margin-top: 10px !important;
+}
+
+#rules-info:has(+ #rules div[data-form-collection="item"]) {
+    display: none;
+}

@@ -3,11 +3,21 @@ imports:
 
 sylius_ui:
     events:
+        setono_sylius_callout.admin.callout.create.stylesheets:
+            blocks:
+                setono_sylius_callout_admin_stylesheets:
+                    template: "@SetonoSyliusCalloutPlugin/Admin/_stylesheets.html.twig"
+        
+        setono_sylius_callout.admin.callout.update.stylesheets:
+            blocks:
+                setono_sylius_callout_admin_stylesheets:
+                    template: "@SetonoSyliusCalloutPlugin/Admin/_stylesheets.html.twig"
+                    
         setono_sylius_callout.admin.callout.create.javascripts:
             blocks:
                 setono_sylius_callout_admin_javascript:
                     template: "@SetonoSyliusCalloutPlugin/Admin/_javascripts.html.twig"
-        
+
         setono_sylius_callout.admin.callout.update.javascripts:
             blocks:
                 setono_sylius_callout_admin_javascript:
