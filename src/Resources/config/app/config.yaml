@@ -1,2 +1,14 @@
 imports:
     - { resource: "@SetonoSyliusCalloutPlugin/Resources/config/grids/setono_sylius_callout_admin_callout.yaml" }
+
+sylius_ui:
+    events:
+        setono_sylius_callout.admin.callout.create.javascripts:
+            blocks:
+                setono_sylius_callout_admin_javascript:
+                    template: "@SetonoSyliusCalloutPlugin/Admin/_javascripts.html.twig"
+        
+        setono_sylius_callout.admin.callout.update.javascripts:
+            blocks:
+                setono_sylius_callout_admin_javascript:
+                    template: "@SetonoSyliusCalloutPlugin/Admin/_javascripts.html.twig"
