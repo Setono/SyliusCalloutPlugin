@@ -11,6 +11,7 @@ use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\DelayStamp;
 
 /**
  * This subscriber listens for changes to callouts and callout rules
@@ -21,12 +22,14 @@ final class HandleCalloutUpdateSubscriber implements EventSubscriberInterface
     /**
      * The keys are the callout codes and the values are true
      *
-     * @var array<string, bool>
+     * @var array<string, CalloutInterface>
      */
     private array $calloutsToAssign = [];
 
-    public function __construct(private readonly MessageBusInterface $commandBus)
-    {
+    public function __construct(
+        private readonly MessageBusInterface $commandBus,
+        private readonly int $processingDelay,
+    ) {
     }
 
     public static function getSubscribedEvents(): array
@@ -47,7 +50,7 @@ final class HandleCalloutUpdateSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $this->calloutsToAssign[(string) $callout->getCode()] = true;
+        $this->calloutsToAssign[(string) $callout->getCode()] = $callout;
     }
 
     /**
@@ -91,7 +94,7 @@ final class HandleCalloutUpdateSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $this->calloutsToAssign[(string) $callout->getCode()] = true;
+        $this->calloutsToAssign[(string) $callout->getCode()] = $callout;
     }
 
     /**
@@ -108,12 +111,12 @@ final class HandleCalloutUpdateSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $this->calloutsToAssign[(string) $callout->getCode()] = true;
+        $this->calloutsToAssign[(string) $callout->getCode()] = $callout;
     }
 
     /**
      * This is called when a callout is created or updated by Sylius.
-     * In the lifecycle this is the last method called and therefore we can safely dispatch the message here if needed
+     * In the lifecycle this is the last method called, and therefore we can safely dispatch the message here if needed
      */
     public function postUpdate(): void
     {
@@ -121,6 +124,11 @@ final class HandleCalloutUpdateSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $this->commandBus->dispatch(new AssignCallouts(array_keys($this->calloutsToAssign)));
+        $stamps = [];
+        if ($this->processingDelay > 0) {
+            $stamps[] = new DelayStamp($this->processingDelay * 1000);
+        }
+
+        $this->commandBus->dispatch(new AssignCallouts(array_values($this->calloutsToAssign)), $stamps);
     }
 }

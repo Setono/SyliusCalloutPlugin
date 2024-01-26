@@ -45,6 +45,8 @@ trait ProductTrait
         if (false !== $key) {
             unset($this->preQualifiedCallouts[$key]);
         }
+
+        $this->preQualifiedCallouts = array_values($this->preQualifiedCallouts);
     }
 
     public function resetPreQualifiedCallouts(): void

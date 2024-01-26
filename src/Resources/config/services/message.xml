@@ -13,12 +13,6 @@
             <argument>%sylius.model.product.class%</argument>
         </service>
 
-        <service id="setono_sylius_callout.message.handler.assign_callout"
-                 class="Setono\SyliusCalloutPlugin\Message\Handler\AssignCalloutHandler"
-                 parent="setono_sylius_callout.message.handler.abstract_assign_callouts">
-            <tag name="messenger.message_handler"/>
-        </service>
-
         <service id="setono_sylius_callout.message.handler.assign_callouts"
                  class="Setono\SyliusCalloutPlugin\Message\Handler\AssignCalloutsHandler"
                  parent="setono_sylius_callout.message.handler.abstract_assign_callouts">

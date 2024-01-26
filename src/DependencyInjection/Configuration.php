@@ -50,7 +50,16 @@ final class Configuration implements ConfigurationInterface
                         'bottom_center',
                         'bottom_right',
                     ])
-                    ->scalarPrototype()
+                    ->scalarPrototype()->end()
+                ->end()
+                ->arrayNode('assignment')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->integerNode('delay')
+                            ->info('The delay in seconds when assigning a callout. This is to avoid assigning the same callout multiple times within a short interval')
+                            ->defaultValue(60)
+                            ->min(0)
+
         ;
 
         $this->addResourcesSection($rootNode);
