@@ -20,6 +20,6 @@ final class IsNewProductConfigurationType extends AbstractType
 
     public function getBlockPrefix(): string
     {
-        return 'setono_callout_rule_has_product_configuration';
+        return 'setono_sylius_callout_rule_has_product_configuration';
     }
 }
