@@ -13,6 +13,7 @@
         <service id="setono_sylius_callout.twig.callout_runtime"
                  class="Setono\SyliusCalloutPlugin\Twig\CalloutRuntime">
             <argument type="service" id="setono_sylius_callout.checker.rendering_eligibility.composite"/>
+            <argument type="service" id="setono_sylius_callout.checker.eligibility.composite"/>
             <argument type="service" id="setono_sylius_callout.css_class_builder.default"/>
             <argument type="service" id="setono_sylius_callout.provider.rendering_callout"/>
             <argument type="service" id="setono_sylius_callout.renderer.callout"/>

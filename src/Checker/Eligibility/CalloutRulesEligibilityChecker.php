@@ -35,11 +35,35 @@ final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerI
         return true;
     }
 
+    public function isRuntimeEligible(ProductInterface $product, CalloutInterface $callout): bool
+    {
+        if (!$callout->hasRules()) {
+            return true;
+        }
+
+        // All rules should pass for Product to be eligible
+        foreach ($callout->getRules() as $rule) {
+            if (!$this->isRuntimeEligibleToRule($product, $rule)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private function isEligibleToRule(ProductInterface $product, CalloutRuleInterface $rule): bool
     {
         /** @var CalloutRuleCheckerInterface $checker */
         $checker = $this->ruleRegistry->get((string) $rule->getType());
 
         return $checker->isEligible($product, $rule->getConfiguration());
+    }
+
+    private function isRuntimeEligibleToRule(ProductInterface $product, CalloutRuleInterface $rule): bool
+    {
+        /** @var CalloutRuleCheckerInterface $checker */
+        $checker = $this->ruleRegistry->get((string) $rule->getType());
+
+        return $checker->isRuntimeEligible($product, $rule->getConfiguration());
     }
 }

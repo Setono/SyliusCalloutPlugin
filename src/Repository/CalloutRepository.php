@@ -36,11 +36,12 @@ class CalloutRepository extends EntityRepository implements CalloutRepositoryInt
 
     public function findByCodes(array $codes, ChannelInterface $channel, string $locale): array
     {
-        $objs = $this->createQueryBuilder('o')
-            ->select('o, c, t')
-            ->join('o.channels', 'c', 'WITH', 'c = :channel')
-            ->join('o.translations', 't', 'WITH', 't.locale = :locale')
-            ->andWhere('o.code IN (:codes)')
+        $objs = $this->createQueryBuilder('callout')
+            ->select('callout, rule, channel, translation')
+            ->join('callout.rules', 'rule')
+            ->join('callout.channels', 'channel', 'WITH', 'channel = :channel')
+            ->join('callout.translations', 'translation', 'WITH', 'translation.locale = :locale')
+            ->andWhere('callout.code IN (:codes)')
             ->setParameter('codes', $codes)
             ->setParameter('channel', $channel)
             ->setParameter('locale', $locale)

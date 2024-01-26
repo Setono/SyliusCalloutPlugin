@@ -76,7 +76,10 @@ interface CalloutInterface extends
 
     public function hasRules(): bool;
 
-    public function hasRule(CalloutRuleInterface $rule): bool;
+    /**
+     * @param CalloutRuleInterface|string $rule if the rule is a string, it will be treated as a rule type
+     */
+    public function hasRule(CalloutRuleInterface|string $rule): bool;
 
     public function addRule(CalloutRuleInterface $rule): void;
 

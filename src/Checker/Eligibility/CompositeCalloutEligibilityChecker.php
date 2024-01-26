@@ -23,4 +23,15 @@ final class CompositeCalloutEligibilityChecker extends CompositeService implemen
 
         return true;
     }
+
+    public function isRuntimeEligible(ProductInterface $product, CalloutInterface $callout): bool
+    {
+        foreach ($this->services as $service) {
+            if (!$service->isRuntimeEligible($product, $callout)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

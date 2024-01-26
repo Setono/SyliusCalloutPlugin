@@ -7,9 +7,9 @@
 
         <service id="setono_sylius_callout.checker.eligibility.rules"
                  class="Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutRulesEligibilityChecker">
-            <argument type="service" id="setono_sylius_callout.registry.callout_rule_checker" />
+            <argument type="service" id="setono_sylius_callout.registry.callout_rule_checker"/>
 
-            <tag name="setono_sylius_callout.callout_eligibility_checker" />
+            <tag name="setono_sylius_callout.callout_eligibility_checker"/>
         </service>
 
         <service id="setono_sylius_callout.checker.eligibility.composite"
@@ -18,20 +18,20 @@
         <!-- Rules -->
         <service id="setono_sylius_callout.checker.rule.has_taxon"
                  class="Setono\SyliusCalloutPlugin\Checker\Rule\HasTaxonCalloutRuleChecker">
-            <argument type="service" id="sylius.repository.taxon" />
+            <argument type="service" id="sylius.repository.taxon"/>
             <tag name="setono_sylius_callout.callout_rule_checker"
                  type="has_taxon"
                  label="setono_sylius_callout.ui.has_taxon"
-                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasTaxonConfigurationType" />
+                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasTaxonConfigurationType"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rule.has_product"
                  class="Setono\SyliusCalloutPlugin\Checker\Rule\HasProductCalloutRuleChecker">
-            <argument type="service" id="sylius.repository.product" />
+            <argument type="service" id="sylius.repository.product"/>
             <tag name="setono_sylius_callout.callout_rule_checker"
                  type="has_product"
                  label="setono_sylius_callout.ui.has_product"
-                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType" />
+                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rule.is_new"
@@ -39,16 +39,18 @@
             <tag name="setono_sylius_callout.callout_rule_checker"
                  type="is_new"
                  label="setono_sylius_callout.ui.is_new"
-                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsNewProductConfigurationType" />
+                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\IsNewProductConfigurationType"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rule.on_sale"
                  class="Setono\SyliusCalloutPlugin\Checker\Rule\OnSaleCalloutRuleChecker">
-            <argument type="service" id="sylius.context.channel" />
+            <argument type="service" id="sylius.context.channel"/>
+            <argument type="service" id="sylius.product_variant_resolver.default"/>
+
             <tag name="setono_sylius_callout.callout_rule_checker"
                  type="on_sale"
                  label="setono_sylius_callout.ui.on_sale"
-                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\OnSaleConfigurationType" />
+                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\OnSaleConfigurationType"/>
         </service>
 
         <service id="setono_sylius_callout.registry.callout_rule_checker"
@@ -58,23 +60,23 @@
         </service>
 
         <service id="setono_sylius_callout.form_registry.callout_rule_checker"
-                 class="Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry" />
+                 class="Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry"/>
 
         <!-- Rendering eligibility checkers -->
         <service id="setono_sylius_callout.checker.rendering_eligibility.toggle"
                  class="Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutToggleRenderingEligibilityChecker">
-            <tag name="setono_sylius_callout.callout_rendering_eligibility_checker" />
+            <tag name="setono_sylius_callout.callout_rendering_eligibility_checker"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rendering_eligibility.duration"
                  class="Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutDurationRenderingEligibilityChecker">
-            <tag name="setono_sylius_callout.callout_rendering_eligibility_checker" />
+            <tag name="setono_sylius_callout.callout_rendering_eligibility_checker"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rendering_eligibility.channel"
                  class="Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutChannelRenderingEligibilityChecker">
-            <argument type="service" id="sylius.context.channel" />
-            <tag name="setono_sylius_callout.callout_rendering_eligibility_checker" />
+            <argument type="service" id="sylius.context.channel"/>
+            <tag name="setono_sylius_callout.callout_rendering_eligibility_checker"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rendering_eligibility.composite"
