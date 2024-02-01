@@ -82,16 +82,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Product extends BaseProduct implements CalloutProductInterface
 {
-    use CalloutProductTrait {
-        __construct as private initializeCalloutProductTrait;
-    }
-  
-    public function __construct()
-    {
-        parent::__construct();
-        
-        $this->initializeCalloutProductTrait();
-    }
+    use CalloutProductTrait;
 }
 ```
 
@@ -106,7 +97,7 @@ $ php bin/console doctrine:migrations:migrate
 Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
 path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusShopBundle/Product/_box.html.twig) file for a reference.
 
-Note the line: `{% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with {'callouts' : product.callouts|setono_callouts} %}`.
+Note the line: `{% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with { 'callouts' : get_callouts(product, 'default') } %}`.
 
 ### Step 8: Using asynchronous transport (optional, but recommended)
 
@@ -125,14 +116,8 @@ framework:
 
 ### Step 9: Configure cron job
 For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:sylius-callout:assign` command 
-once in a while in order to rebuild the index for callouts. In most cases it should be done by the resource event listener
+once in a while in order to assign all callouts. In most cases it should be done by the resource event listener
 triggered anytime you create/update a product or callout, but it is worth to have it covered if something goes wrong.
-
-Example cron configuration (`EDITOR=nano sudo crontab -e`) to run command once a day:
-
-```
-0 2 * * * www-data /var/www/html/bin/console setono:sylius-callout:assign --env=prod
-```
 
 ### Step 10: Install assets
 ```bash
