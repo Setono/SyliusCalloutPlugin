@@ -26,6 +26,7 @@ should now use the `ProductTrait`.
 Here's an SQL migration example:
 
 ```sql
+DROP TABLE setono_sylius_callout__product_callouts;
 ALTER TABLE sylius_product ADD pre_qualified_callouts LONGTEXT DEFAULT NULL COMMENT '(DC2Type:json)';
 ALTER TABLE setono_sylius_callout__callout ADD version INT DEFAULT 1 NOT NULL, ADD elements LONGTEXT DEFAULT NULL COMMENT '(DC2Type:json)', ADD color VARCHAR(255) DEFAULT NULL, ADD background_color VARCHAR(255) DEFAULT NULL, DROP rules_assigned_at, CHANGE code code VARCHAR(255) NOT NULL, CHANGE position position VARCHAR(255) NOT NULL, CHANGE created_at created_at DATETIME NOT NULL;
 UPDATE setono_sylius_callout__callout SET elements = '["default"]';
