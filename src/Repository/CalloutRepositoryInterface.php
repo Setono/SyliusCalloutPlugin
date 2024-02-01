@@ -8,9 +8,6 @@ use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-/**
- * @extends RepositoryInterface<CalloutInterface>
- */
 interface CalloutRepositoryInterface extends RepositoryInterface
 {
     public function findOneByCode(string $code): ?CalloutInterface;

@@ -32,7 +32,9 @@
     <issueHandlers>
         <MissingTemplateParam>
             <errorLevel type="suppress">
+                <directory name="src/Factory"/>
                 <directory name="src/Form"/>
+                <directory name="src/Repository"/>
             </errorLevel>
         </MissingTemplateParam>
         <PluginIssue name="QueryBuilderSetParameter" errorLevel="suppress"/>
