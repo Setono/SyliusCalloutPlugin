@@ -38,7 +38,7 @@ class CalloutRepository extends EntityRepository implements CalloutRepositoryInt
     {
         $objs = $this->createQueryBuilder('callout')
             ->select('callout, rule, channel, translation')
-            ->join('callout.rules', 'rule')
+            ->leftJoin('callout.rules', 'rule')
             ->join('callout.channels', 'channel', 'WITH', 'channel = :channel')
             ->join('callout.translations', 'translation', 'WITH', 'translation.locale = :locale')
             ->andWhere('callout.code IN (:codes)')
