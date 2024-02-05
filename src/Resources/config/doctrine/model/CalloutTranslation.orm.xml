@@ -9,6 +9,6 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="text" type="string" nullable="true"/>
+        <field name="text" type="text" nullable="true"/>
     </mapped-superclass>
 </doctrine-mapping>
