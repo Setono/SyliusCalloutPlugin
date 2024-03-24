@@ -1,0 +1,3 @@
+setono_sylius_callout:
+    callout:
+        assign_started: Rozpoczęto proces przypisywania
