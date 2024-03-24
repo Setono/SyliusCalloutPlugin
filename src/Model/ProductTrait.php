@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait ProductTrait
 {
     /** @ORM\Column(type="json", nullable=true) */
+    #[ORM\Column(type: 'json', nullable: true)]
     protected ?array $preQualifiedCallouts = null;
 
     public function getPreQualifiedCallouts(): array
