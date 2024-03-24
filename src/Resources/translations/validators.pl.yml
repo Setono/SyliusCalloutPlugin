@@ -1,0 +1,16 @@
+setono_sylius_callout:
+    callout:
+        code:
+            not_blank: Kod nie może być pusty.
+            unique: Kod jest w użyciu.
+            regex: Kod może zawierac wyłącznie litery, liczby, kreski ("_"), i myślniki ("-").
+        name:
+            not_blank: Nazwa nie może być pusta.
+        priority:
+            not_blank: Priorytet nie może być pusty.
+            numeric: Priorytet musi być liczbą całkowitą.
+        elements:
+            count_min: Co najmniej jeden element musi być wybrany.
+    callout_translation:
+        text:
+            not_blank: Tekst nie może być pusty.
