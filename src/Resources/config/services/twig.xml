@@ -17,6 +17,7 @@
             <argument type="service" id="setono_sylius_callout.css_class_builder.default"/>
             <argument type="service" id="setono_sylius_callout.provider.rendering_callout"/>
             <argument type="service" id="setono_sylius_callout.renderer.callout"/>
+            <argument type="service" id="setono_sylius_callout.css_style_builder.default"/>
 
             <tag name="twig.runtime"/>
         </service>
