@@ -4,11 +4,9 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono_sylius_callout.css_class_builder.semantic_ui"
-                 class="Setono\SyliusCalloutPlugin\CssBuilder\SemanticUiCssClassBuilder">
+        <service id="setono_sylius_callout.css_style_builder.default"
+                 class="Setono\SyliusCalloutPlugin\CssBuilder\CssStyleBuilder">
         </service>
 
-        <service id="setono_sylius_callout.css_class_builder.default"
-                 alias="setono_sylius_callout.css_class_builder.semantic_ui"/>
     </services>
 </container>

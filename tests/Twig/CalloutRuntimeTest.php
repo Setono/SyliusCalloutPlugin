@@ -9,7 +9,8 @@ use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
 use Setono\SyliusCalloutPlugin\Checker\RenderingEligibility\CalloutRenderingEligibilityCheckerInterface;
-use Setono\SyliusCalloutPlugin\CssClassBuilder\CssClassBuilderInterface;
+use Setono\SyliusCalloutPlugin\CssBuilder\CssClassBuilderInterface;
+use Setono\SyliusCalloutPlugin\CssBuilder\CssStyleBuilderInterface;
 use Setono\SyliusCalloutPlugin\Model\Callout;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
@@ -76,6 +77,7 @@ final class CalloutRuntimeTest extends TestCase
         ;
 
         $calloutRenderer = $this->prophesize(CalloutRendererInterface::class);
+        $cssStyleBuilder = $this->prophesize(CssStyleBuilderInterface::class);
 
         return new CalloutRuntime(
             $calloutRenderingEligibilityChecker->reveal(),
@@ -83,6 +85,7 @@ final class CalloutRuntimeTest extends TestCase
             $cssClassBuilder->reveal(),
             $renderCalloutProvider->reveal(),
             $calloutRenderer->reveal(),
+            $cssStyleBuilder->reveal(),
         );
     }
 
