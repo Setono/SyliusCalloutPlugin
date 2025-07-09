@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Setono\SyliusCalloutPlugin\Tests\Application\Model;
+namespace Application\src\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Setono\SyliusCalloutPlugin\Model\ProductInterface;
