@@ -48,6 +48,7 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
+        "api-platform/metadata": "^4.1.18",
         "api-platform/symfony": "^4.1.10",
         "infection/infection": "^0.29.14",
         "matthiasnoback/symfony-dependency-injection-test": "^6.1",
