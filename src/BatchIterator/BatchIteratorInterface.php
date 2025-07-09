@@ -10,7 +10,6 @@ use Doctrine\ORM\QueryBuilder;
  * @internal The batch iterator functionality is internal because we want to extract it to an external library and bundle
  *
  * @template T
- *
  * @extends \IteratorAggregate<array-key, T>
  */
 interface BatchIteratorInterface extends \IteratorAggregate

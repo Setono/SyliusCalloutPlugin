@@ -15,7 +15,6 @@ use Setono\SyliusCalloutPlugin\Event\BatchIteratorEvent;
  * @internal The batch iterator functionality is internal because we want to extract it to an external library and bundle
  *
  * @template T
- *
  * @implements BatchIteratorInterface<T>
  */
 final class BatchIterator implements BatchIteratorInterface
