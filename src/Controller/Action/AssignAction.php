@@ -13,12 +13,12 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-final class AssignAction
+final readonly class AssignAction
 {
     public function __construct(
-        private readonly MessageBusInterface $commandBus,
-        private readonly TranslatorInterface $translator,
-        private readonly RouterInterface $router,
+        private MessageBusInterface $commandBus,
+        private TranslatorInterface $translator,
+        private RouterInterface $router,
     ) {
     }
 

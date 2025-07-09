@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Model;
 
-class CalloutRule implements CalloutRuleInterface
+class CalloutRule implements CalloutRuleInterface, \Stringable
 {
     protected ?int $id = null;
 

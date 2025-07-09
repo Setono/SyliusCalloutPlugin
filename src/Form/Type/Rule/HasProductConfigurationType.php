@@ -11,11 +11,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class HasProductConfigurationType extends AbstractType
 {
-    private DataTransformerInterface $productsToCodesTransformer;
-
-    public function __construct(DataTransformerInterface $productsToCodesTransformer)
+    public function __construct(private readonly DataTransformerInterface $productsToCodesTransformer)
     {
-        $this->productsToCodesTransformer = $productsToCodesTransformer;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void

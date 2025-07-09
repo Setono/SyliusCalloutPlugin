@@ -14,25 +14,18 @@ use Sylius\Component\Resource\Factory\FactoryInterface;
 
 class CalloutRuleFactory implements CalloutRuleFactoryInterface
 {
-    private FactoryInterface $decoratedFactory;
-
-    public function __construct(FactoryInterface $factory)
+    public function __construct(private readonly FactoryInterface $decoratedFactory)
     {
-        $this->decoratedFactory = $factory;
     }
 
     public function createHasTaxon(array $taxons): CalloutRuleInterface
     {
-        return $this->createCalloutRule(HasTaxonCalloutRuleChecker::TYPE, ['taxons' => array_map(static function (TaxonInterface $taxon): ?string {
-            return $taxon->getCode();
-        }, $taxons)]);
+        return $this->createCalloutRule(HasTaxonCalloutRuleChecker::TYPE, ['taxons' => array_map(static fn (TaxonInterface $taxon): ?string => $taxon->getCode(), $taxons)]);
     }
 
     public function createHasProduct(array $products): CalloutRuleInterface
     {
-        return $this->createCalloutRule(HasProductCalloutRuleChecker::TYPE, ['products' => array_map(static function (ProductInterface $product): ?string {
-            return $product->getCode();
-        }, $products)]);
+        return $this->createCalloutRule(HasProductCalloutRuleChecker::TYPE, ['products' => array_map(static fn (ProductInterface $product): ?string => $product->getCode(), $products)]);
     }
 
     public function createIsNewProduct(int $days): CalloutRuleInterface

@@ -10,13 +10,10 @@ use Setono\SyliusCalloutPlugin\Model\CalloutRuleInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Registry\ServiceRegistryInterface;
 
-final class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerInterface
+final readonly class CalloutRulesEligibilityChecker implements CalloutEligibilityCheckerInterface
 {
-    private ServiceRegistryInterface $ruleRegistry;
-
-    public function __construct(ServiceRegistryInterface $ruleRegistry)
+    public function __construct(private ServiceRegistryInterface $ruleRegistry)
     {
-        $this->ruleRegistry = $ruleRegistry;
     }
 
     public function isEligible(ProductInterface $product, CalloutInterface $callout): bool

@@ -24,10 +24,10 @@ final class RenderingCalloutProvider implements RenderingCalloutProviderInterfac
 
     public function getByCodes(array $codes, ChannelInterface $channel = null, string $localeCode = null): array
     {
-        $channel = $channel ?? $this->channelContext->getChannel();
+        $channel ??= $this->channelContext->getChannel();
         $channelCode = (string) $channel->getCode();
 
-        $localeCode = $localeCode ?? $this->localeContext->getLocaleCode();
+        $localeCode ??= $this->localeContext->getLocaleCode();
 
         if (!isset($this->callouts[$channelCode])) {
             $this->callouts[$channelCode] = [];

@@ -11,17 +11,12 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Product\Resolver\ProductVariantResolverInterface;
 
-final class OnSaleCalloutRuleChecker implements CalloutRuleCheckerInterface
+final readonly class OnSaleCalloutRuleChecker implements CalloutRuleCheckerInterface
 {
     public const TYPE = 'on_sale';
 
-    private ChannelContextInterface $channelContext;
-
-    public function __construct(
-        ChannelContextInterface $channelContext,
-        private readonly ProductVariantResolverInterface $productVariantResolver,
-    ) {
-        $this->channelContext = $channelContext;
+    public function __construct(private ChannelContextInterface $channelContext, private ProductVariantResolverInterface $productVariantResolver)
+    {
     }
 
     public function isEligible(ProductInterface $product, array $configuration): bool

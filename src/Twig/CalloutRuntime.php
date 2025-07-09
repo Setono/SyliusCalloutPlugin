@@ -13,14 +13,14 @@ use Setono\SyliusCalloutPlugin\Provider\RenderingCalloutProviderInterface;
 use Setono\SyliusCalloutPlugin\Renderer\CalloutRendererInterface;
 use Twig\Extension\RuntimeExtensionInterface;
 
-final class CalloutRuntime implements RuntimeExtensionInterface
+final readonly class CalloutRuntime implements RuntimeExtensionInterface
 {
     public function __construct(
-        private readonly CalloutRenderingEligibilityCheckerInterface $calloutRenderingEligibilityChecker,
-        private readonly CalloutEligibilityCheckerInterface $calloutEligibilityChecker,
-        private readonly CssClassBuilderInterface $cssClassBuilder,
-        private readonly RenderingCalloutProviderInterface $renderingCalloutProvider,
-        private readonly CalloutRendererInterface $calloutRenderer,
+        private CalloutRenderingEligibilityCheckerInterface $calloutRenderingEligibilityChecker,
+        private CalloutEligibilityCheckerInterface $calloutEligibilityChecker,
+        private CssClassBuilderInterface $cssClassBuilder,
+        private RenderingCalloutProviderInterface $renderingCalloutProvider,
+        private CalloutRendererInterface $calloutRenderer,
     ) {
     }
 

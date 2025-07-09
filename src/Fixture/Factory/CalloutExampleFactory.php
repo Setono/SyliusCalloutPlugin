@@ -24,34 +24,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CalloutExampleFactory extends AbstractExampleFactory
 {
-    protected FactoryInterface $calloutFactory;
-
-    protected ObjectManager $calloutManager;
-
-    protected ExampleFactoryInterface $calloutRuleExampleFactory;
-
-    protected ChannelRepositoryInterface $channelRepository;
-
-    protected RepositoryInterface $localeRepository;
-
     protected Generator $faker;
 
     protected OptionsResolver $optionsResolver;
 
     public function __construct(
-        FactoryInterface $calloutFactory,
-        ObjectManager $calloutManager,
-        ExampleFactoryInterface $calloutRuleExampleFactory,
-        ChannelRepositoryInterface $channelRepository,
-        RepositoryInterface $localeRepository,
+        protected FactoryInterface $calloutFactory,
+        protected ObjectManager $calloutManager,
+        protected ExampleFactoryInterface $calloutRuleExampleFactory,
+        protected ChannelRepositoryInterface $channelRepository,
+        protected RepositoryInterface $localeRepository,
         protected readonly array $positions,
     ) {
-        $this->calloutFactory = $calloutFactory;
-        $this->calloutManager = $calloutManager;
-        $this->calloutRuleExampleFactory = $calloutRuleExampleFactory;
-        $this->channelRepository = $channelRepository;
-        $this->localeRepository = $localeRepository;
-
         $this->faker = Factory::create();
         $this->optionsResolver = new OptionsResolver();
         $this->configureOptions($this->optionsResolver);
@@ -134,13 +118,9 @@ class CalloutExampleFactory extends AbstractExampleFactory
         $resolver
             ->setDefault('name', $this->faker->words(3, true))
 
-            ->setDefault('code', function (Options $options): string {
-                return StringInflector::nameToCode($options['name']);
-            })
+            ->setDefault('code', fn (Options $options): string => StringInflector::nameToCode($options['name']))
 
-            ->setDefault('text', function (Options $options): string {
-                return $options['name'];
-            })
+            ->setDefault('text', fn (Options $options): string => $options['name'])
 
             ->setDefault('translations', [])
             ->setAllowedTypes('translations', ['array'])

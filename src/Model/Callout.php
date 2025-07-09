@@ -12,7 +12,7 @@ use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
 
-class Callout implements CalloutInterface
+class Callout implements CalloutInterface, \Stringable
 {
     use ToggleableTrait;
     use TimestampableTrait;

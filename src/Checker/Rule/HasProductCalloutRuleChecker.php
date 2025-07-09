@@ -12,11 +12,8 @@ final class HasProductCalloutRuleChecker extends AbstractCalloutRuleChecker
 {
     public const TYPE = 'has_product';
 
-    private ProductRepositoryInterface $productRepository;
-
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(private readonly ProductRepositoryInterface $productRepository)
     {
-        $this->productRepository = $productRepository;
     }
 
     public function isEligible(ProductInterface $product, array $configuration): bool

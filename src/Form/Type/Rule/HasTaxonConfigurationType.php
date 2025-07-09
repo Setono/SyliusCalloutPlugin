@@ -11,11 +11,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class HasTaxonConfigurationType extends AbstractType
 {
-    private DataTransformerInterface $taxonsToCodesTransformer;
-
-    public function __construct(DataTransformerInterface $taxonsToCodesTransformer)
+    public function __construct(private readonly DataTransformerInterface $taxonsToCodesTransformer)
     {
-        $this->taxonsToCodesTransformer = $taxonsToCodesTransformer;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void

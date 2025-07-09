@@ -7,13 +7,10 @@ namespace Setono\SyliusCalloutPlugin\Checker\RenderingEligibility;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Sylius\Component\Channel\Context\ChannelContextInterface;
 
-final class CalloutChannelRenderingEligibilityChecker implements CalloutRenderingEligibilityCheckerInterface
+final readonly class CalloutChannelRenderingEligibilityChecker implements CalloutRenderingEligibilityCheckerInterface
 {
-    private ChannelContextInterface $channelContext;
-
-    public function __construct(ChannelContextInterface $channelContext)
+    public function __construct(private ChannelContextInterface $channelContext)
     {
-        $this->channelContext = $channelContext;
     }
 
     public function isEligible(CalloutInterface $callout): bool

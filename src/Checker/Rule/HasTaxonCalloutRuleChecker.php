@@ -13,11 +13,8 @@ final class HasTaxonCalloutRuleChecker extends AbstractCalloutRuleChecker
 {
     public const TYPE = 'has_taxon';
 
-    private TaxonRepositoryInterface $taxonRepository;
-
-    public function __construct(TaxonRepositoryInterface $taxonRepository)
+    public function __construct(private readonly TaxonRepositoryInterface $taxonRepository)
     {
-        $this->taxonRepository = $taxonRepository;
     }
 
     public function isEligible(ProductInterface $product, array $configuration): bool

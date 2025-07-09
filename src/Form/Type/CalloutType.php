@@ -63,16 +63,12 @@ final class CalloutType extends AbstractResourceType
                 'label' => 'setono_sylius_callout.form.callout.elements',
                 'multiple' => true,
                 'choices' => $this->elements,
-                'choice_label' => static function (string $element): string {
-                    return sprintf('setono_sylius_callout.form.callout.element_labels.%s', $element);
-                },
+                'choice_label' => static fn (string $element): string => sprintf('setono_sylius_callout.form.callout.element_labels.%s', $element),
             ])
             ->add('position', ChoiceType::class, [
                 'label' => 'setono_sylius_callout.form.callout.position',
                 'choices' => $this->positions,
-                'choice_label' => static function (string $position): string {
-                    return sprintf('setono_sylius_callout.form.callout.positions.%s', $position);
-                },
+                'choice_label' => static fn (string $position): string => sprintf('setono_sylius_callout.form.callout.positions.%s', $position),
                 'placeholder' => 'setono_sylius_callout.form.callout.select_position',
             ])
             ->add('color', TextType::class, [
