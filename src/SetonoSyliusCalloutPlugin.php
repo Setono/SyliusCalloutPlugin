@@ -37,6 +37,15 @@ final class SetonoSyliusCalloutPlugin extends AbstractResourceBundle
         return \dirname(__DIR__);
     }
 
+    protected function getConfigFilesPath(): string
+    {
+        return sprintf(
+            '%s/../config/doctrine/%s',
+            $this->getPath(),
+            strtolower($this->getDoctrineMappingDirectory()),
+        );
+    }
+
     public function getSupportedDrivers(): array
     {
         return [

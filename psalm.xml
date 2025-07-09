@@ -71,6 +71,7 @@
                 <directory name="src/Fixture"/>
             </errorLevel>
         </MixedReturnStatement>
+        <MissingClassConstType errorLevel="suppress"/>
         <MissingOverrideAttribute errorLevel="suppress"/>
         <UndefinedMagicMethod>
             <errorLevel type="suppress">
