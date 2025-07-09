@@ -32,6 +32,11 @@ final class SetonoSyliusCalloutPlugin extends AbstractResourceBundle
         $container->addCompilerPass(new RegisterCalloutRuleCheckerPass());
     }
 
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
+
     public function getSupportedDrivers(): array
     {
         return [

@@ -19,6 +19,8 @@
         "psr/event-dispatcher": "^1.0",
         "setono/composite-compiler-pass": "^1.1",
         "setono/doctrine-object-manager-trait": "^1.2",
+        "sylius/core-bundle": "^2.0",
+        "sylius/grid-bundle": "^1.13",
         "symfony/config": "^6.4 || ^7.3",
         "symfony/console": "^6.4 || ^7.3",
         "symfony/dependency-injection": "^6.4 || ^7.3",
@@ -26,6 +28,7 @@
         "symfony/event-dispatcher": "^6.4 || ^7.3",
         "symfony/form": "^6.4 || ^7.3",
         "symfony/http-foundation": "^6.4 || ^7.3",
+        "symfony/http-kernel": "^6.4 || ^7.2",
         "symfony/messenger": "^6.4 || ^7.3",
         "symfony/options-resolver": "^6.4 || ^7.3",
         "symfony/routing": "^6.4 || ^7.3",
@@ -39,14 +42,14 @@
         "api-platform/symfony": "^4.1.8",
         "infection/infection": "^0.29.14",
         "matthiasnoback/symfony-dependency-injection-test": "^6.1",
-        "phpspec/prophecy-phpunit": "^2.1",
         "payum/core": "^1.7.5",
+        "phpspec/prophecy-phpunit": "^2.1",
         "phpunit/phpunit": "^10.5.46",
         "psalm/plugin-phpunit": "^0.19.5",
         "psalm/plugin-symfony": "^5.2",
         "setono/code-quality-pack": "^2.10",
         "shipmonk/composer-dependency-analyser": "^1.8.2",
-        "sylius/sylius": "~2.0.7",
+        "sylius/sylius": "~2.0.10",
         "symfony/debug-bundle": "^6.4 || ^7.3",
         "symfony/dotenv": "^6.4 || ^7.3",
         "symfony/intl": "^6.4 || ^7.3",
@@ -63,7 +66,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Setono\\SyliusCalloutPlugin\\": "tests/"
+            "Setono\\SyliusCalloutPlugin\\Tests\\": "tests/"
         },
         "classmap": [
             "tests/Application/Kernel.php"

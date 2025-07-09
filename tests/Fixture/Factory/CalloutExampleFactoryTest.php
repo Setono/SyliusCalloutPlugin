@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutPlugin\Fixture\Factory;
+namespace Setono\SyliusCalloutPlugin\Tests\Fixture\Factory;
 
 use Doctrine\Persistence\ObjectManager;
 use PHPUnit\Framework\TestCase;

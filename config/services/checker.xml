@@ -45,7 +45,7 @@
         <service id="setono_sylius_callout.checker.rule.on_sale"
                  class="Setono\SyliusCalloutPlugin\Checker\Rule\OnSaleCalloutRuleChecker">
             <argument type="service" id="sylius.context.channel"/>
-            <argument type="service" id="sylius.product_variant_resolver.default"/>
+            <argument type="service" id="Sylius\Component\Product\Resolver\ProductVariantResolverInterface"/>
 
             <tag name="setono_sylius_callout.callout_rule_checker"
                  type="on_sale"

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Setono\SyliusCalloutPlugin\Twig;
+namespace Setono\SyliusCalloutPlugin\Tests\Twig;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;

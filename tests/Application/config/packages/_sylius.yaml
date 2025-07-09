@@ -1,5 +1,6 @@
 imports:
     - { resource: "@SyliusCoreBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusPayumBundle/Resources/config/app/config.yaml" }
     - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusApiBundle/Resources/config/app/config.yaml" }
@@ -13,9 +14,3 @@ sylius_shop:
 
 sylius_api:
     enabled: true
-
-sylius_product:
-    resources:
-        product:
-            classes:
-                model: Tests\Setono\SyliusCalloutPlugin\Application\Model\Product
