@@ -37,6 +37,18 @@
                 <directory name="src/Repository"/>
             </errorLevel>
         </ClassMustBeFinal>
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <directory name="src/Fixture"/>
+                <directory name="tests/Fixture"/>
+            </errorLevel>
+        </InvalidArgument>
+        <PluginIssue name="QueryBuilderSetParameter" errorLevel="suppress"/>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Model"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
         <MissingTemplateParam>
             <errorLevel type="suppress">
                 <directory name="src/Factory"/>
@@ -44,17 +56,26 @@
                 <directory name="src/Repository"/>
             </errorLevel>
         </MissingTemplateParam>
-        <PluginIssue name="QueryBuilderSetParameter" errorLevel="suppress"/>
         <MixedArgument>
             <errorLevel type="suppress">
                 <directory name="src/Fixture"/>
             </errorLevel>
         </MixedArgument>
+        <MixedMethodCall>
+            <errorLevel type="suppress">
+                <directory name="tests"/>
+            </errorLevel>
+        </MixedMethodCall>
         <MixedReturnStatement>
             <errorLevel type="suppress">
                 <directory name="src/Fixture"/>
             </errorLevel>
         </MixedReturnStatement>
         <MissingOverrideAttribute errorLevel="suppress"/>
+        <UndefinedMagicMethod>
+            <errorLevel type="suppress">
+                <directory name="tests"/>
+            </errorLevel>
+        </UndefinedMagicMethod>
     </issueHandlers>
 </psalm>
