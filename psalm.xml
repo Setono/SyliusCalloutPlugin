@@ -48,10 +48,6 @@
                 <directory name="src/Fixture"/>
             </errorLevel>
         </MixedReturnStatement>
-        <MixedInferredReturnType>
-            <errorLevel type="suppress">
-                <directory name="src/Fixture"/>
-            </errorLevel>
-        </MixedInferredReturnType>
+        <MissingOverrideAttribute errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
