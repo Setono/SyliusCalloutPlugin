@@ -31,6 +31,7 @@
         "sylius/resource-bundle": "^1.13",
         "sylius/taxonomy": "^2.0",
         "sylius/taxonomy-bundle": "^2.0",
+        "sylius/ui-bundle": "^2.0",
         "symfony/config": "^6.4 || ^7.3",
         "symfony/console": "^6.4 || ^7.3",
         "symfony/dependency-injection": "^6.4 || ^7.3",
