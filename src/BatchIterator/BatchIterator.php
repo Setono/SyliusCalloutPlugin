@@ -8,7 +8,7 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use DoctrineBatchUtils\BatchProcessing\SimpleBatchIteratorAggregate;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use Setono\DoctrineObjectManagerTrait\ORM\ORMManagerTrait;
+use Setono\Doctrine\ORMTrait;
 use Setono\SyliusCalloutPlugin\Event\BatchIteratorEvent;
 
 /**
@@ -19,7 +19,7 @@ use Setono\SyliusCalloutPlugin\Event\BatchIteratorEvent;
  */
 final class BatchIterator implements BatchIteratorInterface
 {
-    use ORMManagerTrait;
+    use ORMTrait;
 
     /** @var list<callable> */
     private array $modifications = [];

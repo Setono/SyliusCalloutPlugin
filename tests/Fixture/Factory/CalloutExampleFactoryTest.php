@@ -17,7 +17,7 @@ use Sylius\Component\Locale\Model\Locale;
 use Sylius\Component\Resource\Factory\Factory;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-class CalloutExampleFactoryTest extends TestCase
+final class CalloutExampleFactoryTest extends TestCase
 {
     private CalloutExampleFactory $calloutExampleFactory;
 

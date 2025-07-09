@@ -7,7 +7,7 @@ namespace Setono\SyliusCalloutPlugin\CssClassBuilder;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
 use Webmozart\Assert\Assert;
 
-class SemanticUiCssClassBuilder implements CssClassBuilderInterface
+final class SemanticUiCssClassBuilder implements CssClassBuilderInterface
 {
     public function build(CalloutInterface $callout): string
     {

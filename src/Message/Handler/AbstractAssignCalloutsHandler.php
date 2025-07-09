@@ -6,7 +6,7 @@ namespace Setono\SyliusCalloutPlugin\Message\Handler;
 
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
-use Setono\DoctrineObjectManagerTrait\ORM\ORMManagerTrait;
+use Setono\Doctrine\ORMTrait;
 use Setono\SyliusCalloutPlugin\BatchIterator\BatchIteratorFactoryInterface;
 use Setono\SyliusCalloutPlugin\Checker\Eligibility\CalloutEligibilityCheckerInterface;
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
@@ -15,7 +15,7 @@ use Setono\SyliusCalloutPlugin\Repository\CalloutRepositoryInterface;
 
 class AbstractAssignCalloutsHandler
 {
-    use ORMManagerTrait;
+    use ORMTrait;
 
     public function __construct(
         protected readonly CalloutRepositoryInterface $calloutRepository,

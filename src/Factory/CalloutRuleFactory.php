@@ -12,7 +12,7 @@ use Setono\SyliusCalloutPlugin\Model\ProductInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
-class CalloutRuleFactory implements CalloutRuleFactoryInterface
+final class CalloutRuleFactory implements CalloutRuleFactoryInterface
 {
     public function __construct(private readonly FactoryInterface $decoratedFactory)
     {

@@ -30,6 +30,13 @@
         <function name="print_r"/>
     </forbiddenFunctions>
     <issueHandlers>
+        <ClassMustBeFinal>
+            <errorLevel type="suppress">
+                <directory name="src/Fixture"/>
+                <directory name="src/Model"/>
+                <directory name="src/Repository"/>
+            </errorLevel>
+        </ClassMustBeFinal>
         <MissingTemplateParam>
             <errorLevel type="suppress">
                 <directory name="src/Factory"/>
