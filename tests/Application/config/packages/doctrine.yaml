@@ -20,7 +20,7 @@ doctrine:
             App:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/Model'
+                dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'Setono\SyliusCalloutPlugin\Tests\Application\src\Entity'
                 alias: App
 
