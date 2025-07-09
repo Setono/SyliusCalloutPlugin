@@ -40,7 +40,7 @@ final class SetonoSyliusCalloutPlugin extends AbstractResourceBundle
     protected function getConfigFilesPath(): string
     {
         return sprintf(
-            '%s/../config/doctrine/%s',
+            '%s/config/doctrine/%s',
             $this->getPath(),
             strtolower($this->getDoctrineMappingDirectory()),
         );
