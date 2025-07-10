@@ -1,7 +1,7 @@
 sylius_grid:
     templates:
         action:
-            setono_callout_default: "@SetonoSyliusCalloutPlugin/Admin/Grid/Action/setono_callout_default.html.twig"
+            setono_callout_default: "@SetonoSyliusCalloutPlugin/admin/grid/action/setono_callout_default.html.twig"
     grids:
         setono_sylius_callout_admin_callout:
             driver:
@@ -34,13 +34,6 @@ sylius_grid:
                 name:
                     type: string
                     label: setono_sylius_callout.ui.name
-                rule:
-                    type: entities
-                    label: setono_sylius_callout.ui.rule
-                    form_options:
-                        class: "%setono_sylius_callout.model.callout_rule.class%"
-                    options:
-                        field: "rules.id"
                 date:
                     type: date
                     label: sylius.ui.date

@@ -1,5 +1,5 @@
-{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
+{% import '@SyliusResource/Macros/buttons.html.twig' as buttons %}
 
 {% set path = options.link.url|default(path(options.link.route)) %}
 
-{{ buttons.default(path, action.label, null, options.icon, options.color|default('blue')) }}
+{{ buttons.generic(path, action.label|trans, options.icon) }}

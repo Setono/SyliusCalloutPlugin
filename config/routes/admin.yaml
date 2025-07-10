@@ -2,14 +2,14 @@ setono_sylius_callout_admin_callout:
     resource: |
         section: admin
         alias: setono_sylius_callout.callout
-        templates: '@SyliusAdmin/Crud'
+        templates: '@SyliusAdmin/shared/crud'
         permission: true
         redirect: update
         grid: setono_sylius_callout_admin_callout
         vars:
             all:
                 templates:
-                    form: "@SetonoSyliusCalloutPlugin/Admin/Callout/_form.html.twig"
+                    form: "@SetonoSyliusCalloutPlugin/admin/callout/_form.html.twig"
             index:
                 icon: 'bullhorn'
     type: sylius.resource
