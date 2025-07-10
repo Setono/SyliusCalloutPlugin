@@ -1,0 +1,16 @@
+setono_sylius_callout:
+    callout:
+        code:
+            not_blank: Kodas negali būti tuščias.
+            regex: Kodas gali turėti tik raides, skaičius, pabraukimus ("_") ir brūkšnelius ("-").
+            unique: Jau egzistuoja ženklelis su šiuo kodu.
+        elements:
+            count_min: Turite pasirinkti bent vieną elementą.
+        name:
+            not_blank: Pavadinimas negali būti tuščias.
+        priority:
+            not_blank: Prioritetas negali būti tuščias.
+            numeric: Prioritetas turi būti sveikasis skaičius.
+    callout_translation:
+        text:
+            not_blank: Tekstas negali būti tuščias.

@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Achtergrondkleur
+            channels: Kanalen
+            code: Code
+            color: Kleur
+            element_labels:
+                default: Standaard
+            elements: Element
+            enabled: Ingeschakeld
+            ends_at: Eindigt op
+            layout: Lay-out
+            name: Naam
+            position: Positie
+            positions:
+                bottom: Onderaan
+                bottom_center: Onderaan midden
+                bottom_left: Onderaan links
+                bottom_right: Onderaan rechts
+                left: Links
+                middle: Midden
+                middle_center: Midden centrum
+                middle_left: Midden links
+                middle_right: Midden rechts
+                right: Rechts
+                top: Bovenaan
+                top_center: Bovenaan midden
+                top_left: Bovenaan links
+                top_right: Bovenaan rechts
+            priority: Prioriteit
+            rules: Regels
+            rules_info: Als u geen regels toevoegt, wordt de badge toegepast op alle producten
+            select_position: Selecteer positie
+            starts_at: Begint op
+            translations: Tekst
+        callout_rule:
+            has_product:
+                products: Producten
+            has_taxon:
+                taxons: Taxonomieën
+            is_new:
+                days: Dagen
+            on_sale:
+                single_variant_eligible: Een product wordt als in de aanbieding beschouwd als het één enkele variant (standaard) heeft die in de aanbieding is
+    ui:
+        action:
+            assign: Toewijzen
+        bottom_left: Onderaan links
+        bottom_right: Onderaan rechts
+        callout: Badge
+        callouts: Badges
+        callouts_product_list: Productlijst
+        code: Code
+        delay_info: "OPMERKING: Badges zijn geconfigureerd om %seconds% seconden te wachten voordat het toewijzingsproces wordt gestart"
+        edit_callout: Badge bewerken
+        enabled: Ingeschakeld
+        ends_at: Eindigt op
+        has_product: Heeft product
+        has_taxon: Heeft taxonomie
+        is_new: Is nieuw
+        name: Naam
+        new_callout: Nieuwe badge
+        on_sale: In de aanbieding
+        position: Positie
+        priority: Prioriteit
+        rule: Regel
+        rules: Regels
+        select_position: Selecteer positie...
+        starts_at: Begint op
+        text: Tekst
+        top_left: Bovenaan links
+        top_right: Bovenaan rechts
+        type: Type

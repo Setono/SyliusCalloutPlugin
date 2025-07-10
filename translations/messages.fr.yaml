@@ -1,23 +1,36 @@
 setono_sylius_callout:
     form:
         callout:
+            background_color: Couleur de fond
             channels: Canaux
             code: Code
+            color: Couleur
+            element_labels:
+                default: Par défaut
+            elements: Élément
             enabled: Activé
             ends_at: Se termine le
+            layout: Mise en page
             name: Nom
             position: Position
             positions:
                 bottom: Bas
+                bottom_center: Bas centre
                 bottom_left: Bas gauche
                 bottom_right: Bas droite
                 left: Gauche
+                middle: Milieu
+                middle_center: Milieu centre
+                middle_left: Milieu gauche
+                middle_right: Milieu droite
                 right: Droite
                 top: Haut
+                top_center: Haut centre
                 top_left: Haut gauche
                 top_right: Haut droite
             priority: Priorité
             rules: Règles
+            rules_info: Si vous n'ajoutez aucune règle, le badge sera appliqué à tous les produits
             select_position: Choisir la position
             starts_at: Commence le
             translations: Texte
@@ -28,6 +41,8 @@ setono_sylius_callout:
                 taxons: Taxons
             is_new:
                 days: Jours
+            on_sale:
+                single_variant_eligible: Un produit est considéré comme en promotion s'il a une seule variante (par défaut) qui est en promotion
     ui:
         action:
             assign: Assigner
@@ -37,6 +52,7 @@ setono_sylius_callout:
         callouts: Badges
         callouts_product_list: Liste de produits
         code: Code
+        delay_info: "NOTICE: Les badges sont configurés pour attendre %seconds% secondes avant que le processus d'attribution ne commence"
         edit_callout: Modifier le badge
         enabled: Activé
         ends_at: Se termine le
@@ -48,7 +64,7 @@ setono_sylius_callout:
         on_sale: Prix réduit
         position: Position
         priority: Priorité
-        rule: Régner
+        rule: Règle
         rules: Règles
         select_position: Choisir la position...
         starts_at: Commence le

@@ -2,7 +2,10 @@ setono_sylius_callout:
     callout:
         code:
             not_blank: Kode kan ikke efterlades blank.
+            regex: Koden kan kun indeholde bogstaver, tal, understreger ("_") og bindestreger ("-").
             unique: Der eksisterer allerede et badge med denne kode.
+        elements:
+            count_min: Du skal vælge mindst ét element.
         name:
             not_blank: Navn kan ikke efterlades blank.
         priority:

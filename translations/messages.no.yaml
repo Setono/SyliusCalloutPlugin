@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Bakgrunnsfarge
+            channels: Kanaler
+            code: Kode
+            color: Farge
+            element_labels:
+                default: Standard
+            elements: Element
+            enabled: Aktivert
+            ends_at: Slutter
+            layout: Layout
+            name: Navn
+            position: Posisjon
+            positions:
+                bottom: Bunn
+                bottom_center: Bunn midt
+                bottom_left: Bunn venstre
+                bottom_right: Bunn høyre
+                left: Venstre
+                middle: Midt
+                middle_center: Midt sentrum
+                middle_left: Midt venstre
+                middle_right: Midt høyre
+                right: Høyre
+                top: Topp
+                top_center: Topp midt
+                top_left: Topp venstre
+                top_right: Topp høyre
+            priority: Prioritet
+            rules: Regler
+            rules_info: Hvis du ikke legger til noen regler, vil merket bli anvendt på alle produkter
+            select_position: Velg posisjon
+            starts_at: Starter
+            translations: Tekst
+        callout_rule:
+            has_product:
+                products: Produkter
+            has_taxon:
+                taxons: Taksonomier
+            is_new:
+                days: Dager
+            on_sale:
+                single_variant_eligible: Et produkt regnes som på salg hvis det har en enkelt variant (standard) som er på salg
+    ui:
+        action:
+            assign: Tildel
+        bottom_left: Bunn venstre
+        bottom_right: Bunn høyre
+        callout: Merke
+        callouts: Merker
+        callouts_product_list: Produktliste
+        code: Kode
+        delay_info: "MERKNAD: Merker er konfigurert til å vente %seconds% sekunder før tildelingsprosessen starter"
+        edit_callout: Rediger merke
+        enabled: Aktivert
+        ends_at: Slutter
+        has_product: Har produkt
+        has_taxon: Har taksonomi
+        is_new: Er ny
+        name: Navn
+        new_callout: Nytt merke
+        on_sale: På salg
+        position: Posisjon
+        priority: Prioritet
+        rule: Regel
+        rules: Regler
+        select_position: Velg posisjon...
+        starts_at: Starter
+        text: Tekst
+        top_left: Topp venstre
+        top_right: Topp høyre
+        type: Type

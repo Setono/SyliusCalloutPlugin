@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Fono spalva
+            channels: Kanalai
+            code: Kodas
+            color: Spalva
+            element_labels:
+                default: Numatytasis
+            elements: Elementas
+            enabled: Įjungtas
+            ends_at: Baigiasi
+            layout: Išdėstymas
+            name: Pavadinimas
+            position: Pozicija
+            positions:
+                bottom: Apačia
+                bottom_center: Apačia centras
+                bottom_left: Apačia kairė
+                bottom_right: Apačia dešinė
+                left: Kairė
+                middle: Vidurys
+                middle_center: Vidurys centras
+                middle_left: Vidurys kairė
+                middle_right: Vidurys dešinė
+                right: Dešinė
+                top: Viršus
+                top_center: Viršus centras
+                top_left: Viršus kairė
+                top_right: Viršus dešinė
+            priority: Prioritetas
+            rules: Taisyklės
+            rules_info: Jei nepridėsite jokių taisyklių, ženklelis bus taikomas visiems produktams
+            select_position: Pasirinkite poziciją
+            starts_at: Prasideda
+            translations: Tekstas
+        callout_rule:
+            has_product:
+                products: Produktai
+            has_taxon:
+                taxons: Taksonomijos
+            is_new:
+                days: Dienos
+            on_sale:
+                single_variant_eligible: Produktas laikomas išpardavime, jei jis turi vieną variantą (numatytąjį), kuris yra išpardavime
+    ui:
+        action:
+            assign: Priskirti
+        bottom_left: Apačia kairė
+        bottom_right: Apačia dešinė
+        callout: Ženklelis
+        callouts: Ženkleliai
+        callouts_product_list: Produktų sąrašas
+        code: Kodas
+        delay_info: "PASTABA: Ženkleliai yra sukonfigūruoti laukti %seconds% sekundžių prieš pradedant priskyrimo procesą"
+        edit_callout: Redaguoti ženklelį
+        enabled: Įjungtas
+        ends_at: Baigiasi
+        has_product: Turi produktą
+        has_taxon: Turi taksonomiją
+        is_new: Yra naujas
+        name: Pavadinimas
+        new_callout: Naujas ženklelis
+        on_sale: Išpardavime
+        position: Pozicija
+        priority: Prioritetas
+        rule: Taisyklė
+        rules: Taisyklės
+        select_position: Pasirinkite poziciją...
+        starts_at: Prasideda
+        text: Tekstas
+        top_left: Viršus kairė
+        top_right: Viršus dešinė
+        type: Tipas

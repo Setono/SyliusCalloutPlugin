@@ -1,0 +1,16 @@
+setono_sylius_callout:
+    callout:
+        code:
+            not_blank: Kod kan inte vara tom.
+            regex: Koden kan bara innehålla bokstäver, siffror, understreck ("_") och bindestreck ("-").
+            unique: Det finns redan ett märke med denna kod.
+        elements:
+            count_min: Du måste välja minst ett element.
+        name:
+            not_blank: Namn kan inte vara tomt.
+        priority:
+            not_blank: Prioritet kan inte vara tom.
+            numeric: Prioritet måste vara ett heltal.
+    callout_translation:
+        text:
+            not_blank: Text kan inte vara tom.

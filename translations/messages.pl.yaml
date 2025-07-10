@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Kolor tła
+            channels: Kanały
+            code: Kod
+            color: Kolor
+            element_labels:
+                default: Domyślny
+            elements: Element
+            enabled: Włączony
+            ends_at: Kończy się
+            layout: Układ
+            name: Nazwa
+            position: Pozycja
+            positions:
+                bottom: Dół
+                bottom_center: Dół środek
+                bottom_left: Dół lewy
+                bottom_right: Dół prawy
+                left: Lewy
+                middle: Środek
+                middle_center: Środek centrum
+                middle_left: Środek lewy
+                middle_right: Środek prawy
+                right: Prawy
+                top: Góra
+                top_center: Góra środek
+                top_left: Góra lewy
+                top_right: Góra prawy
+            priority: Priorytet
+            rules: Zasady
+            rules_info: Jeśli nie dodasz żadnych zasad, znaczek zostanie zastosowany do wszystkich produktów
+            select_position: Wybierz pozycję
+            starts_at: Zaczyna się
+            translations: Tekst
+        callout_rule:
+            has_product:
+                products: Produkty
+            has_taxon:
+                taxons: Taksonomie
+            is_new:
+                days: Dni
+            on_sale:
+                single_variant_eligible: Produkt jest uważany za przeceniony, jeśli ma jedną wariant (domyślny), która jest przeceniona
+    ui:
+        action:
+            assign: Przypisz
+        bottom_left: Dół lewy
+        bottom_right: Dół prawy
+        callout: Znaczek
+        callouts: Znaczki
+        callouts_product_list: Lista produktów
+        code: Kod
+        delay_info: "UWAGA: Znaczki są skonfigurowane tak, aby czekać %seconds% sekund przed rozpoczęciem procesu przypisania"
+        edit_callout: Edytuj znaczek
+        enabled: Włączony
+        ends_at: Kończy się
+        has_product: Ma produkt
+        has_taxon: Ma taksonomię
+        is_new: Jest nowy
+        name: Nazwa
+        new_callout: Nowy znaczek
+        on_sale: Na wyprzedaży
+        position: Pozycja
+        priority: Priorytet
+        rule: Zasada
+        rules: Zasady
+        select_position: Wybierz pozycję...
+        starts_at: Zaczyna się
+        text: Tekst
+        top_left: Góra lewy
+        top_right: Góra prawy
+        type: Typ

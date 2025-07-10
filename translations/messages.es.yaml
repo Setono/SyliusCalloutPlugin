@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Color de fondo
+            channels: Canales
+            code: Código
+            color: Color
+            element_labels:
+                default: Predeterminado
+            elements: Elemento
+            enabled: Habilitado
+            ends_at: Termina en
+            layout: Diseño
+            name: Nombre
+            position: Posición
+            positions:
+                bottom: Abajo
+                bottom_center: Abajo centro
+                bottom_left: Abajo izquierda
+                bottom_right: Abajo derecha
+                left: Izquierda
+                middle: Medio
+                middle_center: Medio centro
+                middle_left: Medio izquierda
+                middle_right: Medio derecha
+                right: Derecha
+                top: Arriba
+                top_center: Arriba centro
+                top_left: Arriba izquierda
+                top_right: Arriba derecha
+            priority: Prioridad
+            rules: Reglas
+            rules_info: Si no agregas ninguna regla, la etiqueta se aplicará a todos los productos
+            select_position: Seleccionar posición
+            starts_at: Comienza en
+            translations: Texto
+        callout_rule:
+            has_product:
+                products: Productos
+            has_taxon:
+                taxons: Taxonomías
+            is_new:
+                days: Días
+            on_sale:
+                single_variant_eligible: Un producto se considera en oferta si tiene una sola variante (predeterminada) que está en oferta
+    ui:
+        action:
+            assign: Asignar
+        bottom_left: Abajo izquierda
+        bottom_right: Abajo derecha
+        callout: Etiqueta
+        callouts: Etiquetas
+        callouts_product_list: Lista de productos
+        code: Código
+        delay_info: "AVISO: Las etiquetas están configuradas para esperar %seconds% segundos antes de que se inicie el proceso de asignación"
+        edit_callout: Editar etiqueta
+        enabled: Habilitado
+        ends_at: Termina en
+        has_product: Tiene producto
+        has_taxon: Tiene taxonomía
+        is_new: Es nuevo
+        name: Nombre
+        new_callout: Nueva etiqueta
+        on_sale: En oferta
+        position: Posición
+        priority: Prioridad
+        rule: Regla
+        rules: Reglas
+        select_position: Seleccionar posición...
+        starts_at: Comienza en
+        text: Texto
+        top_left: Arriba izquierda
+        top_right: Arriba derecha
+        type: Tipo

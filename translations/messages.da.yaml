@@ -1,23 +1,36 @@
 setono_sylius_callout:
     form:
         callout:
+            background_color: Baggrundsfarve
             channels: Kanaler
             code: Kode
+            color: Farve
+            element_labels:
+                default: Standard
+            elements: Element
             enabled: Aktiveret
             ends_at: Slutter
+            layout: Layout
             name: Navn
             position: Position
             positions:
                 bottom: Nederst
+                bottom_center: Nederst i midten
                 bottom_left: Nederst til venstre
                 bottom_right: Nederst til højre
                 left: Venstre
+                middle: Midten
+                middle_center: Midten i centrum
+                middle_left: Midten til venstre
+                middle_right: Midten til højre
                 right: Højre
                 top: Øverst
+                top_center: Øverst i midten
                 top_left: Øverst til venstre
                 top_right: Øverst til højre
             priority: Prioritet
             rules: Regler
+            rules_info: Hvis du ikke tilføjer nogen regler, vil badge blive anvendt på alle produkter
             select_position: Vælg position
             starts_at: Starter
             translations: Tekst
@@ -28,6 +41,8 @@ setono_sylius_callout:
                 taxons: Taksonomiske grupper
             is_new:
                 days: Dage
+            on_sale:
+                single_variant_eligible: Et produkt betragtes som værende på udsalg, hvis det har en enkelt variant (standard), der er på udsalg
     ui:
         action:
             assign: Tildel
@@ -37,6 +52,7 @@ setono_sylius_callout:
         callouts: Badges
         callouts_product_list: Produktliste
         code: Kode
+        delay_info: "BEMÆRK: Badges er konfigureret til at vente %seconds% sekunder, før tildelingsprocessen startes"
         edit_callout: Rediger badges
         enabled: Aktiveret
         ends_at: Slutter
@@ -48,7 +64,7 @@ setono_sylius_callout:
         on_sale: På udsalg
         position: Position
         priority: Prioritet
-        rule: Règle
+        rule: Regel
         rules: Regler
         select_position: Vælg position...
         starts_at: Starter

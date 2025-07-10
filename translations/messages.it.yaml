@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Colore di sfondo
+            channels: Canali
+            code: Codice
+            color: Colore
+            element_labels:
+                default: Predefinito
+            elements: Elemento
+            enabled: Abilitato
+            ends_at: Termina il
+            layout: Layout
+            name: Nome
+            position: Posizione
+            positions:
+                bottom: Fondo
+                bottom_center: Fondo centro
+                bottom_left: Fondo sinistra
+                bottom_right: Fondo destra
+                left: Sinistra
+                middle: Mezzo
+                middle_center: Mezzo centro
+                middle_left: Mezzo sinistra
+                middle_right: Mezzo destra
+                right: Destra
+                top: Sopra
+                top_center: Sopra centro
+                top_left: Sopra sinistra
+                top_right: Sopra destra
+            priority: Priorità
+            rules: Regole
+            rules_info: Se non aggiungi nessuna regola, il badge verrà applicato a tutti i prodotti
+            select_position: Seleziona posizione
+            starts_at: Inizia il
+            translations: Testo
+        callout_rule:
+            has_product:
+                products: Prodotti
+            has_taxon:
+                taxons: Tassonomie
+            is_new:
+                days: Giorni
+            on_sale:
+                single_variant_eligible: Un prodotto è considerato in offerta se ha una singola variante (predefinita) che è in offerta
+    ui:
+        action:
+            assign: Assegna
+        bottom_left: Fondo sinistra
+        bottom_right: Fondo destra
+        callout: Badge
+        callouts: Badge
+        callouts_product_list: Elenco prodotti
+        code: Codice
+        delay_info: "AVVISO: I badge sono configurati per aspettare %seconds% secondi prima che il processo di assegnazione venga avviato"
+        edit_callout: Modifica badge
+        enabled: Abilitato
+        ends_at: Termina il
+        has_product: Ha prodotto
+        has_taxon: Ha tassonomia
+        is_new: È nuovo
+        name: Nome
+        new_callout: Nuovo badge
+        on_sale: In offerta
+        position: Posizione
+        priority: Priorità
+        rule: Regola
+        rules: Regole
+        select_position: Seleziona posizione...
+        starts_at: Inizia il
+        text: Testo
+        top_left: Sopra sinistra
+        top_right: Sopra destra
+        type: Tipo

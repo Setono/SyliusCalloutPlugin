@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Hintergrundfarbe
+            channels: Kanäle
+            code: Code
+            color: Farbe
+            element_labels:
+                default: Standard
+            elements: Element
+            enabled: Aktiviert
+            ends_at: Endet am
+            layout: Layout
+            name: Name
+            position: Position
+            positions:
+                bottom: Unten
+                bottom_center: Unten Mitte
+                bottom_left: Unten links
+                bottom_right: Unten rechts
+                left: Links
+                middle: Mitte
+                middle_center: Mitte Zentrum
+                middle_left: Mitte links
+                middle_right: Mitte rechts
+                right: Rechts
+                top: Oben
+                top_center: Oben Mitte
+                top_left: Oben links
+                top_right: Oben rechts
+            priority: Priorität
+            rules: Regeln
+            rules_info: Wenn Sie keine Regeln hinzufügen, wird das Badge auf alle Produkte angewendet
+            select_position: Position wählen
+            starts_at: Beginnt am
+            translations: Text
+        callout_rule:
+            has_product:
+                products: Produkte
+            has_taxon:
+                taxons: Taxonomien
+            is_new:
+                days: Tage
+            on_sale:
+                single_variant_eligible: Ein Produkt gilt als im Angebot, wenn es eine einzige Variante (Standard) hat, die im Angebot ist
+    ui:
+        action:
+            assign: Zuweisen
+        bottom_left: Unten links
+        bottom_right: Unten rechts
+        callout: Badge
+        callouts: Badges
+        callouts_product_list: Produktliste
+        code: Code
+        delay_info: "HINWEIS: Badges sind konfiguriert, %seconds% Sekunden zu warten, bevor der Zuweisungsprozess gestartet wird"
+        edit_callout: Badge bearbeiten
+        enabled: Aktiviert
+        ends_at: Endet am
+        has_product: Hat Produkt
+        has_taxon: Hat Taxonomie
+        is_new: Ist neu
+        name: Name
+        new_callout: Neues Badge
+        on_sale: Im Angebot
+        position: Position
+        priority: Priorität
+        rule: Regel
+        rules: Regeln
+        select_position: Position wählen...
+        starts_at: Beginnt am
+        text: Text
+        top_left: Oben links
+        top_right: Oben rechts
+        type: Typ

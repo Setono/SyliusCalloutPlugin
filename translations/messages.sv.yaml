@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Bakgrundsfärg
+            channels: Kanaler
+            code: Kod
+            color: Färg
+            element_labels:
+                default: Standard
+            elements: Element
+            enabled: Aktiverad
+            ends_at: Slutar
+            layout: Layout
+            name: Namn
+            position: Position
+            positions:
+                bottom: Botten
+                bottom_center: Botten mitten
+                bottom_left: Botten vänster
+                bottom_right: Botten höger
+                left: Vänster
+                middle: Mitten
+                middle_center: Mitten centrum
+                middle_left: Mitten vänster
+                middle_right: Mitten höger
+                right: Höger
+                top: Topp
+                top_center: Topp mitten
+                top_left: Topp vänster
+                top_right: Topp höger
+            priority: Prioritet
+            rules: Regler
+            rules_info: Om du inte lägger till några regler kommer märket att tillämpas på alla produkter
+            select_position: Välj position
+            starts_at: Börjar
+            translations: Text
+        callout_rule:
+            has_product:
+                products: Produkter
+            has_taxon:
+                taxons: Taxonomier
+            is_new:
+                days: Dagar
+            on_sale:
+                single_variant_eligible: En produkt anses vara på rea om den har en enda variant (standard) som är på rea
+    ui:
+        action:
+            assign: Tilldela
+        bottom_left: Botten vänster
+        bottom_right: Botten höger
+        callout: Märke
+        callouts: Märken
+        callouts_product_list: Produktlista
+        code: Kod
+        delay_info: "OBSERVERA: Märken är konfigurerade att vänta %seconds% sekunder innan tilldelningsprocessen startar"
+        edit_callout: Redigera märke
+        enabled: Aktiverad
+        ends_at: Slutar
+        has_product: Har produkt
+        has_taxon: Har taxonomi
+        is_new: Är ny
+        name: Namn
+        new_callout: Nytt märke
+        on_sale: På rea
+        position: Position
+        priority: Prioritet
+        rule: Regel
+        rules: Regler
+        select_position: Välj position...
+        starts_at: Börjar
+        text: Text
+        top_left: Topp vänster
+        top_right: Topp höger
+        type: Typ

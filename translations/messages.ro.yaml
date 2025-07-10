@@ -1,0 +1,74 @@
+setono_sylius_callout:
+    form:
+        callout:
+            background_color: Culoarea de fundal
+            channels: Canale
+            code: Cod
+            color: Culoare
+            element_labels:
+                default: Implicit
+            elements: Element
+            enabled: Activat
+            ends_at: Se termină la
+            layout: Aspect
+            name: Nume
+            position: Poziție
+            positions:
+                bottom: Jos
+                bottom_center: Jos centru
+                bottom_left: Jos stânga
+                bottom_right: Jos dreapta
+                left: Stânga
+                middle: Mijloc
+                middle_center: Mijloc centru
+                middle_left: Mijloc stânga
+                middle_right: Mijloc dreapta
+                right: Dreapta
+                top: Sus
+                top_center: Sus centru
+                top_left: Sus stânga
+                top_right: Sus dreapta
+            priority: Prioritate
+            rules: Reguli
+            rules_info: Dacă nu adaugi nicio regulă, insigna va fi aplicată tuturor produselor
+            select_position: Selectează poziția
+            starts_at: Începe la
+            translations: Text
+        callout_rule:
+            has_product:
+                products: Produse
+            has_taxon:
+                taxons: Taxonomii
+            is_new:
+                days: Zile
+            on_sale:
+                single_variant_eligible: Un produs este considerat în ofertă dacă are o singură variantă (implicit) care este în ofertă
+    ui:
+        action:
+            assign: Atribuie
+        bottom_left: Jos stânga
+        bottom_right: Jos dreapta
+        callout: Insignă
+        callouts: Insigne
+        callouts_product_list: Lista produselor
+        code: Cod
+        delay_info: "NOTĂ: Insignele sunt configurate să aștepte %seconds% secunde înainte ca procesul de atribuire să înceapă"
+        edit_callout: Editează insigna
+        enabled: Activat
+        ends_at: Se termină la
+        has_product: Are produs
+        has_taxon: Are taxonomie
+        is_new: Este nou
+        name: Nume
+        new_callout: Insignă nouă
+        on_sale: În ofertă
+        position: Poziție
+        priority: Prioritate
+        rule: Regulă
+        rules: Reguli
+        select_position: Selectează poziția...
+        starts_at: Începe la
+        text: Text
+        top_left: Sus stânga
+        top_right: Sus dreapta
+        type: Tip
