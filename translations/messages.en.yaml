@@ -5,9 +5,9 @@ setono_sylius_callout:
             channels: Channels
             code: Code
             color: Color
-            elements: Element
             element_labels:
                 default: Default
+            elements: Element
             enabled: Enabled
             ends_at: Ends at
             layout: Layout

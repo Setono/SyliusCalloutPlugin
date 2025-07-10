@@ -33,7 +33,9 @@ setono_sylius_callout:
             assign: Assigner
         bottom_left: Bas gauche
         bottom_right: Bas droite
+        callout: Badge
         callouts: Badges
+        callouts_product_list: Liste de produits
         code: Code
         edit_callout: Modifier le badge
         enabled: Activé
@@ -46,6 +48,7 @@ setono_sylius_callout:
         on_sale: Prix réduit
         position: Position
         priority: Priorité
+        rule: Régner
         rules: Règles
         select_position: Choisir la position...
         starts_at: Commence le
@@ -53,6 +56,3 @@ setono_sylius_callout:
         top_left: Haut gauche
         top_right: Haut droit
         type: Type
-        callout: Badge
-        rule: Régner
-        callouts_product_list: Liste de produits

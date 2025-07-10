@@ -2,15 +2,15 @@ setono_sylius_callout:
     callout:
         code:
             not_blank: Code cannot be blank.
-            unique: There is an existing callout with this code.
             regex: The code can only contain letters, numbers, underscores ("_"), and dashes ("-").
+            unique: There is an existing callout with this code.
+        elements:
+            count_min: You must select at least one element.
         name:
             not_blank: Name cannot be blank.
         priority:
             not_blank: Priority cannot be blank.
             numeric: Priority must be an integer.
-        elements:
-            count_min: You must select at least one element.
     callout_translation:
         text:
             not_blank: Text cannot be blank.

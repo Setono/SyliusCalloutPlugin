@@ -33,7 +33,9 @@ setono_sylius_callout:
             assign: Tildel
         bottom_left: Nederst til venstre
         bottom_right: Nederst til højre
+        callout: Badge
         callouts: Badges
+        callouts_product_list: Produktliste
         code: Kode
         edit_callout: Rediger badges
         enabled: Aktiveret
@@ -46,6 +48,7 @@ setono_sylius_callout:
         on_sale: På udsalg
         position: Position
         priority: Prioritet
+        rule: Règle
         rules: Regler
         select_position: Vælg position...
         starts_at: Starter
@@ -53,6 +56,3 @@ setono_sylius_callout:
         top_left: Øverst til venstre
         top_right: Øverst til højre
         type: Type
-        callout: Badge
-        rule: Règle
-        callouts_product_list: Produktliste
