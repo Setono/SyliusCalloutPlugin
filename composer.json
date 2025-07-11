@@ -28,7 +28,6 @@
         "sylius/grid-bundle": "^1.13",
         "sylius/locale": "^2.0",
         "sylius/product": "^2.0",
-        "sylius/product-bundle": "^2.0",
         "sylius/registry": "^1.6",
         "sylius/resource-bundle": "^1.13",
         "sylius/taxonomy": "^2.0",
