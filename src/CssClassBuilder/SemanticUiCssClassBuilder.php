@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\CssClassBuilder;
 
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
-use Webmozart\Assert\Assert;
 
 final class SemanticUiCssClassBuilder implements CssClassBuilderInterface
 {
