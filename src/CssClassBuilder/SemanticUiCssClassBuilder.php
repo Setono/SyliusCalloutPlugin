@@ -11,9 +11,6 @@ final class SemanticUiCssClassBuilder implements CssClassBuilderInterface
 {
     public function build(CalloutInterface $callout): string
     {
-        $position = $callout->getPosition();
-        Assert::notNull($position);
-
-        return sprintf('ui %s attached label', str_replace('_', ' ', $position));
+        return 'badge text-bg-success';
     }
 }

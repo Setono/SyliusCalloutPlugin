@@ -1,0 +1,6 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_shop.shared.product.card.details':
+            callouts:
+                template: "shared/product/card/details/callouts.html.twig"
+                priority: 200
