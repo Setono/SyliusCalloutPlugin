@@ -22,15 +22,15 @@
             <tag name="setono_sylius_callout.callout_rule_checker"
                  type="has_taxon"
                  label="setono_sylius_callout.ui.has_taxon"
-                 form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasTaxonConfigurationType"/>
+                 form-type="Sylius\Bundle\CoreBundle\Form\Type\Promotion\Rule\HasTaxonConfigurationType"/>
         </service>
 
         <service id="setono_sylius_callout.checker.rule.has_product"
                  class="Setono\SyliusCalloutPlugin\Checker\Rule\HasProductCalloutRuleChecker">
             <argument type="service" id="sylius.repository.product"/>
             <tag name="setono_sylius_callout.callout_rule_checker"
-                 type="has_product"
-                 label="setono_sylius_callout.ui.has_product"
+                 type="contains_product"
+                 label="setono_sylius_callout.ui.contains_product"
                  form-type="Setono\SyliusCalloutPlugin\Form\Type\Rule\HasProductConfigurationType"/>
         </service>
 

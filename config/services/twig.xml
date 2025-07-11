@@ -7,6 +7,7 @@
         <service id="setono_sylius_callout.twig.callout_extension"
                  class="Setono\SyliusCalloutPlugin\Twig\CalloutExtension">
             <argument>%setono_sylius_callout.assignment.delay%</argument>
+            <argument>%setono_sylius_callout.callout_rules%</argument>
             <tag name="twig.extension"/>
         </service>
 
@@ -19,6 +20,16 @@
             <argument type="service" id="setono_sylius_callout.renderer.callout"/>
 
             <tag name="twig.runtime"/>
+        </service>
+
+        <service id="setono_sylius_callout.twig.component.callout.form"
+                 class="Sylius\Bundle\UiBundle\Twig\Component\ResourceFormComponent">
+            <argument type="service" id="setono_sylius_callout.repository.callout"/>
+            <argument type="service" id="form.factory"/>
+            <argument>%setono_sylius_callout.model.callout.class%</argument>
+            <argument>Setono\SyliusCalloutPlugin\Form\Type\CalloutType</argument>
+
+            <tag name="sylius.live_component.admin" key="setono_sylius_callout:callout:form"/>
         </service>
     </services>
 </container>

@@ -1,6 +1,7 @@
 setono_sylius_callout:
     form:
         callout:
+            add_rule: Add rule
             background_color: Background color
             channels: Channels
             code: Code
@@ -35,7 +36,7 @@ setono_sylius_callout:
             starts_at: Starts at
             translations: Text
         callout_rule:
-            has_product:
+            contains_product:
                 products: Products
             has_taxon:
                 taxons: Taxons
@@ -52,15 +53,16 @@ setono_sylius_callout:
         callouts: Callouts
         callouts_product_list: Product list
         code: Code
-        delay_info: "NOTICE: Callouts are configured to wait %seconds% seconds before the assignment process is started"
+        delay_info: Callouts are configured to wait %seconds% seconds before the assignment process is started
         edit_callout: Edit callout
         enabled: Enabled
         ends_at: Ends at
-        has_product: Has product
+        contains_product: Contains product
         has_taxon: Has taxon
         is_new: Is new
         name: Name
         new_callout: New callout
+        notice: Notice
         on_sale: On sale
         position: Position
         priority: Priority
@@ -69,6 +71,7 @@ setono_sylius_callout:
         select_position: Select position...
         starts_at: Starts at
         text: Text
+        theming: Theming
         top_left: Top left
         top_right: Top right
         type: Type

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusCalloutPlugin\Form\Type;
 
 use Setono\SyliusCalloutPlugin\Model\CalloutInterface;
+use Sylius\Bundle\AdminBundle\Form\Type\AddButtonType;
 use Sylius\Bundle\ChannelBundle\Form\Type\ChannelChoiceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Valid;
+use Symfony\UX\LiveComponent\Form\Type\LiveCollectionType;
 
 final class CalloutType extends AbstractResourceType
 {
@@ -23,6 +25,7 @@ final class CalloutType extends AbstractResourceType
      * @param list<string> $validationGroups
      */
     public function __construct(
+        private readonly array $rules,
         private readonly array $elements,
         private readonly array $positions,
         string $dataClass,
@@ -89,8 +92,19 @@ final class CalloutType extends AbstractResourceType
                 'required' => false,
                 'label' => 'setono_sylius_callout.form.callout.channels',
             ])
-            ->add('rules', CalloutRuleCollectionType::class, [
-                'label' => 'setono_sylius_callout.form.callout.rules',
+            ->add('rules', LiveCollectionType::class, [
+                'entry_type' => CalloutRuleType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'button_add_type' => AddButtonType::class,
+                'button_add_options' => [
+                    'label' => 'setono_sylius_callout.form.callout.add_rule',
+                    'types' => $this->rules,
+                ],
+                'button_delete_options' => [
+                    'label' => false,
+                ],
                 'required' => false,
             ])
             ->add('translations', ResourceTranslationsType::class, [
@@ -98,6 +112,12 @@ final class CalloutType extends AbstractResourceType
                 'entry_type' => CalloutTranslationType::class,
                 'validation_groups' => $this->validationGroups,
                 'constraints' => [new Valid()], // todo move these constraints to a validation file
-            ]);
+            ])
+        ;
+    }
+
+    public function getBlockPrefix(): string
+    {
+        return 'setono_sylius_callout__callout';
     }
 }

@@ -1,0 +1,6 @@
+{% set delay = setono_sylius_callout__get_callout_assignment_delay() %}
+{% if delay > 0 %}
+    <div class="alert alert-info" role="alert">
+        {{ 'setono_sylius_callout.ui.delay_info'|trans({ '%seconds%': delay }) }}
+    </div>
+{% endif %}

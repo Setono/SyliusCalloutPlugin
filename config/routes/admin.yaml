@@ -1,21 +1,18 @@
 setono_sylius_callout_admin_callout:
     resource: |
-        section: admin
         alias: setono_sylius_callout.callout
+        section: admin
         templates: '@SyliusAdmin/shared/crud'
-        permission: true
         redirect: update
         grid: setono_sylius_callout_admin_callout
+        permission: true
         vars:
             all:
-                templates:
-                    form: "@SetonoSyliusCalloutPlugin/admin/callout/_form.html.twig"
-            index:
-                icon: 'bullhorn'
+                hook_prefix: 'setono_sylius_callout.callout'
     type: sylius.resource
 
 setono_sylius_callout_admin_callout_assign:
-    path: /callout/assign
+    path: /callouts/assign
     methods: [GET]
     defaults:
         _controller: setono_sylius_callout.controller.action.assign

@@ -1,3 +1,2 @@
 imports:
-    - { resource: "@SetonoSyliusCalloutPlugin/config/app/config.yaml"}
     - { resource: "@SetonoSyliusCalloutPlugin/config/app/fixtures.yaml"}

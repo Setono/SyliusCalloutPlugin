@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Model;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 trait ProductTrait
 {
-    /** @ORM\Column(type="json", nullable=true) */
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     protected ?array $preQualifiedCallouts = null;
 
     public function getPreQualifiedCallouts(): array

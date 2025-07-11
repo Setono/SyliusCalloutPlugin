@@ -9,6 +9,7 @@ sylius_grid:
                     class: "%setono_sylius_callout.model.callout.class%"
             sorting:
                 priority: asc
+            limits: [100, 250, 500, 1000]
             fields:
                 code:
                     type: string
@@ -48,8 +49,7 @@ sylius_grid:
                         type: setono_callout_default
                         label: setono_sylius_callout.ui.action.assign
                         options:
-                            icon: sync
-                            color: red
+                            icon: refresh
                             link:
                                 route: setono_sylius_callout_admin_callout_assign
                 item:

@@ -7,7 +7,7 @@ namespace Setono\SyliusCalloutPlugin\Model;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Channel\Model\ChannelInterface as BaseChannelInterface;
+use Sylius\Component\Channel\Model\ChannelInterface;
 use Sylius\Component\Resource\Model\TimestampableTrait;
 use Sylius\Component\Resource\Model\ToggleableTrait;
 use Sylius\Component\Resource\Model\TranslatableTrait;
@@ -43,7 +43,7 @@ class Callout implements CalloutInterface, \Stringable
 
     protected ?string $backgroundColor = null;
 
-    /** @var Collection<array-key, BaseChannelInterface> */
+    /** @var Collection<array-key, ChannelInterface> */
     protected Collection $channels;
 
     /** @var Collection<array-key, CalloutRuleInterface> */
@@ -181,21 +181,21 @@ class Callout implements CalloutInterface, \Stringable
         return $this->channels;
     }
 
-    public function addChannel(BaseChannelInterface $channel): void
+    public function addChannel(ChannelInterface $channel): void
     {
         if (!$this->hasChannel($channel)) {
             $this->channels->add($channel);
         }
     }
 
-    public function removeChannel(BaseChannelInterface $channel): void
+    public function removeChannel(ChannelInterface $channel): void
     {
         if ($this->hasChannel($channel)) {
             $this->channels->removeElement($channel);
         }
     }
 
-    public function hasChannel(BaseChannelInterface $channel): bool
+    public function hasChannel(ChannelInterface $channel): bool
     {
         return $this->channels->contains($channel);
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Setono\SyliusCalloutPlugin\Form\Type\Rule;
 
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAutocompleteChoiceType;
+use Sylius\Bundle\AdminBundle\Form\Type\ProductAutocompleteType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,8 +18,8 @@ final class HasProductConfigurationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('products', ProductAutocompleteChoiceType::class, [
-                'label' => 'setono_sylius_callout.form.callout_rule.has_product.products',
+            ->add('products', ProductAutocompleteType::class, [
+                'label' => 'setono_sylius_callout.form.callout_rule.contains_product.products',
                 'multiple' => true,
             ]);
 
