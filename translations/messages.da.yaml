@@ -1,6 +1,7 @@
 setono_sylius_callout:
     form:
         callout:
+            add_rule: Tilføj regel
             background_color: Baggrundsfarve
             channels: Kanaler
             code: Kode
@@ -35,7 +36,7 @@ setono_sylius_callout:
             starts_at: Starter
             translations: Tekst
         callout_rule:
-            has_product:
+            contains_product:
                 products: Produkter
             has_taxon:
                 taxons: Taksonomiske grupper
@@ -52,15 +53,16 @@ setono_sylius_callout:
         callouts: Badges
         callouts_product_list: Produktliste
         code: Kode
-        delay_info: "BEMÆRK: Badges er konfigureret til at vente %seconds% sekunder, før tildelingsprocessen startes"
+        delay_info: "Badges er konfigureret til at vente %seconds% sekunder, før tildelingsprocessen startes"
         edit_callout: Rediger badges
         enabled: Aktiveret
         ends_at: Slutter
-        has_product: Har produkt
+        contains_product: Indeholder produkt
         has_taxon: Har taksonomisk gruppe
         is_new: Er ny
         name: Navn
         new_callout: Ny badge
+        notice: Bemærkning
         on_sale: På udsalg
         position: Position
         priority: Prioritet
@@ -69,6 +71,7 @@ setono_sylius_callout:
         select_position: Vælg position...
         starts_at: Starter
         text: Tekst
+        theming: Tematisering
         top_left: Øverst til venstre
         top_right: Øverst til højre
         type: Type

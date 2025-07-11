@@ -1,6 +1,7 @@
 setono_sylius_callout:
     form:
         callout:
+            add_rule: Ajouter une règle
             background_color: Couleur de fond
             channels: Canaux
             code: Code
@@ -35,7 +36,7 @@ setono_sylius_callout:
             starts_at: Commence le
             translations: Texte
         callout_rule:
-            has_product:
+            contains_product:
                 products: Produits
             has_taxon:
                 taxons: Taxons
@@ -52,15 +53,16 @@ setono_sylius_callout:
         callouts: Badges
         callouts_product_list: Liste de produits
         code: Code
-        delay_info: "NOTICE: Les badges sont configurés pour attendre %seconds% secondes avant que le processus d'attribution ne commence"
+        delay_info: "Les badges sont configurés pour attendre %seconds% secondes avant que le processus d'attribution ne commence"
         edit_callout: Modifier le badge
         enabled: Activé
         ends_at: Se termine le
-        has_product: A le produit
+        contains_product: Contient le produit
         has_taxon: A le taxon
         is_new: Est nouveau
         name: Nom
         new_callout: Nouveau badge
+        notice: Avis
         on_sale: Prix réduit
         position: Position
         priority: Priorité
@@ -69,6 +71,7 @@ setono_sylius_callout:
         select_position: Choisir la position...
         starts_at: Commence le
         text: Texte
+        theming: Thématisation
         top_left: Haut gauche
         top_right: Haut droit
         type: Type

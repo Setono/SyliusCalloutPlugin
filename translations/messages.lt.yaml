@@ -1,6 +1,7 @@
 setono_sylius_callout:
     form:
         callout:
+            add_rule: Pridėti taisyklę
             background_color: Fono spalva
             channels: Kanalai
             code: Kodas
@@ -35,7 +36,7 @@ setono_sylius_callout:
             starts_at: Prasideda
             translations: Tekstas
         callout_rule:
-            has_product:
+            contains_product:
                 products: Produktai
             has_taxon:
                 taxons: Taksonomijos
@@ -52,15 +53,16 @@ setono_sylius_callout:
         callouts: Ženkleliai
         callouts_product_list: Produktų sąrašas
         code: Kodas
-        delay_info: "PASTABA: Ženkleliai yra sukonfigūruoti laukti %seconds% sekundžių prieš pradedant priskyrimo procesą"
+        delay_info: "Ženkleliai yra sukonfigūruoti laukti %seconds% sekundžių prieš pradedant priskyrimo procesą"
         edit_callout: Redaguoti ženklelį
         enabled: Įjungtas
         ends_at: Baigiasi
-        has_product: Turi produktą
+        contains_product: Turi produktą
         has_taxon: Turi taksonomiją
         is_new: Yra naujas
         name: Pavadinimas
         new_callout: Naujas ženklelis
+        notice: Pastaba
         on_sale: Išpardavime
         position: Pozicija
         priority: Prioritetas
@@ -69,6 +71,7 @@ setono_sylius_callout:
         select_position: Pasirinkite poziciją...
         starts_at: Prasideda
         text: Tekstas
+        theming: Tematizavimas
         top_left: Viršus kairė
         top_right: Viršus dešinė
         type: Tipas

@@ -1,6 +1,7 @@
 setono_sylius_callout:
     form:
         callout:
+            add_rule: Adaugă regulă
             background_color: Culoarea de fundal
             channels: Canale
             code: Cod
@@ -35,7 +36,7 @@ setono_sylius_callout:
             starts_at: Începe la
             translations: Text
         callout_rule:
-            has_product:
+            contains_product:
                 products: Produse
             has_taxon:
                 taxons: Taxonomii
@@ -52,15 +53,16 @@ setono_sylius_callout:
         callouts: Insigne
         callouts_product_list: Lista produselor
         code: Cod
-        delay_info: "NOTĂ: Insignele sunt configurate să aștepte %seconds% secunde înainte ca procesul de atribuire să înceapă"
+        delay_info: "Insignele sunt configurate să aștepte %seconds% secunde înainte ca procesul de atribuire să înceapă"
         edit_callout: Editează insigna
         enabled: Activat
         ends_at: Se termină la
-        has_product: Are produs
+        contains_product: Conține produs
         has_taxon: Are taxonomie
         is_new: Este nou
         name: Nume
         new_callout: Insignă nouă
+        notice: Notă
         on_sale: În ofertă
         position: Poziție
         priority: Prioritate
@@ -69,6 +71,7 @@ setono_sylius_callout:
         select_position: Selectează poziția...
         starts_at: Începe la
         text: Text
+        theming: Tematizare
         top_left: Sus stânga
         top_right: Sus dreapta
         type: Tip

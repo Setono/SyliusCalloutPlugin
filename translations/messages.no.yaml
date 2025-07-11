@@ -1,6 +1,7 @@
 setono_sylius_callout:
     form:
         callout:
+            add_rule: Legg til regel
             background_color: Bakgrunnsfarge
             channels: Kanaler
             code: Kode
@@ -35,7 +36,7 @@ setono_sylius_callout:
             starts_at: Starter
             translations: Tekst
         callout_rule:
-            has_product:
+            contains_product:
                 products: Produkter
             has_taxon:
                 taxons: Taksonomier
@@ -52,15 +53,16 @@ setono_sylius_callout:
         callouts: Merker
         callouts_product_list: Produktliste
         code: Kode
-        delay_info: "MERKNAD: Merker er konfigurert til å vente %seconds% sekunder før tildelingsprosessen starter"
+        delay_info: "Merker er konfigurert til å vente %seconds% sekunder før tildelingsprosessen starter"
         edit_callout: Rediger merke
         enabled: Aktivert
         ends_at: Slutter
-        has_product: Har produkt
+        contains_product: Inneholder produkt
         has_taxon: Har taksonomi
         is_new: Er ny
         name: Navn
         new_callout: Nytt merke
+        notice: Merknad
         on_sale: På salg
         position: Posisjon
         priority: Prioritet
@@ -69,6 +71,7 @@ setono_sylius_callout:
         select_position: Velg posisjon...
         starts_at: Starter
         text: Tekst
+        theming: Tematisering
         top_left: Topp venstre
         top_right: Topp høyre
         type: Type
