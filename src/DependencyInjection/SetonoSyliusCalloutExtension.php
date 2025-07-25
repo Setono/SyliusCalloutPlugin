@@ -80,7 +80,7 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
                             'label' => 'setono_sylius_callout.ui.enabled',
                             'sortable' => null,
                             'options' => [
-                                'template' => '@SyliusUi/Grid/Field/enabled.html.twig',
+                                'template' => '@SyliusUi/grid/field/enabled.html.twig',
                             ],
                         ],
                         'priority' => [
@@ -88,7 +88,7 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
                             'label' => 'setono_sylius_callout.ui.priority',
                             'sortable' => null,
                             'options' => [
-                                'template' => '@SyliusUi/Grid/Field/position.html.twig',
+                                'template' => '@SyliusUi/grid/field/position.html.twig',
                             ],
                         ],
                     ],
