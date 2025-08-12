@@ -6,6 +6,7 @@ setono_sylius_callout_admin_callout:
         redirect: update
         grid: setono_sylius_callout_admin_callout
         permission: true
+        except: ['show']
         vars:
             all:
                 hook_prefix: 'setono_sylius_callout.callout'
