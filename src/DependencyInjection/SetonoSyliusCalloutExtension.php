@@ -136,18 +136,24 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
         ]);
 
         foreach (['create', 'update'] as $action) {
+            $form = [
+                'component' => 'setono_sylius_callout:callout:form',
+                'props' => [
+                    'resource' => '@=_context.resource',
+                    'form' => '@=_context.form',
+                    'template' => '@SetonoSyliusCalloutPlugin/admin/callout/form.html.twig',
+                ],
+                'priority' => 0,
+            ];
+
+            if ('update' === $action) {
+                $form['configuration']['method'] = 'PUT';
+            }
+
             $container->prependExtensionConfig('sylius_twig_hooks', [
                 'hooks' => [
                     sprintf('setono_sylius_callout.callout.%s.content', $action) => [
-                        'form' => [
-                            'component' => 'setono_sylius_callout:callout:form',
-                            'props' => [
-                                'resource' => '@=_context.resource',
-                                'form' => '@=_context.form',
-                                'template' => '@SetonoSyliusCalloutPlugin/admin/callout/form.html.twig',
-                            ],
-                            'priority' => 0,
-                        ],
+                        'form' => $form,
                     ],
                     sprintf('setono_sylius_callout.callout.%s.content.form', $action) => [
                         'sections' => [
