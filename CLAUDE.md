@@ -61,6 +61,7 @@ This is a Sylius plugin that adds callout/badge functionality to products. Key a
 ## Development Notes
 
 - **Plugin Structure**: This is a standard Sylius plugin following Symfony bundle conventions
+- **Resource Management**: Uses Sylius Resource Bundle for entity management and Sylius Grid Bundle for admin grids
 - **Rule System**: Extensible rule system using tagged services - new rules need both a checker class and form type
 - **Async Processing**: Commands implement `CommandInterface` for async processing via Symfony Messenger
 - **Entity Extension**: Uses traits to extend Sylius entities rather than inheritance
