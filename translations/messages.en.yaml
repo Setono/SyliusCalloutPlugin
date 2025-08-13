@@ -45,8 +45,6 @@ setono_sylius_callout:
             on_sale:
                 single_variant_eligible: A product is considered on sale if it has a single variant (the default) that is on sale
     ui:
-        action:
-            assign: Assign
         bottom_left: Bottom left
         bottom_right: Bottom right
         callout: Callout

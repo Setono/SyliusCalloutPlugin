@@ -48,11 +48,6 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
         ]);
 
         $container->prependExtensionConfig('sylius_grid', [
-            'templates' => [
-                'action' => [
-                    'setono_callout_default' => '@SetonoSyliusCalloutPlugin/admin/grid/action/setono_callout_default.html.twig',
-                ],
-            ],
             'grids' => [
                 'setono_sylius_callout_admin_callout' => [
                     'driver' => [
@@ -110,16 +105,6 @@ final class SetonoSyliusCalloutExtension extends AbstractResourceExtension imple
                         'main' => [
                             'create' => [
                                 'type' => 'create',
-                            ],
-                            'assign' => [
-                                'type' => 'setono_callout_default',
-                                'label' => 'setono_sylius_callout.ui.action.assign',
-                                'options' => [
-                                    'icon' => 'refresh',
-                                    'link' => [
-                                        'route' => 'setono_sylius_callout_admin_callout_assign',
-                                    ],
-                                ],
                             ],
                         ],
                         'item' => [
