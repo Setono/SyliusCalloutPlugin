@@ -1,4 +1,4 @@
-# Sylius Callout Plugin
+# Sylius Callout / Badge Plugin
 
 [![Latest Version][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
@@ -26,7 +26,7 @@ based on specific rules. It provides a common set of rules by default and is ver
 ### Step 1: Download the plugin
 
 ```bash
-$ composer require setono/sylius-callout-plugin
+composer require setono/sylius-callout-plugin
 ```
 
 ### Step 2: Enable the plugin
@@ -81,8 +81,8 @@ class Product extends BaseProduct implements CalloutProductInterface
 ### Step 5: Update your database schema
 
 ```bash
-$ php bin/console doctrine:migrations:diff
-$ php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
 ```
  
 ### Step 6: Add callouts to your product templates 
@@ -107,23 +107,13 @@ framework:
 ```
 
 ### Step 8: Configure cron job
-For the performance reasons, configure a cron job on your production server to execute `$ bin/console setono:sylius-callout:assign` command 
-once in a while in order to assign all callouts. In most cases it should be done by the resource event listener
-triggered anytime you create/update a product or callout, but it is worth to have it covered if something goes wrong.
-
-### Step 9: Install assets
-```bash
-$ bin/console assets:install
-```
-
-## Usage
-
-From now on you should be able to add new callouts in the admin panel. Once you add one, you just need to configure.
+For the performance reasons, configure a cron job on your production server to execute `php bin/console setono:sylius-callout:assign` command 
+once in a while to assign all callouts. In most cases it should be done by the resource event subscriber
+triggered anytime you create/update a product or callout, but it is worth having it covered if something goes wrong.
 
 ## Customization
 
-Adding a new rule form
-----------------------
+### Adding a new rule form
 
 1. Configure a new form under `App\Form\Type\Rule` namespace,
 2. Add a rule checker under `App\Checker\Rule` namespace and
