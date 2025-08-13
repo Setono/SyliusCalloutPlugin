@@ -10,17 +10,6 @@ based on specific rules. It provides a common set of rules by default and is ver
 
 - [Go to installation instructions](#installation)
 
-## Screenshots
-
-### Shop
-
-![Screenshot showing callouts on product list](docs/images/shop-product-callouts.png)
-
-### Admin
-
-![Screenshot showing admin callout update form](docs/images/admin-callout-update.png)
-![Screenshot showing admin callouts list](docs/images/admin-callout-index.png)
-
 ## Installation
 
 ### Step 1: Download the plugin
