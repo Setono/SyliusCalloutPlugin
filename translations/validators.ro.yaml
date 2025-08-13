@@ -1,16 +1,9 @@
 setono_sylius_callout:
     callout:
         code:
-            not_blank: Codul nu poate fi gol.
             regex: Codul poate conține doar litere, cifre, sublinieri ("_") și cratime ("-").
             unique: Există deja o insignă cu acest cod.
         elements:
             count_min: Trebuie să selectezi cel puțin un element.
-        name:
-            not_blank: Numele nu poate fi gol.
         priority:
-            not_blank: Prioritatea nu poate fi goală.
             numeric: Prioritatea trebuie să fie un număr întreg.
-    callout_translation:
-        text:
-            not_blank: Textul nu poate fi gol.

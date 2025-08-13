@@ -17,7 +17,6 @@
 
         <property name="code">
             <constraint name="NotBlank">
-                <option name="message">setono_sylius_callout.callout.code.not_blank</option>
                 <option name="groups">
                     <value>setono_sylius_callout</value>
                 </option>
@@ -31,7 +30,6 @@
 
         <property name="name">
             <constraint name="NotBlank">
-                <option name="message">setono_sylius_callout.callout.name.not_blank</option>
                 <option name="groups">
                     <value>setono_sylius_callout</value>
                 </option>
@@ -40,7 +38,6 @@
 
         <property name="priority">
             <constraint name="NotBlank">
-                <option name="message">setono_sylius_callout.callout.priority.not_blank</option>
                 <option name="groups">
                     <value>setono_sylius_callout</value>
                 </option>

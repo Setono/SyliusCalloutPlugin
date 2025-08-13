@@ -1,16 +1,9 @@
 setono_sylius_callout:
     callout:
         code:
-            not_blank: Il codice non può essere vuoto.
             regex: Il codice può contenere solo lettere, numeri, trattini bassi ("_") e trattini ("-").
             unique: Esiste già un badge con questo codice.
         elements:
             count_min: Devi selezionare almeno un elemento.
-        name:
-            not_blank: Il nome non può essere vuoto.
         priority:
-            not_blank: La priorità non può essere vuota.
             numeric: La priorità deve essere un numero intero.
-    callout_translation:
-        text:
-            not_blank: Il testo non può essere vuoto.

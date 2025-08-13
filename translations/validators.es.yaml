@@ -1,16 +1,9 @@
 setono_sylius_callout:
     callout:
         code:
-            not_blank: El código no puede estar vacío.
             regex: El código solo puede contener letras, números, guiones bajos ("_") y guiones ("-").
             unique: Ya existe una etiqueta con este código.
         elements:
             count_min: Debes seleccionar al menos un elemento.
-        name:
-            not_blank: El nombre no puede estar vacío.
         priority:
-            not_blank: La prioridad no puede estar vacía.
             numeric: La prioridad debe ser un número entero.
-    callout_translation:
-        text:
-            not_blank: El texto no puede estar vacío.
