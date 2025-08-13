@@ -75,12 +75,9 @@ php bin/console doctrine:migrations:migrate
 ```
  
 ### Step 6: Add callouts to your product templates 
-Add callouts to your product box template. By default, you should use `templates/bundles/SyliusShopBundle/Product/_box.html.twig` 
-path. Check out our [_box.html.twig](tests/Application/templates/bundles/SyliusShopBundle/Product/_box.html.twig) file for a reference.
+You can see how the callouts are added to products inside the test application: [tests/Application/templates/shared/product/card/details/callouts.html.twig](tests/Application/templates/shared/product/card/details/callouts.html.twig)
 
-Note the line: `{% include "@SetonoSyliusCalloutPlugin/Shop/Product/Callout/_callouts.html.twig" with { 'callouts' : get_callouts(product, 'default') } %}`.
-
-### Step 7: Using asynchronous transport (optional, but recommended)
+### Step 7: Using asynchronous transport (optional but recommended)
 
 All commands in this plugin will extend the [CommandInterface](src/Message/Command/CommandInterface.php).
 Therefore, you can route all commands easily by adding this to your [Messenger config](https://symfony.com/doc/current/messenger.html#routing-messages-to-a-transport):
