@@ -11,12 +11,3 @@ setono_sylius_callout_admin_callout:
             all:
                 hook_prefix: 'setono_sylius_callout.callout'
     type: sylius.resource
-
-setono_sylius_callout_admin_callout_assign:
-    path: /callouts/assign
-    methods: [GET]
-    defaults:
-        _controller: setono_sylius_callout.controller.action.assign
-        _sylius:
-            section: admin
-            permission: true
